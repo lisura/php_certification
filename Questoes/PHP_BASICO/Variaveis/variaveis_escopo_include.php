@@ -1,5 +1,5 @@
 <?php  
 
-echo $b . PHP_EOL;
+echo $b . $a . PHP_EOL;
 
 return 'Hello World!!';
