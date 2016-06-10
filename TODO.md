@@ -1,7 +1,7 @@
 
 
 # TODO (09/06/2016):
-- [ ]  ERRO ESCRITA: safe_mode esá descontinuado
+- [x]  ERRO ESCRITA: safe_mode esá descontinuado
 - [ ] Em estruturas usar ++ antes e depois da variavel para ver resultados.
 - [ ] Gerar teste com instaceof com herança multipla e outras coisas 
 - [x] Corrigir Variaveis "my name is bob"
