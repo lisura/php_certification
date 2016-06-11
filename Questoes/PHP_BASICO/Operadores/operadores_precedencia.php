@@ -10,3 +10,5 @@ $e=($a*$b)+$c*$d/$a;
 print($e);
 
 echo PHP_EOL;
+
+print($a*$b+$d/$a*$c); //74
