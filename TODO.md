@@ -2,8 +2,8 @@
 # TODO (14/06/2016):
 - [ ] Exemplos de $http_response_header
 - [ ] Exemplos de $HTTP_RAW_POST_DATA
-- [ ] Na parte do For, escrever que não funciona com arrays e objetos
-- [ ] Modificar a parte do foreach onde tem "código não funciona" para "código não recomendável"
+- [x] Na parte do For, escrever que não funciona com arrays e objetos
+- [x] Modificar a parte do foreach onde tem "código não funciona" para "código não recomendável"
 - [ ] explicar o exemplo do while e do foreach
 
 # TODO (09/06/2016):
