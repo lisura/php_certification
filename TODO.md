@@ -1,7 +1,7 @@
 
 # TODO (16/06/2016):
 - [ ] Adicionar o exemplo do site do Lisura de empty vs isset vs array_key_exists na parte de construtores empty e isset
-- [ ] incluir no tópico do Include e Require o uso de @ para suprir erro
+- [x] incluir no tópico do Include e Require o uso de @ para suprir erro
 
 # TODO (14/06/2016):
 - [ ] Exemplos de $http_response_header
