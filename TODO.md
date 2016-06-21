@@ -1,4 +1,9 @@
 
+# TODO (21/06/2016):
+- [ ] Complementar o exemplo do alias no namespace, referente as duas últimas linhas (func e echo constant)
+- [ ] Criar exemplo de unset em método de classe usando o $this como referência do método
+- [ ] Criar páginas de referências usadas para criar as aulas
+
 # TODO (16/06/2016):
 - [ ] Adicionar o exemplo do site do Lisura de empty vs isset vs array_key_exists na parte de construtores empty e isset
 - [x] incluir no tópico do Include e Require o uso de @ para suprir erro
