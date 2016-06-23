@@ -1,5 +1,5 @@
 # TODO (23/06/2016):
-- Nothing to do
+- [ ] Lembrar de fazer um estudo de mudanças do PHP 5.3 -> 5.5;
 
 # TODO (21/06/2016):
 - [ ] Complementar o exemplo do alias no namespace, referente as duas últimas linhas (func e echo constant)
