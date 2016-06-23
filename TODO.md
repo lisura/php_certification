@@ -1,3 +1,5 @@
+# TODO (23/06/2016):
+- Nothing to do
 
 # TODO (21/06/2016):
 - [ ] Complementar o exemplo do alias no namespace, referente as duas últimas linhas (func e echo constant)
