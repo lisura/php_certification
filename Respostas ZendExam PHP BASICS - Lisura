@@ -61,5 +61,35 @@ Explicação: 'echo' converte o numero 022 que em octal é 18
 35 - B - Correto
 
 36 - A - Errado
-Explicacão : 
+Explicacão : TODAS as funções PHP retornam valores, mesmo quando não são explicitos.
+ -- logo, o conceito de VOID realmente não se aplica no PHP
+ 
+37 - D - Correto
+Explicação: Mais sorte que juizo.
+
+38 - D - Correto
+
+39 - B - Errado
+Explicacão: Pegadinha, tinha que achar o que era FALSO. A alegação abaixo é falsa
+ -- Classes that implement interfaces with methods that have default values 
+ -- in the prototype are no longer required to match the interface's default value.
+ 
+40 - B - Correto
+Explicacão: Barra no caso imprime a String, entao a palavra "the" teria que estar
+ -- contida nas saida. 
+ 
+41 - D - Errado
+Explicacão:  123 is not equal to 0123, since PHP treats 0123 as octal 
+<?php
+$x = 123 == 0123;
+var_dump($x) // bool(false)
+
+42 - B - Correto
+
+43 - C - Correto
+
+44 - C - Correto
+
+45 - C - Errado 
+Explicacão: 
     
