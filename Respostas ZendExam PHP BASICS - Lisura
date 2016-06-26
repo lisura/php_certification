@@ -91,5 +91,82 @@ var_dump($x) // bool(false)
 44 - C - Correto
 
 45 - C - Errado 
+Explicacão: A função print é executada dentro do if ternario.
+ -- no caso de 'echo' um fatal error é gerado.
+ 
+46 - C - Correto
+
+47 - A - Correto
+Explicacão: crc32 => Retorna o checksum crc32 da str como um inteiro. (PHP.net)
+
+48 - A - Correto
+
+49 - A - Correto
+
+50 - B - Correto
+
+51 - D - Correto
+
+52 - D - Correto
+Explicação: Prioridades sempre resolver de dentro para fora
+
+53 - B - Correto
+Explicacão: Chute pelo nome 'caching' na alternativa
+
+54 - C - Correto
+
+55 - D - Correto
+
+56 - D - Errado
 Explicacão: 
-    
+<?php
+$a=20%-8;
+echo $a . ' | ';  // 4
+echo 20/-8;  // -2.5
+echo ' | ';
+echo 20 - (-8 * -2); // 4
+
+57 - B - Errado
+Explicacão: o PHP faz o cast percorrendo a string até um ponto de parada.
+<?php
+ echo (int) '1235 Jason 12'; // 1235
+ echo (int) '1235 Jason'; // 1235
+ echo (int) '1235Jason'; // 1235
+ echo (int) 'Jason1235'; // 0
+
+58 - A - Correto
+
+59 - D - Correto
+
+60 - C - Errado
+Explicacão: O sinal de positvo é atribuido ao valor 1
+ -- então é calculo é realizado 'valor' menos 'um positivo'
+<?php
+$sale = 200;
+$sale = $sale + 1;
+echo $sale . ' | '; // 201
+$sale = 200;
+$sale = $sale- + 1;
+echo $sale . ' | '; // 199
+$sale = 200;
+$sale = $sale - 1;
+echo $sale . ' | '; // 199
+$sale = 200;
+$sale = $sale+ - 1;
+echo $sale . ' | ';
+
+61 - D - Correto
+
+62 - C - Correto
+
+63 - D - Correto
+
+64 - A - Correto
+
+65 - B - Correto
+
+66 - A - Correto
+
+67 - D - Correto
+
+68 - A - Correto
