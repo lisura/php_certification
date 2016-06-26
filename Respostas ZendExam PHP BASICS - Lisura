@@ -4,5 +4,62 @@ Respostas :
 Explicação: valor salvo internamente no PHP é 7.999999999999.
  -- Conventer para INT simplismente elimina a parte fracionaria por isso do erro.
  
+20 - C - Errado
+Explicaco: 'print()' se comporta como uma funcao que tem valor de retorno.
+ -- Por conta disso pode ser usado como uma expressao.
+ -- 'echo' não tem valor de retorno, logo não pode ser usada desta maneira
  
- 20 - 
+21 - D - Correto
+
+22 - D - Correto
+
+23 - A - Correto
+
+24 - A - Correto
+
+25 - B - Correto
+
+26 - A C D - Errado
+Explicacão: PECL é uma exetenção comunitaria, não esta no core.
+ -- Arrays é SIM uma extensão do core.
+ 
+27 - B - Correto
+
+28 - A - Correto
+Explicaco: sorte.
+<?php
+   function calc1() {
+       $x=10;
+       $b=$x++;
+       print($b . ' '); // 10
+   }
+   function calc2() {
+       $x=10;
+       $b=++$x;
+       print($b . ' '); // 11
+   }
+   calc1();
+   calc2();
+ 
+29 - B - Correto
+
+30 - C - Errado
+Explicacão: Para definir contantes não sensitivas o terceiro parametro do define deve ser TRUE
+
+31 - C D - Correto
+
+32 - B - Correto
+
+33 - C - Errado
+Explicação: 'echo' converte o numero 022 que em octal é 18
+<?php
+    echo 12121212; // 12121212
+    echo 012121212; // 2663050
+    
+34 - A - Correto
+
+35 - B - Correto
+
+36 - A - Errado
+Explicacão : 
+    
