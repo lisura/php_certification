@@ -2,15 +2,14 @@
 
 $a = "String array test";
 
-var_dump($a); 
+var_dump($a);
 // Return string(17) "String array test"
 
-var_dump($a[0]); 
+var_dump($a[0]);
 // Return string(1) "S"
-
 // -- With array cast --
-var_dump((array) $a); 
+var_dump((array) $a);
 // Return array(1) { [0]=> string(17) "String array test"}
 
-var_dump((array) $a[0]); 
+var_dump((array) $a[0]);
 // Return string(17) "S"
