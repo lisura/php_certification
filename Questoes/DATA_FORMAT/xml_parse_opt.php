@@ -5,29 +5,9 @@ $parser=xml_parser_create();
 function start($parser,$element_name,$element_attrs)
 {
   //Lembrando que o Parser está com o case_folded ativado
-  switch($element_name)
-  {
-    case "VIDEOGAME":
-    echo "<h1>-- VIDEOGAME --</h1>";
-    break;
-    case "TITULO":
-    echo "<b>Nome: </b>";
-    break;
-    case "JOGOS":
-    echo "<h2>-- JOGOS --</h2>";
-    break;
-    case "JOGO":
-    echo "=> ";
-    break;
-    case "ITEM":
-    echo "<b>Obs: </b>";
-    break;
-  }
-  if(count($element_attrs) > 0){
-    foreach($element_attrs as $k => $v){
-      echo '<b>'.$k.': </b>'.$v.' | ';
-    }
-  }
+  echo "<pre>";
+  var_dump($element_name);
+  var_dump($element_attrs);
 }
 
 function stop($parser,$element_name)
@@ -42,6 +22,11 @@ function char($parser,$data)
 
 xml_set_element_handler($parser,"start","stop");
 xml_set_character_data_handler($parser,"char");
+
+//xml_parser_set_option($parser, XML_OPTION_CASE_FOLDING, 0);
+//xml_parser_set_option($parser, XML_OPTION_SKIP_TAGSTART, 2);
+//xml_parser_set_option($parser, XML_OPTION_TARGET_ENCODING, 'ISO-8859-1');
+
 $fp=fopen("xml_utf.xml","r");
 //$fp=fopen("xml_iso.xml","r");
 

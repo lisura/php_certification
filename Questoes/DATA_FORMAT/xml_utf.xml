@@ -5,7 +5,7 @@
     <jogo desenvolvedora="Nintendo" ano="1990" genero="plataforma">Super Mario World</jogo>
     <jogo desenvolvedora="Kemco" ano="1991" genero="corrida">Top Gear</jogo>
     <jogo desenvolvedora="Square" ano="1992" genero="rpg">Final Fantasy V</jogo>
-    <jogo desenvolvedora="Capcom" ano="1993" genero="luta">Mega Man X</jogo>
+    <jogo desenvolvedora="Capcom" ano="1993" genero="acao">Mega Man X</jogo>
   </jogos>
   <curiosidades>
     <item>Sucessor do Nintendo Entertainment System (NES).</item>

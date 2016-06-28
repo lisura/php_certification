@@ -16,4 +16,3 @@ $xml_parser = xml_parser_create();
 
 xml_set_element_handler($xml_parser, "startElement", "endElement");
 xml_parse($xml_parser, $xmldata, true);
-?>
