@@ -1,5 +1,12 @@
+# TODO (27/06/2016):
+- [ ] Adicionar introdução ao tópico de tipos de dados
+- [ ] Remover referências a versões anyigas do PHP
+- [ ] Corrigir link do exercício do erro de xml
+- [ ] Entity notation sem formatação
+- 
+
 # TODO (23/06/2016):
-- [ ] Lembrar de fazer um estudo de mudanças do PHP 5.3 -> 5.5;
+- [ ] Lembrar de fazer um estudo de mudanças do PHP 5.4 -> 5.5;
 
 # TODO (21/06/2016):
 - [ ] Complementar o exemplo do alias no namespace, referente as duas últimas linhas (func e echo constant)
