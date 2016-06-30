@@ -1,3 +1,8 @@
+# TODO (30/07/2016):
+- [ ] Adicionar informações sobre xpath
+- [ ] Adicionar exemplo de xpath com atributos
+- [ ] Adicionar exemplos de constantes de xml
+
 # TODO (27/06/2016):
 - [ ] Adicionar introdução ao tópico de tipos de dados
 - [ ] Remover referências a versões anyigas do PHP
