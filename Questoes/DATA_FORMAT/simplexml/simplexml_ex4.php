@@ -1,7 +1,5 @@
-﻿<?php
-$xmlstr = <<<XML
-<?xml version="1.0" encoding="UTF-8"?>
-<videogame nome="SNES" ano_lancamento="1990" fabricante="Nintendo">
+<?php
+$xmlstr = '<videogame nome="SNES" ano_lancamento="1990" fabricante="Nintendo">
   <titulo>Super Nintendo Entertainment System</titulo>
   <jogos>
     <jogo desenvolvedora="Nintendo" ano="1990" genero="plataforma">Super Mario World</jogo>
@@ -15,23 +13,26 @@ $xmlstr = <<<XML
     <item-line>Foi lançado no Brasil em 1993 pela Playtronic.</item-line>
     <item-line>O periférico de CD que seria lançado pela Sony se tornou no PlayStation.</item-line>
   </curiosidades>
-</videogame >
-XML;
+</videogame >';
 
-$videogame = simplexml_load_string($xmlstr);
-if (!$videogame) {
-    echo 'Erro ao analisar o XML';
-    exit;
+$dom = new DOMDocument();
+//$dom->load("xml_file.xml");
+$dom->loadXML($xmlstr);
+
+//echo $dom->saveXML();
+
+// $elemento = $dom->documentElement;
+// foreach ($elemento->childNodes AS $item) {
+  // print $item->nodeName . " => " . utf8_decode($item->nodeValue) . "<br>";
+// }
+
+$xpath = new DOMXpath($dom);
+$elemento = $xpath->query('/videogame/jogos');
+
+// echo "<pre>";
+// var_dump($elemento);
+// echo "</pre>";
+
+foreach($elemento as $no){
+	print $no->nodeValue;
 }
-
-$dom_videogame = dom_import_simplexml($videogame);
-if (!$dom_videogame) {
-    echo 'Erro ao converter o XML';
-    exit;
-}
-
-$dom = new DOMDocument('1.0','UTF-8');
-$dom_videogame = $dom->importNode($dom_videogame, true);
-$dom_videogame = $dom->appendChild($dom_videogame);
-
-echo $dom->saveXML();
