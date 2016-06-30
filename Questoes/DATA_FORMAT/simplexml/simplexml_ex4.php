@@ -27,12 +27,15 @@ $dom->loadXML($xmlstr);
 // }
 
 $xpath = new DOMXpath($dom);
-$elemento = $xpath->query('/videogame/jogos');
+$elemento = $xpath->query('/videogame/jogos/jogo');
 
 // echo "<pre>";
 // var_dump($elemento);
 // echo "</pre>";
 
 foreach($elemento as $no){
-	print $no->nodeValue;
+	if(( $no instanceof DOMElement )){
+		print $no->attributes->getNamedItem("desenvolvedora")->nodeValue.': ';
+	}
+	print $no->nodeValue."<br/>";
 }
