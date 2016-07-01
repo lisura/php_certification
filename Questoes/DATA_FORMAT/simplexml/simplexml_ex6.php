@@ -30,4 +30,5 @@ if (!$dom_videogame) {
 $dom = new DOMDocument('1.0','UTF-8');
 $dom_videogame = $dom->importNode($dom_videogame, true); //importei o DOM gerado ao documento
 $dom_videogame = $dom->appendChild($dom_videogame); //adiciono o DOM importado, sem esse comando ele não vai incluí-lo no XML gerado
+//$dom_videogame = $dom->insertBefore($dom_videogame[,DOMNode]); //Esta função aceita um segundo parâmetro, indicando que este novo nó deve ser inserido antes do nó referenciado no segundo parâmetro
 echo $dom->saveXML();
