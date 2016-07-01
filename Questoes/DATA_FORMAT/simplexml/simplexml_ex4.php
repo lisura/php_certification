@@ -34,7 +34,8 @@ $elemento = $xpath->query('/videogame/jogos/jogo');
 // echo "</pre>";
 
 foreach($elemento as $no){
-	if(( $no instanceof DOMElement )){
+	//if(( $no instanceof DOMElement )){
+	if(( $no->nodeType == XML_ELEMENT_NODE )){
 		print $no->attributes->getNamedItem("desenvolvedora")->nodeValue.': ';
 	}
 	print $no->nodeValue."<br/>";
