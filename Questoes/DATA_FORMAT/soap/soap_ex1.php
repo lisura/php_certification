@@ -1,18 +1,22 @@
- <?php
+﻿ <?php
 /*
  * SOAP Exercício 1
  */
-$options = array('location' => 'http://localhost/GitHub/php_certification/Questoes/DATA_FORMAT/soap/server.php', //digitar o local onde se encontra o arquivo no seu servidor
-                  'uri' => 'http://localhost/soap',
-                  'exceptions' => 0);
+$options = array('soap_version' => SOAP_1_1,
+                  'exceptions' => 0,
+                  'trace' => true);
                   
-$client = new SoapClient('http://localhost/GitHub/php_certification/Questoes/DATA_FORMAT/soap/php-wsdl/demo.php?WSDL');
+$client = new SoapClient('http://localhost/GitHub/php_certification/Questoes/DATA_FORMAT/soap/php-wsdl/demo.php?WSDL', $options);
 echo "<pre>";
   var_dump($client->__getFunctions());
 echo "</pre>";
 
-$result = $client->SayHello("Adinan");
+$result = $client->SayHello("Adinan"); //Não esqueça de liberar a pasta cache no server ou aqui vai dar erro
 echo $result;
+
+$options = array('location' => 'http://localhost/GitHub/php_certification/Questoes/DATA_FORMAT/soap/server.php', //digitar o local onde se encontra o arquivo no seu servidor
+                  'uri' => 'http://localhost/soap',
+                  'exceptions' => 0);
 
 $client = new SoapClient(NULL, $options);
 echo "<pre>";

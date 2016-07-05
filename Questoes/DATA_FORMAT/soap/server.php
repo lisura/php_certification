@@ -1,9 +1,7 @@
 ﻿<?php
 /*
- * PHP SOAP - How to create a SOAP Server and a SOAP Client
+ * SOAP Exercício 2
  */
-
-//a basic API class
 class MyAPI {
     function hello() {
         return "Hello, SOAP World!<br>";
@@ -22,4 +20,3 @@ $server = new SoapServer(NULL,$options);
 $server->setClass('MyAPI');
 //start the SOAP requests handler
 $server->handle();
-?>

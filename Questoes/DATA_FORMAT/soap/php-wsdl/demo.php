@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 // This bootstrapper may serve any SOAP webservice with PhpWsdl,
 // if your methods and classes are commented. I developed and 

@@ -431,9 +431,9 @@ class PhpWsdl{
 		}
 		// SOAP server options
 		$this->SoapServerOptions=Array(
-			'soap_version'	=>	SOAP_1_1|SOAP_1_2,
-			'encoding'		=>	'UTF-8',
-			'compression'	=>	SOAP_COMPRESSION_ACCEPT|SOAP_COMPRESSION_GZIP|9
+			//'soap_version'	=>	SOAP_1_1|SOAP_1_2,
+			//'encoding'		=>	'UTF-8',
+			//'compression'	=>	SOAP_COMPRESSION_ACCEPT|SOAP_COMPRESSION_GZIP|9
 		);
 		// Optimizer settings
 		$this->Optimize=!isset($_GET['readable']);// Call with "?WSDL&readable" to get human readable WSDL

@@ -1,4 +1,4 @@
- <?php
+﻿ <?php
 /*
  * SOAP Exercício 1
  */
@@ -6,7 +6,7 @@ $options = array('location' => 'http://localhost/GitHub/php_certification/Questo
                   'uri' => 'http://localhost/soap',
                   'exceptions' => 0);
                   
-$client = new SoapClient('http://localhost/testes/php-wsdl/demo.php?WSDL');
+$client = new SoapClient('http://localhost/GitHub/php_certification/Questoes/DATA_FORMAT/soap/php-wsdl/demo.php?WSDL');
 echo "<pre>";
   var_dump($client->__getFunctions());
 echo "</pre>";
