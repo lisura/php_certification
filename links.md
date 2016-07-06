@@ -18,4 +18,4 @@ dillinger : [Link](http://dillinger.io/)
 
 ATOM : [link](https://atom.io/)
 
->usar atalho : "Ctrol + Shift + m" para pré visualizar
+>usar atalho : "Ctrl + Shift + m" para pré visualizar
