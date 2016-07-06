@@ -1,0 +1,50 @@
+19 - Errado (embora tenha dado 8 na expressão, a engine do PHP gerou 7,9999...)
+20 - Certo
+21 - Certo
+22 - Certo
+23 - Certo
+24 - Certo
+25 - Certo
+26 - Certo
+27 - Certo
+28 - Certo
+29 - Certo
+30 - Errado (bool define ( string $name , mixed $value [, bool $case_insensitive = false ] ))
+31 - Certo
+32 - Certo
+33 - Errado (The echo would convert the hexadecimal number 0x33 to 51, octal number 022 to 18, and output the string along with it.)
+34 - Certo
+35 - Certo
+36 - Errado (All functions in PHP return a value - even if you don't explicitly cause them to)
+37 - Errado (Faltou somar com a global C no final)
+38 - Certo
+39 - Certo (chute)
+40 - Certo
+41 - Errado (0123 é octal pelo PHP)
+42 - Errado (time() retorna timestamp)
+43 - Certo
+44 - Certo
+45 - Certo
+46 - Certo
+47 - Certo (chute)
+48 - Certo
+49 - Certo
+50 - Certo
+51 - Certo
+52 - Certo
+53 - Certo (chute)
+54 - Certo
+55 - Certo
+56 - Errado (20 % -8 => Pega o resto da divisão, o sinal será o mesmo do primeiro elemento)
+57 - Errado (ignora as strings e converte os numeros em int)
+58 - Certo
+59 - Errado (aqui a conversão resultou em 0)
+60 - Certo
+61 - Certo
+62 - Certo
+63 - Certo
+64 - Certo
+65 - Certo (chute)
+66 - Certo
+67 - Certo
+68 - Certo
