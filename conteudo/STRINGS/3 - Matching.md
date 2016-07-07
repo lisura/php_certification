@@ -60,3 +60,7 @@ echo strncasecmp ( $str1 , $str2 , 100).PHP_EOL;
 echo strcmp ( $str1 , $str2 ).PHP_EOL;
 echo PHP_EOL;
 ```
+
+TODO
+
+Montar outros metodos citados acima.
