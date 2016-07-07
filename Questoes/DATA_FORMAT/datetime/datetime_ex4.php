@@ -1,5 +1,5 @@
 ﻿<?php
-/* Exercício 3 */
+/* Exercício 4 */
 echo '<pre>';
 
 $datetime1 = new DateTime('2016-07-07');
