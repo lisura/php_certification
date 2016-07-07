@@ -9,9 +9,9 @@ $date = new DateTime('2016-01-11');
 $date->add(new DateInterval('P90D'));
 echo 'Fugi da maldição da leva de janeiro em '.$date->format('d/m/Y') . '<br/>';
 
-$hoje = new DateTime();
+//$hoje = new DateTime();
 //$hoje = new DateTime("now");
-//$hoje = new DateTimeImmutable("now");
+$hoje = new DateTimeImmutable("now");
 echo 'Hoje: '.$hoje->format('d/m/Y') . '<br/>';
 
 $amanha = $hoje->add(new DateInterval('P1D'));

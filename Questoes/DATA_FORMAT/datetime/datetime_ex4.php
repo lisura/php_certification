@@ -10,13 +10,13 @@ var_dump($interval);
 
 echo '<br><br>===TIMEZONE SET===<br>';
 $timezone_date = new DateTime('now',new DateTimeZone('America/Sao_Paulo'));
-echo $timezone_date->format('d/m/Y H:m:s').'<br/>';
+echo $timezone_date->format('d/m/Y H:i:s').'<br/>';
 echo $timezone_date->getTimeZone()->getName().'<br/>';
 echo $timezone_date->getTimestamp().'<br/>';
 
 echo '<br><br>===TIMEZONE PADRAO===<br>';
 $timezone_padrao = new DateTime('now');
-echo $timezone_padrao->format('d/m/Y H:m:s').'<br/>';
+echo $timezone_padrao->format('d/m/Y H:i:s').'<br/>';
 echo $timezone_padrao->getTimeZone()->getName().'<br/>';
 echo $timezone_padrao->getTimestamp().'<br/>';
 
@@ -34,6 +34,6 @@ Australia/Melbourne
 */
 
 echo '<br><br>===CREATE FROM FORMAT===<br>';
-$date = DateTime::createFromFormat('d/m/Y', '07/07/2016');
+$date = DateTime::createFromFormat('d/m/Y', '14/10/2022');
 echo $date->format('Y-m-d').'<br/>';
 echo $date->getTimestamp().'<br/>';

@@ -2,14 +2,17 @@
 /* Exercício 3 */
 echo '<pre>';
 
-$date = new DateTime();
-//$date->setDate(1990,12,25);
-$date->sub(new DateInterval('P4D'));
-echo 'Fui informado que consegui emprego na Finnet em '.$date->format('d/m/Y') . '<br/><br/>';
+$hoje = new DateTime();
+echo $hoje->setDate(1990,12,25)->format('d/m/Y').'<br/>';
+echo 'Hoje: '.$hoje->format('d/m/Y') . '<br/>'; //25/12/1990
+
+$hoje2 = new DateTimeImmutable();
+echo $hoje2->setDate(1990,12,25)->format('d/m/Y').'<br/>';
+echo 'Hoje2: '.$hoje2->format('d/m/Y') . '<br/><br/>'; //07/07/2016
 
 $hoje = new DateTime();
 // $hoje = new DateTime("now");
-// $hoje = new DateTimeImmutable("now");
+$hoje = new DateTimeImmutable("now");
 echo 'Hoje: '.$hoje->format('d/m/Y') . '<br/>';
 
 $ontem = $hoje->sub(new DateInterval('PT24H'));
