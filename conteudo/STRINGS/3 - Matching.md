@@ -94,7 +94,7 @@ echo $percent.' %'.PHP_EOL.PHP_EOL;
 
 >int levenshtein ( string $str1 , string $str2 , function $cost )
 
-Retorna a Levenshtein-Distance entre duas strings argumentos ou -1, se nenhuma das strings argumentos é mais longa que o o limite de 255 caracteres (255 seria mais do que o bastante para o nome ou comparação de dicionário, e ninguém sério estaria fazendo análises genéticas com PHP).
+Retorna a Levenshtein-Distance entre duas strings ou -1, se nenhuma das strings é mais longa que o o limite de 255 caracteres (255 seria mais do que o bastante para o nome ou comparação de dicionário, e ninguém sério estaria fazendo análises genéticas com PHP).
 
 Na sua forma mais simples a função pegará apenas as duas strings como parâmetros e calculará apenas o número de operações de inserção, substituição e deletação necessárias para transformar str1 em str2.
 
@@ -103,6 +103,7 @@ Uma segunda variante pegará três parâmetros adicionais que definem o custo da
 A terceira variante (que ainda não é implementada) será a mais geral e adaptável, mas também a alternativa mais lenta. Ela chamará uma função de usuário fornecida que determinará o custo para cada possível operação.
 
 ```php
+// $ php string_levenshtein.php
 $var_1 = 'DO THE HARLEM SHAKE';
 $var_2 = 'IS THE HARLEM SHAKE';
 echo levenshtein($var_1, $var_2).PHP_EOL;
