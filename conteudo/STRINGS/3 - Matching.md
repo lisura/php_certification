@@ -1,6 +1,6 @@
 ## Matching
 
-Existem alguamas maneras de compração de strings.
+Existem algumas maneras de compração de strings.
 
 Metodo | Observação
 --- | ---
