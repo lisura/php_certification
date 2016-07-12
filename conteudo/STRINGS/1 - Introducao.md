@@ -23,7 +23,7 @@ Não existem limitações sobre a composição dos valores da string; em particu
 
 Esta natureza do tipo string explica o motivo de não haver o tipo "byte" disponível no PHP – as strings assumem este papel. Funções que não retornam nenhuma informação textual – por exemplo, dados arbitrários lidos de um socket de rede – continuarão retornando strings.
 
->algumas funções, mencionadas neste manual como não “binary safe”, podem repassar as strings para bibliotecas que ignorem os dados após o byte nulo
+>algumas funções, mencionadas neste tutorial como não “binary safe”, podem repassar as strings para bibliotecas que ignorem os dados após o byte nulo
 
 ```php
 // => http://phptester.net/
