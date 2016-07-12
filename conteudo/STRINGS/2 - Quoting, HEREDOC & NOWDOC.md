@@ -145,6 +145,7 @@ A notação Nowdoc é semelhante à Heredoc, exceto que ela não aceita variáve
 Um nowdoc é identificado com a mesma seqüência <<< usada para heredocs, mas o identificador precisa ficar entre aspas simples, e.g. <<<'EOT'. Todas as regras para identificadores heredoc também se aplicam para identificadores nowdoc, especialmente aquelas referentes a aparência do identificador de fechamento.
 
 ```php
+// $ php string_sintaxe_nowdoc.php
 $codigo_php = <<<'EOF'
 /**
  * Somente imprime algo que eu mandei
@@ -154,7 +155,8 @@ function print_something($something) {
 }
 print_something('Do the Harlem Shake');
 EOF;
-echo $codigo_php;
+eval($codigo_php);
+echo PHP_EOL;
 ```
 
 > Exemplo mais completo em: $ php string_nowdoc.php
