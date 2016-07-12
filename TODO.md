@@ -1,3 +1,14 @@
+# TODO (12/07/2016)
+- [ ] String - Em multibyte está faltando parte do texto
+- [ ] Quoting, HEREDOC & NOWDOC - ajustar escape de barras
+- [ ] O exemplo de aspas simples estrá trocado
+- [ ] Remover informação do php7
+- [ ] Diferença entre \f e \v
+- [ ] Remover texto de exemplo heredoc e nowdoc
+- [ ] Remover o 'var' por conta do chatinho
+- [ ] Trocar a palavra colchetes por chaves
+- 
+
 # TODO (30/07/2016):
 - [ ] Adicionar informações sobre xpath
 - [ ] Adicionar exemplo de xpath com atributos
