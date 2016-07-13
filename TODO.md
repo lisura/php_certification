@@ -3,7 +3,7 @@
 - [x] Quoting, HEREDOC & NOWDOC - ajustar escape de barras
 - [x] O exemplo de aspas simples estrá trocado
 - [x] Remover informação do php7
-- [ ] Diferença entre \f e \v
+- [x] Diferença entre \f e \v
 - [x] Remover texto de exemplo heredoc e nowdoc
 - [x] Remover o 'var' por conta do chatinho
 - [x] Trocar a palavra colchetes por chaves
