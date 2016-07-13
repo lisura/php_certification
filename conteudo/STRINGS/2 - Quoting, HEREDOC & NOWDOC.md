@@ -263,3 +263,5 @@ Se você estiver definindo uma string única e não concatenar valores ou qualqu
 Se você está concatenando várias strings de qualquer tipo, ou interpolar valores em uma string entre aspas duplas, então os resultados podem variar. Se você estiver trabalhando com um pequeno número de valores, a concatenação é minuciosamente mais rápida. Com um monte de valores, interpolação é minuciosamente mais rápida.
 
 Independentemente do que você está fazendo com strings, nenhum dos tipos vai ter qualquer impacto perceptível sobre a sua aplicação. Tentar reescrever código para usar um ou o outro é sempre um exercício de futilidade, de modo a evitar este micro-otimização, a menos que você realmente compreenda o significado e o impacto das diferenças.
+
+Referencia [LINK](http://br.phptherightway.com/pages/The-Basics.html)
