@@ -1,4 +1,5 @@
 <?php
+
 $string = 'Uso livre de \'  \r ou \n ou \ ou \\ ';
 echo $string.PHP_EOL;
 $justDo = ' shake';

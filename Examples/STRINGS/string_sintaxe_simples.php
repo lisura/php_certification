@@ -3,6 +3,7 @@ $what = "Harlem";
 echo "1- Just Do The $what Shake.".PHP_EOL;
 echo "2- Just Do The $whatis Shake.".PHP_EOL;
 echo "3- Just Do The ${what} Shake.".PHP_EOL;
+echo "3- Just Do The {$what} Shake.".PHP_EOL;
 echo PHP_EOL.PHP_EOL.PHP_EOL;
 //outro exemplo
 $styles = array("Harlem", "Shake", "Dance" => "Crazy");

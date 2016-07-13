@@ -10,7 +10,7 @@ Uma string literal pode ser especificada de quatro formas diferentes.
 
 A maneira mais simples de se especificar uma string é delimitá-la entre aspas simples (').
 
-Para especificar um apóstrofo, escape-o com uma contrabarra (\). Para especificar uma contrabarra literal, dobre-a (\\). Todas as outras ocorrências da contrabarra serão tratadas como uma contrabarra literal: isso significa que outras sequências de escape que se esteja acostumado a utilizar, como \r ou \n, serão literalmente impressas em vez de ter qualquer significado especial
+Para especificar um apóstrofo, escape-o com uma contrabarra ( \ ). Para especificar uma contrabarra literal, dobre-a ( \\\ ). Todas as outras ocorrências da contrabarra serão tratadas como uma contrabarra literal: isso significa que outras sequências de escape que se esteja acostumado a utilizar, como \r ou \n, serão literalmente impressas em vez de ter qualquer significado especial
 
 ```php
 // => $ php string_aspas_simples.php
@@ -40,7 +40,13 @@ Sequências | Significado
 \" | aspas duplas
 \[0-7]{1,3} | a sequência de caracteres correspondente a expressão regular é um caractere em notação octal, que silenciosamente é extravasada para caber em um byte (e.g. "\400" === "\000")
 \x[0-9A-Fa-f]{1,2} | a sequência de caracteres correspondente a expressão regular é um caractere em notação hexadecimal
-\u{[0-9A-Fa-f]+} | a sequência de caracteres correspondente a expressão regular é um código Unicode, que será impresso como uma string que representa um código UTF-8 (adicionado no PHP 7.0.0)
+
+>Vertical tab: \v = U+000b => "Position the form at the next line tab stop." (ignored on Safari.)
+
+>Form feed: \f = U+000c => "On printers, load the next page. In some terminal emulators, it clears the screen." (truncates the string on Safari.)
+Referência:
+
+>Referencia: [LINK](http://stackoverflow.com/questions/2377084/what-is-vertical-tab-form-feeds-and-backspace-character-how-to-use-them-in-jav)
 
 Como com as strings entre aspas simples, escapar qualquer outro caractere resultará em uma contrabarra sendo impressa.
 
@@ -136,8 +142,6 @@ $html = <<<HTML
 HTML;
 ```
 
-> Exemplo mais completo em: $ php string_heredoc.php
-
 ### Sintaxe nowdoc
 
 A notação Nowdoc é semelhante à Heredoc, exceto que ela não aceita variáveis nem caracteres de controle em seu interior. Por não existir necessidade de escapar nada (inclusive os cifrões), ela é útil para um código PHP, por exemplo, guardar outro código PHP em uma string
@@ -158,8 +162,6 @@ EOF;
 eval($codigo_php);
 echo PHP_EOL;
 ```
-
-> Exemplo mais completo em: $ php string_nowdoc.php
 
 > **Observação** A linha que indica término de um bloco Heredoc ou Nowdoc não pode ser indentada. Ou seja, se você está em um nível de indentação, pode usar Heredoc ou Nowdoc, mas precisa colocar o identificador de término sem indentação:
 
@@ -218,7 +220,7 @@ Também é possível acessar propriedades de classes usando variáveis que cont�
 ```php
 // => $ php string_sintaxe_complexa.php
 class Dance {
-    var $justDo = 'Do the Harlem Shake';
+    $justDo = 'Do the Harlem Shake';
 }
 $crazy = new Dance();
 $simple_string = 'justDo';
@@ -230,7 +232,7 @@ echo "{$crazy->{$simple_Array[1]}}\n";
 > Funções, chamadas a métodos, variáveis estáticas de classe e constantes de classe dentro de {$} funcionam desde o PHP 5. Entretanto, o valor acessado deverá ser interpretado como o nome de uma variável no escopo em que a string está definida. Utilizar somente chaves ({}) não funcionará para acessar os valores de retorno de funções ou métodos nem os valores de constantes da classe ou variáveis estáticas da classe.
 
 ```php
-// => $ php string_sintaxe_complexa.php
+// => $ php string_sintaxe_complexa2.php
 class beers {
     const softdrink = 'rootbeer';
     public static $ale = 'ipa';
@@ -243,7 +245,7 @@ echo "I'd like an " . beers::$ale . " \n";
 echo "I'd like an {${beers::$ale}} \n";
 ```
 
-> Strings também podem ser acessadas usando colchetes, como em $str{42}, com o mesmo propósito.
+> Strings também podem ser acessadas usando chaves, como em $str{42}, com o mesmo propósito.
 
 ```php
 // => http://phptester.net/

@@ -36,7 +36,7 @@ echo strlen($str); // => 10
 
 **Codificação:** a string poderá ser codificada em qualquer forma que o arquivo de script estiver codificado. Se o script estiver em ISO-8859-1, então a string vai ser codificada em ISO-8859-1.
 
-> Não ocorre caso o Zend Multibyte estiver ativado. Neste caso, o script pode ser escrito em uma codificação arbitrária (que é declarada explicitamente ou é detectada) e então convertida em um codificação interna, a qual será a codificação utilizada nas strings literais.
+> Se o script for escrito na codificação ISO-8859-1, a string será codificada como ISO-8859-1 e assim por diante, somente não ocorre caso o Zend Multibyte estiver ativado. Neste caso, o script pode ser escrito em uma codificação arbitrária (que é declarada explicitamente ou é detectada) e então convertida em um codificação interna, a qual será a codificação utilizada nas strings literais.
 
 > Zend Multibyte é necessário para codificações ASCII -incompatíveis , como algumas codificações asiáticos de pré-unicode/pré-utf-8 e é usado principalmente no Japão
 
@@ -46,7 +46,7 @@ EX:
 
 1 - **substr()**, **strpos()**, **strlen()** ou **strcmp()**: assumem que a string foi codificada em alguma (qualquer) codificação de byte único. Elas trabalham com o byte e não se importam com o tipo de codificação;
 
-2 -  **htmlentities()** e maioria das funções da extensão **mbstring**: possivelmente elas assumem um padrão se nenhuma informação lhes for passada
+2 -  **htmlentities()** e maioria das funções da extensão **mbstring**: possivelmente elas assumem um padrão se nenhuma informação lhes for passada (charset ISO-8859-1)
 
 3 - **strcasecmp()**, **strtoupper()** e **ucfirst()**: utilizam o idioma atual setado no "setlocale()", mas elas operam byte-a-byte. Então o que tem que ser garantido é que a codificação de entrada tem que ser igual ao de saída.
 
