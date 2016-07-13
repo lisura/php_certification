@@ -1,6 +1,6 @@
 ## Searching
 
-Procurando informações dentro de uma strig.
+Procurando informações dentro de uma string.
 
 funcção | descrição
 --- | ---
