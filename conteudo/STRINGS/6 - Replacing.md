@@ -92,3 +92,5 @@ $str = 'every body strap in, I am about to open some fucking windows';
 echo strtr($str, $replace_pairs) . ' | ';
 echo strtr($str, 'strap','stráp');
 ```
+
+### funções para Strings <=> Arrays

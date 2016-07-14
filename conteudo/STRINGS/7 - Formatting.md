@@ -1,3 +1,3 @@
 ## Formatting
 
-Existem 
+Formatando strings
