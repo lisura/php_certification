@@ -1,6 +1,6 @@
 
 # TODO (14/07/2016)
-- [x] String -> Extracting: Adiciona funções ltrim e rtrim
+- [ ] String -> Extracting: Adiciona funções ltrim e rtrim
 
 
 # TODO (12/07/2016)
