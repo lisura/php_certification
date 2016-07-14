@@ -39,7 +39,6 @@ Retorna a posição numérica da última ocorrência de needle na string haystac
 
 ```php
 $string = "I've had it with these mother fucking snakes on this mother fucking plane";
-$string = "I've had it with these mother fucking snakes on this mother fucking plane";
 echo strrpos($string, 'snakes'). ' - '; //38
 echo strrpos($string, 'fucking'). ' - '; //60
 echo strrpos($string, 'fucking', 62). ' - '; //
