@@ -12,6 +12,8 @@ trim | Retira espaço no ínicio e final de uma string
 mb_substr | Obtem parte da string
 wordwrap | Quebra uma string em um dado número de caracteres
 
+### Detalhando os metodos.
+
 **substr** :  Retorna uma parte de uma string
 
 > string substr ( string $string , int $start [, int $length ] )
@@ -50,7 +52,18 @@ substr_replace() substitui uma cópia de string delimitada pelos parâmetros sta
 
 ```php
 // $ php string_substr_replace.php
-// exemplos aqui
+$var = 'ABCDEFGH:/MNRPQR/';
+echo "Original: $var<hr />\n";
+/* Estes dois exemplos substituem tudo de $var com 'bob'. */
+echo substr_replace($var, 'bob', 0) . "<br />\n";
+echo substr_replace($var, 'bob', 0, strlen($var)) . "<br />\n";
+/* Insere 'bob' direto no começo de $var. */
+echo substr_replace($var, 'bob', 0, 0) . "<br />\n";
+/* Estes dois exemplos substituem 'MNRPQR' em $var com 'bob'. */
+echo substr_replace($var, 'bob', 10, -1) . "<br />\n";
+echo substr_replace($var, 'bob', -7, -1) . "<br />\n";
+/* Deleta 'MNRPQR' de $var. */
+echo substr_replace($var, '', 10, -1) . "<br />\n";
 ```
 
 **preg_match** : Perform a regular expression match
