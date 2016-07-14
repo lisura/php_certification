@@ -6,11 +6,11 @@ Metodo | Observação
 --- | ---
 == | Comparação com conversão de tipo
 === | Comparação com verificação de tipo
-strcasecmp() | Comparação de strings sem diferenciar maiúsculas e minúsculas segura para binário
+strcasecmp | Comparação de strings sem diferenciar maiúsculas e minúsculas segura para binário
 strncasecmp | Comparação de string caso-sensitivo de Binário seguro dos primeiros n caracteres
-strcmp() | Comparação de string segura para binário
-similar_text() | Calcula a similaridade entre duas strings
-levenshtein() | Calcula a distância Levenshtein entre duas strings
+strcmp | Comparação de string segura para binário
+similar_text | Calcula a similaridade entre duas strings
+levenshtein | Calcula a distância Levenshtein entre duas strings
 
 ### Detalhando os metodos.
 
