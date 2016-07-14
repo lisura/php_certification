@@ -97,8 +97,8 @@ Retorna tudo de haystack apartir da primeira ocorrência de needle até o final.
 
 ```php
 $haystack = 'enuf is enuf, I ve had it with these mother Fucking snakes on this mother fucking plane, every body strap in, I am about to open some fucking windows';
-$retorno = strstr($haystack, 'fucking');
+$retorno = stristr($haystack, 'fucking');
 echo $retorno . '  || ';
-$retorno = strstr($haystack, 'fucking', true);
+$retorno = stristr($haystack, 'fucking', true);
 echo $retorno ;
 ```
