@@ -1,3 +1,8 @@
+
+# TODO (14/07/2016)
+- [x] String -> Extracting: Adiciona funções ltrim e rtrim
+
+
 # TODO (12/07/2016)
 - [x] String - Em multibyte está faltando parte do texto
 - [x] Quoting, HEREDOC & NOWDOC - ajustar escape de barras
