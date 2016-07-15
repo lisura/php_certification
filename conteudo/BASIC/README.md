@@ -9,4 +9,4 @@
 * [Constantes](./07%20-%20Constantes.md#constantes)
 * [Extensões](./08%20-%20Extensoes.md#extens%C3%B5es)
 * [Configurações](./09%20-%20Configuracoes.md#configura%C3%A7%C3%B5es)
-* [Performance](./09%20-%20Configuracoes.md#configura%C3%A7%C3%B5es)
+* [Performance](./10%20-%20Performance.md#performance)
