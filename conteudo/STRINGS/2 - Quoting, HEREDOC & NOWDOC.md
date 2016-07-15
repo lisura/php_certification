@@ -44,7 +44,6 @@ Sequências | Significado
 >Vertical tab: \v = U+000b => "Position the form at the next line tab stop." (ignored on Safari.)
 
 >Form feed: \f = U+000c => "On printers, load the next page. In some terminal emulators, it clears the screen." (truncates the string on Safari.)
-Referência:
 
 >Referencia: [LINK](http://stackoverflow.com/questions/2377084/what-is-vertical-tab-form-feeds-and-backspace-character-how-to-use-them-in-jav)
 

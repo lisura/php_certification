@@ -52,7 +52,7 @@ echo strrpos($string, 'fucking', -20); //30
 
 Encontra a posição numérica da última ocorrência de needle na string haystack. Diferente de strrpos(), strripos() é case-insensitive.
 
-Retorna a posição numérica da última ocorrência de needle. Note também que posições da string inicia em 0, e não 1. Se needle não é encontrado, FALSE é retornado.
+Retorna a posição numérica da última ocorrência de needle. Se needle não é encontrado, FALSE é retornado.
 
 ```php
 $haystack = 'every body strap in, I am about to open some fucking windows';
