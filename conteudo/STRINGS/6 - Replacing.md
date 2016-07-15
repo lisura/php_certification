@@ -94,3 +94,5 @@ echo strtr($str, 'strap','stráp');
 ```
 
 ### funções para Strings <=> Arrays
+
+**explode** :
