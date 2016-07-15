@@ -1,7 +1,8 @@
 # PHP BASICS
 
 
-* [Introdução](./1---PHP-BASICS##introdu%C3%A7%C3%A3o)
+* [Introdução](https://github.com/lisura/php_certification/blob/master/conteudo/BASIC/01%20-%20Introducao.md#introdu%C3%A7%C3%A3o)
+* [Introdução](./conteudo/BASIC/01%20-%20Introducao.md#introdu%C3%A7%C3%A3o)
 * [Syntax](./1---PHP-BASICS#syntax)
 * [Operadores](./1---PHP-BASICS#operadores)
 * [Variáveis](./1---PHP-BASICS#vari%C3%A1veis)
