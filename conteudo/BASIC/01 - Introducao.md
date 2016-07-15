@@ -1,16 +1,16 @@
-## Introdução
+# Introdução
 
-### O que é o PHP?
+## O que é o PHP?
 
 O PHP (um acrônimo recursivo para PHP: Hypertext Preprocessor) é uma linguagem de script open source de uso geral, muito utilizada, e especialmente adequada para o desenvolvimento web e que pode ser embutida dentro do HTML.
 
-### O que o PHP pode fazer?
+## O que o PHP pode fazer?
 
 * Scripts do lado do servidor para prover págians WEB;
 * Scripts de Gestão de Servidor como: Crons e Gestão de manutenção;
 * Aplicações Desktop com  Extenções como [PHP-GTK](http://gtk.php.net/)
 
-### Um pouco da História
+## Um pouco da História
 
 * Criado inicialment por **Rasmus Lerdof** para acompanhar o número de visitantes em seu site;
 
