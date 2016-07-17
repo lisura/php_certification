@@ -9,7 +9,6 @@ funcção | descrição
 strpos |  Encontra a posição da primeira ocorrência de uma string
 strrpos | Encontra a posição da última ocorrência de um caractere em uma string
 strripos | Encontra a posição da última ocorrência de uma string case-insensitive em uma string
-strrchr | Encontra a ultima ocorrência de um caractere em uma string
 strstr | Encontra a primeira ocorrencia de uma string
 stristr | strstr sem diferenciar maiúsculas e minúsculas
 
@@ -64,18 +63,6 @@ if ($pos === false) {
     echo "Nós encontramos a última ($needle) na posição ($pos)";
 }
 ```
-
-**strrchr** :  Encontra a ultima ocorrência de um caractere em uma string
-
-> string strrchr ( string $haystack , char $needle )
-
-Esta função retorna a parte de haystack que inicia na última ocorrência de needle e vai até o fim de haystack. Retorna FALSE se needle não for encontrado.
-
-```php
-$haystack = 'enuf is enuf, I ve had it with these mother fucking snakes on this mother fucking plane';
-echo strrchr($haystack, 'fucking');
-```
-
 
 **strstr** :Encontra a primeira ocorrencia de uma string
 

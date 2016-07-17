@@ -9,6 +9,8 @@ strrchr | Encontra a ultima ocorrência de um caractere em uma string
 substr_replace | Substitui o texto dentro de uma parte de uma string
 preg_match | Perform a regular expression match
 trim | Retira espaço no ínicio e final de uma string
+ltrim | Retira espaços em branco (ou outros caracteres) do início da string
+rtrim | Retira espaço em branco (ou outros caracteres) do final da string
 mb_substr | Obtem parte da string
 wordwrap | Quebra uma string em um dado número de caracteres
 
@@ -99,6 +101,28 @@ $string = 'Do the Harlem Shake  ';
 echo trim ($string) . ' - ';
 echo trim ($string, 'Harlem') . ' - ';
 echo trim ($string, 'Do') . ' - ';
+```
+
+**ltrim** : Retira espaços em branco (ou outros caracteres) do início da string
+
+> string ltrim ( string $str [, string $charlist ] )
+
+Esta função retorna uma string com whitespace retirados do início de str.
+
+```php
+$string = '  Do the Harlem Shake  ';
+echo ltrim ($string);
+```
+
+**rtrim** : Retira espaços em branco (ou outros caracteres) do final da string
+
+> string rtrim ( string $str [, string $charlist ] )
+
+Esta função retorna a string com os espaços em branco retirados do final de str.
+
+```php
+$string = '  Do the Harlem Shake  ';
+echo rtrim ($string);
 ```
 
 **mb_substr** : Obtem parte da string
