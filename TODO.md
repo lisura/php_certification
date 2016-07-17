@@ -1,7 +1,7 @@
 
 # TODO (14/07/2016)
-- [ ] String -> Extracting: Adiciona funções ltrim e rtrim
-- [ ] String -> Searching: remover strrchr. Já está no Extracting;
+- [x] String -> Extracting: Adiciona funções ltrim e rtrim
+- [x] String -> Searching: remover strrchr. Já está no Extracting;
 
 
 # TODO (12/07/2016)
