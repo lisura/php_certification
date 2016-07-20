@@ -1,5 +1,5 @@
 <?php
-$str = 'snakes';
+$str = 'sna kes';
 $chars = preg_split('//', $str, -1, PREG_SPLIT_NO_EMPTY);
 print_r($chars);
 $search_expression = "mother \"fucking snakes\" on this mother 'fucking plane'.";

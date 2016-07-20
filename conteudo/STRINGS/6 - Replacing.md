@@ -16,7 +16,7 @@ A tabela de funcões abaixo são relacionadas com ARRAY x STRINGS. Como elas atu
 
 função | descrição
 --- | ---
-explode | Divide uma string em strings
+explode | Divide uma string em array de strings
 preg_split | Divide a string por uma expressão regular
 str_split | Converte uma string para um array
 str_word_count | Retorna informação sobre as palavras usadas em uma string

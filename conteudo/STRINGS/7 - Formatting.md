@@ -1,6 +1,6 @@
 ## Formatting
 
-Formatação de strinfgs no PHP.
+Formatação de strinfg no PHP.
 
 FORMATTING	- Saidas e entradas
 
@@ -15,8 +15,6 @@ number_format | Formata um número com os milhares agrupados
 flush |  Descarrega o buffer de saída
 sscanf |  Interpreta a entrada de uma string de acordo com um formato
 fscanf | Interpreta a leitura de um arquivo de acordo com um formato
-
-
 
 #### Detalhamento
 
@@ -47,7 +45,7 @@ Mostra uma string formatada de acordo com o formato (o qual é descrito na docum
 $object = new stdClass();
 $object->Property1 = 'fucking plane';
 $object->Property2 = 'fucking windows';
-vprintf('%-20s %-20s', $object);
+vprintf('%s %s', $object);
 ```
 
 **vsprintf** :  Retorna uma string formatada
