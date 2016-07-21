@@ -311,7 +311,7 @@ echo $new . PHP_EOL;
 
 >string nl2br ( string $string )
 
-Retorna string com '<br />' inserido antes de todas as newlines.
+Retorna string com '\<br />' inserido antes de todas as newlines.
 
 ```php
 echo nl2br("snakes\non\na plane");
