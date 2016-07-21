@@ -1,3 +1,7 @@
+# TODO (21/07/2016)
+- [ ] Escapar \ em quotemeta
+- [ ] preg_replace_callback_array rever exemplo
+- [ ] luagr
 
 # TODO (14/07/2016)
 - [x] String -> Extracting: Adiciona funções ltrim e rtrim
