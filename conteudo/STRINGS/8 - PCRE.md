@@ -212,7 +212,7 @@ $keywords = preg_quote($keywords, '/');
 echo $keywords;
 ```
 
-**reg_replace_callback_array** : Perform a regular expression search and replace using callbacks
+**preg_replace_callback_array** : Perform a regular expression search and replace using callbacks
 
 >mixed preg_replace_callback_array ( array $patterns_and_callbacks , mixed $subject [, int $limit = -1 [, int &$count ]] )
 
