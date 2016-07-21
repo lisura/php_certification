@@ -219,7 +219,7 @@ echo $keywords;
 Retorna um array se o subject é um array, senão retorna uma string. Em caso de erro retorna NULL
 
 ```php
-// Problemas para rodar
+// Problemas para rodar - Não sei como executar
 $subject = 'Aaaaaa Bbb';
 preg_replace_callback_array(
     [
@@ -246,9 +246,6 @@ $text.= "Last christmas was 15/12/2001\n";
 // the callback function
 function next_year($matches)
 {
-  // as usual: $matches[0] is the complete match
-  // $matches[1] the match for the first subpattern
-  // enclosed in '(...)' and so on
   return $matches[1].($matches[2]+1);
 }
 echo preg_replace_callback(
@@ -293,11 +290,11 @@ PREG_SPLIT_OFFSET_CAPTURE | Se esta flag é usada, para cada combinação o offs
 
 
 ```php
-// $ php string_preg_split.php
+// $ php string_preg_split2.php
 $str = 'snakes';
 $chars = preg_split('//', $str, -1, PREG_SPLIT_NO_EMPTY);
 print_r($chars);
-$search_expression = "mother \"fucking snakes\" on this mother 'fucking plane'.";
+$search_expression = "Deixe que seus \"amigos subestimem\" suas qualidades e que seus 'inimigos superestimem' seus defeitos.";
 $words = preg_split("/[\s,]*\\\"([^\\\"]+)\\\"[\s,]*|" . "[\s,]*'([^']+)'[\s,]*|" . "[\s,]+/", $search_expression, 0, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
 print_r($words);
 $str = 'this mother fucking plane';
