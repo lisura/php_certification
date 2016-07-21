@@ -276,11 +276,11 @@ As traduções executadas são
 
 entradas | saídas
 --- | ---
-'&' | (ampersand) torna-se '&amp;'
-'"' | (aspas dupla) torna-se '&quot;' quando ENT_NOQUOTES não está definida.
-''' | (aspas simples) torna-se '&#039;' apenas quando ENT_QUOTES está definida.
-'<' | (menor que) torna-se '&lt;'
-'>' | (maior que) torna-se '&gt;'
+'&' | (ampersand) torna-se '\&amp;'
+'"' | (aspas dupla) torna-se '\&quot;' quando ENT_NOQUOTES não está definida.
+''' | (aspas simples) torna-se '\&#039;' apenas quando ENT_QUOTES está definida.
+'<' | (menor que) torna-se '\&lt;'
+'>' | (maior que) torna-se '\&gt;'
 
 Conjuntos de caracteres suportados
 
