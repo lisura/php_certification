@@ -212,33 +212,12 @@ $keywords = preg_quote($keywords, '/');
 echo $keywords;
 ```
 
-**preg_replace_callback_array** : Perform a regular expression search and replace using callbacks
-
->mixed preg_replace_callback_array ( array $patterns_and_callbacks , mixed $subject [, int $limit = -1 [, int &$count ]] )
-
-Retorna um array se o subject é um array, senão retorna uma string. Em caso de erro retorna NULL
-
-```php
-// Problemas para rodar - Não sei como executar
-$subject = 'Aaaaaa Bbb';
-preg_replace_callback_array(
-    [
-        '~[a]+~i' => function ($match) {
-            echo strlen($match[0]), ' matches for "a" found', PHP_EOL;
-        },
-        '~[b]+~i' => function ($match) {
-            echo strlen($match[0]), ' matches for "b" found', PHP_EOL;
-        }
-    ],
-    $subject
-);
-```
-
 **preg_replace_callback** : Executa uma busca usando expressão regular e modifica usando um callback
 
 >mixed preg_replace_callback ( mixed $pattern , callback $callback , mixed $subject [, int $limit [, int &$count ]] )
 
 O comportamento desta função é quase idêntico ao da preg_replace(), exceto pelo fato que ao invés do parâmetro replacement, você deve especificar um callback.
+
 
 ```php
 $text = "April fools day is 01/04/2002\n";

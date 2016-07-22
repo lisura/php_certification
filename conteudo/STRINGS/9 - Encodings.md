@@ -57,7 +57,7 @@ As contantes abaixo são definidas por esta extensão e somente estarão dispon�
 
 #### Function Overloading Feature
 
-Function Overloading permite você adicionar multibyte em uma apliação sem modificar o codigo, apenas sobrepondo os metodos padrão de string. Por exemplo, mb_substr() vai ser chamada no luagr de substr() se a função overload estiver ativa.
+Function Overloading permite você adicionar multibyte em uma apliação sem modificar o codigo, apenas sobrepondo os metodos padrão de string. Por exemplo, mb_substr() vai ser chamada no lugar de substr() se a função overload estiver ativa.
 
 Esta função torma facil tranformar aplicaçoes que somente supurtam single-byte encodings para multibyte.
 

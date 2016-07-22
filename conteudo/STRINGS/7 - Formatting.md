@@ -214,7 +214,7 @@ ereg | Casando expressões regulares
 
 > string quotemeta ( string $str )
 
-Retorna uma versão de str com uma barra invertida (\) antes de cada um destes caracteres:
+Retorna uma versão de str com uma barra invertida (\\) antes de cada um destes caracteres:
 > . \ + * ? [ ^ ] ( $ )
 
 ```php
