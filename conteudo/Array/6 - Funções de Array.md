@@ -2,7 +2,7 @@
 
 | Função                | Descrição                                                    |
 |-----------------------|--------------------------------------------------------------|
-| [array_change_key_case](./#array_change_key_case) | Modifica a caixa de todas as chaves em um array |
+| [array_change_key_case](#array_change_key_case) | Modifica a caixa de todas as chaves em um array |
 | array_chunk           | Divide um array em pedaços |
 | array_column          | Retorna os valores de uma coluna do array informado |
 | array_combine         | Cria um array usando um array para chaves e outro para valores |
