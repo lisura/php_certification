@@ -2,7 +2,7 @@
 
 | Função                | Descrição                                                    |
 |-----------------------|--------------------------------------------------------------|
-| [array_change_key_case](#array_change_key_case) | Modifica a caixa de todas as chaves em um array |
+| array_change_key_case | Modifica a caixa de todas as chaves em um array |
 | array_chunk           | Divide um array em pedaços |
 | array_column          | Retorna os valores de uma coluna do array informado |
 | array_combine         | Cria um array usando um array para chaves e outro para valores |
@@ -90,71 +90,213 @@
 Modifica a caixa de todas as chaves em um array
 
 ```php
-$array = array();
+$array = array("primeiRo" => 1, "segunDo" => 4);
+print_r(array_change_key_case($array, CASE_UPPER));
 ```
 
 ## array_chunk
 
-Divide um array em pedaços
+Divide um array em pedaços.
+
+**Params:**
+
+* Array:  array
+* Size: Tamanho dos pedaços
+* preserve_keys: Quando definido para TRUE, chaves serão preservadas. O padrão é FALSE que reindexará os pedaços numericamente
+
 
 ```php
-$array = array();
+$array = array('a', 'b', 'c', 'd', 'e');
+echo "<pre>";
+var_dump(array_chunk($array, 2));
+echo "<hr>";
+var_dump(array_chunk($array, 2, true));
+echo "</pre>";
 ```
 
 ## array_column
 
 Retorna os valores de uma coluna do array informado
 
+
+**Params:**
+
+* input : Um array multidimensional ou um array de objetos que se deseja extrair os valores da coluna. Se um array de objetos for fornecido, propriedades públicas podem ser extraídas diretamente. Para extrair propriedades protegidas e privadas, a classe deve implementar ambos os métodos mágicos \_\_get() e \_\_isset().
+
+* column_key : A coluna de valores a ser retornada. Este valor pode ser uma chave inteira da coluna que se deseja recuperar, ou uma uma string com o nome da chave de um array associativo ou nome de propriedade. Também pode ser NULL para retornar arrays completos ou objetos (isso é útil com o parâmetro index_key, para reindexar o array).
+
+* index_key : A coluna a ser utilizada como índices/chaves do array retornado. Este valor pode ser uma chave inteira da coluna, ou uma uma string com o nome da chave.
+
+
 ```php
-$array = array();
+$array = array(
+    array(
+        'id' => 2135,
+        'nome' => 'Fernando',
+        'sobrenome' => 'Corrêa',
+    ),
+    array(
+        'id' => 3246,
+        'nome' => 'Leandro',
+        'sobrenome' => 'Taveira',
+    ),
+    array(
+        'id' => 3247,
+        'nome' => 'Adinan',
+        'sobrenome' => 'Baptista',
+    ),
+    array(
+        'id' => 3248,
+        'nome' => 'Ivan',
+        'sobrenome' => 'O Terrível',
+    )
+);
+
+$nomes = array_column($array, 'nome');
+echo "<pre>";
+print_r($nomes);
+echo "</pre>";
 ```
 
 ## array_combine
 
 Cria um array usando um array para chaves e outro para valores
 
+**Params**
+
+
+* keys : Array a ser usado como chaves. Valores ilegais para chave serão convertidos para string.
+* values : Array a ser usado como valores
+
+
 ```php
-$array = array();
+$a = array('Leandro', 'Ivan', 'Fernando', 'Adinan');
+$b = array('taveira', 'OTerrível', 'Chatinho', 'O Cara');
+$c = array_combine($a, $b);
+
+echo "<pre>";
+print_r($c);
+echo "</pre>";
 ```
 
 ## array_count_values
 
 Conta todos os valores de um array
 
+**Params:**
+
+* Array : Array
+
 ```php
-$array = array();
+$array = array(1, "ola", 1, "mundo", "ola");
+$res = array_count_values($array);
+
+echo "<pre>";
+print_r($res);
+echo "</pre>";
 ```
 
 ## array_diff_assoc
 
 Computa a diferença entre arrays com checagem adicional de índice
 
+**Params:**
+
+* Array : Array 1
+* Array : array 2
+* Array : Array N
+
 ```php
-$array = array();
+$array1 = array("a" => "verde", "b" => "marrom", "c" => "azul", "vermelho");
+$array2 = array("a" => "verde", "amarelo", "vermelho");
+$result = array_diff_assoc($array1, $array2);
+
+echo "<pre>";
+print_r($result);
+echo "</pre>";
 ```
 
 ## array_diff_key
 
-Computa a diferença entre arrays usando as chaves na comparação
+Computa a diferença entre arrays usando as chaves na comparação.
+
+**Params:**
+
+* Array : Array 1
+* Array : array 2
+* Array : Array N
 
 ```php
-$array = array();
+$array1 = array('azul'  => 1, 'vermelho'  => 2, 'verde'  => 3, 'roxo' => 4);
+$array2 = array('verde' => 5, 'azul' => 6, 'amarelo' => 7, 'rosa'   => 8);
+$result = array_diff_key($array1, $array2);
+
+echo "<pre>";
+print_r($result);
+echo "</pre>";
 ```
 
 ## array_diff_uassoc
 
 Computa a diferença entre arrays com checagem adicional de índice que feita por uma função de callback fornecida pelo usuário
 
+**Params:**
+
+* Array : Array 1
+* Array : array 2
+* Array : Array ..N
+* Callback : Função de comparação
+
 ```php
-$array = array();
+function key_compare_func($a, $b)
+{
+    if ($a === $b) {
+        return 0;
+    }
+    return ($a > $b)? 1:-1;
+}
+
+$array1 = array("a" => "verde", "b" => "marrom", "c" => "azul", "vermelho");
+$array2 = array("a" => "verde", "amarelo", "vermelho");
+$result = array_diff_uassoc($array1, $array2, "key_compare_func");
+
+echo "<pre>";
+print_r($result);
+echo "</pre>";
 ```
 
 ## array_diff_ukey
 
-Computa a diferença entre arrays usando uma função callback na comparação de chaves
+Compara as chaves de array1 com as chaves de array2 e retorna a diferença. Esta função é similar a array_diff(), com exceção que a comparação é feita nas chaves ao invés dos valores.
+
+Diferente de array_diff_key() uma função callback é fornecida e usada para comparação de índices, não função interna.
+
+**Params:**
+
+* Array : Array 1
+* Array : array 2
+* Array : Array ..N
+* Callback : Função de comparação
 
 ```php
-$array = array();
+function key_compare_func($key1, $key2)
+{
+    if ($key1 == $key2)
+        return 0;
+    else if ($key1 > $key2)
+        return 1;
+    else
+        return -1;
+}
+
+$array1 = array('blue'  => 1, 'red'  => 2, 'green'  => 3, 'purple' => 4);
+$array2 = array('green' => 5, 'blue' => 6, 'yellow' => 7, 'cyan'   => 8);
+
+$result = array_diff_ukey($array1, $array2, 'key_compare_func');
+
+echo "<pre>";
+print_r($result);
+echo "</pre>";
 ```
 
 ## array_diff
