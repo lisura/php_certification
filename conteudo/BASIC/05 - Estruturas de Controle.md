@@ -123,7 +123,7 @@ case 3:
 ```````
 
 Um case especial é o default. Este case corresponde a tudo que não foi correspondido pelos outros cases. Por exemplo:
-```````php
+```php
 switch ($i) {
     case 0:
         echo "i equals 0";
@@ -137,11 +137,11 @@ switch ($i) {
     default:
        echo "i is not equal to 0, 1 or 2";
 }
-```````
+```
 
 Exemplo: [LINK](https://github.com/lisura/php_certification/blob/master/Questoes/PHP_BASICO/Estruturas-de-Controle/switch.php)
 
-##Loops
+## Loops
 
 * **WHILE**  
 Laços while são os mais simples tipos de laços do PHP.
@@ -241,11 +241,13 @@ foreach (array_expression as $key => $value)
 Como o foreach depende do ponteiro interno do array no PHP 5, modificá-lo dentro de um laço pode levar a comportamentos inesperados.
 
 O código a seguir não é recomendável:
-```````php
+
+````php
 foreach (array(1, 2, 3, 4) as &$value) {
     $value = $value * 2;
 }
-```````
+```
+
 > **Aviso** A referência a um $value e o último elemento do array irão permanecer mesmo após o laço foreach finalizar. É recomendável destruí-la com a função unset().  
 
 
