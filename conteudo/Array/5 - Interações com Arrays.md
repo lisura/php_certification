@@ -1,6 +1,6 @@
 # Interações com Arrays
 
-Para interar um array usamos estruturas de laços como jpa visto em BASIC->[LOOPS](../BASIC/05%20-%20Estruturas%20de%20Controle.md#loops)
+Para interar um array usamos estruturas de laços como já visto em BASIC->[LOOPS](../BASIC/05%20-%20Estruturas%20de%20Controle.md#loops)
 
 ## While
 
