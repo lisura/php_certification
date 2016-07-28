@@ -1,3 +1,8 @@
+# TODO (28/07/2016)
+- [] diferença entre array - Array e ARRAY
+- [] array_diff_assoc -> explicação detalhada
+- [] Falar sobre o comportamento de chaves de array na intro
+
 # TODO (21/07/2016)
 - [x] Escapar \ em quotemeta
 - [x] preg_replace_callback_array rever exemplo: Status: Implemented (in PHP 7.0)
