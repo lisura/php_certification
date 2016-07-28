@@ -1,6 +1,6 @@
 # Arrays
 
-* [1 - Introdução](./01)
+* [1 - Introdução](./1%20-%20Introdu%C3%A7%C3%A3o.md#introdu%C3%A7%C3%A3o)
 * [2 - Array Enumerados](./01)
 * [3 - Array Associativos](./01)
 * [4 - Array Multi-Dimencionais](./01)
