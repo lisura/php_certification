@@ -121,7 +121,7 @@ Retorna os valores de uma coluna do array informado
 
 **Params:**
 
-* input : Um array multidimensional ou um array de objetos que se deseja extrair os valores da coluna. Se um array de objetos for fornecido, propriedades públicas podem ser extraídas diretamente. Para extrair propriedades protegidas e privadas, a classe deve implementar ambos os métodos mágicos \_\_get() e \_\_isset().
+* input : Um array multidimensional ou um array de objetos que se deseja extrair os valores da coluna. Se um array de objetos for fornecido, propriedades públicas podem ser extraídas diretamente. Para extrair propriedades protegidas e privadas, a classe deve implementar ambos os métodos mágicos \_\_get() e \_\_set().
 
 * column_key : A coluna de valores a ser retornada. Este valor pode ser uma chave inteira da coluna que se deseja recuperar, ou uma uma string com o nome da chave de um array associativo ou nome de propriedade. Também pode ser NULL para retornar arrays completos ou objetos (isso é útil com o parâmetro index_key, para reindexar o array).
 
@@ -138,7 +138,7 @@ $array = array(
     array(
         'id' => 3246,
         'nome' => 'Leandro',
-        'sobrenome' => 'Taveira',
+        'sobrenome' => 'Lisura',
     ),
     array(
         'id' => 3247,
