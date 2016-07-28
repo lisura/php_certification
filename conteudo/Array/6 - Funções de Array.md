@@ -303,48 +303,131 @@ echo "</pre>";
 
 Computa as diferenças entre arrays
 
+**Params:**
+
+* Array : Array 1
+* Array : array 2
+* Array : Array ..N
+
 ```php
-$array = array();
+$array1 = array("a" => "verde", "vermelho", "azul", "vermelho");
+$array2 = array("b" => "verde", "amarelo", "vermelho");
+
+$result = array_diff($array1, $array2);
+
+echo "<pre>";
+print_r($result);
+echo "</pre>";
+
 ```
 
 ## array_fill_keys
 
 Preenche um array com valores, especificando chaves
 
+**Params:**
+
+* Array : Array
+* mixed : valor
+
 ```php
-$array = array();
+$array = array('foo', 5, 10, 'bar');
+$result = array_fill_keys($array, 'banana');
+
+echo "<pre>";
+print_r($result);
+echo "</pre>";
 ```
 
 ## array_fill
 
 Preenche um array com valores
 
+**Params:**
+
+* Int : Início de IDX
+* int : Quantidade de itens
+* Mixed : Valor
+
 ```php
-$array = array();
+$result =  array_fill(-2, 4, 'Pera');
+
+echo "<pre>";
+print_r($result);
+echo "</pre>";
 ```
 
 ## array_filter
 
 Filtra elementos de um array utilizando uma função callback
 
+**Params:**
+
+* Array :  Array
+* callback: Função usada para filtrar
+* FLAG : Determina quais argumentos são passados para o callback
+
+ |FLAG                   |Decrição                                                   |
+ |-----------------------|-----------------------------------------------------------|
+ |ARRAY_FILTER_USE_KEY   | Passa chaves como argumentos para callback em vez de valor |
+ |ARRAY_FILTER_USE_BOTH  | Passa tanto valor quanto chave como argumento para callback   em vez do valor |
+
+
 ```php
-$array = array();
+function impar($var){
+    // retorna se o inteiro informado é impar
+    return($var & 1);
+}
+
+function par($var){
+    // retorna se o inteiro informado é par
+    return(!($var & 1));
+}
+
+$array1 = array("a" => 1, "b" => 2, "c" => 3, "d" => 4, "e" => 5);
+$array2 = array(6, 7, 8, 9, 10, 11, 12);
+
+echo "<pre>";
+print_r(array_filter($array1, "impar"));
+print_r(array_filter($array2, "par"));
+echo "</pre>";
 ```
 
 ## array_flip
 
 Permuta todas as chaves e seus valores associados em um array
 
+**Params:**
+
+* Array :  Array
+
 ```php
-$array = array();
+$array = array("Laranja", "maça", "peara");
+$result = array_flip($array);
+
+echo "<pre>";
+print_r($result);
+echo "</pre>";
 ```
 
 ## array_intersect_assoc
 
 Computa a interseção de arrays com uma adicional verificação de índice
 
+**Params:**
+
+* Array :  Array 1
+* Array :  Array 2
+* Array :  Array ... N
+
 ```php
-$array = array();
+$array1 = array("a" => "green", "b" => "brown", "c" => "blue", "red");
+$array2 = array("a" => "green", "b" => "yellow", "blue", "red");
+$result = array_intersect_assoc($array1, $array2);
+
+echo "<pre>";
+print_r($result);
+echo "</pre>";
 ```
 
 ## array_intersect_key
