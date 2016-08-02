@@ -206,6 +206,8 @@ Computa a diferença entre arrays com checagem adicional de índice
 * Array : array 2
 * Array : Array N
 
+Neste exemplo veja que o par "a" => "verde" está presente em ambos os arrays e por isso não está na saída da função. Por outro lado, o par 0 => "vermelho" está na saída porque no segundo argumento, "vermelho", tem a chave 1.
+
 ```php
 $array1 = array("a" => "verde", "b" => "marrom", "c" => "azul", "vermelho");
 $array2 = array("a" => "verde", "amarelo", "vermelho");
@@ -434,168 +436,524 @@ echo "</pre>";
 
 Computa a interseção de array comparando pelas chaves
 
+**Params:**
+
+* Array :  Array 1
+* Array :  Array 2
+* Array :  Array ... N
+
+
+Em nosso exemplo você pode ver que somente as chaves 'blue' e 'green' estão presentes em ambos array e assim retornado. Também note que os valores das chaves 'blue' e 'green' diferem nos dois arrays. A combinação ocorre porque somente as chaves são verificadas. Os valores retornados são do array1.
+
 ```php
-$array = array();
+$array1 = array('blue'  => 1, 'red'  => 2, 'green'  => 3, 'purple' => 4);
+$array2 = array('green' => 5, 'blue' => 6, 'yellow' => 7, 'cyan'   => 8);
+
+$result = array_intersect_key($array1, $array2);
+
+echo "<pre>";
+print_r($result);
+echo "</pre>";
 ```
 
 ## array_intersect_uassoc
 
 Computa a interseção de arrays com checagem de índice adicional, compara índices por uma função de callback
 
+**Params:**
+
+* Array :  Array 1
+* Array :  Array 2
+* Array :  Array ... N
+* callback: Função usada para Comparação
+
+
 ```php
-$array = array();
+$array1 = array("a" => "verde", "b" => "marrom", "c" => "azul", "vermelho");
+$array2 = array("a" => "VERDE", "B" => "marrom", "amarelo", "vermelho");
+
+$result = array_intersect_uassoc($array1, $array2, "strcasecmp");
+echo "<pre>";
+print_r($result);
+echo "</pre>";
 ```
 
 ## array_intersect_ukey
 
 Computa a interseção de arrays usando uma função de callback nas chaves para comparação
 
+**Params:**
+
+* Array :  Array 1
+* Array :  Array 2
+* Array :  Array ... N
+* callback: Função usada para Comparação. A função de comparação precisa retornar um inteiro menor, igual, ou maior que zero caso o primeiro argumento seja considerado respectivamente maior, igual ou maior que o segundo.
+
+
 ```php
-$array = array();
+function key_compare_func($key1, $key2)
+{
+    if ($key1 == $key2)
+        return 0;
+    else if ($key1 > $key2)
+        return 1;
+    else
+        return -1;
+}
+
+$array1 = array('azul'  => 1, 'vermelho'  => 2, 'verde'  => 3, 'roxo' => 4);
+$array2 = array('verde' => 5, 'azul' => 6, 'amarelo' => 7, 'rosa'  => 8);
+
+$result = array_intersect_ukey($array1, $array2, 'key_compare_func');
+
+echo "<pre>";
+print_r($result);
+echo "</pre>";
 ```
 
 ## array_intersect
 
 Calcula a interseção entre arrays
 
+**Params:**
+
+* Array :  Array 1
+* Array :  Array 2
+* Array :  Array ... N
+
+Dois elementos são considerados iguais se, e somente se, (string) $elem1 === (string) $elem2. Em palavras: quando a representação em string é a mesma.
+
 ```php
-$array = array();
+$array1 = array("a" => "verde", "vermelho", "azul");
+$array2 = array("b" => "verde", "amarelo", "vermelho");
+$result = array_intersect($array1, $array2);
+
+echo "<pre>";
+print_r($result);
+echo "</pre>";
 ```
 
 ## array_key_exists
 
 Checa se uma chave ou índice existe em um array
 
+**Params:**
+
+* Key : Nome da key a ser buscada no array.
+* Array :  Array 1
+
 ```php
-$array = array();
+$busca_array = array("primeiro" => 1, "segundo" => 4);
+if (array_key_exists("primeiro", $busca_array)) {
+    echo "O elemento 'primeiro' está no array!";
+}
+
+```
+
+### isset() X array_key_exists()
+
+```php
+$search_array = array('A' => null, 'B' => 'C');
+
+// Resulta em false
+$result = isset($search_array['A']);
+echo "<pre>";
+var_dump($result);
+echo "</pre>";
+
+// Resulta em true
+$result = array_key_exists('A', $search_array);$search_array = array('A' => null, 'B' => 4);
+echo "<pre>";
+var_dump($result);
+echo "</pre>";
+
 ```
 
 ## array_keys
 
 Retorna todas as chaves ou uma parte das chaves de um array
 
+**Params:**
+
+* Array :  Array 1
+* Mixed : Se especificado, então somente chaves contendo estes valores são retornado.
+* boolean: Determina se a comparação é rígida (===) deve ser utilizada durante a busca.
+
+
 ```php
-$array = array();
+$array = array(0 => 100, "cor" => "vermelho");
+$result = array_keys($array);
+
+echo "<pre>";
+var_dump($result);
+echo "</pre>";
+```
+
+```php
+$array = array("azul", "vermelho", "verde", "azul", "azul");
+$result = array_keys($array, "azul");
+
+echo "<pre>";
+var_dump($result);
+echo "</pre>";
+```
+
+```php
+$array = array("cor"     => array("azul", "vermelho", "verde"),
+               "tamanho" => array("pequeno", "medio", "grande"));
+$result = array_keys($array);
+echo "<pre>";
+var_dump($result);
+echo "</pre>";
 ```
 
 ## array_map
 
 Aplica uma função em todos os elementos dos arrays dados
 
+**Params:**
+
+* Callback: Função usada para Manipulação
+* Array :  Array 1
+* Array :  Array 2
+
+
 ```php
-$array = array();
+function cube($n)
+{
+    return($n * $n * $n);
+}
+
+$a = array(1, 2, 3, 4, 5);
+$result = array_map("cube", $a);
+
+echo "<pre>";
+print_r($result);
+echo "</pre>";
 ```
 
 ## array_merge_recursive
 
 Funde dois ou mais arrays recursivamente
 
+**Params:**
+
+* Array :  Array 1
+* Array :  Array 2
+* Array :  Array ... N
+
 ```php
-$array = array();
+$ar1 = array("cor" => array ("favorita" => "vermelho"), 5);
+$ar2 = array(10, "cor" => array ("favorita" => "verde", "azul"));
+$result = array_merge_recursive($ar1, $ar2);
+
+echo "<pre>";
+print_r($result);
+echo "</pre>";
+
 ```
 
 ## array_merge
 
 Combina um ou mais arrays
 
+**Params:**
+
+* Array :  Array 1
+* Array :  Array 2
+* Array :  Array ... N
+
 ```php
-$array = array();
+$array1 = array("cor" => "vermelho", 2, 4);
+$array2 = array("a", "b", "cor" => "verde", "forma" => "trapezoide", 4);
+$result = array_merge($array1, $array2);
+
+echo "<pre>";
+print_r($result);
+echo "</pre>";
 ```
 
 ## array_multisort
 
 Ordena múltiplos arrays ou arrays multidimensionais
 
+
+**Params:**
+
+* Array :  Array a ser ordenado
+* Array :  A ordenação para ser utilizada no argumento array anterior. Pode ser SORT_ASC para ordenar na ascendente (crescente) SORT_DESC para ordernar na descendente (decrescente). Este argumento pode ser trocado com array1_sort_flags ou ser omitido completamente, e nesse caso é utilizado SORT_ASC.
+* FLAG : (array1_sort_flags) Opções de ordenamento para o argumento array anterior
+
+array1_sort_flags:
+
+
+| SORT_REGULAR  |  comparar itens normalmente (não modidifica tipos)  |
+|---------------|-----------------------------------------------------|
+| SORT_NUMERIC  | compare itens numericamente                         |
+| SORT_STRING   | compare itens como strings                        |
+| SORT_LOCALE_STRING | compare itens como strings, utilizando o locate atual. Utiliza o locale, que pode ser modificado com setlocale()|
+| SORT_NATURAL  | compare itens como strings utilizando a "ordenação natural" de natsort() |
+| SORT_FLAG_CASE| pode ser combinado (bitwise OR) com SORT_STRING ou SORT_NATURAL para ordenar as strings sem considerar maiúsculas e minúsculas |
+
+
 ```php
-$array = array();
+$ar1 = array(10, 100, 100, 0);
+$ar2 = array(1,  3,   2,   4);
+array_multisort($ar1, $ar2);
+
+
+echo "<pre>";
+print_r($ar1);
+echo "</pre>";
+
+echo "<pre>";
+print_r($ar2);
+echo "</pre>";
 ```
 
 ## array_pad
 
 Expande um array para um certo comprimento utilizando um determinado valor
 
+**Params:**
+
+* Array :  Array 1
+* Int :  Tamanho
+* Mixed :  Valor de preenchimento
+
+
 ```php
-$array = array();
+$input = array(12, 10, 9);
+
+$result = array_pad($input, 5, 0);
+echo "<pre>";
+print_r($result);
+echo "</pre>";
+
+$result = array_pad($input, -7, -1);
+echo "<pre>";
+print_r($result);
+echo "</pre>";
+
+$result = array_pad($input, 2, "noop");
+//	Não Preenche
+echo "<pre>";
+print_r($result);
+echo "</pre>";
 ```
 
 ## array_pop
 
 Extrai um elemento do final do array
 
+**Params:**
+
+* Array :  Array 1
+
 ```php
-$array = array();
+$cesta = array("laranja", "banana", "melancia", "morango");
+$pop = array_pop($cesta);
+echo "<pre>";
+print_r($pop);
+echo "</pre>";
 ```
 
 ## array_product
 
 Calcula o produto dos valores de um array
 
+**Params:**
+
+* Array :  Array
+
 ```php
-$array = array();
+$a = array(2, 4, 6, 8);
+echo "Produto(*) = " . array_product($a) . "\n";
 ```
 
 ## array_push
 
 Adiciona um ou mais elementos no final de um array
 
+**Params:**
+
+* Array :  Array
+* Mixed :  Entrada de Valor
+
+> **Nota** Se você usar array_push() para adicionar um elemento na array, é melhor usar $array[] = porque deste jeito não há uma chamada a uma função.
+
+> **Nota:** array_push() irá emitir um aviso se o primeiro argumento não for um array. isto é diferente do funcionamento de $var[] aonde uma nova matriz é criada.
+
 ```php
-$array = array();
+$cesta = array("laranja", "morango");
+array_push($cesta, "melancia", "batata");
+
+echo "<pre>";
+print_r($cesta);
+echo "</pre>";
+
 ```
 
 ## array_rand
 
 Retorna um ou mais elementos aleatórios de um array
 
+**Params:**
+
+* Array :  Array
+* Integer :  Número de chaves de retornos
+
+
 ```php
-$array = array();
+$input = array("Fernando", "Lisura", "Ivan", "Adinan", "Minion");
+$rand_keys = array_rand($input, 2);
+echo $input[$rand_keys[0]] . "\n";
+echo $input[$rand_keys[1]] . "\n";
 ```
 
 ## array_reduce
 
 Reduz um array para um único valor através de um processo iterativo utilizando uma função
 
+**Params:**
+
+* Array :  Array
+* Callback: Função usada para Manipulação
+* Initial: Se o argumento opcional initial for passado, ele será utilizado no início do processo, ou como um resultado final se o array estiver vazio.
+
+
 ```php
-$array = array();
+function soma($v, $w)
+{
+  $v += $w;
+  return $v;
+}
+
+function multiplicacao($v, $w)
+{
+  $v *= $w;
+  return $v;
+}
+
+$a = array(1, 2, 3, 4, 5);
+$x = array();
+
+$b = array_reduce($a, "soma");
+echo "<pre>";
+print_r($b);
+echo "</pre>";
+
+$c = array_reduce($a, "multiplicacao", 10);
+echo "<pre>";
+print_r($c);
+echo "</pre>";
+
+$d = array_reduce($x, "soma", 1);
+echo "<pre>";
+print_r($d);
+echo "</pre>";
 ```
 
 ## array_replace_recursive
 
-Replaces elements from passed arrays into the first array recursively
+Substitui elementos do array passado para o primeiro array de forma recurciva.
+
+**Params:**
+
+* Array :  Array 1
+* Array :  Array 2
+* Array :  Array ... N
 
 ```php
-$array = array();
+$base = array('citrus' => array( "orange") , 'berries' => array("blackberry", "raspberry"), );
+$replacements = array('citrus' => array('pineapple'), 'berries' => array('blueberry'));
+
+$basket = array_replace_recursive($base, $replacements);
+echo "<pre>";
+print_r($basket);
+echo "</pre>";
 ```
 
 ## array_replace
 
-Replaces elements from passed arrays into the first array
+Substitui elementos do array passado para o primeiro array.
+
+**Params:**
+
+* Array :  Array 1
+* Array :  Array 2
+* Array :  Array ... N
 
 ```php
-$array = array();
+$base = array('citrus' => array( "orange") , 'berries' => array("blackberry", "raspberry"), );
+$replacements = array('citrus' => array('pineapple'), 'berries' => array('blueberry'));
+
+$basket = array_replace($base, $replacements);
+echo "<pre>";
+print_r($basket);
+echo "</pre>";
 ```
 
 ## array_reverse
 
-Retorna um array com os elementos na ordem inversa
+Retorna um array com os elementos na ordem inversa.
+
+**Params:**
+
+* Array :  Array 1
+* Boolean: Preservar index_key
 
 ```php
-$array = array();
+$input = array("php", 5.5, array ("verde", "vermelho"));
+$result = array_reverse($input);
+
+echo "<pre>";
+print_r($result);
+echo "</pre>";
+
 ```
 
 ## array_search
 
 Procura por um valor em um array e retorna sua chave correspondente caso seja encontrado
 
+**Params:**
+
+* Mixed: Termo de busca.
+* Array :  Array 1
+* Boolean :  (strict) Se o terceiro parâmetro opcional strict for passado como TRUE então array_search() também fará uma checagem de tipos de needle em haystack.
+
+> **Nota** Se needle for uma string, a comparação é feita de uma maneira que diferencia maiúsculas e minúsculas.
+
 ```php
-$array = array();
+$array = array(0 => 'blue', 1 => 'red', 2 => 'green', 3 => 'red');
+
+$result = array_search('green', $array);
+echo "<pre>";
+print_r($result);
+echo "</pre>";
+
+$result = array_search('red', $array);
+echo "<pre>";
+print_r($result);
+echo "</pre>";
 ```
 
 ## array_shift
 
 Retira o primeiro elemento de um array
 
+**Params:**
+
+* Array :  Array 1
+
 ```php
-$array = array();
+$cesta = array("laranja", "banana", "melancia", "morango");
+$result = array_shift($cesta);
+
+echo "<pre>";
+print_r($result);
+echo "</pre>";
 ```
 
 ## array_slice
