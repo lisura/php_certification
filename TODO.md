@@ -1,6 +1,6 @@
 # TODO (28/07/2016)
-- [ ] diferença entre array - Array e ARRAY
-- [ ] array_diff_assoc -> explicação detalhada
+- [x] diferença entre array - Array e ARRAY
+- [x] array_diff_assoc -> explicação detalhada
 - [ ] Falar sobre o comportamento de chaves de array na intro
 
 # TODO (21/07/2016)
