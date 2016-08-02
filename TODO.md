@@ -3,6 +3,10 @@
 - [x] array_diff_assoc -> explicação detalhada
 - [ ] Falar sobre o comportamento de chaves de array na intro
 
+```php
+$array1 = array("a" => "verde", 2 => "marrom", 'b' => "azul", 1 => "vermelho", "vermelho2","vermelho4");
+```
+
 # TODO (21/07/2016)
 - [x] Escapar \ em quotemeta
 - [x] preg_replace_callback_array rever exemplo: Status: Implemented (in PHP 7.0)
