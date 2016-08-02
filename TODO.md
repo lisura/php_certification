@@ -1,3 +1,8 @@
+# TODO (02/08/2016)
+- [ ] remover parametro extra no array_filter
+- [ ] array_flip -> valor repetido é sobreposto
+- [ ] isset() X array_key_exists() - corrigir exemplo
+
 # TODO (28/07/2016)
 - [x] diferença entre array - Array e ARRAY
 - [x] array_diff_assoc -> explicação detalhada
