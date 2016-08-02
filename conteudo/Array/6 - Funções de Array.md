@@ -537,6 +537,9 @@ echo "</pre>";
 
 Checa se uma chave ou índice existe em um array
 
+## key_exists
+Sinônimo de array_key_exists
+
 **Params:**
 
 * Key : Nome da key a ser buscada no array.
@@ -960,320 +963,876 @@ echo "</pre>";
 
 Extrai uma parcela de um array
 
+**Params:**
+
+* Array :  Array 1
+* Integer :  Offset
+* Integer :  Tamanho
+* Boolean: Preservar index_key
+
 ```php
-$array = array();
+$input = array("a", "b", "c", "d", "e");
+
+$result = array_slice($input, 2);      // returns "c", "d", and "e"
+echo "<pre>";
+print_r($result);
+echo "</pre>";
+
+$result = array_slice($input, -2, 1);  // returns "d"
+echo "<pre>";
+print_r($result);
+echo "</pre>";
+
+$result = array_slice($input, 0, 3);   // returns "a", "b", and "c"
+echo "<pre>";
+print_r($result);
+echo "</pre>";
 ```
 
 ## array_splice
 
 Remove uma parcela do array e substitui com outros elementos
 
+**Params:**
+
+* Array :  Array 1
+* Integer :  Offset
+* Integer :  Tamanho
+* Mixed: Se o array replacement for especificado, então os elementos removidos serão substituidos pelo elementos desse array.
+
+
 ```php
-$array = array();
+
+$input = array("red", "green", "blue", "yellow");
+$result = array_splice($input, 2);
+echo "<pre>";
+print_r($result);
+print_r($input);
+echo "</pre>";
+echo "<hr />";
+
+$input = array("red", "green", "blue", "yellow");
+$result = array_splice($input, 1, -1);
+echo "<pre>";
+print_r($result);
+print_r($input);
+echo "</pre>";
+echo "<hr />";
+
+$input = array("red", "green", "blue", "yellow");
+$result = array_splice($input, 1, count($input), "orange");
+echo "<pre>";
+print_r($result);
+print_r($input);
+echo "</pre>";
+echo "<hr />";
+
+$input = array("red", "green", "blue", "yellow");
+$result = array_splice($input, -1, 1, array("black", "maroon"));
+echo "<pre>";
+print_r($result);
+print_r($input);
+echo "</pre>";
+echo "<hr />";
+
+$input = array("red", "green", "blue", "yellow");
+$result = array_splice($input, 3, 0, "purple");
+echo "<pre>";
+print_r($result);
+print_r($input);
+echo "</pre>";
+echo "<hr />";
 ```
 
 ## array_sum
 
 Calcula a soma dos elementos de um array
 
+**Params:**
+
+* Array :  Array
+
 ```php
-$array = array();
+
+$a = array(2, 4, 6, 8);
+echo "soma(a) = ".array_sum($a)."\n";
+
 ```
 
 ## array_udiff_assoc
 
 Computa a diferença entre arrays com checagem adicional de índice, compara dados por uma função de callback
 
+**Params:**
+
+* Array :  Array 1
+* Array :  Array 2
+* Callback: Função usada para Comparação de Dados
+
 ```php
-$array = array();
+class cr {
+    private $priv_member;
+    function cr($val)
+    {
+        $this->priv_member = $val;
+    }
+
+    static function comp_func_cr($a, $b)
+    {
+        if ($a->priv_member === $b->priv_member) return 0;
+        return ($a->priv_member > $b->priv_member)? 1:-1;
+    }
+}
+
+$a = array("0.1" => new cr(9), "0.5" => new cr(12), 0 => new cr(23), 1=> new cr(4), 2 => new cr(-15),);
+$b = array("0.2" => new cr(9), "0.5" => new cr(22), 0 => new cr(3), 1=> new cr(4), 2 => new cr(-15),);
+
+$result = array_udiff_assoc($a, $b, array("cr", "comp_func_cr"));
+
+echo "<pre>";
+print_r($result);
+echo "</pre>";
 ```
 
 ## array_udiff_uassoc
 
 Computa a diferença entre arrays com checagem adicional de índice, compara dados e índices por uma função de callback
 
+**Params:**
+
+* Array :  Array 1
+* Array :  Array 2
+* Callback: Função usada para Comparação de Dados
+* Callback: Função usada para Comparação de Chaves
+
 ```php
-$array = array();
+class cr {
+    private $priv_member;
+    function cr($val)
+    {
+        $this->priv_member = $val;
+    }
+
+    static function comp_func_cr($a, $b)
+    {
+        if ($a->priv_member === $b->priv_member) return 0;
+        return ($a->priv_member > $b->priv_member)? 1:-1;
+    }
+
+    static function comp_func_key($a, $b)
+    {
+        if ($a === $b) return 0;
+        return ($a > $b)? 1:-1;
+    }
+}
+$a = array("0.1" => new cr(9), "0.5" => new cr(12), 0 => new cr(23), 1=> new cr(4), 2 => new cr(-15),);
+$b = array("0.2" => new cr(9), "0.5" => new cr(22), 0 => new cr(3), 1=> new cr(4), 2 => new cr(-15),);
+
+$result = array_udiff_uassoc($a, $b, array("cr", "comp_func_cr"), array("cr", "comp_func_key"));
+echo "<pre>";
+print_r($result);
+echo "</pre>";
 ```
 
 ## array_udiff
 
 Computa a diferença de arrays usando uma função de callback para comparação dos dados
 
+**Params:**
+
+* Array :  Array 1
+* Array :  Array 2
+* Callback: Função usada para Comparação de Dados
+
+
 ```php
-$array = array();
+class cr {
+    private $priv_member;
+    function cr($val)
+    {
+        $this->priv_member = $val;
+    }
+
+    static function comp_func_cr($a, $b)
+    {
+        if ($a->priv_member === $b->priv_member) return 0;
+        return ($a->priv_member > $b->priv_member)? 1:-1;
+    }
+}
+$a = array("0.1" => new cr(9), "0.5" => new cr(12), 0 => new cr(23), 1=> new cr(4), 2 => new cr(-15),);
+$b = array("0.2" => new cr(9), "0.5" => new cr(22), 0 => new cr(3), 1=> new cr(4), 2 => new cr(-15),);
+
+$result = array_udiff($a, $b, array("cr", "comp_func_cr"));
+echo "<pre>";
+print_r($result);
+echo "</pre>";
+
 ```
 
 ## array_uintersect_assoc
 
 Computa a interseção de arrays com checagem adicional de índice, compara os dados utilizando uma função de callback
 
+**Params:**
+
+* Array :  Array 1
+* Array :  Array 2
+* Callback: Função usada para Comparação
+
 ```php
-$array = array();
+$array1 = array("a" => "verde", "b" => "marrom", "c" => "azul", "vermelho");
+$array2 = array("a" => "VERDE", "B" => "marrom", "amarelo", "vermelho");
+
+$result = array_uintersect_assoc($array1, $array2, "strcasecmp");
+
+echo "<pre>";
+print_r($result);
+echo "</pre>";
 ```
 
 ## array_uintersect_uassoc
 
 Computa a interseção de arrays com checagem adicional de índice, compara os dados e os índices utilizando funções de callback separadas
 
+**Params:**
+
+* Array :  Array 1
+* Array :  Array 2
+* Callback: Função usada para Comparação de Dados
+* Callback: Função usada para Comparação de Chaves
+
 ```php
-$array = array();
+$array1 = array("a" => "verde", "b" => "marrom", "c" => "azul", "vermelho");
+$array2 = array("a" => "VERDE", "B" => "marrom", "amarelo", "vermelho");
+
+$result = array_uintersect_uassoc($array1, $array2, "strcasecmp", "strcasecmp");
+
+echo "<pre>";
+print_r($result);
+echo "</pre>";
 ```
 
 ## array_uintersect
 
 Computa a interseção de array, comparando dados com uma função callback
 
+**Params:**
+
+* Array :  Array 1
+* Array :  Array 2
+* Callback: Função usada para Comparação
+
 ```php
-$array = array();
+$array1 = array("a" => "green", "b" => "brown", "c" => "blue", "red");
+$array2 = array("a" => "GREEN", "B" => "brown", "yellow", "red");
+
+$result = array_uintersect($array1, $array2, "strcasecmp");
+
+echo "<pre>";
+print_r($result);
+echo "</pre>";
 ```
 
 ## array_unique
 
 Remove o valores duplicados de um array
 
+**Params:**
+
+* Array :  Array
+
 ```php
-$array = array();
+$input = array("a" => "verde", "vermelho", "b" => "verde", "azul", "vermelho");
+$result = array_unique($input);
+
+echo "<pre>";
+print_r($result);
+echo "</pre>";
 ```
 
 ## array_unshift
 
 Adiciona um ou mais elementos no início de um array
 
+**Params:**
+
+* Array :  Array
+* Mixed :  Valores de entrada.
+* Mixed :  ...N
+
 ```php
-$array = array();
+$cesta = array("laranja", "banana");
+array_unshift($cesta, "melancia", "morango");
+
+echo "<pre>";
+print_r($cesta);
+echo "</pre>";
 ```
 
 ## array_values
 
 Retorna todos os valores de um array
 
+**Params:**
+
+* Array :  Array
+
 ```php
-$array = array();
+$array = array("tamanho" => "G", "cor" => "dourado");
+print_r(array_values ($array));
 ```
 
 ## array_walk_recursive
 
 Aplica um função do usuário recursivamente para cada membro de um array
 
+**Params:**
+
+* Array :  Array
+* Callback : Função de Callback usada para Iterar
+* Mixed : Dados adicionais como params
+
 ```php
-$array = array();
+$doce = array('a' => 'Maça', 'b' => 'Banana');
+$fruta = array('doce' => $doce, 'azedo' => 'lemon');
+
+function test_print($item, $key)
+{
+	echo "<pre>";
+	print_r("$key -> $item");
+	echo "</pre>";
+}
+
+array_walk_recursive($fruta, 'test_print');
 ```
 
 ## array_walk
 
 Aplica uma determinada funcão em cada elemento de um array
 
+**Params:**
+
+* Array :  Array
+* Callback : Função de Callback usada para Iterar
+
 ```php
-$array = array();
+$frutas = array("d" => "limao", "a" => "laranja", "b" => "banana", "c" => "melancia");
+
+function test_alter(&$item1, $key, $prefix)
+{
+    $item1 = "$prefix: $item1";
+}
+
+function test_print($item, $key)
+{
+	echo "<pre>";
+	print_r("$key -> $item");
+	echo "</pre>";
+}
+
+echo "Antes ...:\n";
+array_walk($frutas, 'test_print');
+
+array_walk($frutas, 'test_alter', 'fruta');
+echo "... e depois:\n";
+
+array_walk($frutas, 'test_print');
 ```
 
 ## array
 
 Cria um array
 
+**Params:**
+
+* Mixed :  Dados para o array
+
 ```php
 $array = array();
+
+echo "<pre>";
+print_r($array);
+echo "</pre>";
 ```
 
 ## arsort
 
 Ordena um array em ordem descrescente mantendo a associação entre índices e valores
 
+**Params:**
+
+* Array :  Array
+
 ```php
-$array = array();
+$frutas = array("d" => "limao", "a" => "laranja", "b" => "banana", "c" => "melancia");
+arsort($frutas);
+foreach ($frutas as $chave => $valor) {
+ 	echo "<pre>";
+	print_r("$chave -> $valor");
+	echo "</pre>";
+}
 ```
 
 ## asort
 
 Ordena um array mantendo a associação entre índices e valores
 
+**Params:**
+
+* Array :  Array
+
 ```php
-$array = array();
+$frutas = array("d" => "limao", "a" => "laranja", "b" => "banana", "c" => "melancia");
+asort($frutas);
+foreach ($frutas as $chave => $valor) {
+ 	echo "<pre>";
+	print_r("$chave -> $valor");
+	echo "</pre>";
+}
 ```
 
 ## compact
 
 Cria um array contendo variáveis e seus valores
 
+**Params:**
+
+* Mixed :  Nomes de variáveis para o array
+
 ```php
-$array = array();
+$cidade = "Osasco";
+$estado = "SP";
+$evento = "PHP Conf";
+
+$localidade = array("cidade", "estado");
+
+$result = compact("evento", "nada_aqui", $localidade);
+echo "<pre>";
+print_r($result);
+echo "</pre>";
 ```
 
 ## count
 
 Conta o número de elementos de uma variável, ou propriedades de um objeto
 
+## sizeof
+
+Sinônimo de count
+
+**Params:**
+
+* Mixed : Geralmente Array
+
 ```php
-$array = array();
+$a[0] = 1;
+$a[1] = 3;
+$a[2] = 5;
+$result = count($a);
+
+echo "<pre>";
+print_r($result);
+echo "</pre>";
+echo "<hr />";
+
+$b[0] = 7;
+$b[5] = 9;
+$b[10] = 11;
+$result = count($b);
+echo "<pre>";
+print_r($result);
+echo "</pre>";
+echo "<hr />";
+
+$result = count(null);
+echo "<pre>";
+print_r($result);
+echo "</pre>";
+echo "<hr />";
+
+$result = count(false);
+echo "<pre>";
+print_r($result);
+echo "</pre>";
 ```
 
 ## current
-
 Retorna o elemento corrente em um array
+## pos
+Sinônimo de current
+## prev
+Retrocede o ponteiro interno de um array
+## next
+Avança o ponteiro interno de um array
+## end
+Faz o ponteiro interno de um array apontar para o seu último elemento
+
+**Params:**
+
+* Mixed : Array
 
 ```php
-$array = array();
+$transport = array('foot', 'bike', 'car', 'plane');
+$mode = current($transport);
+echo "<pre>";
+var_dump($mode);
+echo "</pre>";
+echo "<hr />";
+
+$mode = next($transport);
+echo "<pre>";
+var_dump($mode);
+echo "</pre>";
+echo "<hr />";
+
+$mode = current($transport);
+echo "<pre>";
+var_dump($mode);
+echo "</pre>";
+echo "<hr />";
+
+$mode = prev($transport);    
+echo "<pre>";
+var_dump($mode);
+echo "</pre>";
+echo "<hr />";
+
+$mode = end($transport);     
+echo "<pre>";
+var_dump($mode);
+echo "</pre>";
+echo "<hr />";
+
+$mode = current($transport);
+echo "<pre>";
+var_dump($mode);
+echo "</pre>";
+echo "<hr />";
+
+$arr = array();
+echo "<pre>";
+var_dump(current($arr));
+echo "</pre>";
+echo "<hr />";
+
+$arr = array(array());
+echo "<pre>";
+var_dump(current($arr));
+echo "</pre>";
+echo "<hr />";
 ```
 
 ## each
 
 Retorna o par chave/valor corrente de um array e avança o seu cursor
 
-```php
-$array = array();
-```
+**Params:**
 
-## end
-
-Faz o ponteiro interno de um array apontar para o seu último elemento
+* Mixed : Array
 
 ```php
-$array = array();
+$fruit = array('a' => 'apple', 'b' => 'banana', 'c' => 'cranberry');
+reset($fruit);
+while (list($key, $val) = each($fruit)) {  
+  echo "<pre>";
+  print_r("$key --> $val");
+  echo "</pre>";
+}
 ```
 
 ## extract
 
 Importa variáveis para a tabela de símbolos a partir de um array
 
+**Params:**
+
+* Mixed : Array
+* Integer : Flag de modo de extract;
+* String : Prefixo de extração
+
+| Flag                  | Descrição                                                |
+|-----------------------|----------------------------------------------------------|
+| EXTR_OVERWRITE        | Se houver uma colisão, sobrescreve a variável existente. |
+| EXTR_SKIP             | Se houver uma colisão, não sobrescreve a variável existente.|
+| EXTR_PREFIX_SAME      | Se houver uma colisão, adiciona um prefixo ao nome da variável definido pelo argumento prefix. |
+| EXTR_PREFIX_ALL       | Adiciona um prefixo ao nome de todas as variáveis definido por prefix. |
+| EXTR_PREFIX_INVALID   | Adiciona um prefixo definido por prefix apenas para variáveis como nomes inválidos ou numéricos.|
+| EXTR_IF_EXISTS        | Só sobrescreve a variável se ela já existe na tabela de símbolos corrente, caso contrário, não faz nada. Isso é útil quando se quer definir uma lista de variáveis válidas e então extrair só as que foram definidas em $_REQUEST, por exemplo.|
+| EXTR_PREFIX_IF_EXISTS | Só cria nomes de variáveis usando o prefixo se na tabela de símbolos já existe uma variável com o nome sem esse prefixo. |
+| EXTR_REFS             | Extrai variáveis como referências, ou seja, os valores das variáveis importadas ainda estarão referenciando os valores do parâmetro var_array. Essa opção pode ser usada sozinha ou em conjunto com as outras usando o operador 'ou' em extract_type. |
+
 ```php
-$array = array();
+$tamanho = "grande";
+$var_array = array ("cor" => "azul",
+                    "tamanho"  => "medio",
+                    "forma" => "esfera");
+extract ($var_array, EXTR_PREFIX_SAME, "wddx");
+
+echo "$cor, $tamanho, $forma, $wddx_tamanho\n";
 ```
 
 ## in_array
 
 Checa se um valor existe em um array
 
-```php
-$array = array();
-```
+**Params:**
 
-## key_exists
-
-Sinônimo de array_key_exists
+* Mixed : Valor a ser buscado
+* Array : Array
+* Boolean: Strict Se o terceiro parâmetro strict for TRUE então in_array() também irá checar os tipos
 
 ```php
-$array = array();
+$os = array("Mac", "Unix", "Freebsd", "Linux");
+
+if (in_array("Linux", $os)) {
+    echo "Tem Irix";
+}
+
+if (in_array("mac", $os)) {
+    echo "Tem mac";
+}
 ```
 
 ## key
 
 Retorna uma chave de um array
 
+**Params:**
+
+* Array : Array
+
 ```php
-$array = array();
+$array = array(
+    'fruit1' => 'apple',
+    'fruit2' => 'orange',
+    'fruit3' => 'grape',
+    'fruit4' => 'apple',
+    'fruit5' => 'apple');
+
+while ($fruit_name = current($array)) {
+    if ($fruit_name == 'apple') {
+        echo key($array).'<br />';
+    }
+    next($array);
+}
 ```
 
 ## krsort
 
 Ordena um array pelas chaves em ordem descrescente
 
+**Params:**
+
+* Array : Array
+
 ```php
-$array = array();
+$fruits = array("d"=>"lemon", "a"=>"orange", "b"=>"banana", "c"=>"apple");
+krsort($fruits);
+foreach ($fruits as $key => $val) {
+  echo "<pre>";
+  print_r("$key --> $val");
+  echo "</pre>";
+}
+
 ```
 
 ## ksort
 
 Ordena um array pelas chaves
 
+**Params:**
+
+* Array : Array
+
 ```php
-$array = array();
+$fruits = array("d"=>"lemon", "a"=>"orange", "b"=>"banana", "c"=>"apple");
+ksort($fruits);
+foreach ($fruits as $key => $val) {
+  echo "<pre>";
+  print_r("$key --> $val");
+  echo "</pre>";
+}
 ```
 
 ## list
 
 Cria variáveis como se fossem arrays
 
+**Params:**
+
+* Mixed : Variável de saida
+* Mixed : Variável de saida ...N
+
 ```php
-$array = array();
+$info = array('café', 'marrom', 'cafeína');
+
+list($a[0], $a[1], $a[2]) = $info;
+
+echo "<pre>";
+print_r($a);
+echo "</pre>";
 ```
 
 ## natcasesort
 
 Ordena um array utilizando o algoritmo da "ordem natural" sem diferenciar maiúsculas e minúsculas
 
+**Params:**
+
+* Array : Array
+
 ```php
-$array = array();
+$array1 = $array2 = array('IMG0.png', 'img12.png', 'img10.png', 'img2.png', 'img1.png', 'IMG3.png');
+
+sort($array1);
+echo "Standard sorting\n";
+echo "<pre>";
+print_r($array1);
+echo "</pre>";
+
+natcasesort($array2);
+echo "\nNatural order sorting (case-insensitive)\n";
+echo "<pre>";
+print_r($array2);
+echo "</pre>";
 ```
 
 ## natsort
 
 Ordena um array utilizando o algoritmo da "ordem natural"
 
-```php
-$array = array();
-```
+**Params:**
 
-## next
+* Array : Array
 
-Avança o ponteiro interno de um array
 
 ```php
-$array = array();
-```
+$array1 = $array2 = array('IMG0.png', 'img12.png', 'img10.png', 'img2.png', 'img1.png', 'IMG3.png');
 
-## pos
+sort($array1);
+echo "Standard sorting\n";
+echo "<pre>";
+print_r($array1);
+echo "</pre>";
 
-Sinônimo de current
-
-```php
-$array = array();
-```
-
-## prev
-
-Retrocede o ponteiro interno de um array
-
-```php
-$array = array();
+natsort($array2);
+echo "\nNatural order sorting \n";
+echo "<pre>";
+print_r($array2);
+echo "</pre>";
 ```
 
 ## range
 
 Cria um array contendo uma faixa de elementos
 
+**Params:**
+
+* Mixed : Inicio
+* Mixed : Fim
+* Integer : Passo
+
+
 ```php
-$array = array();
+foreach (range(0, 12) as $number) {
+  echo "<pre>";
+  print_r($number);
+  echo "</pre>";
+}
 ```
 
 ## reset
 
 Faz o ponteiro interno de um array apontar para o seu primeiro elemento
 
+**Params:**
+
+* Array : Array
+
 ```php
-$array = array();
+$array = array('primero passo', 'segundo passo', 'terceiro passo', 'quarto passo');  
+echo current($array)."<br />\n";
+
+next($array);  
+next($array);  
+echo current($array)."<br />\n";
+
+reset($array);  
+echo current($array)."<br />\n";
 ```
 
 ## rsort
 
 Ordena um array em ordem descrescente
 
+**Params:**
+
+* Array : Array
+
 ```php
-$array = array();
+$frutas = array ("limao", "laranja", "banana", "maçã");
+rsort ($frutas);
+foreach( $frutas as $chave => $valor ){
+  echo "<pre>";
+  print_r("$chave => $valor");
+  echo "</pre>";
+}
 ```
 
 ## shuffle
 
 Mistura os elementos de um array
 
-```php
-$array = array();
-```
+**Params:**
 
-## sizeof
-
-Sinônimo de count
+* Array : Array
 
 ```php
-$array = array();
+$frutas = array ("limao", "laranja", "banana", "maçã");
+shuffle ($frutas);
+foreach( $frutas as $chave => $valor ){
+  echo "<pre>";
+  print_r("$chave => $valor");
+  echo "</pre>";
+}
+
+echo "<br />";
+
+shuffle ($frutas);
+foreach( $frutas as $chave => $valor ){
+  echo "<pre>";
+  print_r("$chave => $valor");
+  echo "</pre>";
+}
 ```
 
 ## sort
 
 Ordena um array
 
+**Params:**
+
+* Array : Array
+* Integer : Flag de modo de ordenação
+
+| Flag               | Descrição                                          |
+|--------------------|----------------------------------------------------|
+| SORT_REGULAR       | compara os itens normalmente (não modifica o tipo) |
+| SORT_NUMERIC       | compara os items numericamente                     |
+| SORT_STRING        | compara os itens como strings                      |
+| SORT_LOCALE_STRING | compara os itens como strings, utilizando o locale atual. Utiliza o locale que pode ser modificado com setlocale() |
+| SORT_NATURAL       | compara os itens como strings utilizando "ordenação natural" tipo natsort() |
+| SORT_FLAG_CASE     | pode ser combinado (bitwise OR) com SORT_STRING ou SORT_NATURAL para ordenar strings sem considerar maiúsculas e minúsculas |
+
 ```php
-$array = array();
+$frutas = array("lemon", "orange", "banana", "apple");
+sort($frutas);
+foreach( $frutas as $chave => $valor ){
+  echo "<pre>";
+  print_r("$chave => $valor");
+  echo "</pre>";
+}
+
 ```
 
 ## uasort
