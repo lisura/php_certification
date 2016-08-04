@@ -2,11 +2,11 @@
 
 SPL é uma das extenções basicas do PHP. Dentre as várias Classes, Métodos e Funções temos algumas que são diretamente ligadas a interações com Array.
 
-**ArrayObject**
-**ArrayIterator**
-**RecursiveArrayIterator**
-**iterator_to_array**
-**SplFixedArray**
+* **ArrayObject**
+* **ArrayIterator**
+* **RecursiveArrayIterator**
+* **iterator_to_array**
+* **SplFixedArray**
 
 > **Nota**: Mais informações no módulo de OOP 14 - SPL.
 
