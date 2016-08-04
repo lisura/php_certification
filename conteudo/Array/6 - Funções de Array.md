@@ -1839,22 +1839,85 @@ foreach( $frutas as $chave => $valor ){
 
 Ordena um array utilizando uma função de comparação definida pelo usuário e mantendo as associações entre chaves e valores
 
+**Params:**
+
+* Array : Array
+* Callback : Função de Callback usada para Ordenar
+
+
 ```php
-$array = array();
+function cmp($a, $b) {
+    if ($a == $b) {
+        return 0;
+    }
+    return ($a < $b) ? -1 : 1;
+}
+
+$array = array('a' => 4, 'b' => 8, 'c' => -1, 'd' => -9, 'e' => 2, 'f' => 5, 'g' => 3, 'h' => -4);
+echo "<pre>";
+print_r($array);
+echo "</pre>";
+
+uasort($array, 'cmp');
+echo "<pre>";
+print_r($array);
+echo "</pre>";
 ```
 
 ## uksort
 
 Ordena um array pelas chaves utilizando uma função de comparação definida pelo usuário.
 
+**Params:**
+
+* Array : Array
+* Callback : Função de Callback usada para Ordenar
+
+
 ```php
-$array = array();
+function cmp($a, $b)
+{   
+  $a = preg_replace('/^(a|an|the) /', 'aaa', $a);
+  $b = preg_replace('/^(a|an|the) /', 'aaa', $b);
+  return strcasecmp($a, $b);
+}
+
+$a = array("John" => 1, "the Earth" => 2, "an apple" => 3, "a banana" => 4);
+echo "<pre>";
+print_r($a);
+echo "</pre>";
+
+uksort($a, "cmp");
+
+echo "<pre>";
+print_r($a);
+echo "</pre>";
 ```
 
 ## usort
 
 Ordena um array pelos valores utilizando uma função de comparação definida pelo usuário
 
+**Params:**
+
+* Array : Array
+* Callback : Função de Callback usada para Ordenar
+
+
 ```php
-$array = array();
+function cmp($a, $b)
+{
+    if ($a == $b) {
+        return 0;
+    }
+    return ($a < $b) ? -1 : 1;
+}
+
+$a = array(3, 2, 5, 6, 1);
+
+usort($a, "cmp");
+
+echo "<pre>";
+print_r($a);
+echo "</pre>";
 ```
