@@ -859,7 +859,7 @@ echo "</pre>";
 
 ## array_replace_recursive
 
-Substitui elementos do array passado para o primeiro array de forma recurciva.
+Substitui elementos do array passado para o primeiro array de forma recursiva.
 
 **Params:**
 
