@@ -1,3 +1,6 @@
+# TODO (04/08/2016)
+- [ ] array_walk_recursive adicionar informação de arrays recursivos
+
 # TODO (02/08/2016)
 - [ ] remover parametro extra no array_filter
 - [ ] array_flip -> valor repetido é sobreposto
