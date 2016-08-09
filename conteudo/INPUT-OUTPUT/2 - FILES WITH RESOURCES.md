@@ -81,7 +81,7 @@ Para portabilidade, é fortemente recomendado que você sempre utilize a flag 'b
 
 **Retorno**
 
-fopen() retorna um ponetiro do arquivo aberto (chamado de handle) ou, no caso de falha, **FALSE** além de gerar um erro **E_WARNING** que pode ser suprimido com @.
+fopen() retorna um ponteiro do arquivo aberto (chamado de handle) ou, no caso de falha, **FALSE** além de gerar um erro **E_WARNING** que pode ser suprimido com @.
 
 ## fread()
 
