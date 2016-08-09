@@ -1,3 +1,9 @@
+# TODO (09/08/2016)
+- [ ] fazer exemplo onde se altera o arquivo depois de abrir o recurso.
+- [ ] exemplo usando aspas simples \\
+- [ ] descobrir a magica das "
+- [ ] arrumar readfile exemplo
+
 # TODO (04/08/2016)
 - [ ] array_walk_recursive adicionar informação de arrays recursivos
 
