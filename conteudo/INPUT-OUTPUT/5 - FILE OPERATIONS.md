@@ -16,7 +16,7 @@
 * **mkdir** — Cria um diretório
 * **rmdir** — Remove um diretório
  
-[Exercício]()
+[Exercício](https://github.com/lisura/php_certification/blob/master/Examples/INPUT-OUTPUT/diretorio.php)
 
 ### Arquivo de Informação
 
@@ -199,7 +199,18 @@ echo realpath('/windows/system32');
 Cria um arquivo, com permissão de acesso definida para 0600, no diretório especificado. Se o diretório não existe, tempnam() pode gerar o nome de arquivo no diretório temporário do sistema. Retorna o nome gerado.
 
 * **tmpfile** — Cria um arquivo temporário.  
-Cria um arquivo temporário com um nome único em modo de leitura-gravação (w+) e retorna o manipulador do arquivo. fclose() destrói o arquivo.
+Cria um arquivo temporário com um nome único em modo de leitura-gravação (w+) e retorna o manipulador do arquivo. fclose() destrói o arquivo.  
+Exemplo: 
+````php
+<?php
+$temp = tmpfile();
+fwrite($temp, "escrevendo no arquivo temporario");
+fseek($temp, 0);
+echo fread($temp, 1024);
+fclose($temp); // isto remove o arquivo
+````
 
 * **touch** — Muda o tempo de modificação do arquivo
 * **unlink** — Apaga um arquivo
+
+[Exercício](https://github.com/lisura/php_certification/blob/master/Examples/INPUT-OUTPUT/filesystem.php)
