@@ -1,3 +1,8 @@
+# TODO (11/08/2016)
+- [ ] corrigir exemplo de file info no arquivo md
+- [ ] 
+- 
+
 # TODO (09/08/2016)
 - [ ] fazer exemplo onde se altera o arquivo depois de abrir o recurso.
 - [ ] exemplo usando aspas simples \\
