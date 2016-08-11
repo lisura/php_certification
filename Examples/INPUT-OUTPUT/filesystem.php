@@ -56,17 +56,18 @@
 
             fclose($fp)."\n";
         }
-
-    unlink($filename2);
-
-    $link = 'link';
     
-    //retorna o campo st_dev da estrutura stat do Unix C retornado pela chamada do sistema
-    if(!linkinfo($link))
-        //cria um link para o arquivo
-        link($filename, $link);
-    else
-        echo "link ja existe\n";
+        //deleta o arquivo
+        unlink($filename2);
+    
+        $link = 'link';
+        
+        //retorna o campo st_dev da estrutura stat do Unix C retornado pela chamada do sistema
+        if(!linkinfo($link))
+            //cria um link para o arquivo
+            link($filename, $link);
+        else
+            echo "link ja existe\n";
 
     }
 
