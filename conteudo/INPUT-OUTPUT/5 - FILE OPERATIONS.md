@@ -8,13 +8,15 @@
   E não é implementada na plataforma Windows
 
 * **closedir** — Fecha o manipulador do diretório
-* **dir** — Retorna uma instância da classe Diretório
+* **opendir** — Abre o manipulador do diretório
 * **dirname** — Retorna o caminho/path do diretório pai
-* **disk_free_space** — Retorna o espaço disponível no diretório
 * **disk_total_space** — Retorna o tamanho total do diretório
 * **disk_free_space** sinônimo de **diskfreespace** — Retorna o espaço disponível no diretório
 * **is_dir** — Diz se o caminho é um diretório
 * **mkdir** — Cria um diretório
+* **rmdir** — Remove um diretório
+ 
+[Exercício]()
 
 ### Arquivo de Informação
 
