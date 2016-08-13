@@ -4,13 +4,19 @@
     echo getcwd() . "\n";
 
     //altera o diretorio
-    chdir('diretorio');
+    //chdir('diretorio');
 
     echo getcwd() . "\n";
 
    //abre o handle do diretorio
    $dir = opendir(getcwd());
-    
+
+   var_dump($dir);
+
+   $dir2 = opendir(getcwd());
+
+   var_dump($dir2);
+
    //fecha o handle do diretorio
    closedir($dir);
 
@@ -33,5 +39,3 @@
 
     //deleta o diretorio
     rmdir("teste");
-
-   

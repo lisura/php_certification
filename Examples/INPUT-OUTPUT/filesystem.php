@@ -1,5 +1,5 @@
 <?php
-    
+
     $filename = 'exemplo.txt';
 
     //verifica se o arquivo existe
@@ -33,8 +33,8 @@
 
         $array = file($filename2);
 
-       var_dump($array);    
-        
+       var_dump($array);
+
         //verifica se o arquivo possui permissao de leitura
         if(is_readable($filename2))
         {
@@ -44,24 +44,24 @@
             while(!feof($fp)) {
               //retorna o caractere do ponteiro
               echo fgetc($fp);
-            }   
+            }
             //exibe um status do arquivo baseado no ponteiro
             var_dump(fstat($fp));
             //retorna a posicao do ponteiro
-            echo 'final do arquivo em '.ftell($fp)."\n";    
+            echo 'final do arquivo em '.ftell($fp)."\n";
 
             //retorna o ponteiro para o inicio do arquivo
-            rewind($fp); 
-            echo 'voltou para o inicio em '.ftell($fp)."\n";    
+            rewind($fp);
+            echo 'voltou para o inicio em '.ftell($fp)."\n";
 
             fclose($fp)."\n";
         }
-    
+
         //deleta o arquivo
         unlink($filename2);
-    
+
         $link = 'link';
-        
+
         //retorna o campo st_dev da estrutura stat do Unix C retornado pela chamada do sistema
         if(!linkinfo($link))
             //cria um link para o arquivo
@@ -70,6 +70,3 @@
             echo "link ja existe\n";
 
     }
-
-    
-
