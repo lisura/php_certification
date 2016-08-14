@@ -1,4 +1,4 @@
-##Introdução
+## Introdução
 
 Apartir do PHP 5, o modelo de objetos foi rescrito para permitir melhor performance e mais funcionalidades. Esta é uma grande modificação do PHP 4. PHP 5 tem um modelo de objetos completo.
 
@@ -13,4 +13,4 @@ Entre outras novidades do PHP 5 estão a inclusão de visibility, classes e meto
 >Ao se clonar um objeto, o PHP 5 fará uma cópia superficial de todas as propriedades do objeto. Qualquer propriedade que seja referência a outra variável, permanecerá como referência.
 
 
-O PHP trata objetos da mesma maneira que referencias ou manipuladores, significando que cada variável contém uma referencia a um objeto ao invés de uma cópia de todo o objeto. Veja Objetos e Referencias
+O PHP trata objetos da mesma maneira que referencias ou manipuladores, significando que cada variável contém uma referencia a um objeto ao invés de uma cópia de todo o objeto.
