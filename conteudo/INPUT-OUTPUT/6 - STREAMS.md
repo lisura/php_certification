@@ -39,6 +39,34 @@ print_r($meta);
 fclose($fp);
 ````
 
+Para registrar uma classe como um wrapper customizado, utilizamos a função **stream_register_wrapper** (sinônimo de **stream_wrapper_register**).  
+Exemplo:
+````php
+<?php
+$existed = in_array("var", stream_get_wrappers());
+if ($existed) {
+    stream_wrapper_unregister("var");
+}
+stream_wrapper_register("var", "VariableStream");
+$myvar = "";
+
+$fp = fopen("var://myvar", "r+");
+
+fwrite($fp, "line1\n");
+fwrite($fp, "line2\n");
+fwrite($fp, "line3\n");
+
+rewind($fp);
+while (!feof($fp)) {
+    echo fgets($fp);
+}
+fclose($fp);
+var_dump($myvar);
+
+if ($existed) {
+    stream_wrapper_restore("var");
+}
+````
 
 ## php:// Wrapper
 Wrapper próprio do php para stream de I/O.  
@@ -89,4 +117,29 @@ readfile('http://localhost/exemplos/php_input_2.php', false, $alternative);
 Para recuperar as opções, basta utilizar **stream_context_get_options**.
 
 ## Filtros
+O php possui uma série de filtros prontos para uso, como **string.toupper**, **string.tolower** ou **string.strip_tags**. Algumas extenções PHP providenciam seus próprios filtros. Por exemplo, a extenção **mcrypt** instala os filtros mcrypt.* e  mdecrypt.* . A função **stream_get_filters()** retorna os filtros disponíveis.
+
+Podemos acrescentar quantos filtros quisermos em um recurso de stream, utilizando **stream_filter_append**.  
+Exemplo:
+````php
+<?php
+$h = fopen('exemplo.txt', 'r');
+    stream_filter_append($h, 'string.toupper');
+    fpassthru($h);
+    fclose($h);
+````
+
+Tambêm é possível utilizar o meta-wrapper **php://filter** :
+````php
+<?php
+    $filter = 'string.toupper';
+    $file = 'exemplo.txt';
+    $h = fopen('php://filter/read=' . $filter . '/resource=' . $file,'r'); 
+    fpassthru($h);
+    fclose($h);
+````
+
+Para criar um filtro utilizamos a função **stream_filter_register**.  
+[Exemplo](https://github.com/lisura/php_certification/blob/master/Examples/INPUT-OUTPUT/php_filter.php)
+
 
