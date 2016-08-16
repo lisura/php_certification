@@ -1,7 +1,9 @@
+# TODO (16/08/2016)
+- [ ] Atulizar exemplo do criaçao de wrapper customizado
+- [ ] corrigir ẽ (tem isso em algum lugar na aula)
+
 # TODO (11/08/2016)
 - [ ] corrigir exemplo de file info no arquivo md
-- [ ] 
-- 
 
 # TODO (09/08/2016)
 - [ ] fazer exemplo onde se altera o arquivo depois de abrir o recurso.
