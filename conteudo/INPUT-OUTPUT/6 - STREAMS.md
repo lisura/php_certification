@@ -23,6 +23,70 @@ print_r(stream_get_wrappers());
 print_r(stream_get_filters());
 ````
 
+Utilize a função stream_get_meta_data para retornar informações sobre a stream. Exemplo:
+````php
+<?php
+$url = 'http://www.google.com/';
+
+if (!$fp = fopen($url, 'r')) {
+    trigger_error("Erro URL ($url)", E_USER_ERROR);
+}
+
+$meta = stream_get_meta_data($fp);
+
+print_r($meta);
+
+fclose($fp);
+````
+
 
 ## php:// Wrapper
-Wrapper próprio do php para stream de I/O.
+Wrapper próprio do php para stream de I/O.  
+Os wrappers básicos que mapeiam os recursos de I\O são **php://stdin**, **php://stdout**, e **php://stderr**.  
+**php://input** ẽ um wrapper de apenas leitura que recupera os dados do corpo de requisição de um POST.  
+Exemplo: 
+```
+curl -d "Hello World" -d "foo=bar&name=John" http://localhost/dev/streams/php_input.php
+````
+
+**php://memory** e **php://temp** são wrappers usados para ler e escrever dados temporários. No primeiro caso, os dados são gravados na memória, e no segundo, em um arquivo temporário.
+
+## Stream Contexts
+Exemplo de contexto utilizado para alterar um comportamento do wrapper de HTTP:
+````php
+<?php
+$opts = array(
+  'http'=>array(
+    'method'=>"POST",
+    'header'=> "Auth: SecretAuthTokenrn" .
+        "Content-type: 'application/x-www-form-urlencodedrn'" .
+              "Content-length: " . strlen("Hello World"),
+    'content' => 'Hello World'
+  )
+);
+$default = stream_context_get_default($opts);
+readfile('http://localhost/exemplos/php_input_2.php');
+````
+
+Para criar um contexto alternativo:
+````php
+<?php
+$other_opts = array(
+  'http'=>array(
+    'method'=>"GET",
+    'header'=>"Accept-language: en\r\n" .
+              "Cookie: foo=bar\r\n"
+  )
+);
+
+$alternative = stream_context_create($other_opts);
+
+//para adicionar opções ou parâmetros a stream:
+stream_context_set_params($alternative, array('zz' => array('zz' => 'zz')));
+
+readfile('http://localhost/exemplos/php_input_2.php', false, $alternative);
+````
+Para recuperar as opções, basta utilizar **stream_context_get_options**.
+
+## Filtros
+
