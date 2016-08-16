@@ -1,6 +1,6 @@
 # Streams
 
-Em uma simples definição Stream é um recurso de objeto que possui comportamento 'stremável'.
+Em uma simples definição Stream é um recurso de objeto que possui comportamento 'streamável'.
 É uma forma de agrupar e disponibilizar operações de funções e ações em comum.
 
 É dividida da seguinte forma:
@@ -13,7 +13,7 @@ Uma stream é referenciada da seguinte forma:
 * scheme(string) - Nome do wrapper a ser utilizado. Exemplos incluem: file, http, https, ftp, ftps, compress.zlib, compress.bz2, e php.
 * target - Depende do wrapper. Para streams relacionadas a filesystem, normalmente é o caminho e o nome do arquivo desejado. Para streams relacionadas a rede, normalmente um hostname com um caminho.
 
-O wrapper padrão do php é o **file://** . **readfile('exemplo.txt')** e **readfile('file://exemplo.txt')** retornam exatamente o mesmo resultado. Se fizermos **readfile('http://google.com/')**, estamos dizendo para o php utilizar o wrapper de stream HTTP.
+O wrapper padrão do php é o **file://**. Tanto **readfile('exemplo.txt')** quanto **readfile('file://exemplo.txt')** retornam exatamente o mesmo resultado. Se fizermos **readfile('http://google.com/')**, estamos dizendo para o php utilizar o wrapper de stream HTTP.
 
 Para saber quais são os wrappers, protocolos e filtros disponíveis e instalados no php, basta utilizar:
 ````php
