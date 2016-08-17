@@ -65,3 +65,27 @@ function sucoVal($fruta1,$fruta2,$fruta3) {
 echo churrosRet();
 sucoVal("tamarindo", "limão", "carambola"); //OK
 ```
+
+## Retorno de Valores
+
+Valores podem ser retornados de uma função através do statement return. Qualquer tipo de dado pode ser retornado, incluindo arrays e objetos.
+O uso do statement return termina a execução da função, devolvendo o controle para a linha onde a função foi chamada.
+
+Se os parâmetros passados para uma função forem diferentes do esperado (um array foi passado quando se esperava por uma string), o valor de retorno dessa função é indefinido
+
+Se não houver nenhum statement return, a função retorna null ao final da execução.
+
+```php
+<?php
+function chapolinPrimeiraFala() { 
+	echo "Se aproveitam de minha nobreza...";
+	return true;
+}
+
+function chapolinSegundaFala() { 
+	echo "Sigam-me os bons!";
+}
+
+var_dump(chapolinPrimeiraFala());
+var_dump(chapolinSegundaFala());
+```
