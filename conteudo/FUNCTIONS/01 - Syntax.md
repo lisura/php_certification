@@ -11,7 +11,7 @@ Funções não precisam ser chamadas depois de sua definição, a não ser quand
 HelloChaves(); //funciona
     
 function HelloChaves(){
-   echo "Lá vem o Chaves, Chaves, Chaves!";
+   echo "Lá vem o Chaves, Chaves, Chaves!<br>Todos atentos olhando pra TV";
 }
 ```
 
@@ -20,7 +20,7 @@ function HelloChaves(){
 HelloWorld(); //não funciona
 if(true){
 	function HelloWorld(){
-		echo "Lá vem o Chaves, Chaves, Chaves!";
+		echo "Lá vem o Chaves, Chaves, Chaves!<br>Uma histórinha bem gostosa de se ver";
 	}
 	HelloWorld(); //funciona
 }
@@ -63,7 +63,7 @@ function sucoVal($fruta1,$fruta2,$fruta3) {
 }
 
 echo churrosRet();
-sucoVal("tamarindo", "limão", "carambola"); //OK
+sucoVal("laranja", "limão", "tamarindo"); //OK
 ```
 
 ## Retorno de Valores
