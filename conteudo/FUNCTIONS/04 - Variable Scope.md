@@ -1,15 +1,15 @@
-# FunÁ„o
+# Fun√ß√£o
 
-## Escopo de Vari·veis
+## Escopo de Vari√°veis
 
-Vari·veis declaradas nas funÁıes n„o s„o visÌveis fora das mesmas funÁıes, enquanto que vari·veis declaradas fora de funÁıes s„o visÌveis em qualquer lugar fora dessas funÁıes.
+Vari√°veis declaradas nas fun√ß√µes n√£o s√£o vis√≠veis fora das mesmas fun√ß√µes, enquanto que vari√°veis declaradas fora de fun√ß√µes s√£o vis√≠veis em qualquer lugar fora dessas fun√ß√µes.
 
 ```php
 <?php
 function jovemAinda() { 
 	$velho = 'Dr. Chapatin';
-	echo "<br>Se vocÍ È jovem ainda, jovem ainda, jovem ainda<br>";
-	echo 'A bateria È do '.$baterista; //Notice
+	echo "<br>Se voc√™ √© jovem ainda, jovem ainda, jovem ainda<br>";
+	echo 'A bateria √© do '.$baterista; //Notice
 }
 
 $baterista = 'Quico';
@@ -25,8 +25,8 @@ O resultado acima pode ser diferente com o uso da array $GLOBALS ou da palavra c
 function jovemAinda() { 
 	$GLOBALS['velho'] = 'Dr. Chapatin';
 	global $baterista;
-	echo "<br>Se vocÍ È jovem ainda, jovem ainda, jovem ainda<br>";
-	echo 'A bateria È do '.$baterista;
+	echo "<br>Se voc√™ √© jovem ainda, jovem ainda, jovem ainda<br>";
+	echo 'A bateria √© do '.$baterista;
 }
 
 $baterista = 'Quico';
@@ -35,43 +35,43 @@ jovemAinda();
 echo '<br>nome: '.$velho
 ```
 
-## FunÁıes Vari·veis
+## Fun√ß√µes Vari√°veis
 
-Se uma vari·vel possui um conjunto de parenteses, PHP vai procurar por uma funÁ„o com o mesmo nome do valor da vari·vel e assim executar a funÁ„o encontrada. … um recurso muito usado na implementaÁ„o de callbacks e tabelas de funÁıes. Essa tÈcnica n„o funciona com constructs do PHP como o echo, unset(), print, empty(), etc...
+Se uma vari√°vel possui um conjunto de parenteses, PHP vai procurar por uma fun√ß√£o com o mesmo nome do valor da vari√°vel e assim executar a fun√ß√£o encontrada. √â um recurso muito usado na implementa√ß√£o de callbacks e tabelas de fun√ß√µes. Essa t√©cnica n√£o funciona com constructs do PHP como o echo, unset(), print, empty(), etc...
 
 ```php
 <?php
-function chegadaVila() { 
+function acusaChaves() { 
 	echo "-Tinha que ser o Chaves!!!<br>";
 	echo '-Foi sem querer querendo...<br><br>';
 }
 
-$func = 'chegadaVila';
+$func = 'acusaChaves';
 $func();
 
 $func = 'print';
-//$func('o que ser· que ele quis dizer?'); //FATAL ERROR
+//$func('o que ser√° que ele quis dizer?'); //FATAL ERROR
 
 function wrapPrint($fala){
   print($fala);
 }
 $func = 'wrapPrint';
-$func('-As quatro operaÁıes matem·ticas s„o adiÁ„o, subtraÁ„o, multiplicaÁ„o e divis„o!<br>');
+$func('-As quatro opera√ß√µes matem√°ticas s√£o adi√ß√£o, subtra√ß√£o, multiplica√ß√£o e divis√£o!<br>');
 $func = 'print_r';
-$func('-Ai que burro d· zero pra ele!<br>');
+$func('-Ai que burro d√° zero pra ele!<br>');
 ```
 
-Podemos usar tambÈm a funÁ„o call_user_func para chamar a funÁ„o.
+Podemos usar tamb√©m a fun√ß√£o call_user_func para chamar a fun√ß√£o.
 ```php
 <?php
 function chegadaVila() { 
-	echo "Dona Florinda: -A Dona Clotilde foi a ˙ltima a chegar na vila...<br>";
+	echo "Dona Florinda: -A Dona Clotilde foi a √∫ltima a chegar na vila...<br>";
 	echo 'Chaves: -Mas foi a primeira a chegar no mundo!<br><br>';
 }
 
 function chavesAlimento($pao,$ator){
   if ($pao=='amassado'){
-    echo "-Mas ele n„o amassou com os olhos, ele amassou com...<br/>-Cale-se, ".$ator.'!<br/>';
+    echo "-Mas ele n√£o amassou com os olhos, ele amassou com...<br/>-Cale-se, ".$ator.'!<br/>';
   	return "-E agora o que que eu vou comer?!";
   }else{
     return "Isso, isso, isso!";
@@ -82,7 +82,7 @@ call_user_func('chegadaVila');
 echo call_user_func('chavesAlimento','amassado','Quico');
 ```
 
-AlÈm disso mÈtodos tambÈm podem ser vari·veis.
+Al√©m disso m√©todos tamb√©m podem ser vari√°veis.
 ```php
 <?php
 class SeuMadrugaProfessor
@@ -91,12 +91,12 @@ class SeuMadrugaProfessor
 	function Fala()
     {
         $name = 'Autoridade';
-        $this->$name(); // Isto chama o mÈtodo Bar()
+        $this->$name(); // Isto chama o m√©todo Autoridade()
     }
 
     function Autoridade()
     {
-        echo "-Nada de Seu Madruga, È SENHOR PROFESSOR!!<br>";
+        echo "-Nada de Seu Madruga, √© SENHOR PROFESSOR!!<br>";
     }
 
     static function Perigo()
@@ -106,7 +106,7 @@ class SeuMadrugaProfessor
 
     function Psicologia()
     {
-        echo "-SÛ usei um pouco de pepsicologia!<br>";
+        echo "-S√≥ usei um pouco de pepsicologia!<br>";
     }
 }
 
