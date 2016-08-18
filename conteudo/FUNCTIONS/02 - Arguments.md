@@ -1,25 +1,25 @@
-# Função
+# FunÃ§Ã£o
 
 ## Argumentos
 
-Informações podem ser passadas para a função através da lista de argumentos/parâmetros. A lista de argumentos é separada por vírgulas e os argumentos são avaliados da esquerda pra direita.
+InformaÃ§Ãµes podem ser passadas para a funÃ§Ã£o atravÃ©s da lista de argumentos/parÃ¢metros. A lista de argumentos Ã© separada por vÃ­rgulas e os argumentos sÃ£o avaliados da esquerda pra direita.
 
 Argumentos podem ser passados de duas formas:
 
-* Por valor (padrão): Cria uma cópia do argumento e qualquer alteração permanece apenas no escopo da função. São os exemplos que temos visto até então.
-* Por referência: Passamos a referência para a variável original, cujas alterações efetuadas na função serão mantidas após o término da execução. Veremos com detalhe na próxima aula
+* Por valor (padrÃ£o): Cria uma cÃ³pia do argumento e qualquer alteraÃ§Ã£o permanece apenas no escopo da funÃ§Ã£o. SÃ£o os exemplos que temos visto atÃ© entÃ£o.
+* Por referÃªncia: Passamos a referÃªncia para a variÃ¡vel original, cujas alteraÃ§Ãµes efetuadas na funÃ§Ã£o serÃ£o mantidas apÃ³s o tÃ©rmino da execuÃ§Ã£o. Veremos com detalhe na prÃ³xima aula
 
 ```php
 <?php
 function QuicoCara ($x,$x='sua',$x='minha'){
-	echo "Você não vai com a ". $x ." cara?";
+	echo "VocÃª nÃ£o vai com a ". $x ." cara?";
 }
 
 QuicoCara('tua');
 ```
 
-Temos algumas funções nativas PHP para lidar com argumentos.
-* int func_num_args ( void ): Retorna o número de argumentos passados para a função
+Temos algumas funÃ§Ãµes nativas PHP para lidar com argumentos.
+* int func_num_args ( void ): Retorna o nÃºmero de argumentos passados para a funÃ§Ã£o
 * mixed func_get_arg ( int $arg_num ): Retorna um item de uma lista de argumentos
 * array func_get_args ( void ): Retorna um array contendo a lista de argumentos
 
@@ -39,12 +39,12 @@ function alunos()
     }
 }
 
-alunos("Nhonho", "Godinez", "Pópis", "Quico", "Chiquinha", "Chaves");
+alunos("Nhonho", "Godinez", "PÃ³pis", "Quico", "Chiquinha", "Chaves");
 ```
 
-## Valores Padrão
+## Valores PadrÃ£o
 
-Argumetos podem ter valores padrão, assim caso uma variável não seja passada como parâmetro, uma nova variável é criada, recebendo o valor padrão.
+Argumentos podem ter valores padrÃ£o, assim caso uma variÃ¡vel nÃ£o seja passada como parÃ¢metro, uma nova variÃ¡vel Ã© criada, recebendo o valor padrÃ£o.
 
 ```php
 <?php
@@ -52,19 +52,19 @@ function corrigeChaves($a,$textocerto,$textoerrado="Massacote") {
 	if($a<6){
 		if($a%2 == 0) 
 			echo "-E como eu disse?<br>-".$textoerrado."!<br>";
-		else echo "-E como é?<br>-".$textocerto."!<br>";
+		else echo "-E como Ã©?<br>-".$textocerto."!<br>";
 		corrigeChaves($a+1,$textocerto,$textoerrado);
 	} else{
-		echo "-E como eu di...<br><h1>AI CALE-SE, CALE-SE, CALE-SE, VOCÊ ME DEIXA LOOUUU...CO!!!</h1>";
+		echo "-E como eu di...<br><h1>AI CALE-SE, CALE-SE, CALE-SE, VOCÃŠ ME DEIXA LOOUUU...CO!!!</h1>";
 	}
 }
 
-corrigeChaves(1,"Planta","Pranta"); //OK
+corrigeChaves(1,"Insetos","Inseptos"); //OK
 //corrigeChaves(1); //warning Missing Argument
 corrigeChaves(3,"Mascote"); //OK
 ```
 
-Quanto a variáveis padrão, temos que ter cuidado com a colocação dos argumentos que recebem valor padrão.
+Quanto a variÃ¡veis padrÃ£o, temos que ter cuidado com a colocaÃ§Ã£o dos argumentos que recebem valor padrÃ£o.
 ```php
 <?php
 //Errado
