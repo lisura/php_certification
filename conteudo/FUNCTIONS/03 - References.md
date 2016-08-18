@@ -1,19 +1,19 @@
-# Função
+# FunÃ§Ã£o
 
-## Por Referência
+## Por ReferÃªncia
 
-Aqui podemos passar diretamente a variável para ser alterada pela função, dispensando a necessidade de um return com o valor. Para isso basta adicionar um & na frente do argumento.
+Aqui podemos passar diretamente a variÃ¡vel para ser alterada pela funÃ§Ã£o, dispensando a necessidade de um return com o valor. Para isso basta adicionar um & na frente do argumento.
 
 ```php
 <?php
 function levaTapa($SeuMadruga) { 
 	$SeuMadruga = false;
-	echo "Vamos tesouro, e não se misture com essa gentalha!<br/>";
+	echo "Vamos tesouro, e nÃ£o se misture com essa gentalha!<br/>";
 }
 
 function levaTapaReal(&$SeuMadruga) { 
 	$SeuMadruga = false;
-	echo "<br/>Vamos tesouro, e não se misture com essa gentalha!<br/>";
+	echo "<br/>Vamos tesouro, e nÃ£o se misture com essa gentalha!<br/>";
 }
 
 $SeuMadruga = true;
@@ -23,7 +23,7 @@ levaTapaReal($SeuMadruga);
 var_dump($SeuMadruga);
 ```
 
-É importante notar que somente variáveis podem ser passadas por referência, qualquer outra coisa resultará em FATAL ERROR.
+Ã‰ importante notar que somente variÃ¡veis podem ser passadas por referÃªncia, qualquer outra coisa resultarÃ¡ em FATAL ERROR.
 
 ```php
 <?php
@@ -36,7 +36,7 @@ function adicionarElemento(array &$colecao, $elemento=null)
 }
 $velhodosaco=[];
 adicionarElemento($velhodosaco);
-adicionarElemento($velhodosaco,'chapéus');
+adicionarElemento($velhodosaco,'chapÃ©us');
 adicionarElemento($velhodosaco,'sapatos');
 adicionarElemento($velhodosaco,'roupas usadas');
 print_r($velhodosaco);
@@ -44,24 +44,24 @@ print_r($velhodosaco);
 //adicionarElemento([],'quem tem?'); //ERRO
 ```
 
-É possível também retornar um valor de uma determinada função por referência. Para isso, basta inserir um & antes do nome da função, e outro & para quem está chamando a função. No exemplo abaixo, a variável $palavraChave está apontando para a propriedade $anoes->palavraChave. Assim, qualquer alteração em $palavraChave ocorrerá também na propriedade apontada por referência, mesmo que seja uma propriedade privada.
+Ã‰ possÃ­vel tambÃ©m retornar um valor de uma determinada funÃ§Ã£o por referÃªncia. Para isso, basta inserir um & antes do nome da funÃ§Ã£o, e outro & para quem estÃ¡ chamando a funÃ§Ã£o. No exemplo abaixo, a variÃ¡vel $palavraChave estÃ¡ apontando para a propriedade $anoes->palavraChave. Assim, qualquer alteraÃ§Ã£o em $palavraChave ocorrerÃ¡ tambÃ©m na propriedade apontada por referÃªncia, mesmo que seja uma propriedade privada.
 
 ```php
 <?php
 class Anoes {
-	private $palavraChave = 'tchuim tchuim tchum clain';
-	public function &retornoPorReferencia() {
-		return $this->palavraChave;
-	}
+    private $palavraChave = 'tchuim tchuim tchum clain';
+    public function &retornoPorReferencia() {
+        return $this->palavraChave;
+    }
 }
 
 $anoes = new Anoes();
 $palavraChave = &$anoes->retornoPorReferencia();
 
-echo "Eis aqui a resposta-chave<br/>Quando alguém perguntar 'Quem sabe?':<br/>$palavraChave";
+echo "Eis aqui a resposta-chave<br/>Quando alguÃ©m perguntar 'Quem sabe?':<br/>$palavraChave";
 echo "<br/>".$anoes->retornoPorReferencia();
 
-$palavraChave = "Só não te dou outra porquê...!";
+$palavraChave = "tchuim tchuim, tchuim tchuim tchum clain!";
 
 echo "<br/>".$anoes->retornoPorReferencia();
 ```
