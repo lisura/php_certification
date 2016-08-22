@@ -1,5 +1,17 @@
 ## Introdução
 
+Classes definem as características abstrata de um objeto, incluindo suas propriedades e métodos.
+
+Propriedades e métodos definidos por uma classe são chamados de "membros"
+
+Estrutura de uma classe php:
+
+```
+KEYWORD > CLASS NAME > { CONSTANTES, PROPERTIES & METHODS }
+ONDE
+PROPERTIES = CLASS VARIABLES AND METHODS = CLASS FUNCTIONS
+```
+
 Apartir do PHP 5, o modelo de objetos foi rescrito para permitir melhor performance e mais funcionalidades. Esta é uma grande modificação do PHP 4. PHP 5 tem um modelo de objetos completo.
 
 Entre outras novidades do PHP 5 estão a inclusão de visibility, classes e metodos abstract e final, additional metodos mágicos, interfaces, clonagem e dica de tipo.

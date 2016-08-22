@@ -57,3 +57,58 @@ echo $obj2->publica . PHP_EOL; // Works
 //echo $obj2->protegida . PHP_EOL; // Fatal Error
 $obj2->imprimePropriedades();
 ```
+
+>Nota: O uso da declaração de variável com a palavra-chave var ainda é suportada por razões de compatibilidade (como um sinônimo para a palavra-chave public). Em versões do PHP anteriores ao 5.1.3, isso gerará um aviso do tipo E_STRICT.
+```php
+echo '<pre>';
+class Sharknado{
+    private $movie;
+    public function __construct($name){
+        $this->movie = $name;
+    }
+
+    private function privateSharknado(){
+        echo 'Acessou o método privado.';
+    }
+    public function publicSharknado(Sharknado $another){
+        // Pode-se alterar a propriedade privada:
+        $another->movie = 'FirstOne';
+        var_dump($another->movie);
+        // Pode-se chamar método privado:
+        $another->privateSharknado();
+    }
+}
+$test = new Sharknado('SecondOne');
+$test->publicSharknado(new Sharknado('OhHellNo'));
+```
+
+**recomendação**: não criar o seu metodo da classe iniciando com  \_\_  como \_\_call. Porque a função que começa com \_\_ parece ser função mágica em php.
+
+O manual diz que "metodos privados limitam a visibilidade somente para a classe que define o item". Isso significa que as classes filho não vê os métodos privados de classe pai, e vice-versa.
+
+Como resultado, os pais e os filhos podem ter diferentes implementações do "mesmo" método privado, dependendo de onde você chamá-los.
+
+Por quê? Porque métodos privados são visíveis apenas para a classe em que foram definidas, logo a classe filha não vê métodos privados do pai, mas pode reescreve-los. Em outras palavras - cada classe tem um conjunto particular de variáveis privadas que mais ninguém tem acesso.
+
+```php
+echo '<pre>';
+class Sharknado {
+    public function shark() {
+        $this->justNados();
+    }
+    private function justNados() {
+        echo 'Just Sharknado'.PHP_EOL;
+    }
+}
+class FireNado extends Sharknado {
+	public function fire() {
+        $this->justNados();
+    }
+    private function justNados() {
+        echo 'FireSharkNado'.PHP_EOL;
+    }
+}
+$test = new FireNado();
+$test->shark();
+$test->fire(); 
+```
