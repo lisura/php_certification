@@ -1,3 +1,6 @@
+# TODO (18/08/2016)
+- [ ] 
+
 # TODO (16/08/2016)
 - [ ] Atulizar exemplo do criaçao de wrapper customizado
 - [ ] corrigir ẽ (tem isso em algum lugar na aula)

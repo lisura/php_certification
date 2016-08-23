@@ -10,7 +10,7 @@ echo preg_replace_callback('~_([a-z])([a-z])~', function ($match) {
     return " - ".strtoupper($match[1].$match[2]);
 }, '-Com o que se fabrica o colar de_pe_ro_las?<br><br>');
 
-$resposta = function($name)
+$resposta = function($name) //função anônima associada com uma variável
 {
     printf("-Com as %s!!\r\n", $name);
 };
@@ -21,6 +21,7 @@ $resposta('pérolas');
 Closures também podem herdar variáveis do escopo pai. Essas variáveis precisam ser referenciadas utilizando a instrução *use*.
 
 ```php
+<?php
 $message = '[Chiquinha solta um grito de horror ao ver seu pai nas mãos da bruxa do 71]<br>-Quem está aí?!<br>-Miau!<br>';
 
 // Sem "use"
@@ -63,7 +64,7 @@ $example = function ($arg) use ($message) {
 $example("Outro gato");
 ```
 
-Herdar variáveis do escopo pai não é o mesmo que usar variáveis globais. Variáveis globais existem no escopo global, o qual é o mesmo não importa a função sendo executada. O escopo pai de um closure é a função no qual o closure foi declarado (não necessáriamente a função apartir do qual ele foi chamado).
+Herdar variáveis do escopo pai não é o mesmo que usar variáveis globais. Variáveis globais existem no escopo global, o qual é o mesmo não importa a função sendo executada. O escopo pai de um closure é a função no qual o closure foi declarado (não necessáriamente onde ele foi chamado).
 
 ```php
 <?php
@@ -127,4 +128,30 @@ class SuperSam
 $heroi = new SuperSam;
 $function = $heroi->gritoDeGuerra();
 $function();
+```
+
+##Forçando um tipo de valor
+Quando definimos o tipo de valor dos parâmetros da função. No PHP 5.5, podemos definir os seguintes valores
+* Classes e interfaces
+* Array
+* Callable
+
+```php
+<?php
+function prepararDejejum(array $panela, array $ingredientes) {
+foreach ($ingredientes as $ingrediente) {
+$panela[] = $ingrediente;
+}
+return $panela;
+}
+
+$panela = [];
+$ingredientes = [
+'ovos',
+'presunto',
+];
+
+//$panela = ''; ingredientes = '';
+
+echo prepararDejejum($panela,$ingredientes);
 ```

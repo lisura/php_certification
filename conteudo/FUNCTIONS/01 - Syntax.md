@@ -15,6 +15,8 @@ function HelloChaves(){
 }
 ```
 
+Nota: Todo nome de função deve começar por underline ou letra!
+
 ```php
 <?php
 HelloWorld(); //não funciona
