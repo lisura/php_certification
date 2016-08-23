@@ -1,8 +1,8 @@
-# FunÁ„o
+# Fun√ß√£o
 
-## FunÁıes AnÙnimas
+## Fun√ß√µes An√¥nimas
 
-FunÁıes anÙnimas, closures ou funÁıes lambda, permitem a criaÁ„o de funÁıes que n„o tem o nome especificado. Elas s„o mais ˙teis como o valor de par‚metros callback, mas podem tem v·rios outros usos como por exemplo valores de vari·veis. S„o implementadas utilizando a classe Closure.
+Fun√ß√µes an√¥nimas, closures ou fun√ß√µes lambda, permitem a cria√ß√£o de fun√ß√µes que n√£o tem o nome especificado. Elas s√£o mais √∫teis como o valor de par√¢metros callback, mas podem tem v√°rios outros usos como por exemplo valores de vari√°veis. S√£o implementadas utilizando a classe Closure.
 
 ```php
 <?php
@@ -10,19 +10,19 @@ echo preg_replace_callback('~_([a-z])([a-z])~', function ($match) {
     return " - ".strtoupper($match[1].$match[2]);
 }, '-Com o que se fabrica o colar de_pe_ro_las?<br><br>');
 
-$resposta = function($name) //funÁ„o anÙnima associada com uma vari·vel
+$resposta = function($name) //fun√ß√£o an√¥nima associada com uma vari√°vel
 {
     printf("-Com as %s!!\r\n", $name);
 };
 
-$resposta('pÈrolas');
+$resposta('p√©rolas');
 ```
 
-Closures tambÈm podem herdar vari·veis do escopo pai. Essas vari·veis precisam ser referenciadas utilizando a instruÁ„o *use*.
+Closures tamb√©m podem herdar vari√°veis do escopo pai. Essas vari√°veis precisam ser referenciadas utilizando a instru√ß√£o *use*.
 
 ```php
 <?php
-$message = '[Chiquinha solta um grito de horror ao ver seu pai nas m„os da bruxa do 71]<br>-Quem est· aÌ?!<br>-Miau!<br>';
+$message = '[Chiquinha solta um grito de horror ao ver seu pai nas m√£os da bruxa do 71]<br>-Quem est√° a√≠?!<br>-Miau!<br>';
 
 // Sem "use"
 $example = function () {
@@ -36,27 +36,27 @@ $example = function () use ($message) {
 };
 $example();
 
-// Herdando valor da vari·vel quando a funÁ„o È definida,
-// n„o quando È chamada
-$message = '-… vocÍ Satan·s? Fora daqui! hehehehe...<br><br>';
+// Herdando valor da vari√°vel quando a fun√ß√£o √© definida,
+// n√£o quando √© chamada
+$message = '-√â voc√™ Satan√°s? Fora daqui! hehehehe...<br><br>';
 echo $message;
 $example(); //repete o uso da mensagem anterior
 
 // Reseta mensagem
-$message = '<br>[Chaves, fazendo sinal da cruz, acaba derrubando os pratos]<br>-E agora, quem est· aÌ?!<br>';
+$message = '<br>[Chaves, fazendo sinal da cruz, acaba derrubando os pratos]<br>-E agora, quem est√° a√≠?!<br>';
 
-// Herdando por referÍncia
+// Herdando por refer√™ncia
 $example = function () use (&$message) {
     echo($message);
 };
 $example();
 
 // O valor modificado no escopo pai
-// reflete quando a funÁ„o È chamada
+// reflete quando a fun√ß√£o √© chamada
 $message = '-...';
 $example();
 
-// Closures tambÈm aceitam argumentos normais
+// Closures tamb√©m aceitam argumentos normais
 $message = '!!!';
 $example = function ($arg) use ($message) {
     echo($arg . ' ' . $message);
@@ -64,7 +64,7 @@ $example = function ($arg) use ($message) {
 $example("Outro gato");
 ```
 
-Herdar vari·veis do escopo pai n„o È o mesmo que usar vari·veis globais. Vari·veis globais existem no escopo global, o qual È o mesmo n„o importa a funÁ„o sendo executada. O escopo pai de um closure È a funÁ„o no qual o closure foi declarado (n„o necess·riamente onde ele foi chamado).
+Herdar vari√°veis do escopo pai n√£o √© o mesmo que usar vari√°veis globais. Vari√°veis globais existem no escopo global, o qual √© o mesmo n√£o importa a fun√ß√£o sendo executada. O escopo pai de um closure √© a fun√ß√£o no qual o closure foi declarado (n√£o necess√°riamente a fun√ß√£o apartir do qual ele foi chamado).
 
 ```php
 <?php
@@ -91,7 +91,7 @@ class RestauranteDonaFlorinda
                 $pricePerItem = constant(__CLASS__ . "::PRECO_" .
                     strtoupper($product));
                 $total += ($pricePerItem * $quantity) * ($tax + 1.0);
-				if($product=='biscoito_de_abacaxi') echo "-N√O TEM BISCOITO!!!<br>";
+				if($product=='biscoito_de_abacaxi') echo "-N√ÉO TEM BISCOITO!!!<br>";
             };
 
         array_walk($this->products, $callback);
@@ -110,7 +110,7 @@ $my_cart->add('biscoito_de_abacaxi', 7);
 echo "Total: Cr$ " . $my_cart->getTotal(0.05) . "<br>";
 ```
 
-VinculaÁ„o autom·tica de $this. Do PHP 5.4 ou acima, ao ser declarada no contexto de uma classe, a classe corrente È automaticamente vinculada a ela, tornando $this disponÌvel dentro do escopo da funÁ„o.
+Vincula√ß√£o autom√°tica de $this. Do PHP 5.4 ou acima, ao ser declarada no contexto de uma classe, a classe corrente √© automaticamente vinculada a ela, tornando $this dispon√≠vel dentro do escopo da fun√ß√£o.
 
 ```php
 <?php
@@ -130,8 +130,8 @@ $function = $heroi->gritoDeGuerra();
 $function();
 ```
 
-##ForÁando um tipo de valor
-Quando definimos o tipo de valor dos par‚metros da funÁ„o. No PHP 5.5, podemos definir os seguintes valores
+##For√ßando um tipo de valor
+Quando definimos o tipo de valor dos parametros da fun√ß√£o. No PHP 5.5, podemos definir os seguintes valores
 * Classes e interfaces
 * Array
 * Callable
