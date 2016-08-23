@@ -24,6 +24,7 @@ string create_function ( string $args , string $código )
 ```
 
 ```php
+<?php
 $newfunc = create_function('$target', 'return "Estou caçando " . $target ."!";');
 echo "Nova Função Anônima: $newfunc<br/>";
 echo $newfunc('lagartixas') . "<br/>";
