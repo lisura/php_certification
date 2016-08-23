@@ -1,5 +1,7 @@
-# TODO (18/08/2016)
-- [ ] 
+# TODO (23/08/2016)
+- [ ] colocar um alerta no create function para avisar que ele executa um eval
+- [ ] remover ECHO com parenteses
+- [ ] Arrumar o ultimo exemplo
 
 # TODO (16/08/2016)
 - [ ] Atulizar exemplo do criaçao de wrapper customizado
