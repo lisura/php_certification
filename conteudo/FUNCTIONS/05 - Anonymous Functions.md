@@ -18,6 +18,17 @@ $resposta = function($name) //função anônima associada com uma variável
 $resposta('pérolas');
 ```
 
+Também podemos criar funções anônimas através da função create_function
+```php
+string create_function ( string $args , string $código )
+```
+
+```php
+$newfunc = create_function('$target', 'return "Estou caçando " . $target ."!";');
+echo "Nova Função Anônima: $newfunc<br/>";
+echo $newfunc('lagartixas') . "<br/>";
+```
+
 Closures também podem herdar variáveis do escopo pai. Essas variáveis precisam ser referenciadas utilizando a instrução *use*.
 
 ```php
