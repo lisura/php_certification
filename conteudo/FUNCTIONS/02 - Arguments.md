@@ -25,7 +25,6 @@ Temos algumas funções nativas PHP para lidar com argumentos.
 
 ```php
 <?php
-<?php
 function alunos()
 {
     $numargs = func_num_args();

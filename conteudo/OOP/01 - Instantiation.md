@@ -31,7 +31,6 @@ Ao atribuir uma instância de uma classe já criada, a uma variável nova, a var
 Se um objeto é convertido para um objeto, ele não é modificado. Se um valor de qualquer outro tipo é convertido para um objeto, uma nova instância da classe interna stdClass é criada. Se o valor for NULL, a nova instância será vazia. Um array é convertido para um objeto com as propriedades nomeadas pelas chaves e os valores correspondentes, com exceção de chaves numéricas que ficarão inacessíveis a menos que sejam iteradas. Para qualquer outro valor, uma propriedade chamada scalar conterá o valor.
 
 ```php
-// http://phpfiddle.org/
 echo '<pre>';
 $obj = (object) array('1' => 'sharks', '2' => 'tornados');
 var_dump(isset($obj->{'1'}));
@@ -46,7 +45,6 @@ echo $obj->scalar;
 O modo mais simples de se instaciar um objeto generico  e vazio, para que você possa modificar em tempo de execução, é fazendo
 
 > <?php $genericSharknado = new stdClass(); ?>
-
 
 ### Formas curiosas para instanciar objetos.
 
