@@ -20,7 +20,7 @@ $resposta('pérolas');
 
 Também podemos criar funções anônimas através da função create_function
 ```php
-string create_function ( string $args , string $código )
+string create_function ( string $args , string $codigo )
 ```
 
 ```php
