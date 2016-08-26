@@ -110,5 +110,5 @@ class FireNado extends Sharknado {
 }
 $test = new FireNado();
 $test->shark();
-$test->fire(); 
+$test->fire();
 ```
