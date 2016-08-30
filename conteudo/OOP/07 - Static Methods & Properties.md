@@ -11,6 +11,7 @@ Como métodos estáticos podem ser chamados sem uma instancia do objeto criada, 
 >No PHP 5, chamar métodos não estáticos estaticamente gerará um alerta de nível E_STRICT.
 
 ```php
+<?php
 echo '<pre>';
 class Sharknado {
     public static function theBestMovie() {
@@ -29,6 +30,7 @@ Propriedades estáticas não podem ser acessadas através do operador _ -> _
 Como qualquer outra variável estática do PHP, propriedades estáticas podem ser inicializadas, somente usando um valor literal ou constante; **expressões não são permitidas.**
 
 ```php
+<?php
 echo '<pre>';
 class BestMovie{
     public static $bestmovie_estatico = 'nado';
@@ -47,7 +49,7 @@ print $bestMovie->staticNado() . "\n";
 print $bestMovie->$bestmovie_estatico . "\n";    
 print $bestMovie::$bestmovie_estatico . "\n";
 $classname = 'BestMovie';
-print $classname::$bestmovie_estatico . "\n"; 
+print $classname::$bestmovie_estatico . "\n";
 print Sharknado::$bestmovie_estatico . "\n";
 $sharknado = new Sharknado();
 print $sharknado->staticBestMovie() . "\n";
@@ -58,7 +60,8 @@ print $sharknado->staticBestMovie() . "\n";
 Não podemos usar _static_ em uma string _HEREDOC_. Note o exemplo a seguir
 
 ```php
-// Mantido original 
+<?php
+// Mantido original
 class A{
   public static $BLAH = "user";
   function __construct() {
@@ -70,11 +73,12 @@ EOD;
 $blah = new A();
 ```
 
-Este codigo vai gerar a saida:  \<h1\>Hello \{self\:\:\}\</h1\>
+Este codigo vai gerar a saida: ``` Hello {self::} ```
 
 Para solucionar este problema temos que atribuir a variavel antes de usar.
 
 ```php
+<?php
 //Mantido original
 class B{
   public static $BLAH = "user";
@@ -85,6 +89,7 @@ class B{
 EOD;
   }
 }
+$blah = new B();
 ```
 
-Neste caso a saida vai ser: \<h1\>Hello user\</h1\>
+Neste caso a saida vai ser: ```Hello user```

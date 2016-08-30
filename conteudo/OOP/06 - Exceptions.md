@@ -5,6 +5,7 @@
  O objeto lançado precisa ser uma instância da classe _Exception_ ou uma subclasse de _Exception_. Tentar lançar um objeto sem essa ascendência resultará em um erro fatal.
 
 ```php
+<?php
 echo '<pre>';
 $movie = 'O Sol é Para Todos';
 try{
@@ -29,6 +30,7 @@ Um bloco _finally_ pode ser especificado após ou no lugar de blocos _catch_. C�
 >Nota: Funções internas ao PHP utilizam principalmente aviso de erros. Apenas extensões orientadas a objetos utilizam exceções. No entanto os erros podem ser transformados em exceções com ErrorException.
 
 ```php
+<?php
 echo '<pre>';
 $movie = 'O Sol é Para Todos';
 try{
@@ -49,6 +51,7 @@ try{
 Uma classe de exceção definida pelo usuário pode ser criada herdando a classe Exception. Os membros e propriedades abaixo mostram o que é acessível a partir da classe filha que deriva da Exception.
 
 ```php
+<?php
 class Exception {
     protected $message = 'Unknown exception';   // Mensagem da exceção
     private   $string;                          // Cache __toString
@@ -75,6 +78,7 @@ Se uma classe estender a classe Exception e redefinir o constructor, então é a
 >Nota: Exceções não podem ser clonadas. Tentativas de clonar um Exception resultarão em erros E_ERROR fatais.
 
 ```php
+<?php
 echo '<pre>';
 class ExceptionNado extends Exception {
     public function __construct($message, $code = 0, Exception $previous = null) {

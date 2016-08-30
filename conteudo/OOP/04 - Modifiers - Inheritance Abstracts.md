@@ -1,6 +1,6 @@
 ## Modifiers \ Inheritance Abstracts
 
-Uma classe pode herdar métodos e propriedades de outra classe usando a palavra-chave extends na declaração da classe. Não é possível herdar múltiplas classes; uma classe só pode herdar uma classe base.
+Uma classe pode herdar métodos e propriedades de outra classe usando a palavra-chave _extends_ na declaração da classe. Não é possível herdar múltiplas classes; uma classe só pode herdar uma classe base.
 
 Ao se estender uma classe, a subclasse herda todos os métodos públicos e protegidos da classe pai. A não ser que uma classe sobrescreva estes métodos, eles manterão sua funcionalidade original.
 
@@ -9,6 +9,7 @@ Sempre que uma subclasse substitui o método da classe pai, o método dos pais n
 Isto é útil para definir uma funcionalidade abstrata, e permitir a implementação de uma funcionalidade adicional em objetos similares sem a necessidade de reimplementar todas as funcionalidades compartilhadas.
 
 ```php
+<?php
 echo "<pre>";
 class Nado{
     public function dangerLevel($string){
@@ -31,11 +32,12 @@ $shark->dangerLevel('10');
 $shark->dangerName();     
 ```
 
->Propriedades e métodos substituído não pode ter uma menor visibilidade
+>Propriedades e métodos substituído não pode ter uma menor visibilidade. Ou seja, um metodo _public_ da classe **pai**  não pode ser sobrescrito por um metodo _private_ da classe **filho**
 
-Os métodos e propriedades herdados podem ser sobrescritos redeclarando-os com o mesmo nome definido na classe base. Entretanto, se o método foi definido na classe base como final esse método não poderá ser sobrescrito. É possível acessar os métodos sobrescritos ou propriedades estáticas referenciado-os com parent::.
+Os métodos e propriedades herdados podem ser sobrescritos redeclarando-os com o mesmo nome definido na classe base. Entretanto, se o método foi definido na classe base (pai) for como _final_ esse método não poderá ser sobrescrito. É possível acessar os métodos sobrescritos ou propriedades estáticas referenciado-os com parent::.
 
 ```php
+<?php
 echo "<pre>";
 class Sharnado{
     // Redefine o método pai
@@ -58,9 +60,10 @@ $extended->thisMovie();
 
 Aqui está alguns esclarecimentos sobre a herança PHP - há um monte de má informação na rede. PHP suporta herança Multi-level. Ele não suporta herança múltipla.
 
-Isso significa que você não pode ter uma classe estender 2 outras classes. No entanto, você pode ter uma classe estender outra, que se estende outra, e assim por diante.
+Isso significa que você não pode ter uma classe estendendo 2 outras classes. No entanto, você pode ter uma classe estendendo outra, que se estende devoutra, e assim por diante.
 
 ```php
+<?php
 //o codigo abaixo não apresenta erros
 class Sharknado {}
 class TheSecondOne extends Sharknado {}
@@ -73,9 +76,10 @@ $lastObj = new OhHellNo(); // still no problems
 
 ### final
 
-A palavra chave **final**, previne que classes filhas sobrescrevam um método que esteja prefixado sua definição com final. Se a própria classe estiver definida como final, ela não pode ser estendida.
+A palavra chave **final**, previne que classes filhas sobrescrevam um método que esteja prefixado sua definição. Se a própria classe estiver definida como final, ela não pode ser estendida.
 
 ```php
+<?php
 class Sharnado{
     final function thisMovie(){}
 }
@@ -88,6 +92,7 @@ $extended->thisMovie();
 ```
 
 ```php
+<?php
 echo '<pre>';
 final class Sharknado {}
 class TheSecondOne extends Sharknado {}
@@ -97,6 +102,7 @@ $someObj = new TheSecondOne();
 
 >Se você alguma vez se deparar com uma classe finalizada ou método que você desejar estender, escrever um **Decorator**.
 ```php
+<?php
 class Sharnado{
     final function thisMovie(){
 		return 'First';
@@ -136,6 +142,7 @@ Ao herdar uma classe abstrata, todos os métodos marcados como abstratos na decl
 Além disso, a assina dos métodos devem coincidir, isso é, as induções de tipo e o número de argumentos exigidos devem ser os mesmos.
 
 ```php
+<?php
 echo '<pre>';
 abstract class Shaknado{
     // Força a classe que estende ClasseAbstrata a definir esse método
@@ -177,6 +184,7 @@ Classes abstratas são usadas para criar uma generalização e após isso, espec
 Caso exista um metodo abstrato e ele nao for sobrescrito na classe filha, o PHP exibirá um FATAL ERROR.
 
 ```php
+<?php
 echo '<pre>';
 abstract class Shaknado{
     abstract protected function movieName();

@@ -1,10 +1,10 @@
 ## Introdução
 
-Classes definem as características abstrata de um objeto, incluindo suas propriedades e métodos.
+As Classes definem as características abstrata de um objeto, incluindo suas propriedades e métodos.
 
-Propriedades e métodos definidos por uma classe são chamados de "membros"
+As propriedades e métodos definidos por uma classe são chamados de "membros"
 
-Estrutura de uma classe php:
+Estrutura padrão de uma classe php:
 
 ```
 KEYWORD > CLASS NAME > { CONSTANTES, PROPERTIES & METHODS }
@@ -12,9 +12,9 @@ ONDE
 PROPERTIES = CLASS VARIABLES AND METHODS = CLASS FUNCTIONS
 ```
 
-Apartir do PHP 5, o modelo de objetos foi rescrito para permitir melhor performance e mais funcionalidades. Esta é uma grande modificação do PHP 4. PHP 5 tem um modelo de objetos completo.
+Apartir do PHP 5, o modelo de objetos foi rescrito para permitir melhor performance e mais funcionalidades. Esta é uma grande modificação do PHP 4. O PHP 5 tem um modelo de objetos completo.
 
-Entre outras novidades do PHP 5 estão a inclusão de visibility, classes e metodos abstract e final, additional metodos mágicos, interfaces, clonagem e dica de tipo.
+Entre outras novidades do PHP 5 estão a inclusão de visibility, classes e metodos _abstract_ e _final_, e a adição de metodos mágicos, interfaces, clonagem e declaração de tipo.
 
 >A visibility de uma propriedade ou método pode ser definida prefixando a declaração com as palavras-chave: public, protected or private. Itens declarados como públicos podem ser acessados de qualquer lugar. Membros declarados como protegidos só podem ser acessados na classe declarante e suas classes herdeiras. Membros declarados como privados só podem ser acessados na classe que define o membro privado.
 

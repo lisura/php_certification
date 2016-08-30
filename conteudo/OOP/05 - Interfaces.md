@@ -11,6 +11,7 @@ Para implementar uma interface, o operador **implements** é utilizado. Todos os
 >Interfaces podem ser estendidas como as classes, usando o operador extends.
 
 ```php
+<?php
 echo '<pre>';
 interface movie {
     public function watch($name, $number);
@@ -36,6 +37,7 @@ echo $sharks->watchAgain(2) . PHP_EOL;
 ```
 
 >```php
+<?php
 // E_ERROR :  type 1 -- ....
 class BadSharknado implements movie{
     private $vars;
@@ -52,6 +54,7 @@ class BadSharknado implements movie{
 É possível ter constantes em interfaces. Constantes de interfaces funcionam exatamente como constantes de classes, com exceção de não poderem ser sobrescritas por uma classe/interface herdeira.
 
 ```php
+<?php
 echo '<pre>';
 interface movie {
     const best = 'Sharknado franchise';
@@ -60,6 +63,7 @@ echo movie::best;
 ```
 
 >```php
+<?php
 // Não funciona
 class Movies implements movie {
     const best = 'Other movie';
@@ -71,28 +75,24 @@ Uma interface, juntamente com a declaração de tipo, fornecem uma boa maneira d
 Detalhe: Classes podem implementar mais de uma interface se assim for desejado, separando cada interface com uma vírgula.
 
 ```php
+<?php
 echo '<pre>';
 interface Sharknado1 {
     public function one();
 }
-
 interface Sharknado2 {
     public function theSecondOne();
 }
-
 interface Sharknado3 extends Sharknado1, Sharknado2 {
     public function ohHellNo();
 }
-
 class Trilogy implements Sharknado3{
     public function one(){
 		echo 'good' . PHP_EOL;
     }
-
     public function theSecondOne(){
 		echo 'better' . PHP_EOL;
     }
-
     public function ohHellNo(){
 		echo 'perfect' . PHP_EOL;
     }
@@ -103,7 +103,6 @@ $success->theSecondOne();
 $success->ohHellNo();
 ```
 
-
 ### Caso de uso
 
 Uma interface é fornecida para que você possa descrever um conjunto de funções e, em seguida, ocultar a implementação final dessas funções em uma classe de implementação. Isso permite que você altere a implementação dessas funções sem alterar como você usá-lo.
@@ -111,6 +110,7 @@ Uma interface é fornecida para que você possa descrever um conjunto de funçõ
 Por exemplo: Eu tenho um banco de dados. Eu quero escrever uma classe que acessa os dados no meu banco de dados. Eu defino uma interface como esta:
 
 ```php
+<?php
 interface Database {
   function listOrders();
   function addOrder();
@@ -121,6 +121,7 @@ interface Database {
 Então vamos dizer que você começa usando um banco de dados MySQL. Portanto, tem que escrever uma classe para acessar o banco de dados MySQL:
 
 ```php
+<?php
 class MySqlDatabase implements Database {
   function listOrders() {
     //Implementacao vai aqui
@@ -131,6 +132,7 @@ class MySqlDatabase implements Database {
 Podemos escrever esses métodos conforme necessário para obter as tabelas de banco de dados MySQL. Em seguida, você pode escrever seu controlador para usar a interface como tal:
 
 ```php
+<?php
 $database = new MySqlDatabase();
 foreach ($database->listOrders() as $order) {
 ....
@@ -139,6 +141,7 @@ foreach ($database->listOrders() as $order) {
 Então vamos dizer que decidiu migrar para um banco de dados Oracle. Poderíamos escrever outra classe para chegar ao banco de dados Oracle como tal:
 
 ```php
+<?php
 class OracleDatabase implements Database {
   function listOrders() {
     //Implementacao vai aqui
@@ -149,6 +152,7 @@ class OracleDatabase implements Database {
 Então, para mudar o nosso aplicativo para usar o banco de dados Oracle em vez do banco de dados MySQL, só temos que mudar uma linha de código:
 
 ```php
+<?php
 $database = new OracleDatabase();
 ```
 

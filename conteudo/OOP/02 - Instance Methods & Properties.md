@@ -3,6 +3,7 @@
 Propriedades e métodos de classe vivem em "namespaces" separados, de forma que é possível ter uma propriedade e método com mesmos nomes. A referência a propriedades e métodos tem a mesma notação, e a decisão de se uma propriedade será acessada ou uma chamada a um método feita, depende somente do contexto, ou seja, se está tentando acessar uma variável ou chamar um método.
 
 ```php
+<?php
 echo '<pre>';
 class Sharknado {
     public $movies = 'propriedade';
@@ -26,6 +27,7 @@ protected | só podem ser acessados na classe declarante e suas classes herdeira
 private | só podem ser acessados na classe que define o membro privado
 
 ```php
+<?php
 echo '<pre>';
 class Sharknado {
     public $publica = 'Public';
@@ -58,15 +60,18 @@ echo $obj2->publica . PHP_EOL; // Works
 $obj2->imprimePropriedades();
 ```
 
->Nota: O uso da declaração de variável com a palavra-chave var ainda é suportada por razões de compatibilidade (como um sinônimo para a palavra-chave public). Em versões do PHP anteriores ao 5.1.3, isso gerará um aviso do tipo E_STRICT.
+>Nota: O uso da declaração de variável com a palavra-chave _var_ ainda é suportada por razões de compatibilidade (como um sinônimo para a palavra-chave public). Em versões do PHP anteriores ao 5.1.3, isso gerará um aviso do tipo E_STRICT.
+
+Acessando um metodo privado dentro do contexto do objeto.
+
 ```php
+<?php
 echo '<pre>';
 class Sharknado{
     private $movie;
     public function __construct($name){
         $this->movie = $name;
     }
-
     private function privateSharknado(){
         echo 'Acessou o método privado.';
     }
@@ -91,6 +96,7 @@ Como resultado, os pais e os filhos podem ter diferentes implementações do "me
 Por quê? Porque métodos privados são visíveis apenas para a classe em que foram definidas, logo a classe filha não vê métodos privados do pai, mas pode reescreve-los. Em outras palavras - cada classe tem um conjunto particular de variáveis privadas que mais ninguém tem acesso.
 
 ```php
+<?php
 echo '<pre>';
 class Sharknado {
     public function shark() {
