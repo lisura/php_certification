@@ -1,3 +1,6 @@
+# TODO (30/08/2016)
+- [ ] Atualizar exemplo de herança multi-level para demonstrar a classe ohHellNo executando o método de Sharknado
+
 # TODO (23/08/2016)
 - [ ] colocar um alerta no create function para avisar que ele executa um eval
 - [ ] remover ECHO com parenteses
