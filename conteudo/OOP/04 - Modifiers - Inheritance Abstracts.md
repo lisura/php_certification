@@ -139,12 +139,12 @@ Classes definidas como abstratas não podem ser instanciadas, e qualquer classe 
 
 Ao herdar uma classe abstrata, todos os métodos marcados como abstratos na declaração da classe pai devem ser implementados na classe filha; adicionalmente, estes métodos devem ser definidos com a mesma (ou menos restrita) visibilidade. Por exemplo, se um método abstrato for definido como protected, a implementação da função deve ser definida como protected ou public, mas não private.
 
-Além disso, a assina dos métodos devem coincidir, isso é, as induções de tipo e o número de argumentos exigidos devem ser os mesmos.
+Além disso, a assinatura dos métodos devem coincidir, isso é, as instruções de tipo e o número de argumentos exigidos devem ser os mesmos.
 
 ```php
 <?php
 echo '<pre>';
-abstract class Shaknado{
+abstract class Sharknado{
     // Força a classe que estende ClasseAbstrata a definir esse método
     abstract protected function movieName();
     abstract protected function movieKills( $prefixo );
@@ -153,7 +153,7 @@ abstract class Shaknado{
         print $this->movieName();
     }
 }
-class First extends Shaknado{
+class First extends Sharknado{
     public function movieName() {
         return "Shaknado 1 | ";
     }
@@ -162,7 +162,7 @@ class First extends Shaknado{
         return "Total de {$prefixo}";
     }
 }
-class TheSecondOne extends Shaknado{
+class TheSecondOne extends Sharknado{
     public function movieName() {
         return "Shaknado 2 - The Second One | ";
     }
