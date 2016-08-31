@@ -65,13 +65,17 @@ Isso significa que você não pode ter uma classe estendendo 2 outras classes. N
 ```php
 <?php
 //o codigo abaixo não apresenta erros
-class Sharknado {}
+class Sharknado {
+	public function printMovie(){
+		echo 'This is SharkNado';
+	}
+}
 class TheSecondOne extends Sharknado {}
 class OhHellNo extends TheSecondOne {}
-
 $someObj = new Sharknado();  // no problems
 $someOtherObj = new TheSecondOne(); // no problems
 $lastObj = new OhHellNo(); // still no problems
+$lastObj->printMovie();
 ```
 
 ### final
