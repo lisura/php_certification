@@ -4,7 +4,7 @@
 
 O PHP 5 vem com uma API completa de reflexão que acrescenta a capacidade de realizar engenharia reversa em classes, interfaces, funções, métodos e extensões. Além disso, a API de reflexão oferece maneiras de recuperar comentários de documentação para as funções, classes e métodos.
 
-## Principais Classes usada para Reflections
+## Principais Classes usadas para Reflections
 
 * Reflector — Interface
 * **ReflectionClass** — ReflectionClass Trata de Classes
