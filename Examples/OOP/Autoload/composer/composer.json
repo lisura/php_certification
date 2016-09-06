@@ -1,0 +1,14 @@
+{
+    "name": "php/cetificacao",
+    "description": "Estudo de Autoload com composer",
+    "type": "project",
+    "license": "GPL",
+    "autoload": {
+        "psr-4": {
+            "PhpCertification\\": "src/PhpCertification"
+        }
+    },
+    "require": {
+        "php": ">=5.5.0"
+    }
+}

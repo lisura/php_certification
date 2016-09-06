@@ -1,0 +1,413 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"rel",
+				"reflFunction"
+			],
+			[
+				"ex",
+				"export"
+			],
+			[
+				"refl",
+				"ReflectionMethod"
+			],
+			[
+				"Refl",
+				"ReflectionObject"
+			],
+			[
+				"Refle",
+				"ReflectionParameter"
+			],
+			[
+				"ref",
+				"reflBancoClass"
+			],
+			[
+				"Reflection",
+				"ReflectionObject"
+			],
+			[
+				"Ba",
+				"Banco"
+			],
+			[
+				"Banco",
+				"BancoItau"
+			],
+			[
+				"co",
+				"correntista"
+			],
+			[
+				"imple",
+				"class_implements"
+			],
+			[
+				"conta",
+				"contaCorrente"
+			],
+			[
+				"Conta",
+				"contaCorrente"
+			],
+			[
+				"con",
+				"contaCorrente"
+			],
+			[
+				"We",
+				"webRootDir"
+			],
+			[
+				"ge",
+				"getcwd"
+			],
+			[
+				"on",
+				"onBtnClick"
+			],
+			[
+				"bu",
+				"buffer_nfile"
+			],
+			[
+				"conti",
+				"apd_continue"
+			],
+			[
+				"a",
+				"array_parenteses"
+			],
+			[
+				"ut",
+				"utf8_pos"
+			],
+			[
+				"u",
+				"utf8_len"
+			],
+			[
+				"b",
+				"buffer_file"
+			],
+			[
+				"buffer_",
+				"buffer_file"
+			],
+			[
+				"li",
+				"linhas"
+			],
+			[
+				"utf",
+				"utf8_len"
+			],
+			[
+				"strre",
+				"str_replace"
+			],
+			[
+				"tm",
+				"tmp_file_path"
+			],
+			[
+				"n",
+				"nlinha"
+			],
+			[
+				"po",
+				"pos_utf8"
+			],
+			[
+				"strp",
+				"strpos"
+			],
+			[
+				"DB_",
+				"DB_SERVER_PASSWORD"
+			],
+			[
+				"DB",
+				"DB_SERVER_USERNAME"
+			],
+			[
+				"s",
+				"server"
+			],
+			[
+				"p",
+				"password"
+			],
+			[
+				"doc",
+				"document_root"
+			],
+			[
+				"set_n",
+				"set_include_path"
+			],
+			[
+				"print",
+				"print_r"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/projects/pessoal/php_certification/Examples/OOP/Reflection/src/PhpCertification/Banco/BancoInterface.php",
+		"/home/projects/pessoal/php_certification/Examples/OOP/Reflection/src/PhpCertification/Banco/BancoBase.php",
+		"/home/projects/pessoal/php_certification/Examples/OOP/Reflection/src/PhpCertification/Banco/BancoItau.php",
+		"/home/projects/pessoal/php_certification/Examples/OOP/Reflection/public/index.php",
+		"/home/projects/pessoal/php_certification/Examples/OOP/Reflection/src/PhpCertification/Pessoa/Base.php",
+		"/home/projects/pessoal/php_certification/Examples/OOP/Reflection/src/PhpCertification/Pessoa/ContaCorrente.php",
+		"/home/projects/pessoal/php_certification/Examples/OOP/Reflection/src/PhpCertification/Pessoa/ContaInterface.php",
+		"/home/projects/pessoal/php_certification/Examples/ARRAY/array_multi_dimencional.php",
+		"/home/projects/pessoal/php_certification/Examples/ARRAY/array_iteracoes.php",
+		"/home/projects/pessoal/php_certification/php-certification-training-master/Examples/array-next.php",
+		"/home/projects/pessoal/php_certification/php-certification-training-master/Examples/fopen.php",
+		"/home/projects/pessoal/php_certification/php-certification-training-master/Examples/array-plus.php",
+		"/home/projects/pessoal/php_certification/php-certification-training-master/Benchmark/Arrays/array_map.php",
+		"/home/projects/pessoal/slim_benchmark/slim3_0_0/index.php",
+		"/home/projects/pessoal/slim_benchmark/slim3_1_0/index.php",
+		"/home/projects/pessoal/slim_benchmark/slim3_2_0/index.php",
+		"/home/projects/pessoal/slim_benchmark/slim3_2_2/index.php",
+		"/home/projects/pessoal/slim_benchmark/slim3_3_0/index.php",
+		"/home/projects/pessoal/slim_benchmark/slim3_4_2/index.php",
+		"/home/projects/pessoal/slim2_6/index.php",
+		"/home/projects/pessoal/slim3_4/index.php",
+		"/home/projects/pessoal/php_certification/Questoes/PHP_BASICO/Operadores/operadores_precedencia.php",
+		"/home/projects/pessoal/php_certification/Questoes/PHP_BASICO/Variaveis/variaveis_escopo.php",
+		"/home/projects/pessoal/php_certification/Questoes/PHP_BASICO/Variaveis/variaveis_escopo_include.php",
+		"/home/projects/pessoal/php_certification/Questoes/PHP_BASICO/Operadores/operador_de_execucao.php",
+		"/home/projects/pessoal/php_certification/Questoes/PHP_BASICO/Operadores/operadores_de_controle_de_erro.php",
+		"/home/projects/pessoal/php_certification/Questoes/PHP_BASICO/Operadores/operadores_de_incremento_decremento.php",
+		"/home/fcorrea/xmlaaa.php",
+		"/home/projects/pessoal/php_certification/Questoes/DATA_FORMAT/simplexml/simplexml_ex4.php",
+		"/home/projects/pessoal/php_certification/Questoes/DATA_FORMAT/simplexml/simplexml_ex6.php",
+		"/home/projects/pessoal/php_certification/Questoes/DATA_FORMAT/simplexml/simplexml_ex1.php",
+		"/home/projects/pessoal/php_certification/Questoes/PHP_BASICO/Operadores/operadores_de_arrays.php",
+		"/home/projects/pessoal/php_certification/Questoes/PHP_BASICO/Syntax/syntax_false.php",
+		"/home/projects/pessoal/php_certification/Questoes/PHP_BASICO/Syntax/syntax_true.php",
+		"/home/fcorrea/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings",
+		"/home/projects/pessoal/php_certification/Questoes/PHP_BASICO/Operadores/operadores_atribuicao.php",
+		"/home/projects/pessoal/php_certification/Questoes/PHP_BASICO/Operadores/operadores_bit_a_bit_1.php",
+		"/home/projects/pessoal/php_certification/Questoes/PHP_BASICO/Operadores/operadores_aritimeticos.php",
+		"/home/projects/pessoal/php_certification/Questoes/PHP_BASICO/Syntax/README.md",
+		"/home/projects/pessoal/php_certification/Questoes/PHP_BASICO/Operadores/operadores_bit_a_bit_2.php",
+		"/home/projects/pessoal/php_certification/Questoes/PHP_BASICO/syntax_true.php",
+		"/home/projects/pessoal/php_certification/php-certification-training-master/Questions/0004.php",
+		"/home/projects/pessoal/apagar/bootstrap.php",
+		"/home/projects/pessoal/apagar/index.php",
+		"/home/projects/pessoal/apagar/config/cli-config.php",
+		"/home/projects/pessoal/apagar/config/bootstrap.php",
+		"/home/projects/pessoal/hwcordova/www/index.html",
+		"/home/projects/pessoal/hwcordova/www/js/index.js",
+		"/home/projects/profissional/migra_iso/caso_de_teste_utf8_encode_decode.php",
+		"/home/projects/profissional/migra_iso/remove_utf8_encode_decode.php",
+		"/home/fcorrea/Temp/Vale500/error_log",
+		"/home/fcorrea/Temp/Vale500/password_funcs.php",
+		"/home/fcorrea/Temp/Vale500/index.php",
+		"/home/fcorrea/Temp/configure.php",
+		"/home/fcorrea/Temp/Vale500/compatibility.php",
+		"/home/fcorrea/Temp/application_top.php",
+		"/home/fcorrea/Temp/error_log",
+		"/home/projects/pessoal/Vale500/backend_b/common/functions.php",
+		"/home/projects/pessoal/Bomba/SocketBomba/SocketBomba/socketbomba/socketCli.php",
+		"/home/projects/pessoal/phpttools/src/PhpTTools/Console/Console.php",
+		"/home/projects/pessoal/phpttools/src/PhpTTools/Console/Bootstrap.php",
+		"/home/projects/pessoal/phpttools/bin/phpttools",
+		"/mnt/FernandoHCorrea/Backup/install_steps.sh"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"\n\n//",
+			"//print_r",
+			"reflProperty",
+			"ReflectionProperty",
+			"newInstance",
+			"##",
+			" — ",
+			"^\\#\\#\\#.*%",
+			" — ",
+			"nnnnn",
+			"            \n",
+			"rand",
+			"admin",
+			"http://itourthecaribbeancom.ipower.com",
+			"redirec",
+			"\n	",
+			"/hermes/bosoraweb056/b650/ipw.itourthecaribbeancom/public_html",
+			"/hermes/bosoraweb056/b650/ipw.itourthecaribbeancom/public_html/backend/includes/functions/",
+			"print_r(DIR_WS_FUNCTIONS); die;"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"```\n\n//",
+			"\n```php \n<?php \nprint_r",
+			"```php \n<?php \nprint_r",
+			"reflMethod",
+			"ReflectionMethod",
+			"\\n##",
+			"\\n\\n",
+			"\\n\\n ",
+			" ### ",
+			"|",
+			"http://itourthecaribbean.net",
+			"/home5/itourthe/public_html"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 319.0,
+	"status_bar_visible": true
+}
