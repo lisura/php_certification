@@ -6,19 +6,19 @@ O PHP 5 vem com uma API completa de reflexão que acrescenta a capacidade de rea
 
 ## Principais Classes usadas para Reflections
 
-* **Reflector** — Interface
+* Reflector — Interface
 * **ReflectionClass** — ReflectionClass Trata de Classes
 * **ReflectionObject** — ReflectionObject Trata de Objetos
 * **ReflectionProperty** — ReflectionProperty Trata de Propriedade de uma classe
 * **ReflectionMethod** — ReflectionMethod Trata de Métodos
 * **ReflectionParameter** — ReflectionParameter Trata de Parâmetros de Métodos
-* **ReflectionType** — ReflectionType Trata de tipos de Retorno
-* **ReflectionZendExtension** — ReflectionZendExtension Trata de Extensões Zend
-* **ReflectionExtension** — ReflectionExtension Trata de Extensões
-* **ReflectionFunctionAbstract** — ReflectionFunctionAbstract classes Abstratas
+* ReflectionType — ReflectionType Trata de tipos de Retorno
+* ReflectionZendExtension — ReflectionZendExtension Trata de Extensões Zend
+* ReflectionExtension — ReflectionExtension Trata de Extensões
+* ReflectionFunctionAbstract — ReflectionFunctionAbstract classes Abstratas
 * **ReflectionFunction** — ReflectionFunction Trata de Funções
-* **ReflectionGenerator** — ReflectionGenerator Trata de Geradores???
-* **ReflectionException** — ReflectionException Trata de Exceptions
+* ReflectionGenerator — ReflectionGenerator Trata de Geradores???
+* ReflectionException — ReflectionException Trata de Exceptions
 
 > Exemplo :  [LINK](https://github.com/lisura/php_certification/tree/master/Examples/OOP/Reflection/)
 
