@@ -19,31 +19,31 @@ function toInteiro($param = null){
 }
 
 
-try{
+// try{
 
-	$pf = new Pessoa\Fisica();
-	$pf->setCPF('150.399.127-06')
-		->setAg('0393')
-		->setCc('49142-8');
-
-
-	$pj = new Pessoa\Juridica();
-	$pj->setCNPJ('46.860.716/0001-60')
-		->setAg('0393')
-		->setCc('49142-9');
+// 	$pf = new Pessoa\Fisica();
+// 	$pf->setCPF('150.399.127-06')
+// 		->setAg('0393')
+// 		->setCc('49142-8');
 
 
-	$bancoItau = new Banco\BancoItau();
-	$bancoItau->setCorrentista($pf);
+// 	$pj = new Pessoa\Juridica();
+// 	$pj->setCNPJ('46.860.716/0001-60')
+// 		->setAg('0393')
+// 		->setCc('49142-9');
 
-	print_r([
-		$bancoItau->obterSaldo(),
-		$pf
-	]);
 
-}catch(\Exception $e){
-	print_r($e);
-}
+// 	$bancoItau = new Banco\BancoItau();
+// 	$bancoItau->setCorrentista($pf);
+
+// 	print_r([
+// 		$bancoItau->obterSaldo(),
+// 		$pf
+// 	]);
+
+// }catch(\Exception $e){
+// 	print_r($e);
+// }
 
 
 /*************************************
@@ -51,7 +51,7 @@ try{
  *************************************/
 
 
-/*/
+
 
 //=================================
 // ReflectionClass
@@ -67,7 +67,7 @@ $reflBancoClass = new \ReflectionClass('PhpCertification\Banco\BancoItau');
 
 //
 // ReflectionClass::getDocComment()
-// Obter Estrutura total da Classe em String
+// Obter Documentação total da Classe em String
 //print_r($reflBancoClass->getDocComment());
 
 
@@ -151,7 +151,7 @@ $reflBancoObject = new \ReflectionObject($object);
 
 //
 // Com ReflectionObject é possível fazer tudo que um ReflectionClass faz,
-// pois ele herda todos os Métodos. E trada e um Objeto Instânciado.
+// pois ele herda todos os Métodos. E trada um Objeto Instânciado.
 //print_r($reflBancoObject);
 
 //================================/
@@ -211,7 +211,7 @@ foreach($properties as $reflProperty ) :
 //print_r($reflProperty->isStatic());
 
 
-echo PHP_EOL;
+//echo PHP_EOL;
 endforeach;
 
 //================================/
@@ -274,7 +274,7 @@ foreach($methods as $reflMethod ) :
 //print_r($reflMethod->isStatic());
 
 
-echo PHP_EOL;
+//echo PHP_EOL;
 endforeach;
 
 //================================/
@@ -287,7 +287,6 @@ endforeach;
 // ReflectionParameter
 //=================================
 $parameters = $reflMethod->getParameters();
-
 
 
 foreach($parameters as $reflParameter ) :
@@ -311,7 +310,7 @@ foreach($parameters as $reflParameter ) :
 //print_r($reflParameter->isOptional());
 
 
-echo PHP_EOL;
+// echo PHP_EOL;
 endforeach;
 
 //================================/

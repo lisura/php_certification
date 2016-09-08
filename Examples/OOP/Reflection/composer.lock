@@ -9,6 +9,12 @@
 	[
 	],
 	"content-hash": "f00f4adc6e8296f07a417e1966073d3d",
+	"folders":
+	[
+		{
+			"path": "/home/projects/pessoal/php_certification/Examples/OOP"
+		}
+	],
 	"hash": "aad62ff04b5d364048daeade40e3b4a7",
 	"minimum-stability": "stable",
 	"packages":

@@ -80,7 +80,7 @@ final class BancoItau extends BancoBase implements BancoInterface
 	 * @param string $cc Número da Conta Corrente
 	 * @return float Saldo de Conta
 	 */
-	private function getSaldoCliente($ag = null, $cc = null)
+	private function getSaldoCliente($ag, $cc = null)
 	{
 		$key = $ag . $cc;
 		$db = $this->getDadosClientes();

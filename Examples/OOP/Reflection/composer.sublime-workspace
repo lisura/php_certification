@@ -160,10 +160,18 @@
 	"buffers":
 	[
 		{
-			"contents": "",
+			"file": "public/index.php",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 6808,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/PhpCertification/Banco/BancoItau.php",
+			"settings":
+			{
+				"buffer_size": 1941,
 				"line_ending": "Unix"
 			}
 		}
@@ -192,9 +200,18 @@
 	},
 	"file_history":
 	[
-		"/home/projects/pessoal/php_certification/Examples/OOP/Reflection/src/PhpCertification/Banco/BancoInterface.php",
-		"/home/projects/pessoal/php_certification/Examples/OOP/Reflection/src/PhpCertification/Banco/BancoBase.php",
 		"/home/projects/pessoal/php_certification/Examples/OOP/Reflection/src/PhpCertification/Banco/BancoItau.php",
+		"/home/projects/pessoal/php_certification/Examples/OOP/Reflection/src/PhpCertification/Banco/BancoBase.php",
+		"/home/projects/pessoal/php_certification/Examples/OOP/Reflection/src/PhpCertification/Banco/BancoInterface.php",
+		"/home/projects/pessoal/php_certification/Examples/OOP/Reflection/composer.json",
+		"/home/projects/pessoal/php_certification/Examples/OOP/Autoload/composer/composer.json",
+		"/home/projects/pessoal/php_certification/Examples/OOP/Autoload/composer/src/PhpCertification/Pessoa/Fisica.php",
+		"/home/projects/pessoal/php_certification/Examples/OOP/Autoload/composer/src/PhpCertification/Pessoa/Juridica.php",
+		"/home/projects/pessoal/php_certification/Examples/OOP/Autoload/composer/src/PhpCertification/Pessoa/Base.php",
+		"/home/projects/pessoal/php_certification/Examples/OOP/Autoload/composer/public/index.php",
+		"/home/projects/pessoal/php_certification/Examples/OOP/Autoload/composer/vendor/composer/ClassLoader.php",
+		"/home/projects/pessoal/php_certification/Examples/OOP/Autoload/spl_autoload/index.php",
+		"/home/projects/pessoal/php_certification/Examples/OOP/Autoload/__autoload/index.php",
 		"/home/projects/pessoal/php_certification/Examples/OOP/Reflection/public/index.php",
 		"/home/projects/pessoal/php_certification/Examples/OOP/Reflection/src/PhpCertification/Pessoa/Base.php",
 		"/home/projects/pessoal/php_certification/Examples/OOP/Reflection/src/PhpCertification/Pessoa/ContaCorrente.php",
@@ -325,26 +342,54 @@
 			[
 				{
 					"buffer": 0,
+					"file": "public/index.php",
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 6808,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								6716,
+								6716
 							]
 						],
 						"settings":
 						{
-							"auto_name": "",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/PhpCertification/Banco/BancoItau.php",
+					"settings":
+					{
+						"buffer_size": 1941,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1805,
+								1805
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 900.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
