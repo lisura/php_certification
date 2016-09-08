@@ -24,7 +24,7 @@ O PHP 5 vem com uma API completa de reflexão que acrescenta a capacidade de rea
 
 
 
-## Descobrindo Coisa com Reflection
+## Descobrindo Coisas com Reflection
 
 
 ### ReflectionClass
