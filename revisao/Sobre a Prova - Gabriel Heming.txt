@@ -1,0 +1,37 @@
+Fala galera!
+ 
+Realizei a prova agora a tarde, e recebi o tão aguardado "congratulations". 
+O que eu posso passar da prova que eu realizei:
+ 
+- Muitas questões do tipo "é correto", "não é correto", "assinale as 
+verdadeiras", "assinale as falsas";
+- Umas 5 ou 6 foram de escrever, só uma delas era, do meu ponto de vista, 
+difícil, pois era sobre cookies (não costumo utilizar muito);
+- Teve sobre todas as áreas de OO, desde traits, interfaces, namespaces, 
+SPL, cast type, type hint, magic methods e até uma que era um método 
+__construct (o método mágico funcional) e um método com o mesmo nome da 
+classe;
+- Apenas uma sobre hexadecimal/octal (era na mesma);
+- Umas quatro sobre WS/Soap;
+- Algumas sobre streams, segurança, web features (acho que essas somavam 
+umas 10). Teve uma bem similar a do user_agent que está aqui no grupo, e 
+digo que tive a mesma dúvida que ainda tenho se for olhar ela aqui;
+- Apenas uma sobre SimpleXML, e não era nem sobre as classes, mas sobre 
+"questões" internas do parser. O que eu não acho "legal/obrigatório", 
+obrigar o dev. a saber o funcionamento interno de uma classe, lá se foi o 
+conceito global de encapsulamento. Mas enfim, zend pediu;
+- Poucas eram "pega ratão" (acho que apenas uma), mas algumas apresentavam 
+a função e não a utilizavam;
+- Houve também sobre precedência de operadores;
+ 
+Do meu ponto de vista, umas 35 foram fáceis, 15 eram fáceis se for pela 
+"técnica de exclusão", outras 15 eram aquela palavra que distinguia o certo 
+e errado (is.. is not.. can.. can't), 7 difíceis e 3 eu realmente não sabia 
+(sobre headers e cookies, bem específica).
+ 
+Acho que levei menos de 40 minutos realizando a prova, contando 2 minutos 
+de revisão. Apenas três tive de usar o rascunho e três foram no chutão (uma 
+de escrever, hahahaha).
+Valeu e boa sorte a todos!
+ 
+Gabriel Heming
