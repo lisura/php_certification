@@ -272,7 +272,7 @@ MethodTest::runTest('Param2');
 
 # \_\_debugInfo()
 
-Este método é chamado pela função var_dump() ao despejar um objeto para obter as propriedades que devem ser exibidas. Se este método não for definido em um objeto, todos as propriedades públicas, protegidas e provadas serão exibidas.
+Este método é chamado pela função var_dump() ao despejar um objeto para obter as propriedades que devem ser exibidas. Se este método não for definido em um objeto, todos as propriedades públicas, protegidas e privadas serão exibidas.
 
 > **NOTA:** Este recurso foi adicionado no 5.6.0.
 
