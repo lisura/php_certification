@@ -1,3 +1,6 @@
+# TODO (08/09/2016)
+- [ ] Remover referência ao __debugInfo na aula 13 de OOP
+
 # TODO (30/08/2016)
 - [x] Atualizar exemplo de herança multi-level para demonstrar a classe ohHellNo executando o método de Sharknado
 
