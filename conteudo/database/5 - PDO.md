@@ -78,7 +78,7 @@ try {
     die();
 }
 ````
->**Nota:** para definir a conexão como persistente, deve-se setar ** PDO::ATTR_PERSISTENT ** no array de opções do contrutor do PDO e nunca utilizando o método **PDO::setAttribute()**.
+>**Nota:** para definir a conexão como persistente, deve-se setar **PDO::ATTR_PERSISTENT** no array de opções do contrutor do PDO e nunca utilizando o método **PDO::setAttribute()**.
 
 >**Aviso:** caso esteja utilizando um drive **PDO ODBC** e sua biblioteca suporta *ODBC Connection Pooling*, não é recomendado que se utilize conexão permanente do PDO, deixando que a biblioteca cuide do cache de conexão.
 
