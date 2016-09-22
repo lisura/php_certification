@@ -154,15 +154,15 @@ if($result){
 
 O PDOStatement possui outros métodos para lidar com os dados de uma consulta.
 
-* **fetch** - Retorna a próxima linha do resultado. Se náo encontrar, retorna false.  
+* **fetch** - Retorna a próxima linha do resultado. Se não encontrar, retorna false.  
 Exemplo:
 
 ````php
 <?php
-$result = $pdo->query('SELECT nome, lema FROM casa')->fetch();
-while($result){
-      echo $result['nome'] . "\t";
-      echo $result['lema'] . PHP_EOL;
+$result = $pdo->query('SELECT nome, lema FROM casa');
+while($row = $result->fetch()){
+      echo $row['nome'] . "\t";
+      echo $row['lema'] . PHP_EOL;
 }
 ````
 * **fetchColumn** - Retorna o valor de uma coluna da próxima linha do resultado. Se não encontrar, retorna false.  
