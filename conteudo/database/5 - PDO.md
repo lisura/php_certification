@@ -271,7 +271,7 @@ Exemplo:
 ````php
 <?php
 class Casa{};
-$r = $db->query->('SELECT * from casa')->fetchAll(PDO::FETCH_CLASS, 'Casa');
+$r = $db->query('SELECT * from casa')->fetchAll(PDO::FETCH_CLASS, 'Casa');
 var_dump($r);
 ````
 Não é recomendado utilizar o método fetch para este modo, já que com ele não é possível passar parâmetros para o construtor e por padrão, caso a classe indicada não exista, irá retornar um array vazio, ao invés de retornar um erro. Ao invés disso recomendase utilizar o método fetchObject.  
@@ -279,7 +279,7 @@ Exemplo:
 ````php
 <?php
 class Casa{};
-$r = $db->query->('SELECT * from casa LIMIT 1')->fetchObject('Casa');
+$r = $db->query('SELECT * from casa LIMIT 1')->fetchObject('Casa');
 var_dump($r);
 ````
 
