@@ -10,13 +10,15 @@ Seguem algumas funções para impedir esse tipo de ataque.
 
 *session_regenerate_id*
 
-Esta função, ao ser chamada após session_start(), gera um novo ID de sessão, renovando a cada acesso.
+Esta função, ao ser chamada após session_start(), gera um novo ID de sessão, renovando a cada acesso. 
 
 *session.cache_expire e session_cache_expire*
 
+A função anterior ajuda bastante, mas somente ela não é o suficiente pois o invasor pode aproveitar a sessão atual do usuário.
+
 No php.ini, é possível definir qual o tempo máximo de vida de uma sessão através do parâmetro session.cache_expire. A função session_cache_expire() pode ser usada para obter o valor definido no php.ini, ou também para definir no script o tempo de vida da sessão. Essa função deve ser acionada antes de session_start, pois essa ao ser executada irá definir o valor padrão definido no php.ini.
 
-Aqui cabe pensar se vale a pena manter uma sessão longa. Isso daria uma nova usabilidade ao sistema, evitando frustrações maiores com logins expirados. No entanto, sessões longas estão mais expostas a serem aproveitadas por invasores.
+Aqui cabe refletir se vale a pena manter uma sessão longa. Isso daria uma boa usabilidade ao sistema, evitando frustrações maiores com logins expirados por parte do usuário. No entanto, sessões longas estão mais expostas para ataques.
 
 ```php
 //Tempo atual da sessão vinda do arquivo php.ini
@@ -36,7 +38,7 @@ print_r($_SESSION, 1);
 
 *session.use_trans_sid*
 
-Impede que o usuário gerencie sessões por URL. Vem desabilitado por padrão.
+Impede que o usuário gerencie sessões por URL. Vem desabilitado por padrão, e habilitar a mesma deve ser feita com muita cautela, pois a URL irá retornar o ID da sessão (PHPSESSID), o qual pode ser aproveitado por outros usuários.
 
 *Verificação de sessão por IP*
 
