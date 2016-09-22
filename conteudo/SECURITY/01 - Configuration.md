@@ -2,15 +2,15 @@
 
 Veremos como alterar o arquivo php.ini para manter o PHP corretamente configurado.
 
-*Linux*
+**Linux**
 
 Caminho do arquivo: /etc/php5/apache2/
 
-*Windows com Wamp*
+**Windows com Wamp**
 
 C:/wamp/bin/apache/Apache
 
-*Mac OS X*
+**Mac OS X**
 
 sudo cp /etc/php.ini.default /etc/php.ini
 
