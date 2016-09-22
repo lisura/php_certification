@@ -1,3 +1,8 @@
+# TODO (22/09/2016)
+- [ ] Ver pq o ....fetchAll(PDO::FETCH_CLASS, 'Casa2'); não funciona.Deveria voltar array vazio
+- [ ] 
+- 
+
 # TODO (08/09/2016)
 - [ ] Remover referência ao __debugInfo na aula 13 de OOP
 
