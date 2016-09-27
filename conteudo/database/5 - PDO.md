@@ -335,7 +335,7 @@ try {
   //query a ser executada
 ````
 
->**Nota**: O PDO só verifica a possibilidade se utilizar transações no nível do drive. Se ocorrer algum problena no banco de dados que imposibilide o uso, o PDO::beginTransaction() ainda retorná **TRUE**, desde que o banco não rejeite o comando para iniciar uma transaction.  
+>**Nota**: O PDO só verifica a possibilidade se utilizar transações no nível do drive. Se ocorrer algum problema no banco de dados que imposibilide o uso, o PDO::beginTransaction() ainda retorná **TRUE**, desde que o banco não rejeite o comando para iniciar uma transaction.  
 Um exemplo disso seria ao iniciar um transaction em uma tabela MyISAM em um banco MySQL.
 
 Para finalizar uma transação, existem os métodos *PDO::commit()* e *PDO::rollBack()*, que devem ser utilizados dependendo do resultado das queries executadas. Isso porque *PDO::commit()* efetua o 'commit' das mesmas, enquanto *PDO::rollBack()* desfaz as mesmas.  
@@ -361,6 +361,7 @@ Por segurança, se a conexão for finalizada antes da transação, o PDO irá ex
 >**Aviso**: Se a transação não for iniciada com o método, mas manualmente com uma query, näo há como o PDO saber disso e em caso de falha, não irá executar o roll back por padrão.
 
 [Exemplo usando PDO com transaction)]()
+
 
 No exemplo, foi utilizado o método **PDO::exec**, que retorna o número de linhas afetadas pela query. Esse método não retorna os dados de uma consulta SELECT.
 
@@ -396,7 +397,7 @@ $ps->execute(array('Targaryen', 'Fogo e Sangue');
 $targaryen = $ps->fetchAll();  
 ````
 
->**Nota**: Parâmetros representam um dado literal inteiro. Pedaços de um dado literal, chave, identificador, ou qualquer porte de um query não podem ser utilizados como parâmetro. Por exemplo, não é possível utilizar mais de um valor para um único parâmetro em uma cláusula **IN()** do SQL.
+>**Nota**: Parâmetros representam um dado literal inteiro. Pedaços de um dado literal, chave, identificador, ou qualquer parte de um query não podem ser utilizados como parâmetro. Por exemplo, não é possível utilizar mais de um valor para um único parâmetro em uma cláusula **IN()** do SQL.
 
 O método *PDO::prepare* aceita um array como segundo parâmetro opcional com opções do drive (que podem variar de drive para drive).  
 Uma opção comum aos drives é a **PDO::ATTR_CURSOR**, que determina o tipo do cursor usado na declaração. Um cursor de banco de dados é uma estrutura de controle que permite percorrer os registros, equivalente a um iterador na programação. O valor padrão de **PDO::ATTR_CURSOR** é **PDO::CURSOR_FWDONLY**, o que signifca que a cada chamada de *PDOStatement::fetch()*, por exemplo, será retornado a próxima linha do resultado. Se alterado para **PDO::CURSOR_SCROLL** (quando suportado pelo drive), podemos controlar a direção em que o cursor se move.  
