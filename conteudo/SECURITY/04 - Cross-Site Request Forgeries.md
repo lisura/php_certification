@@ -4,11 +4,7 @@ Cross-Site Request Forgeries, ou CSRF, é uma forma de ataque onde o usuário é
 
 No nosso caso precisamos estar atentos com os usuários tentando conseguir acesso ao nosso sistema através desse ataque. O exemplo abaixo demonstra como um sistema de login pode estar vulneravel.
 
-[Exemplo para Ataque](https://github.com/lisura/php_certification/blob/master/Questoes/SECURITY/index.php)
-
-[Formulário Login](https://github.com/lisura/php_certification/blob/master/Questoes/SECURITY/formulario.php)
-
-[Site a ser acessado](https://github.com/lisura/php_certification/blob/master/Questoes/SECURITY/usuario.php)
+[Exemplo - sistema Memeland](https://github.com/lisura/php_certification/tree/master/Questoes/SECURITY/memeland)
 
 Para prevenir no caso acima, basta substituir o $_REQUEST por $_POST, evitando assim o login por $_GET.
 
