@@ -16,7 +16,7 @@ Esta função, ao ser chamada após session_start(), gera um novo ID de sessão,
 
 A função anterior ajuda bastante, mas somente ela não é o suficiente pois o invasor pode aproveitar a sessão atual do usuário.
 
-No php.ini, é possível definir qual o tempo máximo de vida de uma sessão através do parâmetro session.cache_expire. A função session_cache_expire() pode ser usada para obter o valor definido no php.ini, ou também para definir no script o tempo de vida da sessão. Essa função deve ser acionada antes de session_start, pois essa ao ser executada irá definir o valor padrão definido no php.ini.
+No php.ini, é possível definir qual o tempo máximo de vida de uma sessão através do parâmetro session.cache_expire. A função session_cache_expire() pode ser usada para obter o valor definido no php.ini, ou também para definir no script o tempo de vida da sessão (em minutos). Essa função deve ser acionada antes de session_start, pois essa ao ser executada irá definir o valor padrão definido no php.ini.
 
 Aqui cabe refletir se vale a pena manter uma sessão longa. Isso daria uma boa usabilidade ao sistema, evitando frustrações maiores com logins expirados por parte do usuário. No entanto, sessões longas estão mais expostas para ataques.
 
@@ -25,7 +25,7 @@ Aqui cabe refletir se vale a pena manter uma sessão longa. Isso daria uma boa u
 $tempoSessaoAtual = session_cache_expire ();
 print "Tempo de sessão Atual: $tempoSessaoAtual";
 
-//Modificação do tempo de sessão
+//Modificação do tempo de sessão para 10 minutos
 session_cache_expire(10);
 $tempoSessaoModificado = session_cache_expire();
 print "Tempo de Sessão modificada: $tempoSessaoModificado";
