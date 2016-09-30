@@ -1,6 +1,6 @@
 # TODO (29/09/2016)
-- [ ] escreveer que session_cahe_expire é em minutos.
-- [ ] Arrumar exemplo meia boca (usar outro de outro site)
+- [x] escreveer que session_cahe_expire é em minutos.
+- [x] Arrumar exemplo meia boca (usar outro de outro site)
 
 # TODO (27/09/2016)
 - [ ] deixar de fazer aula meia boca
