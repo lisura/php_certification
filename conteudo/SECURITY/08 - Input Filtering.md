@@ -24,6 +24,10 @@ Exemplo de um codigo com duplo encoding;
 
 Filtrar os dados de seus usuários é de extrema importância e que, ao chegar no sistema, eles estejam prontos para utilização.
 
+Filter, é uma extensão que serve para validar e filtrar dados vindos de alguma fonte insegura, como uma entrada do usuário. Abaixo segue as principais funções que fazem uso dos filtros.
+
+Alem destas funções de filtros, é recomendado usar funcções para tratar entradas em banco de dados como por exemplo **mysql_escape_string**, **addslashes** etc.
+
 | função | descrição |
 | --- | --- |
 | filter_var() | Filtra a variável com um especificado filtro |
@@ -58,46 +62,35 @@ var_dump(filter_var('backtothefuture.com', FILTER_VALIDATE_URL, FILTER_FLAG_SCHE
 
 Esta função é útil para receber muitos valores sem repetidamente chamar a função
 
->mixed filter_var_array ( array $data [, mixed $definition ] )
+  >mixed filter_var_array ( array $data [, mixed $definition ] )
 
 Return: Um array contendo valores das requisitadas variáveis em caso de sucesso, ou FALSE em falha. Um valor da array será FALSE se o filtro falhar, ou NULL se a variável não é definida.
 
-
 ```php
-//corrigir este exemplo 
-
+<?php
+echo "<pre>";
 error_reporting(E_ALL | E_STRICT);
 $data = array(
-    'product_id'    => 'libgd<script>',
-    'component'     => '10',
-    'versions'      => '2.0.33',
+    'product_id'    => 'backtothefuture<script>',
+    'component'     => '3',
+    'versions'      => '1.2.3',
     'testscalar'    => array('2', '23', '10', '12'),
     'testarray'     => '2',
 );
-
 $args = array(
     'product_id'   => FILTER_SANITIZE_ENCODED,
     'component'    => array('filter'    => FILTER_VALIDATE_INT,
                             'flags'     => FILTER_FORCE_ARRAY,
-                            'options'   => array('min_range' => 1, 'max_range' => 10)
-                           ),
+                            'options'   => array('min_range' => 1, 'max_range' => 10)),
     'versions'     => FILTER_SANITIZE_ENCODED,
     'doesnotexist' => FILTER_VALIDATE_INT,
-    'testscalar'   => array(
-                            'filter' => FILTER_VALIDATE_INT,
-                            'flags'  => FILTER_REQUIRE_SCALAR,
-                           ),
-    'testarray'    => array(
-                            'filter' => FILTER_VALIDATE_INT,
-                            'flags'  => FILTER_FORCE_ARRAY,
-                           )
-
+    'testscalar'   => array('filter' => FILTER_VALIDATE_INT,
+                            'flags'  => FILTER_REQUIRE_SCALAR,),
+    'testarray'    => array('filter' => FILTER_VALIDATE_INT,
+                            'flags'  => FILTER_FORCE_ARRAY,)
 );
-
 $myinputs = filter_var_array($data, $args);
-
 var_dump($myinputs);
-echo "\n";
 ```
 
 ### filter_input
@@ -127,6 +120,40 @@ print_r($priority);
 
 ### filter_input_array
 
+>mixed filter_input_array ( int $type [, mixed $definition ] )
+
+Type: Um dos INPUT_GET, INPUT_POST, INPUT_COOKIE, INPUT_SERVER, INPUT_ENV, INPUT_SESSION, ou INPUT_REQUEST.
+
+Definition: Um definindo os argumentos. Uma chave válida é um string contendo o nome da variável e um valor válido é um tipo filtro, ou um array opcionalmente especificando o filtro, flags e opções.
+
+```php
+<?php
+echo "<pre>";
+error_reporting(E_ALL | E_STRICT);
+/** Dados vem do $_POST
+$data = array(
+    'product_id'    => 'backtothefuture<script>',
+    'component'     => '3',
+    'versions'      => '1.2.3',
+    'testscalar'    => array('2', '23', '10', '12'),
+    'testarray'     => '2',
+);
+*/
+$args = array(
+    'product_id'   => FILTER_SANITIZE_ENCODED,
+    'component'    => array('filter'    => FILTER_VALIDATE_INT,
+                            'flags'     => FILTER_REQUIRE_ARRAY,
+                            'options'   => array('min_range' => 1, 'max_range' => 10)),
+    'versions'     => FILTER_SANITIZE_ENCODED,
+    'doesnotexist' => FILTER_VALIDATE_INT,
+    'testscalar'   => array('filter' => FILTER_VALIDATE_INT,
+                            'flags'  => FILTER_REQUIRE_SCALAR,),
+    'testarray'    => array('filter' => FILTER_VALIDATE_INT,
+                            'flags'  => FILTER_REQUIRE_ARRAY,)
+);
+$myinputs = filter_input_array(INPUT_POST, $args);
+var_dump($myinputs);
+```
 
 
 CHARACTER SET
