@@ -3,6 +3,7 @@
 Cross-Site Request Forgeries, ou CSRF, é uma forma de ataque onde o usuário é enganado, fazendo com que digite dados em uma página maliciosa contendo código submetendo o formulário de um sistema alvo do ataque. Tome como exemplo um usuário que acessa o site do banco xyz.com. O atacante engana o usuário ao fazer com que ele entre em uma página aparentemente inofensiva, mas caso ele ainda esteja logado no site do banco, a página maliciosa executa uma requisição para submeter o formulário (ex: xyz.com/transfer.php?beneficiario=attacker&valor=10000), fazendo com que uma operação seja efetuada sem o consentimento do usuário.
 
 Para verificar o ataque, temos o exemplo de sistema abaixo. Basta executar o login no sistema e depois executar a página *problem.php* para efetuar o ataque e inserir um novo registro sem a aprovação do usuário.
+
 [Exemplo - sistema Memeland](https://github.com/lisura/php_certification/tree/master/Questoes/SECURITY/memeland)
 
 Existem limitações no uso desse tipo de ataque:
