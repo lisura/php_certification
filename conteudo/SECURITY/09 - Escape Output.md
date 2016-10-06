@@ -22,7 +22,7 @@
 |urlencode() | Codifica uma URL |
 |**strip_tags()** | Retira as tags HTML e PHP de uma string |
 
-**\*** funções em negrito serão exemplificadas.
+\* funções em negrito serão exemplificadas.
 
 **htmlspecialchars()** | Converte caracteres especiais para a realidade HTML
 
@@ -41,9 +41,9 @@ O segundo argumento opcional, quote_style, conta à função o que fazer com os 
 ```php
 <?php
 echo "<pre>";
-$new = htmlspecialchars("<a href='backtothefurure.com'>Time Travel Movie</a>", ENT_QUOTES);
+$new = htmlspecialchars("<a href='backtothefuture.com'>Time Travel Movie</a>", ENT_QUOTES);
 echo $new.PHP_EOL;
-echo "<a href='backtothefurure.com'>Time Travel Movie</a>";
+echo "<a href='backtothefuture.com'>Time Travel Movie</a>";
 ```
 
 **htmlentities()** - Converte todos os caracteres aplicáveis em entidades html
@@ -64,7 +64,7 @@ echo htmlentities($str, ENT_QUOTES);
 
 #### importante
 
-O uso da opção 'ENT_QUOTES' não protege contra saidas js atributos como 'href' da tag 'a'. Quando licado no link abaixo o javascript será executado.
+O uso da opção 'ENT_QUOTES' não protege contra saidas js atributos como 'href' da tag 'a'. Quando clicado no link abaixo o javascript será executado.
 
 ```php
 <?php
