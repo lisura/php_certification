@@ -6,7 +6,7 @@ Esta extensão esta disponivel oficialmente desde o PHP 5.5.0
 
 Do ponto de vista de segurança, é recomendado que nunca se guarde o senhar em _CLEARTEXT_
 
-Uma opção muito utilizada é criar um hash usando **md5()** que cria um hash de 32 caracteres ou **sha1()** que cria um hahs de 40 caracteres. Porem ambos são vulneraveis a atques de forma bruta, e por este motivo não são consideredos seguros.
+Uma opção muito utilizada é criar um hash usando **md5()** que cria um hash de 32 caracteres ou **sha1()** que cria um hahs de 40 caracteres. Porem ambos são vulneraveis a ataques de força bruta, e por este motivo não são consideredos seguros.
 
 ## Função crypt
 
@@ -59,7 +59,7 @@ $hash = password_hash("MartinSeamusMcFly", PASSWORD_DEFAULT);
 print_r(password_get_info($hash));
 ```
 
-**password_hash** - Cria um Hash de um dados password
+**password_hash** - Cria um Hash de um dado password
 
 Cria um novo hash do password usando algoritimo de hashing de via unica.
 
