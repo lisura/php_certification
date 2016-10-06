@@ -27,7 +27,7 @@ Filtrar os dados de seus usuários é de extrema importância e que, ao chegar n
 
 Filter, é uma extensão que serve para validar e filtrar dados vindos de alguma fonte insegura, como uma entrada do usuário. Abaixo segue as principais funções que fazem uso dos filtros.
 
-Alem destas funções de filtros, é recomendado usar funcções para tratar entradas em banco de dados como por exemplo **mysql_escape_string**, **addslashes** etc.
+Alem destas funções de filtros, é recomendado usar funções para tratar entradas em banco de dados como por exemplo **mysql_escape_string**, **addslashes** etc.
 
 | função | descrição |
 | --- | --- |
@@ -155,17 +155,3 @@ $args = array(
 $myinputs = filter_input_array(INPUT_POST, $args);
 var_dump($myinputs);
 ```
-
-
-CHARACTER SET
-o
-Risk:
-- ATTACK VECTORS MAY EMPLOY A NON-STANDARD CHAR SET (EX: UTF-8
-ENCODED) THAT MAY BE MISSED BY FILTERING, BUT EXECUTED BY THE
-BROWSER
-Counter
-- USE THE SAME CHAR SET FOR FILTERING AS THE TARGET PROCEDURE
-- CONVERT CHARSETS PRIOR TO FILTERING
-Content-Type: text/html; charset="UTF-8"
-- USE PHP’S FILTER EXTENSION
-- USE FILTERS NATIVE TO THE DATABASE (EX: DB QUOTING FUNCTIONS)
