@@ -1,12 +1,12 @@
 #File Uploads
 
-Permitir que um usuario possa realizar upload em seu site é como abrir uma porta para que o usuario mal intencionada comprometa seu servidor.
+Permitir que um usuario possa realizar upload em seu site é como abrir uma porta para que o usuario mal intencionado comprometa seu servidor.
 
 Ainda hoje, diversos sistemas WEB não têm formas de upload de arquivos seguras. Algumas dessas vulnerabilidades podem ser facilmente explorados, e poderíamos ter acesso ao sistema do servidor que hospeda esses aplicativos web.
 
 ## Formulario simples sem validação
 
-Ainda hoje podemos achar aplicações com formularios como o demosntrado abaixo.
+Ainda hoje podemos achar aplicações com formularios como o demonstrado abaixo.
 
 ```html
 <form enctype="multipart/form-data" action="uploader.php" method="POST">
@@ -36,7 +36,7 @@ Quando o PHP recebe um POST com o encoding multipart/form-data, ele cria um arqu
 - $\_FILES[‘uploadedfile’][‘size’]: O tamanho do arquivo
 - $\_FILES[‘uploadedfile’][‘tmp_name’]: O nome temporario do arquivo
 
-A função _move_uploaded_file_  vai mover o arquivo temporario para uma local indicado pelo usuario. Neste caso o destino é abaixodo root do servidor, podendo então ser acessaro pela URL www.sua_url.com/uploads/uploadedfile.ext.
+A função _move_uploaded_file_  vai mover o arquivo temporario para uma local indicado pelo usuario. Neste caso o destino é abaixo do root do servidor, podendo então ser acessaro pela URL www.sua_url.com/uploads/uploadedfile.ext.
 
 No exemplo como não temos restrição do tipo de arquivo o usuario vai poder realizar um upload de um arquivo php por exemplo. Apesar de ser um exemplo tosco, ainda hoje podemos achar aplicações que não tratam no servidor seus arquivos.
 
@@ -70,7 +70,7 @@ if (is_uploaded_file($_FILES['userfile']['tmp_name'])) {
 
 Esta função verifica para ter certeza de que o arquivo designado por filename é um arquivo de upload válido (que tenha sido enviado pelo mecanismo PHP de envio por POST HTTP). Se o arquivo for válido, ele será movido para o nome de arquivo dado por destination.
 
-Este tipo de verificação é especialmente imporante se existir alguma change que qualquer coisa feita com os arquivos enviados possa revelar seu conteúdo ao usuário, ou mesmo para outros usuários no memo sistema.
+Este tipo de verificação é especialmente imporante se existir alguma change que qualquer coisa feita com os arquivos enviados possa revelar seu conteúdo ao usuário, ou mesmo para outros usuários no mesmo sistema.
 
 Retorna: FALSE se não for um arquivo enviado válido.
 
