@@ -4,7 +4,7 @@ Permitir que um usuario possa realizar upload em seu site é como abrir uma port
 
 Ainda hoje, diversos sistemas WEB não têm formas de upload de arquivos seguras. Algumas dessas vulnerabilidades podem ser facilmente explorados, e poderíamos ter acesso ao sistema do servidor que hospeda esses aplicativos web.
 
-## Formualrio simples sem validação
+## Formulario simples sem validação
 
 Ainda hoje podemos achar aplicações com formularios como o demosntrado abaixo.
 
@@ -39,6 +39,8 @@ Quando o PHP recebe um POST com o encoding multipart/form-data, ele cria um arqu
 A função _move_uploaded_file_  vai mover o arquivo temporario para uma local indicado pelo usuario. Neste caso o destino é abaixodo root do servidor, podendo então ser acessaro pela URL www.sua_url.com/uploads/uploadedfile.ext.
 
 No exemplo como não temos restrição do tipo de arquivo o usuario vai poder realizar um upload de um arquivo php por exemplo. Apesar de ser um exemplo tosco, ainda hoje podemos achar aplicações que não tratam no servidor seus arquivos.
+
+Uma regra basica que deve ser seguida é não permissão de execução aos arquivos que foram carregadas via upload. (chmod 666)
 
 ### Funções
 
@@ -85,3 +87,22 @@ if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
 echo 'Aqui está mais informações de debug:';
 print_r($_FILES);
 ```
+
+### Mão na massa
+
+Entendeu. Então vamos para um exemplo.
+
+http://php_certification.local/Examples/SECURITY/submit.html
+
+- Escolhemos um arquivo de imagem
+- Escolhemos um arquivo PHP
+
+Teste dos resultados
+
+http://php_certification.local/Examples/SECURITY/uploads/[FILE_UPLOADED]
+
+Agora vamos alterar as permissões da pasta
+
+>$ sudo chmod 666 uploads/ -R
+
+>$ sudo chmod 755 uploads/ -R
