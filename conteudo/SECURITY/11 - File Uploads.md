@@ -36,26 +36,52 @@ Quando o PHP recebe um POST com o encoding multipart/form-data, ele cria um arqu
 - $\_FILES[‘uploadedfile’][‘size’]: O tamanho do arquivo
 - $\_FILES[‘uploadedfile’][‘tmp_name’]: O nome temporario do arquivo
 
-A função _move_uploaded_file_  .. continuar.
+A função _move_uploaded_file_  vai mover o arquivo temporario para uma local indicado pelo usuario. Neste caso o destino é abaixodo root do servidor, podendo então ser acessaro pela URL www.sua_url.com/uploads/uploadedfile.ext.
 
+No exemplo como não temos restrição do tipo de arquivo o usuario vai poder realizar um upload de um arquivo php por exemplo. Apesar de ser um exemplo tosco, ainda hoje podemos achar aplicações que não tratam no servidor seus arquivos.
 
+### Funções
 
-The PHP function move_uploaded_file will move the temporary file to a location provided by the user. In this case, the destination is below the server root. Therefore the files can be accessed using a URL like: http://www.domain.tld/uploads/uploadedfile.ext. In this simple example, there are no restrictions about the type of files allowed for upload and therefore an attacker can upload a PHP or .NET file with malicious code that can lead to a server compromise.
+Estas são duas funções que podem ser usadas para realizar um tratamento no arquivo de entrada.
 
-This might look like a naïve example, but we did encounter such code in a number of web applications.
+**is_uploaded_file** — Diz se o arquivo foi enviado por POST HTTP
 
+>bool is_uploaded_file ( string $filename )
 
-FUNCOES
-http://php.net/manual/pt_BR/function.is-uploaded-file.php
-http://php.net/manual/pt_BR/function.move-uploaded-file.php
+Retorna TRUE se o arquivo com o nome filename foi enviado por POST HTTP. Isto é útil para ter certeza que um usuário malicioso não está tentando levar o script a trabalhar em arquivos que não deve estar trabalhando --- por exemplo, _/etc/passwd_.
 
-FILE
-  UPLOADS
+```php
+<?php
+if (is_uploaded_file($_FILES['userfile']['tmp_name'])) {
+   echo "O arquivo ". $_FILES['userfile']['name'] ." foi enviado com sucesso.\n";
+   echo "Mostrando o conteúdo\n";
+   readfile($_FILES['userfile']['tmp_name']);
+} else {
+   echo "Possível ataque de envio de arquivo: ";
+   echo "nome do arquivo '". $_FILES['userfile']['tmp_name'] . "'.";
+}
+```
 
-$_FILES IS FILLED WITH USER-SUPPLIED DATA, AND THEREFORE POSES RISK
-  o RISK: FILE NAME CAN BE FORGED
-  o COUNTER: USE CHECKS AND
-  o RISK: MIME TYPE CAN BE FORGED
-  o COUNTER: IGNORE
-  o RISK: TEMP FILE NAME CAN BE FORGED UNDER CERTAIN CONDITIONS
-  o COUNTER: USE  *_uploaded_file() FUNCTIONS (* = is, move)
+**move_uploaded_file** — Move um arquivo enviado para uma nova localização
+
+>bool move_uploaded_file ( string $filename , string $destination )
+
+Esta função verifica para ter certeza de que o arquivo designado por filename é um arquivo de upload válido (que tenha sido enviado pelo mecanismo PHP de envio por POST HTTP). Se o arquivo for válido, ele será movido para o nome de arquivo dado por destination.
+
+Este tipo de verificação é especialmente imporante se existir alguma change que qualquer coisa feita com os arquivos enviados possa revelar seu conteúdo ao usuário, ou mesmo para outros usuários no memo sistema.
+
+Retorna: FALSE se não for um arquivo enviado válido.
+
+```php
+<?php
+$uploaddir = '/var/www/uploads/';
+$uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
+echo '<pre>';
+if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
+    echo "Arquivo válido e enviado com sucesso.\n";
+} else {
+    echo "Possível ataque de upload de arquivo!\n";
+}
+echo 'Aqui está mais informações de debug:';
+print_r($_FILES);
+```
