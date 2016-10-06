@@ -15,7 +15,8 @@ Muitos _attack vectors_ contam com _encoding bypassing_. Esta tecnica de ataque 
 Para resolver este problema utlizize UTF-8 como charset padrão tanto da base de dados como da aplicação, a não ser que sera OBRIGATORIO o uso de outro encoding.
 
 Exemplo de um codigo padrão:
-><script>alert('XSS')</script>
+>
+\<script\>alert('XSS')<\ /script\>
 
 Exemplo de um codigo com duplo encoding;
 >%253Cscript%253Ealert('XSS')%253C%252Fscript%253E
