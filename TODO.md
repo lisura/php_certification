@@ -1,6 +1,11 @@
+## ATA DA REVISÃO
+- Cada um pega uma aula que não foi a dele.
+- Novo Sorteio para ordem de revisão (quinta-feira 13/10)
+- 1 dia para revisão e passar exercicios.
+- Mostrar na revisão as diferenças entre PHP 5.4 e 5.5
+
 # TODO (06/10/2016)
-- [ ] Ajustar exemplo script xml
-- [ ] 
+- [ ] Ajustar exemplo script xml (Ivan, o que vc quis dizer com essa porra?) 
 
 # TODO (29/09/2016)
 - [x] escrever que session_cahe_expire é em minutos.
