@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>XHTML Transitional Template</title>
+</head>
+<body>
+  <form action="form1.php" method="post">
+   <p>Your name: <input type="text" name="user.name" required="true" /></p>
+   <p>Your age: <input type="text" name="user.age"  required="true"/></p>
+   <p>Message: <textarea name='user.message' cols="100" rows="5"></textarea></p>
+   <fieldset name="Radios">
+     <legend>Radios</legend>
+     Male: <input type="radio" name="user.gender" value='M' checked="true" />
+     Female: <input type="radio" name="user.gender" value='F' />
+   </fieldset>
+   <fieldset name="Checkbox">
+     <legend>Checkbox</legend>
+     Windows: <input type="checkbox" name="user.os[]" value='windows' />
+     <br />
+     Linux: <input type="checkbox" name="user.os[]" value='linux' />
+     <br/>
+     Mac OS: <input type="checkbox" name="user.os[]" value='macos' />
+   </fieldset>
+   <p>Select:
+     <select name='user.consolegame'>
+       <option value='XBOX'>XBOX</option>
+       <option value='PS4'>PS4</option>
+       <option value='NINTENDO'>NINTENDO</option>
+     <select>
+   </p>
+   <p><input type="submit" /></p>
+  </form>
+</body>
+</html>
