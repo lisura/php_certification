@@ -8,13 +8,13 @@ Considere desligar as diretivas register_globals, magic_quotes, ou outras config
 
 ## Use UTF-8 unless necessary
 
-_Attack vector_ é um caminho ou meio pelo quail um hacker ganha acesso ao computador ou rede a fim de carregar um resultado malicioso. _Attack vectors_ permite aos hackers explorar vulnerabilidades do sistema, incluindo o elemento humano.
+_Attack vector_ é um caminho ou meio pelo qual um hacker ganha acesso ao computador ou rede a fim de carregar um resultado malicioso. _Attack vectors_ permite aos hackers explorar vulnerabilidades do sistema, incluindo o elemento humano.
 
-Muitos _attack vectors_ contam com _encoding bypassing_. Esta tecnica de ataque consistem de encodar os paramentros da requisição do usuario, duas vezes em formato hexadecimal e com isso passar por cima dos contoles de segurança ou causar um comportamento indesejado da aplicação.
+Muitos _attack vectors_ contam com _encoding bypassing_. Esta técnica de ataque consistem de encodar os parâmetros da requisição do usuário, duas vezes em formato hexadecimal e com isso passar por cima dos controles de segurança ou causar um comportamento indesejado da aplicação.
 
-Para resolver este problema utlizize UTF-8 como charset padrão tanto da base de dados como da aplicação, a não ser que sera OBRIGATORIO o uso de outro encoding.
+Para resolver este problema utlizize UTF-8 como charset padrão tanto da base de dados como da aplicação, a não ser que sera OBRIGATÓRIO o uso de outro encoding.
 
-Exemplo de um codigo padrão:
+Exemplo de um código padrão:
 >
 \<script\>alert('XSS')<\ /script\>
 
@@ -33,8 +33,8 @@ Alem destas funções de filtros, é recomendado usar funções para tratar entr
 | --- | --- |
 | filter_var() | Filtra a variável com um especificado filtro |
 | filter_var_array() | Obtêm múltiplas variáveis e opcionalmente as filtra |
-| filter_input() | Obtem a específica variável externa pelo nome e opcionalmente a filtra |
-| filter_input_array() | Obtem variáveis externas e opcionalmente as filtra |
+| filter_input() | Obtêm a específica variável externa pelo nome e opcionalmente a filtra |
+| filter_input_array() | Obtêm variáveis externas e opcionalmente as filtra |
 
 Opções para Filter [LINK](http://php.net/manual/en/filter.filters.sanitize.php)
 

@@ -1,16 +1,21 @@
 # Data Storage
 
-Se estiver usando SQL para realizar as conexoes, seu codigo é sujeito a ataques de SQL Injection.
+Se estiver usando SQL para realizar as conexões, seu código é sujeito a ataques de SQL Injection.
 
-Felizmente para você, anteriormente foi realizada uma otima aula que te ensinou como se livrar destes usuarios malvados que podem realizar este tipo de ataque.
+Felizmente para você, anteriormente foi realizada uma ótima aula que te ensinou como se livrar destes usuários malvados que podem realizar este tipo de ataque.
 
-Mas.... como seu que você é um consumidor avido por conhecimento e gosta de manter sua aplicação super segura, aqui serão dadas mais algumas dicas de como pretejer seu banco de dados.
+Mas.... como sei que você é um consumidor avido por conhecimento e gosta de manter sua aplicação super segura, aqui serão dadas mais algumas dicas de como proteger seu banco de dados.
 
 
+## DATABASE DESIGN
 
-DATABASE DESIGN
-o EMPLOY PRINCIPLE OF LIMITED RIGHTS - ASSIGN ONLY THOSE PRIVILEGES THAT ARE NEEDED BY USER
-o DO NO EXPOSE DB SERVER TO THE INTERNET
-o ISOLATE DATABASES WITH SENSITIVE INFORMATION TO SEPARATE NETWORK SEGMENTS
-o REQUIRE PERIODIC PASSWORD CHANGES AND ENCRYPT BEFORE STORING
-o READ THE LOGS
+- Aplicar o principio dos direitos limitados - Atribuir a cada usuário os privilégios que são necessários, não deixando que o mesmo tenha acesso ou permissões em locais onde ele não teria acesso. Aplicações nunca devem conectar ao banco de dados como seu dono ou um superusuário, porque esses usuários podem executar qualquer consulta que quiserem.
+- Não expor o servidor DB à Internet - Limitar o acesso ao servidor apenas aos servidores que precisam de acesso.
+- Isolar bancos de dados com informações confidenciais para diferente segmentos de rede - Cada local da rede só acessa os bancos de dados que eles precisam, limitando o acesso a informação.
+- Exigir a alteração de senha de forma periódica.
+- Leia os logs para saber o que acontece com seu banco de dados.
+- Encorajamos não implementar toda a lógica de negócio na aplicação web (ex.: seu script). Ao invés disso, implemente uma parte no esquema do banco, usando view, triggers ou rules.
+
+## Conexão com banco de dados
+
+Você pode querer estabelecer as conexões sobre SSL para criptografar comunicações cliente/servidor para aumentar a segurança, ou você pode usar ssh para criptografar a conexão de rede entre clientes e o servidor de banco de dados. Se uma dessa opções for usada, o monitoramento do seu tráfego e a obtenção de informação sobre seu banco de dados serão dificultados por um atacante.

@@ -1,12 +1,12 @@
 #File Uploads
 
-Permitir que um usuario possa realizar upload em seu site é como abrir uma porta para que o usuario mal intencionado comprometa seu servidor.
+Permitir que um usuario possa realizar upload em seu site é como abrir uma porta para que o usuário mal intencionado comprometa seu servidor.
 
 Ainda hoje, diversos sistemas WEB não têm formas de upload de arquivos seguras. Algumas dessas vulnerabilidades podem ser facilmente explorados, e poderíamos ter acesso ao sistema do servidor que hospeda esses aplicativos web.
 
-## Formulario simples sem validação
+## Formulário simples sem validação
 
-Ainda hoje podemos achar aplicações com formularios como o demonstrado abaixo.
+Ainda hoje podemos achar aplicações com formulários como o demonstrado abaixo.
 
 ```html
 <form enctype="multipart/form-data" action="uploader.php" method="POST">
@@ -29,18 +29,18 @@ if (move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
 }
 ```
 
-Quando o PHP recebe um POST com o encoding multipart/form-data, ele cria um arquivo temporario com um nome randomico no diretorio temporario. Ele tambem popula o array \_FILES com informações do arquivo.
+Quando o PHP recebe um POST com o encoding multipart/form-data, ele cria um arquivo temporário com um nome randômico no diretório temporário. Ele também popula o array \_FILES com informações do arquivo.
 
 - $\_FILES[‘uploadedfile’][‘name’]: Nome original do arquivo
 - $\_FILES[‘uploadedfile’][‘type’]: mime type do arquivo
 - $\_FILES[‘uploadedfile’][‘size’]: O tamanho do arquivo
 - $\_FILES[‘uploadedfile’][‘tmp_name’]: O nome temporario do arquivo
 
-A função _move_uploaded_file_  vai mover o arquivo temporario para uma local indicado pelo usuario. Neste caso o destino é abaixo do root do servidor, podendo então ser acessaro pela URL www.sua_url.com/uploads/uploadedfile.ext.
+A função _move_uploaded_file_  vai mover o arquivo temporario para uma local indicado pelo usuario. Neste caso o destino é abaixo do root do servidor, podendo então ser acessado pela URL www.sua_url.com/uploads/uploadedfile.ext.
 
-No exemplo como não temos restrição do tipo de arquivo o usuario vai poder realizar um upload de um arquivo php por exemplo. Apesar de ser um exemplo tosco, ainda hoje podemos achar aplicações que não tratam no servidor seus arquivos.
+No exemplo como não temos restrição do tipo de arquivo o usuário vai poder realizar um upload de um arquivo php por exemplo. Apesar de ser um exemplo tosco, ainda hoje podemos achar aplicações que não tratam no servidor seus arquivos.
 
-Uma regra basica que deve ser seguida é não permissão de execução aos arquivos que foram carregadas via upload. (chmod 666)
+Uma regra básica que deve ser seguida é não permissão de execução aos arquivos que foram carregadas via upload. (chmod 666)
 
 ### Funções
 

@@ -2,11 +2,11 @@
 
 Password Hashing fornece uma maneira simples ao redor da função _crypt()_ para tornar facil a criação e manutenção de passwords de forma segura.
 
-Esta extensão esta disponivel oficialmente desde o PHP 5.5.0
+Esta extensão esta disponível oficialmente desde o PHP 5.5.0
 
-Do ponto de vista de segurança, é recomendado que nunca se guarde o senhar em _CLEARTEXT_
+Do ponto de vista de segurança, é recomendado que nunca se guarde a senha em _CLEARTEXT_
 
-Uma opção muito utilizada é criar um hash usando **md5()** que cria um hash de 32 caracteres ou **sha1()** que cria um hahs de 40 caracteres. Porem ambos são vulneraveis a ataques de força bruta, e por este motivo não são consideredos seguros.
+Uma opção muito utilizada é criar um hash usando **md5()** que cria um hash de 32 caracteres ou **sha1()** que cria um hahs de 40 caracteres. Porem ambos são vulneráveis a ataques de força bruta, e por este motivo não são considerados seguros.
 
 ## Função crypt
 
@@ -19,7 +19,7 @@ _Crypt_ — Encriptação unidirecional de string (hashing)
 Em sistemas onde a função crypt() suporta variados tipos de codificação, as seguintes funções são definidas para 0 ou 1 a depender se um dado tipo está disponível:
 
 + CRYPT_STD_DES - Codificação Standard DES-based com um salt de 2 caracteres
-+ CRYPT_EXT_DES - Codificação Extended DES-based com um salt de 9 caracateres
++ CRYPT_EXT_DES - Codificação Extended DES-based com um salt de 9 caracteres
 + CRYPT_MD5 - Codificação MD5 com um salt de 12 caracteres começando com $1$
 + CRYPT_BLOWFISH - Codificação Blowfish com um salt de 16 caracteres começando com $2$
 
@@ -51,7 +51,7 @@ Serie de funções ao redor da função **crypt()** para ajudar a codificação 
 
 hash: Um hash criado por password_hash().
 
-Retorna um array associativo com 3 chaves que são as informaçoes deste hash.
+Retorna um array associativo com 3 chaves que são as informações deste hash.
 
 ```php
 echo "<pre>";
@@ -85,7 +85,7 @@ print_r(password_hash("MartinSeamusMcFly", PASSWORD_BCRYPT, $options));
 ```
 
 ##### Cuidado
-É fortemente recomendado que você nao gere seu proprio SALT para esta função. Ela cria um salt seguro de forma automatica se você não especificar um.
+É fortemente recomendado que você não gere seu próprio SALT para esta função. Ela cria um salt seguro de forma automática se você não especificar um.
 
 
 **password_needs_rehash** - Verifica se um hash combina com as opções dadas

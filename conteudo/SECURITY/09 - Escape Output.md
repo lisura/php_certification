@@ -26,7 +26,7 @@
 
 **htmlspecialchars()** | Converte caracteres especiais para a realidade HTML
 
-Certos caracteres tem significado especial em HTML, e seriam representados pela realidade HTML se eles estão preservanado seus significados. Esta função retorna uma string com algumas destas conversões feitas; As transformações feitas são aquelas mais úteis para programação web.
+Certos caracteres tem significado especial em HTML, e seriam representados pela realidade HTML se eles estão preservando seus significados. Esta função retorna uma string com algumas destas conversões feitas; As transformações feitas são aquelas mais úteis para programação web.
 
 >string htmlspecialchars ( string $string [, int $quote_style [, string $charset ]] )
 
@@ -64,7 +64,7 @@ echo htmlentities($str, ENT_QUOTES);
 
 #### importante
 
-O uso da opção 'ENT_QUOTES' não protege contra saidas js atributos como 'href' da tag 'a'. Quando clicado no link abaixo o javascript será executado.
+O uso da opção 'ENT_QUOTES' não protege contra saídas js atributos como 'href' da tag 'a'. Quando clicado no link abaixo o javascript será executado.
 
 ```php
 <?php
