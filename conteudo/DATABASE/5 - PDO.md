@@ -430,13 +430,13 @@ $sth->bindValue(':nome', $nome);
 $sth->bindValue(':lema', $lema);
 $ps->execute();
 ````
-Diferente do array passado no *PDOStatement::execute* (que define o tipo para string), podemos definir o tipo e o tamanho do valor do parâmetro.  
+Diferente do array passado no *PDOStatement::execute* (que define o tipo para string), podemos definir o tipo do parâmetro.  
 Exemplo:
 ````php
 <?php
 $ps = $db->prepare("SELECT * from casa where id = ? AND nome = ?");
 $sth->bindValue(1, $id, PDO::PARAM_INT);
-$sth->bindValue(2, $nome, PDO::PARAM_STR, 30);
+$sth->bindValue(2, $nome, PDO::PARAM_STR);
 $ps->execute();
 ````
 
