@@ -12,9 +12,9 @@
 - [x] Arrumar exemplo meia boca (usar outro de outro site)
 
 # TODO (27/09/2016)
-- [ ] deixar de fazer aula meia boca
-- [ ] bindValue arrumar o ultimo exemplo
-- [ ] bindvalue rever exemplo do ultimo parametro
+- [ ] deixar de fazer aula meia boca - Impossível
+- [X] bindValue arrumar o ultimo exemplo
+- [X] bindvalue rever exemplo do ultimo parametro
 
 # TODO (22/09/2016)
 - [ ] Ver pq o ....fetchAll(PDO::FETCH_CLASS, 'Casa2'); não funciona.Deveria voltar array vazio
