@@ -21,11 +21,12 @@ A » RFC 6265 fornece a referência normativa de como cada parâmetro de setcook
 * **value**: O valor do cookie. Esse valor é guardado no computador do cliente; não guarde informação sensível. Supondo que o name seja 'nomedocookie', o valor pode ser lido través de $\_COOKIE['nomedocookie']
 
 * **expire** :O tempo para o cookie expirar. Esse valor é uma timestamp Unix, portanto é o número de segundos desde a época (epoch). Em outras palavras, você provavelmente irá utilizar isso com a função time() mais o número de segundos que você quer que ele expire. Ou você pode utilizar a função mktime(). time()+60*60*24*30 irá configurar o cookie para expirar em 30 dias. Se configurado para 0, ou omitido, o cookie irá expirar ao fim da sessao (quando o navegador fechar).
+
+* **domain**: O (sub)domínio para qual o cookie estará disponível. Definindo para um subdomínio (como 'www.example.com') deixará o cookie disponível para aquele subdomínio e todos os outros sub-domínios abaixo dele (exemplo w2.www.example.com). Para deixar o cookie disponível para todo o domínio (incluindo todos os subdomínios dele), simplesmente defina o valor para o nome do domínio ('example.com', nesse caso).
+
 > **Nota**:Você pode ver que o parâmetro expire recebe uma timestamp Unix, ao contrário do formato de data Wdy, DD-Mon-YYYY HH:MM:SS GMT, isso se dá porque o PHP faz essa conversão internamente.
 path.
 O caminho no servidor aonde o cookie estará disponível. Se configurado para '/', o cookie estará dosponível para todo o domain. Se configurado para o diretório '/foo/', o cookie estará disponível apenas dentro do diretório /foo/ e todos os subdiretórios como /foo/bar do domain. O valor padrão é o diretório atual onde o cookie está sendo configurado.
-
-* **domain**: O (sub)domínio para qual o cookie estará disponível. Definindo para um subdomínio (como 'www.example.com') deixará o cookie disponível para aquele subdomínio e todos os outros sub-domínios abaixo dele (exemplo w2.www.example.com). Para deixar o cookie disponível para todo o domínio (incluindo todos os subdomínios dele), simplesmente defina o valor para o nome do domínio ('example.com', nesse caso).
 
 > **Nota**: Browsers antigos ainda implementam a » RFC 2109 e podem requerer um . no início para funcionar com todos os subdomínios.
 
