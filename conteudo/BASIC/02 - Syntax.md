@@ -37,7 +37,7 @@ Para Referência e mais detalhes vide [Link](http://php.net/manual/pt_BR/languag
 
 # Operadores
 
-Um operador é algo que recebe um ou mais valores (ou expressões, no jargão de programação) e que devolve outro valor (e por isso os próprios construtores se tormam expressões).
+Um operador é algo que recebe um ou mais valores (ou expressões, no jargão de programação) e que devolve outro valor (e por isso os próprios construtores se tornam expressões).
 
 Referência: [LINK](http://php.net/manual/en/language.operators.php)
 
