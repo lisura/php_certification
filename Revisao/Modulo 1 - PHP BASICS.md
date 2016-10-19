@@ -30,6 +30,7 @@
 * Quando operadores tem precedência igual a associatividade decide como os operadores são agrupados. Ex: **1 - 2 - 3** equivale a **(1 - 2) - 3** (- associado à esquerda), já **$a = $b = $c** equivale a **$a = ($b = $c)** (= associado à direita).
 * Operadores de igual precedência sem associatividade não podem ser utilizados uns próximos aos outros. Ex: **1 < 2 > 1** é ilegal no PHP, já **1 <= 1 == 1** é válido pois os operadores tem níveis distintos de precedência.
 * Tabela de precedência dos operadores, do maior ao menor, precedência igual na mesma linha é decidida pela associatividade
+
 |Associação            |Operadores                    |Informação Adicional      |
 |----------------------|------------------------------|--------------------------|
 |não associativo       |clone new                     |clone e new               |
@@ -59,6 +60,7 @@
 * O operador de divisão sempre retorna um valor com ponto flutuante, a não ser que os dois operandos sejam inteiros (ou strings que são convertidas para inteiros) e números inteiramente divisíveis, nesse caso um inteiro é retornado.
 * Operandos de módulo são convertidos para inteiros (removendo a parte decimal) antes do processamento.
 * O resultado do operador de módulo tem o mesmo sinal do dividendo (o resultado de $a % $b terá o mesmo sinal de $a).
+
 |Exemplo        |Nome              |Resultado               |
 |---------------|------------------|------------------------|
 |-$a            |Negação           |Oposto de $a.           |
@@ -74,6 +76,7 @@
 
 ## Operadores bit a bit (bitwise)
 * Operadores bit-a-bit permitem a avaliação e modificação de bits específicos em um tipo inteiro.
+
 |Exemplo        |Nome                    |Resultado                                                               |
 |---------------|------------------------|------------------------------------------------------------------------|
 |$a & $b        |E (AND)                 |Os bits que estão ativos tanto em $a quanto em $b são ativados.         |
@@ -84,6 +87,7 @@
 |$a >> $b       |Deslocamento à direita  |Desloca os bits de $a $b passos para a direita (cada passo significa "divide por dois")|
 
 ## Operadores de Comparação
+
 |Exemplo         |Nome               |Resultado                                                              |
 |----------------|-------------------|-----------------------------------------------------------------------|
 |$a == $b        |Igual              |Verdadeiro (TRUE) se $a é igual a $b.                                  |
@@ -115,6 +119,7 @@ $output = `ls -al`;
 ```
 
 ## Operadores de Incremento/Decremento
+
 |Exemplo         |Nome             |Efeito                                                   |
 |----------------|-----------------|---------------------------------------------------------|
 |++$a            |Pré-incremento   |Incrementa $a em um, e então retorna $a.                 |
@@ -124,6 +129,7 @@ $output = `ls -al`;
 
 ## Operadores Lógicos
 * A razão para as duas variantes dos operandos "and" e "or" é que eles operam com precedências diferentes.
+
 |Exemplo        |Nome    |Resultado                                                   |
 |---------------|--------|------------------------------------------------------------|
 |$a and $b      |E       |Verdadeiro (TRUE) se tanto $a quanto $b são verdadeiros.    |
@@ -137,6 +143,7 @@ $output = `ls -al`;
 * Concatenação ('.') e Atribuição de concatenação ('.=')
 
 ## Operadores de Arrays
+
 |Exemplo        |Nome            |Resultado                                                                      |
 |---------------|----------------|-------------------------------------------------------------------------------|
 |$a + $b        |União           |União de $a e $b.                                                              |
