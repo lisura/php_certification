@@ -104,3 +104,54 @@ $valor = (empty($variavel)) ? 'default' : $variavel;
 ## Operadores de controle de erro
 * Quando o operador *arroba* (@) precede uma expressão, qualquer mensagem de erro que possa ser gerada por aquela expressão será ignorada.
 * Se track_errors estiver habilitado, qualquer mensagem de erro erá gravada em $php_errormsg. Esta variável será sobrescrita em cada erro.
+
+## Operadores de Execução
+* Acentos graves (``). 
+* O PHP tentará executar o conteúdo dentro dos acentos graves como um comando do shell; a saída será retornada
+* Análogo a função shell_exec()
+
+```php
+$output = `ls -al`;
+```
+
+## Operadores de Incremento/Decremento
+|Exemplo         |Nome             |Efeito                                                   |
+|----------------|-----------------|---------------------------------------------------------|
+|++$a            |Pré-incremento   |Incrementa $a em um, e então retorna $a.                 |
+|$a++            |Pós-incremento   |Retorna $a, e então incrementa $a em um.                 |
+|--$a            |Pré-decremento   |Decrementa $a em um, e então retorna $a.                 |
+|$a--            |Pós-decremento   |Retorna $a, e então decrementa $a em um.                 |
+
+## Operadores Lógicos
+* A razão para as duas variantes dos operandos "and" e "or" é que eles operam com precedências diferentes.
+|Exemplo        |Nome    |Resultado                                                   |
+|---------------|--------|------------------------------------------------------------|
+|$a and $b      |E       |Verdadeiro (TRUE) se tanto $a quanto $b são verdadeiros.    |
+|$a or $b       |OU      |Verdadeiro se $a ou $b são verdadeiros.                     |
+|$a xor $b      |XOR     |Verdadeiro se $a ou $b são verdadeiros, mas não ambos.      |
+|! $a           |NÃO 	 |Verdadeiro se $a não é verdadeiro.                          |
+|$a && $b       |E       |Verdadeiro se tanto $a quanto $b são verdadeiros.           |
+|$a \|\| $b     |OU 	 |Verdadeiro se $a ou $b são verdadeiros.                     |
+
+## Operadores de String
+* Concatenação ('.') e Atribuição de concatenação ('.=')
+
+## Operadores de Arrays
+|Exemplo        |Nome            |Resultado                                                                      |
+|---------------|----------------|-------------------------------------------------------------------------------|
+|$a + $b        |União           |União de $a e $b.                                                              |
+|$a == $b       |Igualdade       |TRUE se $a e $b tem os mesmos pares de chave/valor.                            |
+|$a === $b      |Identidade      |TRUE se $a e $b tem os mesmos pares de chave/valor na mesma ordem e do mesmo tipo.|
+|$a != $b       |Desigualdade    |TRUE se $a não é igual a $b.                                                   |
+|$a <> $b       |Desigualdade    |TRUE se $a não é igual a $b.                                                   |
+|$a !== $b      |Não identidade  |TRUE se $a não é identico a $b.                                                |
+
+##  Operadores de Tipo
+* o operador **instanceof** é usado para determinar se uma variável é um objeto instânciado de uma certa classe
+* Pode também ser usado para determinar se uma variável é um objeto instânciado de uma classe comparando com a classe pai
+* Pode também ser usado para determinar se uma variável é um objeto instânciado de uma classe que implementa uma interface
+```php
+var_dump($a instanceof MyClass);
+var_dump($a instanceof stdClass);
+var_dump($a instanceof MyInterface);
+```
