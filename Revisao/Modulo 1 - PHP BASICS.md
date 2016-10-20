@@ -162,3 +162,56 @@ var_dump($a instanceof MyClass);
 var_dump($a instanceof stdClass);
 var_dump($a instanceof MyInterface);
 ```
+
+## Variáveis
+* Representadas por um cifrão ($) seguido pelo nome da variável. Os nomes de variável são case-sensitive
+* Um nome de variável válido inicia-se com uma letra ou sublinhado, seguido de qualquer número de letras, números ou sublinhados.
+* Atribuição por referência, simplesmente adicione um e-comercial (&) na frente do nome da variável
+* Variáveis não inicializadas tem um valor padrão de tipo dependendo do contexto no qual são usadas - padrão de booleanos é FALSE, de inteiros e ponto-flutuantes é zero, strings são definidas como vazia e arrays são vazios.
+
+## Variáveis Predefinidas
+* Superglobais — Superglobais são variáveis nativas que estão sempre disponíveis em todos escopos
+* $GLOBALS — Referencia todas variáveis disponíveis no escopo global
+* $_SERVER — Informação do servidor e ambiente de execução
+* $_GET — HTTP GET variáveis
+* $_POST — HTTP POST variables
+* $_FILES — HTTP File Upload variáveis
+* $_REQUEST — Variáveis de requisição HTTP
+* $_SESSION — Variáveis de sessão
+* $_ENV — Environment variables
+* $_COOKIE — HTTP Cookies
+* $php_errormsg — A mensagem de erro anterior
+* $HTTP_RAW_POST_DATA — Informação não-tratada do POST
+* $http_response_header — Cabeçalhos de resposta HTTP
+* $argc — O número de argumentos passados para o script
+* $argv — Array de argumentos passados para o script
+
+## Escopo de variáveis
+* Variáveis geralmente tem escopo local.
+* Ao usar o array especial $GLOBALS ou a palavra chave **global**, a variável passa a ter escopo global
+* Uma variável estática (palavra-chave **static**) existe somente no escopo local da função, mas não perde seu valor quando o nível de execução do programa deixa o escopo
+
+## Variáveis variáveis
+* Serve tanto para variáveis como para propriedades de objetos
+```php
+$a = 'hello';
+$$a = 'world';
+echo "$a ${$a}" . PHP_EOL; // Saida :"hello world"
+```
+
+## Variáveis de fontes externas
+* $_POST, $_GET, $_REQUEST
+
+## Estruturas de Controle
+* **IF**  
+* **ELSE**  
+* **ELSEIF (ELSE IF)**  
+* **IFELSE Ternário (<expressao> ? <verdadeiro> : <falso>)** 
+* **SWITCH**  (Comparação frouxa por ==)(default é executado depois que nenhum case foi correspondido)
+* **WHILE**  (verifica a condição no início da iteração)
+* **DO-WHILE**  (verifica a condição no final da iteração)
+* **FOR**  (for (expr1; expr2; expr3))
+* **FOREACH**  (funciona somente em arrays e objetos)
+
+* **CONTINUE**: é utilizado em estruturas de laço para pular o resto da iteração atual, e continuar a execução na validação da condição e, então, iniciar a próxima iteração.
+* * **BREAK**: finaliza a execução da estrutura for, foreach, while, do-while ou switch atual. Aceita um argumento numérico opcional que diz quantas estruturas aninhadas deverá interromper.
