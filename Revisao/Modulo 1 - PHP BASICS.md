@@ -206,12 +206,13 @@ echo "$a ${$a}" . PHP_EOL; // Saida :"hello world"
 * **IF**  
 * **ELSE**  
 * **ELSEIF (ELSE IF)**  
-* **IFELSE Ternário (<expressao> ? <verdadeiro> : <falso>)** 
+* **IFELSE Ternário**  ([expressao] ? [verdadeiro] : [falso])
 * **SWITCH**  (Comparação frouxa por ==)(default é executado depois que nenhum case foi correspondido)
 * **WHILE**  (verifica a condição no início da iteração)
 * **DO-WHILE**  (verifica a condição no final da iteração)
 * **FOR**  (for (expr1; expr2; expr3))
 * **FOREACH**  (funciona somente em arrays e objetos)
 
+## Interrupção de laços
 * **CONTINUE**: é utilizado em estruturas de laço para pular o resto da iteração atual, e continuar a execução na validação da condição e, então, iniciar a próxima iteração.
-* * **BREAK**: finaliza a execução da estrutura for, foreach, while, do-while ou switch atual. Aceita um argumento numérico opcional que diz quantas estruturas aninhadas deverá interromper.
+* **BREAK**: finaliza a execução da estrutura for, foreach, while, do-while ou switch atual. Aceita um argumento numérico opcional que diz quantas estruturas aninhadas deverá interromper.
