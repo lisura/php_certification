@@ -1,4 +1,6 @@
-1) What is the output of the following code?
+# Questões
+
+#### 1) What is the output of the following code?
 ```php
 $a = 3;
 switch ($a) {
@@ -17,7 +19,7 @@ C. three
 D. four 
 
 ---
-2) What is "instanceof" an example of?
+#### 2) What is "instanceof" an example of?
 
 A. a boolean
 
@@ -30,7 +32,7 @@ D. a language construct
 E. a class magic 
 
 ---
-3) What is the output of the following code?
+#### 3) What is the output of the following code?
 ```php
 $a = 'a'; $b = 'b';
 echo isset($c) ? $a.$b.$c : ($c = 'c').'d';
@@ -45,7 +47,7 @@ D. ab
 
 E. d
 
-4) Which of the following are valid identifiers? (Choose 3)
+#### 4) Which of the following are valid identifiers? (Choose 3)
 
 A. function 4You() { }
 
@@ -57,7 +59,7 @@ D. $1 = "Hello";
 
 E. $_1 = "Hello World"; 
 
-5) What super-global should be used to access information about uploaded files via a POST
+#### 5) What super-global should be used to access information about uploaded files via a POST
 request?
 
 A. $_SERVER
@@ -70,7 +72,7 @@ D. $_FILES
 
 E. $_GET 
 
-6) What is the difference between "print" and "echo"?
+#### 6) What is the difference between "print" and "echo"?
 
 A. There is no difference.
 
@@ -82,7 +84,7 @@ D. Print buffers the output, while echo does not
 
 E. None of the above 
 
-7) What is the result of the following bitwise operation in PHP?
+#### 7) What is the result of the following bitwise operation in PHP?
 ```php
 1 ^ 2
 ```
@@ -96,7 +98,7 @@ D. 4
 
 E. -1 
 
-8) What is the output of the following code?
+#### 8) What is the output of the following code?
 ```php
 $first = "second";
 $second = "first";
@@ -112,7 +114,7 @@ D. an error
 
 E. "secondfirstsecond"
 
-9) What is the output of the following line of code:
+#### 9) What is the output of the following line of code:
 ```php
 $a = 4 << 2 + 1;
 echo $a;
@@ -127,7 +129,7 @@ D. 1
 
 E. 9
 
-10) What is the output of the following?
+#### 10) What is the output of the following?
 ```php
 $a = 7;
 $b = 4;
