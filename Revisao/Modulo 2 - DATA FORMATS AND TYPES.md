@@ -259,3 +259,59 @@ Uma instância de DateTime pode ser iniciada das duas formas:
 public DateTime::__construct ([ string $time = "now" [, DateTimeZone $timezone = NULL ]] ) //Orientado a Objeto
 DateTime date_create ([ string $time = "now" [, DateTimeZone $timezone = NULL ]] ) //Procedural
 ```
+
+**metodos da classe DateTime**
+
+public DateTime add ( DateInterval $interval )  
+public static DateTime createFromFormat ( string $format , string $time [, DateTimeZone $timezone =   date_default_timezone_get() ] )  
+public static array getLastErrors ( void )  
+public DateTime modify ( string $modify )  
+public static DateTime \__set_state ( array $array )  
+public DateTime setDate ( int $year , int $month , int $day )  
+public DateTime setISODate ( int $year , int $week [, int $day = 1 ] )  
+public DateTime setTime ( int $hour , int $minute [, int $second = 0 ] )  
+public DateTime setTimestamp ( int $unixtimestamp )  
+public DateTime setTimezone ( DateTimeZone $timezone )  
+public DateTime sub ( DateInterval $interval )  
+public DateInterval diff ( DateTimeInterface $datetime2 [, bool $absolute = false ] )  
+public string format ( string $format )  
+public int getOffset ( void )  
+public int getTimestamp ( void )  
+public DateTimeZone getTimezone ( void )  
+
+
+#### Diferenças
+
+```php
+<?php
+//Orientado a Objeto
+try {
+    $date = new DateTime('2016-01-11');
+} catch (Exception $e) {
+    echo $e->getMessage();
+    exit(1);
+}
+echo $date->format('Y-m-d');
+
+//Procedural
+$date = date_create('2016-01-11');
+if (!$date) {
+    $e = date_get_last_errors();
+    foreach ($e['errors'] as $error) {
+        echo "$error\n";
+    }
+    exit(1);
+}
+echo date_format($date, 'Y-m-d');
+```
+
+#### Fuso horario
+
+Embora tenhamos um fuso horário definido no php.ini em date.timezone, o qual será usado caso não seja informado no construtor de DateTime, podemos definir um fuso horário para cada objeto DateTime.
+
+```php
+?php
+$saoPaulo = new DateTime('now',new DateTimeZone('America/Sao_Paulo'));
+echo $saoPaulo->format('d/m/Y H:m:s');
+echo $saoPaulo->getTimeZone()->getName();
+```
