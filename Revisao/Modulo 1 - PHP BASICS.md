@@ -505,4 +505,9 @@ O garbage collection tenta resolver o problema de memória, mas pode causar prob
 ### OPcache  
 OPcache melhora o desempenho do PHP, armazenando scripts pré-compilados na memória compartilhada, eliminando assim a necessidade de PHP para carregar e analisar scripts a cada solicitação.
 
-O OPcache já vem com o PHP5.5, mas precisa ser habilitado para funcionar.
+O OPcache já vem com o PHP5.5, mas precisa ser habilitado para funcionar no php.ini.
+
+```
+zend_extension	=	opcache.so
+
+```

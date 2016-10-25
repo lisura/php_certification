@@ -16,7 +16,7 @@ B. two
 
 C. three
 
-D. four 
+D. four
 
 ---
 #### 2) What is "instanceof" an example of?
@@ -29,7 +29,7 @@ C. a function
 
 D. a language construct
 
-E. a class magic 
+E. a class magic
 
 ---
 #### 3) What is the output of the following code?
@@ -41,7 +41,7 @@ A. abc
 
 B. cd
 
-C. 0d 
+C. 0d
 
 D. ab
 
@@ -51,26 +51,26 @@ E. d
 
 A. function 4You() { }
 
-B. function _4You() { }
+B. function \_4You() { }
 
 C. function object() { }
 
 D. $1 = "Hello";
 
-E. $_1 = "Hello World"; 
+E. $\_1 = "Hello World";
 
 #### 5) What super-global should be used to access information about uploaded files via a POST
 request?
 
-A. $_SERVER
+A. $\_SERVER
 
-B. $_ENV
+B. $\_ENV
 
-C. $_POST
+C. $\_POST
 
-D. $_FILES
+D. $\_FILES
 
-E. $_GET 
+E. $\_GET
 
 #### 6) What is the difference between "print" and "echo"?
 
@@ -82,7 +82,7 @@ C. Echo has a return value, print does not
 
 D. Print buffers the output, while echo does not
 
-E. None of the above 
+E. None of the above
 
 #### 7) What is the result of the following bitwise operation in PHP?
 ```php
@@ -96,7 +96,7 @@ C. 2
 
 D. 4
 
-E. -1 
+E. -1
 
 #### 8) What is the output of the following code?
 ```php
