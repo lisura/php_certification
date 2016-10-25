@@ -155,7 +155,145 @@ E. 47
 
 ---
 
+#### 11)	Qual diretiva você deve usar no php.ini para adicionar a extensão opCache?	Escolha	apenas uma.
+a)	extension
 
+b)	zend_extension
+
+c)	dl
+
+d)	extension_ts
+
+e)	zend_extension_ts
+
+
+#### 12) Quais desses elementos são construtores de	linguagem? Escolha	apenas um.
+
+a)	array()
+
+b)	continue
+
+c)	echo()
+
+d)	print()
+
+e)	eval()
+
+f)	exit()
+
+
+
+#### 13) Qual	o	nome da constante	que	o	PHP	utiliza	para	informar que o código	não	funcionará no futuro?
+
+a)	E_NOTICE
+
+b)	\_\_CLASS\_\_
+
+c)	E_WARNING
+
+d)	E_DEPRECATED
+
+e)	E_ALL
+
+#### 14) Which of the following types of errors halts the execution of a script and cannot be trapped?
+
+a) Fatal error
+
+b) Warning
+
+c) Notice
+
+d) Compile-time error
+
+
+#### 15) Which of the following are the core extensions? Each correct answer represents a complete solution. Choose all that apply.
+
+a) Classes
+
+b) Arrays
+
+c) PECL
+
+d) Objects
+
+
+#### 16)  You run the following PHP script:
+
+```php
+<?php
+$a = 'a';
+$b = 2;
+$c = &$a;
+$d = 'b';
+$e = $$d;
+$f = 0xA;
+$g = 010;
+$h = false;
+
+echo $c % $b . PHP_EOL;
+echo $f - $g . PHP_EOL;
+echo $e + (int)$h . PHP_EOL;
+echo $a / ($b + (int) 0xB ) . PHP_EOL;
+echo $h ? --$b : $b++ . PHP_EOL;
+echo $d ? --$b : $b++ . PHP_EOL;
+
+```
+
+a) 0 2 2 0 2 2
+
+b) 2 0 2 2 0 0
+
+c) 2 0 2 0 2 0
+
+d) 0 2 2 2 0 0
+
+
+#### 17) Which of the following PHP directives will you use to display all errors except notices?
+
+a) display_errors= E_ALL - E_NOTICE
+
+b) display_errors= ~E_NOTICE
+
+c) display_errors= ^E_NOTICE
+
+d) error_reporting= ~E_NOTICE
+
+e) error_reporting= E_ALL & ~E_NOTICE
+
+
+#### 18) Which of the following is used to set a constant?
+
+a) set
+
+b) const
+
+c) define
+
+d) con
+
+
+#### 19) Which of the following is a magic constant?
+
+a) $\_SERVER
+
+b) $\_POST
+
+c) $\_GET
+
+d) \_\_LINE\_\_
+
+
+#### 20) Which of the following is related to APC (Alternative PHP Cache)?
+
+a) variable
+
+b) Byte code Cache
+
+c) constante
+
+d) Namespace
+
+---
 ## Respostas
 1) C
 
@@ -176,3 +314,25 @@ E. 47
 9) A
 
 10) E
+
+---
+
+11) B
+
+12) F
+
+13) D
+
+14) A
+
+15) A,B,D
+
+16) A
+
+17) E
+
+18) C
+
+19) D
+
+20) B

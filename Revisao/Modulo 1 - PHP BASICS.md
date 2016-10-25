@@ -503,9 +503,9 @@ Para melhorar a performance, os zval são colocados em um "root buffer", onde o 
 O garbage collection tenta resolver o problema de memória, mas pode causar problemas de performance.  
 
 ### OPcache  
-OPcache melhora o desempenho do PHP, armazenando scripts pré-compilados na memória compartilhada, eliminando assim a necessidade de PHP para carregar e analisar scripts a cada solicitação.
+OPcache melhora o desempenho do PHP, armazenando scripts pré-compilados(byte code) na memória compartilhada, eliminando assim a necessidade de PHP para carregar e analisar scripts a cada solicitação.
 
-O OPcache já vem com o PHP5.5, mas precisa ser habilitado para funcionar no php.ini.
+O OPcache já vem com o PHP5.5, mas precisa ser habilitado para funcionar no php.ini, funcionando como uma alternativa ao APC(Alterrnative PHP Cache)
 
 ```
 zend_extension	=	opcache.so
