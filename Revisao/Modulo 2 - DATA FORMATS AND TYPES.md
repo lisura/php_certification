@@ -120,6 +120,26 @@ $load->loadHTMLFILE('html_file.html'); //carrega arquivo HTML
 $load->loadHTML('<html><head></head><body>texto</body></html>'); //carrega texto HTML
 ```
 
+#### Funçõe
+
+public DOMNode appendChild ( DOMNode $newnode )  
+public string C14N ([ bool $exclusive [, bool $with_comments [, array $xpath [, array $ns_prefixes ]]]] )  
+public int C14NFile ( string $uri [, bool $exclusive [, bool $with_comments [, array $xpath [, array $ns_prefixes ]]]] )  
+public DOMNode cloneNode ([ bool $deep ] )  
+public int getLineNo ( void )  
+public string getNodePath ( void )  
+public bool hasAttributes ( void )  
+public bool hasChildNodes ( void )  
+public DOMNode insertBefore ( DOMNode $newnode [, DOMNode $refnode ] )  
+public bool isDefaultNamespace ( string $namespaceURI )  
+public bool isSameNode ( DOMNode $node )  
+public bool isSupported ( string $feature , string $version )  
+public string lookupNamespaceURI ( string $prefix )  
+public string lookupPrefix ( string $namespaceURI )  
+public void normalize ( void )  
+public DOMNode removeChild ( DOMNode $oldnode )  
+public DOMNode replaceChild ( DOMNode $newnode , DOMNode $oldnode )  
+
 ### SimpleXML e DOM
 
 No PHP podemos trabalhar com SimpleXML ou com DOM. Ainda podemos efetuar conversões entre estes dois métodos através das seguintes funções:
@@ -197,7 +217,7 @@ $param = $_GET['param'];
 $param = $_POST['param'];
 ```
 
-Para ver informações diferentes de GET e POST é um pouco mais complicado, requerendo o acesso por streams.
+Para ver informações diferentes de GET e POST (PUT por exemplo) é um pouco mais complicado, requerendo o acesso por streams.
 
 ```PHP
 //rest.php
