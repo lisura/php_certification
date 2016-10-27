@@ -2,8 +2,11 @@
 
 ## XML Parser
 
-XML (eXtensible Markup Language) é um formato de dados para intercâmbio de documentos na Web. Os dados são organizados de forma hierárquica, independente de plataforma de hardware ou software. A extensão para XML do PHP foi baseada no Expat. Essa extensão requer que a extensão libxml esteja habilitada, embora essa extensão e suas funções já venham habilitada por padrão.
+XML (eXtensible Markup Language) é um formato de dados para intercâmbio de documentos na Web. Os dados são organizados de forma hierárquica, independente de plataforma de hardware ou software.
 
+A extensão para XML do PHP foi baseada no Expat. Essa extensão requer que a extensão **libxml** esteja habilitada, embora essa extensão e suas funções já venham habilitada por padrão.
+
+Exemplo de um XML:
 ```XML
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <videogame nome="SNES" ano_lancamento="1990" fabricante="Nintendo">
@@ -17,20 +20,28 @@ XML (eXtensible Markup Language) é um formato de dados para intercâmbio de doc
 
 ### Codificação
 
-Há dois tipos de codificação de caracteres, source encoding (ocorre quando um documento XML é analisado) e target encoding (orre quando o PHP passa dados para as funções manipuladoras de XML). A representação interna do documento no PHP é sempre codificada em UTF-8.
+Há dois tipos de codificação de caracteres:
+- source encoding (ocorre quando um documento XML é analisado)
+- target encoding (orre quando o PHP passa dados para as funções manipuladoras de XML).   
+
+A representação interna do documento no PHP é sempre codificada em UTF-8.
 
 ### Manipuladores de eventos
 
-São executadas ao encontrar determinados elementos no arquivo XML. Manipuladores:
-xml_set_element_handler() - Abertura ou fechamento.
-xml_set_character_data_handler() - Dados de caractere.
-xml_set_processing_instruction_handler() - PI targets iniciados com "XML".
-xml_set_default_handler() - Caso aconteça algum evento fora da lista.
-xml_set_unparsed_entity_decl_handler() - Entidade externa não analisada (NDATA).
-xml_set_notation_decl_handler() - Este manipulador é chamado pela declaração de uma notation.
-xml_set_external_entity_ref_handler() - Referência para um arquivo ou URL.
+São executadas ao encontrar determinados elementos no arquivo   XML.
+
+Manipuladores:  
+xml_set_element_handler() - Abertura ou fechamento.  
+xml_set_character_data_handler() - Dados de caractere.  
+xml_set_processing_instruction_handler() - PI targets iniciados   com "XML".  
+xml_set_default_handler() - Caso aconteça algum evento fora da   lista.  
+xml_set_unparsed_entity_decl_handler() - Entidade externa não   analisada (NDATA).  
+xml_set_notation_decl_handler() - Este manipulador é chamado pela   declaração de uma notation.  
+xml_set_external_entity_ref_handler() - Referência para um   arquivo ou URL.  
 
 ### Funções do XML Parser
+
+Somente para efeitos demosntrativos. Esta lista foi retirada da documentação do PHP.
 
 xml_error_string — Get XML parser error string  
 xml_get_current_byte_index — Get current byte index for an XML parser  
@@ -57,13 +68,16 @@ xml_set_unparsed_entity_decl_handler — Set up unparsed entity declaration hand
 
 ### DOM (Document Object Model)
 
-DOM API é uma interface para lidar com documentos XML, HTML e SVG. A API define uma representação da estrutura do documento, bem como as formas de se manipular esta estrutura. A extensão DOM permite manipular XML através da DOM API com PHP 5. Requer que a extensão libxml esteja habilitada, bem como a Expat para algumas funcionalidades.
+DOM API é uma interface para lidar com documentos XML, HTML e SVG. A API define uma representação da estrutura do documento, bem como as formas de se manipular esta estrutura. A extensão DOM permite manipular XML através da DOM API com PHP 5.
+
+Requer que a extensão **libxml** esteja habilitada, bem como a Expat para algumas funcionalidades.
 
 
 ## SimpleXML e DOM
 
 O SimpleXML é uma extensão que permite ter o acesso e a manipulação de dados XML de forma mais simples, através da orientação à objetos.
 
+Por exemplo:
 ```PHP
 <?php
 $xmlstr = <<<XML
@@ -80,14 +94,16 @@ $videogame = new SimpleXMLElement($xmlstr);
 echo $videogame->jogos->jogo[0];
 ```
 
-### Funções
+### Funções do SimpleXML
 
 simplexml_load_string  
 simplexml_load_file
 
 O retorno destas funções é o próprio elemento SimpleXML, ou FALSE em caso de erro.
 
-### Métodos e propriedades
+Mais detalhes destas funções podem ser encontrados na documentação do PHP.
+
+### Métodos e propriedades do Objeto SimpleXML
 
 SimpleXMLElement::addAttribute — Adds an attribute to the SimpleXML element  
 SimpleXMLElement::addChild — Adds a child element to the XML node  
@@ -110,9 +126,10 @@ DOM API é uma interface para lidar com documentos XML, HTML e SVG. A extensão 
 
 >Nota: Esta extensão trabalha apenas com UTF-8. É preciso usar utf8_encode e utf8_decode para manipular dados codificados em ISO-8859-1, ou iconv para lidar com outras codificações.
 
-#### Carregando documentos
+#### Carregando documentos DOMDocument
 
 ```PHP
+<?php
 $load = new DOMDocument();
 $load->load('xml_file.xml'); //carrega arquivo XML
 $load->loadXML('<tag atrib="val">texto</tag>'); //carrega texto XML
@@ -120,7 +137,9 @@ $load->loadHTMLFILE('html_file.html'); //carrega arquivo HTML
 $load->loadHTML('<html><head></head><body>texto</body></html>'); //carrega texto HTML
 ```
 
-#### Funçõe
+#### Funçõe DOMDocument
+
+Estas funções foram retiradas da classe DOMDocument da documentação do PHP.
 
 public DOMNode appendChild ( DOMNode $newnode )  
 public string C14N ([ bool $exclusive [, bool $with_comments [, array $xpath [, array $ns_prefixes ]]]] )  
@@ -155,18 +174,20 @@ O retorno destas funções é o próprio elemento SimpleXML ou DOM, ou FALSE em 
 
 Simple Object Access Protocol, protocolo de mensagem que permite a comunicação entre aplicações independente do sistema operacional ou da linguagem de programação empregada. Se baseia no HTTP e no XML. Através do WSDL (Web Service Description Language) o SOAP descreve seus serviços.
 
-Também requer que a libxml esteja habilitada no PHP para ser utilizado, além da configuração --enable-soap.
+Também requer que a **libxml** esteja habilitada no PHP para ser utilizado, além da configuração _--enable-soap_.
 
-#### Funções e Classes
+#### Funções e Classes SOAP
 
 Para consumir um serviço SOAP, basta criar uma instancia de SoapClient.
 
+Exemplo:
 ```PHP
 public SoapClient::SoapClient ( mixed $wsdl [, array $options ] )
 ```
 
-Para verificar quais métodos posso utilizar, basta usar o método \__getFunctions.
+Para verificar quais métodos posso utilizar, basta usar o método _\__getFunctions_.
 
+Exemplo:
 ```PHP
 $client = new SoapClient('http://soap.amazon.com/schemas3/AmazonWebServices.wsdl');
 var_dump($client->__getFunctions());
@@ -181,17 +202,17 @@ public SoapServer::SoapServer ( mixed $wsdl [, array $options ] )
 Onde $wsdl é a URI do arquivo WSDL, ou null caso o modo seja non-WSDL. O segundo parâmetro pode ser usado para setar diversas opções no server.
 
 
-**Para tratamento de erros, podemos usar as seguintes funções:**
-
+>**Para tratamento de erros, podemos usar as seguintes funções:**
 bool is_soap_fault ( mixed $object )  
 bool use_soap_error_handler ([ bool $handler = true ] )  
 
 
 ### REST
 
-Representational State Transfer, outra forma de consumo de serviços WEB. Diferente do SOAP, o REST não usa um protocolo próprio, mas se vale de verbos HTTP para transmitir mensagens.
+Representational State Transfer, outra forma de consumo de serviços WEB.  
+Diferente do SOAP, o REST não usa um protocolo próprio, mas se vale de verbos HTTP para transmitir mensagens.
 
-#### Verbos HTTP
+#### Verbos HTTP do REST
 
 GET - Leitura de registros do serviço  
 POST - Criação de um novo recurso no serviço oferecido  
@@ -232,11 +253,12 @@ Javascript Object Notation, é uma estrutura de dados bastante popular por ser m
 
 #### Funções
 
+```
 string json_encode ( mixed $value [, int $options = 0 [, int $depth = 512 ]] )  
 mixed json_decode ( string $json [, bool $assoc ] )  
+```
 
-**funções para tratamento de erros:**
-
+>**funções para tratamento de erros:**  
 int json_last_error ( void )  
 string json_last_error_msg ( void )  
 
@@ -253,7 +275,7 @@ As informações de data e hora são armazenadas internamente como números em 6
 string date ( string $format [, int $timestamp ] )
 ```
 
-> para formato olhar documentação da aula.
+>Nota: para os formatos possiveis, olhar documentação da aula.
 
 ### Classe DateTime
 
@@ -280,7 +302,7 @@ public DateTime::__construct ([ string $time = "now" [, DateTimeZone $timezone =
 DateTime date_create ([ string $time = "now" [, DateTimeZone $timezone = NULL ]] ) //Procedural
 ```
 
-**metodos da classe DateTime**
+### Metodos da classe DateTime
 
 public DateTime add ( DateInterval $interval )  
 public static DateTime createFromFormat ( string $format , string $time [, DateTimeZone $timezone =   date_default_timezone_get() ] )  
@@ -327,7 +349,7 @@ echo date_format($date, 'Y-m-d');
 
 #### Fuso horario
 
-Embora tenhamos um fuso horário definido no php.ini em date.timezone, o qual será usado caso não seja informado no construtor de DateTime, podemos definir um fuso horário para cada objeto DateTime.
+Embora tenhamos um fuso horário definido no php.ini em _date.timezone_, o qual será usado caso não seja informado no construtor de DateTime, podemos definir um fuso horário para cada objeto DateTime.
 
 ```php
 ?php
