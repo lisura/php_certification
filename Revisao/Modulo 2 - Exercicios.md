@@ -92,12 +92,21 @@ ___
 ___  
 
 Questão 1 - Resposta correta: c  
+___  
 Questão 2 - Resposta correta: a e c  
+___  
 Questão 3 - Resposta correta: c  
+___  
 Questão 4 - Resposta correta: c e d  
+___  
 Questão 5 - Resposta correnta: d  
+___  
 Questão 6 - Resposta correnta: e  
+___  
 Questão 7 - Resposta correta: a  
+___  
 Questão 8 - Resposta correta: a  
+___  
 Questão 9 - Resposta correta: c  
+___  
 Questão 10 - Resposta correta: c  
