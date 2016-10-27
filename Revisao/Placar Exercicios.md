@@ -10,9 +10,9 @@
 
 |Nome    |Pontuação|
 |--------|---------|
-|Adinan  |        0|
-|Fernando|        0|
-|Ivan    |        0|
+|Adinan  |        4|
+|Fernando|        4|
+|Ivan    |        4|
 
 ##TOTAL
 
