@@ -3,7 +3,7 @@
 
 Um array no PHP é na verdade um mapa ordenado. Um mapa é um tipo que relaciona valores a chaves. Este tipo é otimizado para várias usos diferentes: ele pode ser tratado como um array, uma lista (vetor), hashtable (que é uma implementação de mapa), dicionário, coleção, pilha, fila e provavelmente mais. Também existe a possibilidade dos valores do array serem outros arrays, árvores e arrays multidimensionais.
 
-> **Atenção:** Diferentemente de outras linguagens de programação como o 'C', o PHP cria seus arrays de forma dinâmica, alocando espaço comporme a demanda.
+> **Atenção:** Diferentemente de outras linguagens de programação como o 'C', o PHP cria seus arrays de forma dinâmica, alocando espaço comforme a demanda.
 
 ## Construtor do array
 
