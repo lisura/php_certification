@@ -20,10 +20,10 @@
 
 |Nome    |Pontuação|
 |--------|---------|
-|Adinan  |        0|
-|Fernando|        0|
+|Adinan  |        8|
+|Fernando|        7|
 |Ivan    |        -|
-|Leandro |        0|
+|Leandro |        7|
 
 ##Módulo 4
 
