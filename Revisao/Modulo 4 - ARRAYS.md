@@ -259,9 +259,9 @@ extract flags:
 ## SPL - Objetos Como Array
 
 SPL é coleção de classes e interfaces que servem para resolver problemas padrões no mundo PHP, seu principal objetivo é prover interfaces que permita os desenvolvedores fazer um uso completo das vantagens da programação orientado a objetos.
-Os Iterators abaixo são formas de se lidar com arrays de forma orientada a objetos:
-* **ArrayObject**
-* **ArrayIterator**
-* **RecursiveArrayIterator**
-* **iterator_to_array**
-* **SplFixedArray**
+Os recursos abaixo são formas de se lidar com arrays de forma orientada a objetos:
+* **ArrayObject**: objeto que funciona como um array (porém as funções nativas PHP de array não funcionam)
+* **ArrayIterator**: remove e modifica valores e chaves quando itera arrays e objetos
+* **RecursiveArrayIterator**: igual o anterior mas itera sub-níveis da iteração
+* **iterator_to_array**: Copia o iterador em um array PHP
+* **SplFixedArray**: objeto com funcionalidades de array mas com tamanho fixo e chaves integer dentro do limite. Mais rápido que array PHP
