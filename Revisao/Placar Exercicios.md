@@ -30,7 +30,16 @@
 |Nome    |Pontuação|
 |--------|---------|
 |Adinan  |        -|
-|Fernando|        0|
+|Fernando|        7|
+|Ivan    |        7|
+|Leandro |        7|
+
+##Módulo 5
+
+|Nome    |Pontuação|
+|--------|---------|
+|Adinan  |        0|
+|Fernando|        -|
 |Ivan    |        0|
 |Leandro |        0|
 
