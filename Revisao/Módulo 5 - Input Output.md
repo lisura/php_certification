@@ -201,7 +201,7 @@ $lista = array('aaa', 'bbb', 'ccc', 'dddd');
 
 $fp = fopen('arquivo.csv', 'w');
 
-fputcsv($fp,explode(';',$lista), ";");
+fputcsv($fp,$lista, ";");
 
 fclose($fp);
 ````
