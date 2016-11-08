@@ -72,10 +72,10 @@ if ($existed) {
 Wrapper próprio do php para stream de I/O.  
 Os wrappers básicos que mapeiam os recursos de I\O são **php://stdin**, **php://stdout**, e **php://stderr**.  
 **php://input** ẽ um wrapper de apenas leitura que recupera os dados do corpo de requisição de um POST.  
-Exemplo: 
+Exemplo:
 ```
 curl -d "Hello World" -d "foo=bar&name=John" http://localhost/dev/streams/php_input.php
-````
+```
 
 **php://memory** e **php://temp** são wrappers usados para ler e escrever dados temporários. No primeiro caso, os dados são gravados na memória, e no segundo, em um arquivo temporário.
 
@@ -134,12 +134,10 @@ Tambêm é possível utilizar o meta-wrapper **php://filter** :
 <?php
     $filter = 'string.toupper';
     $file = 'exemplo.txt';
-    $h = fopen('php://filter/read=' . $filter . '/resource=' . $file,'r'); 
+    $h = fopen('php://filter/read=' . $filter . '/resource=' . $file,'r');
     fpassthru($h);
     fclose($h);
 ````
 
 Para criar um filtro utilizamos a função **stream_filter_register**.  
 [Exemplo](https://github.com/lisura/php_certification/blob/master/Examples/INPUT-OUTPUT/php_filter.php)
-
-
