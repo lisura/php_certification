@@ -38,10 +38,10 @@
 
 |Nome    |Pontuação|
 |--------|---------|
-|Adinan  |        0|
+|Adinan  |        5|
 |Fernando|        -|
-|Ivan    |        0|
-|Leandro |        0|
+|Ivan    |        5|
+|Leandro |        7|
 
 ##TOTAL
 
