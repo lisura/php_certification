@@ -64,6 +64,118 @@ B) func_get_args(2);
 C) func_num_args(2);
 
 D) func_num_args(1);
+
+___
+
+5 - What is the output of the following code? (Choose 2)
+
+```php
+<?php
+function addValues(){
+    $sum = 0;
+    for ($i = 1; $i <= func_num_args(); $i++){
+      $sum += func_get_arg($i);
+    }
+    return $sum;
+}
+echo addValues(1,2,3);
+```
+A) 5  
+
+B) 6  
+
+C) A parse error  
+
+D) A warning  
+___
+
+6 - Take a look at the following code...
+
+```php
+<?php
+function myFunction($a){
+    $a++;
+}
+$b = 1;
+myFunction($b);
+```
+What code do you need to replace so that $b has the value 2 at the end of the script?
+
+A) Line 02: Replace $a with &$a  
+
+B) Line 03: Replace $a++ with $a +=2;  
+
+C) Line 03: Replace $a++ with $a \*=2;  
+
+D) Line 06: Replace $b with &$b  
+___
+
+7 - What is the output of the following code?
+
+```php
+<?php
+function increment ($val){
+  return ++$val;
+}
+echo increment(1);
+ ?>
+```
+___
+
+8 - What is the best way to test if $param is an anonymous function in a method?
+
+A) Use method_exists($this, $param)  
+
+B) Use is_callable($param)  
+
+C) Use the type-hint Closure on the signature  
+
+D) Use is_executable($param)  
+
+___
+
+9 - What is the output of the following code?
+
+```php
+<?php
+$x = function func ($a, $b, $c){
+  print "$c|$b|$a\n";
+};
+print $x(1,2,3);
+```
+A) Syntax error  
+
+B) 3|2|1  
+
+C) 1|2|3  
+
+___
+
+10 - What is the output of the following code (ignoring any PHP notices and
+error messages)?
+
+```php
+<?php
+$v1 = 1;
+$v2 = 2;
+$v3 = 3;
+function myFunction(){
+  $GLOBALS['v1'] *= 2;
+  $v2 *=2;
+  global $v3; $v3 *= 2;
+}
+myFunction();
+echo "$v1$v2$v3";
+ ?>
+```
+A) 123  
+
+B) 246  
+
+C) 226  
+
+D) 126  
+
 ___
 ___
 RESPOSTAS
@@ -85,3 +197,16 @@ ___
 4 - A |
 Other functions does not recive parameters: func_num_args(void) and func_get_args(void)
 ___
+5 - A: 5 and D: a warning
+___
+6 - A: Line 02: Replace $a with &$a
+___
+7 - 2
+___
+8 - B: Use is_callable($param)
+___
+9 - A: Syntax error |  
+Message : syntax error, unexpected 'func' (T_STRING), expecting '('
+___
+10 - C: 226 |
+E_NOTICE : type 8 -- Undefined variable: v2 --

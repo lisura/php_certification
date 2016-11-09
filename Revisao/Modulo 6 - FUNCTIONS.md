@@ -82,6 +82,7 @@ Variáveis declaradas nas funções não são visíveis fora das mesmas funçõe
 Se uma variável possui um conjunto de parenteses, PHP vai procurar por uma função com o mesmo nome do valor da variável e assim executar a função encontrada.
 
 ```PHP
+<?php
 function foo() { }
 $func = 'foo';
 $func();
@@ -100,15 +101,25 @@ Funções anônimas, closures ou funções lambda, permitem a criação de funç
 Funções anônimas podem ser criadas pelo metodo
 
 ```PHP
+<?php
 string create_function ( string $args , string $codigo )
 //exemplo
 $newfunc = create_function('$target', 'return "Estou caçando " . $target ."!";');
 echo $newfunc('lagartixas') . "<br/>";
 ```
 
+Para verificar se o conteúdo da variável pode ser chamado como função usamos o metodo:
+
+```php
+bool is_callable ( mixed $var [, bool $syntax_only [, string &$callable_name ]] )
+```
+
+Isto pode verificar se uma simples variável contêm o nome de uma função válida, ou que um array contêm uma propriedade de um objeto e nome de função.
+
 Closures também podem herdar variáveis do escopo pai. Essas variáveis precisam ser referenciadas utilizando a instrução _use_.
 
 ```PHP
+<?php
 echo "<pre>";
 $message = '-Quem está aí?!<br>-Miau!<br>';
 $example = function () {  // Sem "use"
@@ -129,6 +140,7 @@ $example(); //repete o uso da mensagem anterior
 Vinculação automática de _$this_. (PHP 5.4 +), ao ser declarada no contexto de uma classe, a classe corrente é automaticamente vinculada a ela, tornando _$this_ disponível dentro do escopo da função.
 
 ```PHP
+<?php
 class SuperSam {
     public $frase = 'Time is money! Oh yeah...!';
     public function gritoDeGuerra()    {
