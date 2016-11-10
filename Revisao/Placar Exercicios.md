@@ -47,9 +47,9 @@
 
 |Nome    |Pontuação|
 |--------|---------|
-|Adinan  |        0|
-|Fernando|        0|
-|Ivan    |        0|
+|Adinan  |        8|
+|Fernando|        8|
+|Ivan    |        8|
 |Leandro |        -|
 
 ##TOTAL
