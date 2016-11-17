@@ -52,6 +52,15 @@
 |Ivan    |        8|
 |Leandro |        -|
 
+##Módulo 7
+
+|Nome    |Pontuação|
+|--------|---------|
+|Adinan  |        6|
+|Fernando|        7|
+|Ivan    |        -|
+|Leandro |        8|
+
 ##TOTAL
 
 |Nome    |Pontuação|
