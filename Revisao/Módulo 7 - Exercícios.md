@@ -109,7 +109,7 @@ class myBaseA extends myBaseClass {
   }
 }
 
-$a = new myClassA();
+$a = new myBaseA();
 $a->doSomething();
 ````
 
@@ -192,7 +192,7 @@ Obs.: a propriedade $c é privada e não pode ser acessada no escopo global.
 
 5 - John
 
-6 - a
+6 - c
 
 7 - d  
 Obs.: exception_handler permite que exceções não capturadas sejam tratadas, sem causar fatal error.
