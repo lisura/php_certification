@@ -95,7 +95,8 @@ O método mágico *\__sleep()* é executado antes da serialização, se disponí
  echo $obj->movies(), PHP_EOL;
  ````
 
- ### Visibilidade
+ ### Visibilidade  
+ 
  tipo | descricao
  --- | ---
  public | podem ser acessados de qualquer lugar
