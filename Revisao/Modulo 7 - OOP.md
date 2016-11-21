@@ -340,11 +340,11 @@ spl_autoload_register();
 
 ```
 
-# Reflection
+## Reflection
 
 O PHP 5 vem com uma API completa de reflexão que acrescenta a capacidade de realizar engenharia reversa em classes, interfaces, funções, métodos e extensões. Além disso, a API de reflexão oferece maneiras de recuperar comentários de documentação para as funções, classes e métodos.
 
-## Principais Classes usadas para Reflections
+### Principais Classes usadas para Reflections
 
 **Reflector — Interface**
 
@@ -468,7 +468,7 @@ function MinionTeste(MinionI $i) {
 MinionTeste(new Ivan());
 ```
 
-# Class Constantes
+## Class Constantes
 
 É possível definir valores constantes em cada classe permanecendo a mesma e imutável. Constantes diferem de variáveis normais, ao não usar o símbolo $ para declará-las ou usá-las. A visibilidade padrão de constantes de classe é public.
 
@@ -495,3 +495,32 @@ class MinhaClasse
 ```
 
 **O suporte para inicialização de constantes com Heredoc e Nowdoc foi adicionado no PHP 5.3.0.**
+
+## Late Static Bindings
+
+A partir do PHP 5.3.0, o PHP implementa um recurso chamado late static bindings que pode ser usado para referenciar a classe chamada no contexto de herança estática. Realizada pelos prefixos **self::**, **parent::**, **static::**. Pode ser utilizado em (mas não limitado a) chamadas de métodos estáticos.
+
+É importante notar que **self::** ou **__CLASS__** são resolvidas usando a classe na qual o método pertence, ou seja, self pode se referir a uma classe pai caso ao invés da classe atual caso o método em questão esteja na classe pai. Nesses casos é interessante usar **static::** para manter a referência no escopo da classe atual.
+
+```php
+<?php
+class A {
+    public static function who() {
+        echo __CLASS__;
+    }
+    public static function test() {
+        self::who();
+	//static::who();
+    }
+}
+
+class B extends A {
+    public static function who() {
+        echo __CLASS__;
+    }
+}
+
+B::test(); //Printa na tela "A" caso test() use self::, mas printa B se for usado static::
+```
+
+> **Nota:** Em contextos não estáticos a classe chamada será a classe da instância do objeto. Assim como **$this->** chamará métodos privados do mesmo escopo, utilizar static:: pode ter resultados diferentes. Outra diferença é que **static::** só pode referenciar propriedades estáticas.
