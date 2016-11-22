@@ -1,4 +1,4 @@
-##Módulo 1
+##Módulo 1-2
 
 |Nome    |Pontuação|
 |--------|---------|
@@ -52,7 +52,7 @@
 |Ivan    |        8|
 |Leandro |        -|
 
-##Módulo 7
+##Módulo 7-1
 
 |Nome    |Pontuação|
 |--------|---------|
@@ -61,11 +61,47 @@
 |Ivan    |        -|
 |Leandro |        8|
 
-##TOTAL
+##Módulo 7-2
 
 |Nome    |Pontuação|
 |--------|---------|
-|Adinan  |       10|
-|Fernando|        0|
-|Ivan    |        9|
-|Leandro |        9|
+|Adinan  |        -|
+|Fernando|        6|
+|Ivan    |        7|
+|Leandro |        5|
+
+##Módulo 8
+
+|Nome    |Pontuação|
+|--------|---------|
+|Adinan  |        -|
+|Fernando|        -|
+|Ivan    |        -|
+|Leandro |        -|
+
+##Módulo 9-1
+
+|Nome    |Pontuação|
+|--------|---------|
+|Adinan  |        -|
+|Fernando|        -|
+|Ivan    |        -|
+|Leandro |        -|
+
+##Módulo 9-2
+
+|Nome    |Pontuação|
+|--------|---------|
+|Adinan  |        -|
+|Fernando|        -|
+|Ivan    |        -|
+|Leandro |        -|
+
+##Módulo 10
+
+|Nome    |Pontuação|
+|--------|---------|
+|Adinan  |        -|
+|Fernando|        -|
+|Ivan    |        -|
+|Leandro |        -|
