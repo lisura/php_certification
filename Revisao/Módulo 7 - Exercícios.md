@@ -410,13 +410,13 @@ Obs.: a) e b) error sintax. d não faz nem sentido.
 
 12 - D
 
-13 - E
+13 - E (a função b() é herdada por C, mas o self:: não se refere ao trait A (iria referir se A fosse uma classe)
 
 14 - B,D,G
 
 15 - B
 
-16 - D
+16 - D (To String não é chamado, mas sim invoke)
 
 17 - B
 
