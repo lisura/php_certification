@@ -608,13 +608,13 @@ SPL é uma coleção de interfaces e classes que servem para resolver problemas 
 * Constantes pré-definidas
 
 * Estruturas de Dados
-  * SplDoublyLinkedList — The SplDoublyLinkedList class
+  * **SplDoublyLinkedList** — The SplDoublyLinkedList class
   * **SplStack** — A classe SplStack fornece as principais funcionalidades de uma pilha
   * **SplQueue** — The SplQueue class
+  * **SplPriorityQueue** — The SplPriorityQueue class
   * SplHeap — The SplHeap class
   * SplMaxHeap — The SplMaxHeap class
   * SplMinHeap — The SplMinHeap class
-  * **SplPriorityQueue** — The SplPriorityQueue class
   * SplFixedArray — The SplFixedArray class
   * SplObjectStorage — The SplObjectStorage class
 
@@ -690,6 +690,81 @@ SPL é uma coleção de interfaces e classes que servem para resolver problemas 
  * ArrayObject — A classe ArrayObject
  * SplObserver — The SplObserver interface
  * SplSubject — The SplSubject interface
+ 
+```php
+SplDoublyLinkedList implements Iterator , ArrayAccess , Countable {
+	/* Métodos */
+	public __construct ( void )
+	public void add ( mixed $index , mixed $newval )
+	public mixed bottom ( void )
+	public int count ( void )
+	public mixed current ( void )
+	public int getIteratorMode ( void )
+	public bool isEmpty ( void )
+	public mixed key ( void )
+	public void next ( void )
+	public bool offsetExists ( mixed $index )
+	public mixed offsetGet ( mixed $index )
+	public void offsetSet ( mixed $index , mixed $newval )
+	public void offsetUnset ( mixed $index )
+	public mixed pop ( void )
+	public void prev ( void )
+	public void push ( mixed $value )
+	public void rewind ( void )
+	public string serialize ( void )
+	public void setIteratorMode ( int $mode )
+	public mixed shift ( void )
+	public mixed top ( void )
+	public void unserialize ( string $serialized )
+	public void unshift ( mixed $value )
+	public bool valid ( void )
+}
+```
+
+```php
+SplStack extends SplDoublyLinkedList implements Iterator , ArrayAccess , Countable {
+	/* Métodos */
+	__construct ( void )
+	void setIteratorMode ( int $mode )
+	
+	/** Herda os métodos de SplDoublyLinkedList
+	  * Ex: public void push ( mixed $value ) e public mixed pop ( void ) 
+	  * Para implementar funcionalidade de pilha (stack)
+	  */
+}
+```
+
+```php
+SplQueue extends SplDoublyLinkedList implements Iterator , ArrayAccess , Countable {
+	/* Métodos */
+	__construct ( void )
+	mixed dequeue ( void )
+	void enqueue ( mixed $value )
+	void setIteratorMode ( int $mode )
+	
+	/* Herda os métodos de SplDoublyLinkedList */
+}
+```
+
+```php
+SplPriorityQueue implements Iterator , Countable {
+	/* Métodos */
+	public __construct ( void )
+	public int compare ( mixed $priority1 , mixed $priority2 )
+	public int count ( void )
+	public mixed current ( void )
+	public mixed extract ( void )
+	public void insert ( mixed $value , mixed $priority )
+	public bool isEmpty ( void )
+	public mixed key ( void )
+	public void next ( void )
+	public void recoverFromCorruption ( void )
+	public void rewind ( void )
+	public void setExtractFlags ( int $flags )
+	public mixed top ( void )
+	public bool valid ( void )
+}
+```
 
 ### Traits
 
