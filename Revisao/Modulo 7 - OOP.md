@@ -524,3 +524,232 @@ B::test(); //Printa na tela "A" caso test() use self::, mas printa B se for usad
 ```
 
 > **Nota:** Em contextos não estáticos a classe chamada será a classe da instância do objeto. Assim como **$this->** chamará métodos privados do mesmo escopo, utilizar static:: pode ter resultados diferentes. Outra diferença é que **static::** só pode referenciar propriedades estáticas.
+
+## Magic Methods
+
+Os nomes de função \_\_construct(), \_\_destruct(), \_\_call(), \_\_callStatic(), \_\_get(), \_\_set(), \_\_isset(), \_\_unset(), \_\_sleep(), \_\_wakeup(), \_\_toString(), \_\_invoke(), \_\_set_state(), \_\_clone() e \_\_debugInfo() são mágicos nas classes do PHP. Não deve-se ter funções com esses nomes em nenhuma de suas classes a não ser que queira a funcionalidade mágica associada a eles.
+
+> **Cuidado:** O PHP reserva todas as funções com nomes iniciadas com \_\_ como mágicas. É recomendado que não se utilize funções com nomes com \_\_ no PHP, a não ser que deseje-se alguma funcionalidade mágica documentada.
+
+### \_\_construct()
+
+O PHP 5 permite aos desenvolvedores declararem métodos construtores para as classes (nas versões anteriores o construtor tinha o mesmo nome da classe). Classes que tem um método construtor, chamam o método a cada objeto recém criado, sendo apropriado para qualquer inicialização que o objeto necessite antes de ser utilizado.
+
+> **Nota:**  Construtores pais não são chamados implicitamente se a classe filha define um construtor. Para executar o construtor da classe pai, uma chamada a parent::\_\_construct() dentro do construtor da classe filha é necessária. Se a classe filha não definir um construtor, será herdado da classe pai como um método normal (se não foi declarado como privado).
+
+### \_\_toString()
+
+O método \_\_toString() permite que uma classe decida como se comportar quando convertida para uma string. Por exemplo, o que echo $obj; irá imprimir. Este método precisa retornar uma string, senão um erro nível E_RECOVERABLE_ERROR é gerado.
+
+## \_\_clone()
+
+Depois que a clonagem se completa, se um método \_\_clone() estiver definido, o objeto recém criado terá seu método \_\_clone() chamado, permitindo que qualquer propriedade seja alterada.
+
+### \_\_get(), \_\_set() , \_\_isset() & \_\_unset() (Sobrecarga de propriedades)
+
+**\_\_set()** é executado ao escrever dados em propriedades inacessíveis.
+
+**\_\_get()** é utilizado para ler dados de propriedades inacessíveis.
+
+**\_\_isset()** é disparado ao chamar a função isset() ou empty() em propriedades inacessíveis.
+
+**\_\_unset()** é invocado ao usar o construtor unset() em propriedades inacessíveis.
+
+O argumento $name é o nome da propriedade com o qual se está interagindo. O argumento $value do método \_\_set() especifica o valor para o qual a propriedade $name deveria ser definida.
+
+A sobrecarga de propriedades funciona somente no contexto de objeto. Estes métodos mágicos não são disparados em contexto estático. Portanto estes métodos não podem ser declarados como static. A partir do PHP 5.3.0, um aviso é emitido se algum método mágico de sobrecarga é declarado como static.
+
+> **Nota:** O valor de retorno de \_\_set() é ignorado por causa da forma que o PHP processa o operador de atribuição. Similarmente, o método \_\_get() nunca é chamado em atribuições encadeadas como essa: ** $a = $obj->b = 8;**
+
+### \_\_call() & \_\_callStatic() (Sobrecarga de Método)
+
+\_\_call() é disparado ao invocar métodos inacessíveis em um contexto de objeto.
+
+\_\_callStatic() é disparado quando ao invocar métodos inacessíveis em um contexto estático.
+
+O argumento $name é o nome do método sendo chamado. O argumento $arguments é um array enumerado contendo os parâmetros passados para o método $name.
+
+### \_\_invoke()
+
+O método \_\_invoke() é chamado quando um script tenta chamar um objeto como uma função.
+
+### \_\_set_state(),
+
+Esse método estático é chamado em classes exportadas por var_export() desde PHP 5.1.0.
+
+O único parâmetro deste método é um array contendo propriedades exportadas no formato array('property' => value, ...).
+
+### \_\_sleep() & \_\_wakeup()
+
+serialize() checa se sua classe tem uma função com o nome mágico \_\_sleep(). Se houver, a função é executa antes de qualquer serialização. Ela pode limpar o objeto e deve retornar um array com os nomes de todas as variáveis do objeto que devem ser serializadas. Se o método não retornar nada, então NULL é serializado e um E_NOTICE disparado.
+
+> **Nota:** Não é possível que \_\_sleep() retorne nomes de propriedades privadas da classe pai. Fazer isso causará um erro de nível E_NOTICE. Ao invés disso, pode-se utilizar a interface Serializable.
+O intuito do método \_\_sleep() é enviar dados pendentes ou realizar tarefas de limpeza. Além disso, a função é útil se tiver objetos muito grandes que não precisem ser completamente salvos.
+
+Ao mesmo tempo, unserialize() checa pela presença da função com o nome mágico \_\_wakeup(). Se presente, essa função pode reconstruir qualquer recurso que o objeto possa ter.
+
+O intuito do método \_\_wakeup() é reestabelecer qualquer conexão com banco de dados que podem ter sido perdidas durante a serialização, e realizar outras tarefas de reinicialização.
+
+### \_\_destruct()
+
+O PHP 5 introduz um conceito de destrutor similar ao de outras linguagens orientadas a objeto, como C++. O método destrutor será chamado assim que todas as referências a um objeto particular forem removidas ou quando o objeto for explicitamente destruído ou qualquer ordem na sequência de encerramento.
+
+Como os construtores, destrutores da classe pai não serão chamados implicitamente pelo motor. Para executar o destrutor pai, deve-se fazer uma chamada explicita a parent::\_\_destruct() no corpo do destrutor. Assim como construtores, uma classe filha pode herdar o destrutor pai caso não implemente um.
+
+O destrutor será chamado mesmo se o script for terminado utilizando-se exit(). Chamar exit() em um destrutor irá impedir que as demais rotinas de encerramento executem.
+
+> **Nota:** Destrutores chamados durante o encerramento da execução do script tem os cabeçalhos HTTP enviados. O diretório atual na fase de encerramento do script pode ser diferente em alguns SAPIs (e.g. Apache).
+> **Nota:** Tentar disparar uma exceção em um destrutor (chamado no término do script), causará um erro fatal.
+
+### SPL - Standard PHP Library
+
+SPL é uma coleção de interfaces e classes que servem para resolver problemas padrões.
+
+* Constantes pré-definidas
+
+* Estruturas de Dados
+  * SplDoublyLinkedList — The SplDoublyLinkedList class
+  * **SplStack** — A classe SplStack fornece as principais funcionalidades de uma pilha
+  * **SplQueue** — The SplQueue class
+  * SplHeap — The SplHeap class
+  * SplMaxHeap — The SplMaxHeap class
+  * SplMinHeap — The SplMinHeap class
+  * **SplPriorityQueue** — The SplPriorityQueue class
+  * SplFixedArray — The SplFixedArray class
+  * SplObjectStorage — The SplObjectStorage class
+
+* Iteradores
+ * AppendIterator — The AppendIterator class
+ * ArrayIterator — A classe ArrayIterator
+ * CachingIterator — A classe CachingIterator
+ * CallbackFilterIterator — The CallbackFilterIterator class
+ * **DirectoryIterator** — A classe DirectoryIterator
+ * EmptyIterator — The EmptyIterator class
+ * FilesystemIterator — The FilesystemIterator class
+ * FilterIterator — A classe FilterIterator
+ * GlobIterator — The GlobIterator class
+ * InfiniteIterator — The InfiniteIterator class
+ * IteratorIterator — The IteratorIterator class
+ * LimitIterator — A classe LimitIterator
+ * MultipleIterator — The MultipleIterator class
+ * NoRewindIterator — The NoRewindIterator class
+ * ParentIterator — A classe ParentIterator
+ * **RecursiveArrayIterator** — The RecursiveArrayIterator class
+ * RecursiveCachingIterator — A classe  RecursiveCachingIterator
+ * RecursiveCallbackFilterIterator — The RecursiveCallbackFilterIterator class
+ * RecursiveDirectoryIterator — A classe RecursiveDirectoryIterator
+ * RecursiveFilterIterator — The RecursiveFilterIterator class
+ * RecursiveIteratorIterator — A classe RecursiveIteratorIterator
+ * RecursiveRegexIterator — The RecursiveRegexIterator class
+ * RecursiveTreeIterator — The RecursiveTreeIterator class
+ * RegexIterator — The RegexIterator class
+
+* Interfaces
+  * Countable — Interface Countable
+  * OuterIterator — The OuterIterator interface
+  * RecursiveIterator — The RecursiveIterator interface
+  * SeekableIterator — The SeekableIterator interface
+
+* **Exceções**
+  * BadFunctionCallException — The BadFunctionCallException   class
+  * BadMethodCallException — The BadMethodCallException class
+  * DomainException — The DomainException class
+  * InvalidArgumentException — The InvalidArgumentException   class
+  * LengthException — The LengthException class
+  * LogicException — The LogicException class
+  * OutOfBoundsException — The OutOfBoundsException class
+  * OutOfRangeException — The OutOfRangeException class
+  * OverflowException — The OverflowException class
+  * RangeException — The RangeException class
+  * RuntimeException — The RuntimeException class
+  * UnderflowException — The UnderflowException class
+  * UnexpectedValueException — The UnexpectedValueException class
+
+* Funções da SPL
+  * class_implements — Retorna as interfaces que são implementadas pela classe
+  * class_parents — Retorna as classes pai de determinada   classe
+  * class_uses — Return the traits used by the given class
+  * iterator_apply — Call a function for every element in an iterator
+  * iterator_count — Conta o número de elementos do iterador
+  * iterator_to_array — Copia o iterador em um array
+  * spl_autoload_call — Tenta todas as funções \_\_autoload() registradas para carregar a classe solicitada
+  * spl_autoload_extensions — Registra e retorna as extensões de arquivo padrões para o spl_autoload
+  * spl_autoload_functions — Retorna todas as funções \_\_autoload() registradas
+  * **spl_autoload_register** — Registra a função dada como implementação de \_\_autoload()
+  * **spl_autoload_unregister** — Retira a função dada como implementação de \_\_autoload()
+  * **spl_autoload** — Implementação padrão de \_\_autoload()
+  * spl_classes — Retorna as classes da SPL disponíveis
+  * spl_object_hash — Retorna uma identificação hash do objeto dado
+
+* Manipulação de arquivos
+  * SplFileInfo — The SplFileInfo class
+  * SplFileObject — The SplFileObject class
+  * SplTempFileObject — The SplTempFileObject class
+
+* Classes e interfaces genéricas
+ * ArrayObject — A classe ArrayObject
+ * SplObserver — The SplObserver interface
+ * SplSubject — The SplSubject interface
+
+### Traits
+
+Podemos traduzir "trait" para o português como "peculiaridade", ou seja, uma característica própria de alguma coisa. No caso da programação orientada a objetos, ela representa um mecanismo para agregar características/comportamentos a um conjunto de classes de forma horizontal.
+
+A diferença entre uma herança simples (com extends) para uma herança com trait é que a herança simples se dá de forma vertical, pois a linguagem PHP só permite que uma classe herde diretamente de uma única classe. Por outro lado, é possível agregar várias traits a uma única classe, por isso dizemos que é uma herança horizontal.
+
+E uma trait também não é igual a uma classe pois ela não pode ser instanciada.
+
+Resumindo: uma trait é um pacote de características/comportamentos semelhantes às classes abstratas, mas que podem ser acopladas a classes.
+
+```php
+<?php
+trait Singleton {
+
+    /**
+     * Instancia da classe
+     * @var self
+     */
+    protected static $instance = null;
+
+    /**
+     * Construtor
+     */
+    protected function __construct() {
+        // void
+    }
+
+    /**
+     * Clone: nao permitido
+     * @throw RuntimeException#0 Always throw this exception.
+     */
+    final protected function __clone() {
+        throw new RuntimeException('Singleton class is not clonable', 0);
+    }
+
+
+    /**
+     * Retorna a instancia da classe singleton
+     * @return self
+     */
+    final public static function getInstance() {
+        if (self::$instance === null) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+}
+
+class Config {
+    use Singleton;
+
+    //...
+}
+
+class X {
+    use A, B { //multiplas traits
+        A::teste insteadof B; //usa o método teste em A e ignora o teste em B	
+        B::teste as testeB; //apelida o teste em B de testeB
+    }
+    ...
+}
+```
