@@ -177,7 +177,7 @@ d) This cannot be re-written in PHP5.
 
 ----
 
-**11) What is the output of the following code?
+**11) What is the output of the following code?**
 ```php
 <?php
 $list = new SplStack();
@@ -200,7 +200,7 @@ E. a
 
 ----
 
-**12) Using the notation self::$property refers to:
+**12) Using the notation self::$property refers to:**
 
 A. A property of the current object
 
@@ -214,7 +214,7 @@ E. A variable called $property in this class or any parent class.
 
 ----
 
-**13) What is the output of the following code?
+**13) What is the output of the following code?**
 ```php
 <?php
 trait A {
@@ -248,7 +248,7 @@ E) c
 
 ----
 
-**14) Which of the following is a magic method in PHP 5.3? (choose three)
+**14) Which of the following is a magic method in PHP 5.3? (choose three)**
 
 A. __walk()
 
@@ -266,7 +266,7 @@ G. __set()
 
 ----
 
-**15) Which line of code can be used to replace the INSERT comment in order to output "hello"?
+**15) Which line of code can be used to replace the INSERT comment in order to output "hello"?**
 ```php
 class C {
     public $ello = 'ello';
@@ -299,7 +299,7 @@ D. return $y . "ello";
 
 ----
 
-**16) What is the output of the following code?
+**16) What is the output of the following code?**
 ```php
 class C {
     public $x = 1;
@@ -323,7 +323,7 @@ D. 3
 
 ----
 
-**17) Late static binding is used in PHP to:
+**17) Late static binding is used in PHP to:**
 
 A. Load dynamic libraries and extensions at runtime
 
@@ -335,7 +335,7 @@ D. Find proper method to call according to the call arguments
 
 ----
 
-**18) Which of the following tasks can be achieved by using magic methods? (Choose 3)
+**18) Which of the following tasks can be achieved by using magic methods? (Choose 3)**
 
 A. Initializing or uninitializing object data
 
@@ -352,7 +352,7 @@ F. Converting objects to string representation
 ----
 
 **19) How should class MyObject be defined for the following code to work properly? Assume
-$array is an array and MyObject is a user-defined class.
+$array is an array and MyObject is a user-defined class.**
 ```php
 $obj = new MyObject();
 array_walk($array, $obj);
@@ -368,7 +368,7 @@ D. MyObject should implement method __invoke
 
 ----
 
-**20) Which of the following methods is invoked when a class method is inaccesible or doesn't exist?
+**20) Which of the following methods is invoked when a class method is inaccesible or doesn't exist?**
 
 a) __autoload
 
