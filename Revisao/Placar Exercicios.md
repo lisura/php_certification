@@ -74,10 +74,10 @@
 
 |Nome    |Pontuação|
 |--------|---------|
-|Adinan  |        -|
+|Adinan  |        5|
 |Fernando|        -|
-|Ivan    |        -|
-|Leandro |        -|
+|Ivan    |        6|
+|Leandro |        5|
 
 ##Módulo 9-1
 
