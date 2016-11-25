@@ -41,7 +41,19 @@ Cuidado com o que será exibido em caso de erros.
 
 *error_reporting*: Quais serão os tipos de erros a serem exibidos.  Determinados por constantes binárias como E_ALL , E_DEPRECATED e E_STRICT.
 
->O padrão no PHP 4 e 5 é **E_ALL & ~ E_NOTICE**, ou seja, erros de Notice não serão exibidos.
+| valores | descição |
+| --- | --- |
+| E_ALL        |   Todos os erros e alertas (Cuidado. Veja o E_STRICT) |  
+| E_ERROR      |   Erros fatais em runtime |  
+| E_WARNING    |   Erros não fatais em runtime |  
+| E_PARSE      |   Erros de compilação (antes da execução do código) |  
+| E_DEPRECATED |   Avisos de coisas obsoletas, que serão retiradas no futuro |  
+| E_NOTICE     |   Avisos que podem ou não ser bugs |
+| E_STRICT     |   Dá recomendações de melhor interoperabilidade, desde o PHP 5 |
+
+>Nota 1 - O padrão no PHP 4 e 5 é **E_ALL & ~ E_NOTICE**, ou seja, erros de Notice não serão exibidos.
+
+>Nota 2 - Em produção o recomendado é sempre manter *error_reporting*:   E_ALL & ~E_DEPRECTED & ~E_STRICT
 
 ## Segurança de Sessão
 
@@ -73,6 +85,16 @@ Impede que o usuário gerencie sessões por URL. Vem desabilitado por padrão, e
 
 Através da variável $\_SERVER e suas chaves REMOTE\_ADDR e SERVER\_ADDR, podemos verificar o IP de onde um usuário está acessando o sistema, destruindo a sessão caso identifiquemos que o IP de acesso é diferente do IP anterior.
 
+### Definindo os parâmetros do cookie de sessão
+
+A função session_set_cookie_params define parâmetros dos cookies configurados no arquivo php.ini. O efeito desta função é apenas pela duração do script. Então, você precisa chamar session_set_cookie_params() para cada requisição e antes que session_start() seja chamada.
+
+As configuraçãoes pondem por exemplo impedira que um usuario mal intencionado leia os cookies usando JS caso a tag httponly esteja marcada como true.
+
+> session.cookie_httponly boolean
+
+Marca o cookie para ser acessível apenas atráves do protocolo HTTP. Isto significa que o cookie não será acessível por linguagens de script, como o JavaScript. Esta configuração pode efetivamente reduzir o roubo de identidade atráves de ataques XSS (apesar de não ser suportado por todos os browsers).
+
 ## Cross-Site Scripting
 
 Cross-Site Scripting, ou XSS, ocorre quando um código de Javascript, ou de qualquer linguagem executável no lado do cliente, é injetado no sistema, fazendo com que o código retorne dados que podem ser usados em ataques ao sistema.
@@ -92,6 +114,61 @@ $codigoAcesso = htmlentities(filter_input(INPUT_POST, 'cod_acesso'));
 
 ## Cross-Site Request Forgeries
 
+Cross-site request forger, também conhecido como *ne-click attack* or *session riding* é um tipo de exploração maliciosa de um site onde comandos não autorizados são transmitidos de um usuário que o site confia. OCSRF explora a confiança que um site possui no navegador de um usuário.
+
+Existem limitações no uso desse tipo de ataque:
+* O usuário vítima precisa estar logado ou ter cookie/sessão ativos no momento do ataque
+* O site alvo do ataque não verifica o header HTTP Referer (origem da requisição), o que é bem comum
+* O atacante precisa saber os valores exatos do formulário que deseja usar no ataque
+
+Algumas dicas para prevenção de CSRF:
+* Prefira o uso de POST, não deixe o sistema aceitar qualquer protocolo
+* O uso de tokens ou captchas ajuda bastante
+* Limite o tempo de vida de sessão e dos cookies
+* Verifique o header HTTP Referer para identificar de onde vem a requisição
+* Lembre-se que o usuário pode ser o proprio atacante
+
 ## SQL Injection
 
+Injeção direta de comandos SQL é uma técnica onde um atacante cria ou altera comandos SQL existentes para expor dados escondidos, ou sobrescrever dados valiosos, ou ainda executar comandos de sistema perigosos no servidor. Isso é possível se a aplicação pegar a entrada do usuário e combinar com parâmetros estáticos para montar uma consulta SQL.
+
+Por exemplo, devido à falta de validação de entrada e conectando ao banco de dados usando o super-usuário ou um usuário que pode criar usuário, o atacante pode criar um super-usuário no seu banco de dados.
+
+```PHP
+<?php
+$offset = $argv[0]; // Cuidado, sem validação de entrada!
+$query  = "SELECT id, name FROM products ORDER BY name LIMIT 20 OFFSET $offset;";
+$result = pg_query($conn, $query);
+```
+Usuários normais clicam nos links 'próxima' e 'anterior' onde $offset é codificado na URL. O script espera que o valor de $offset seja um número decimal. No entanto, e se alguém tentar invadir acrescentando a forma codificada por urlencode() da URL seguinte:
+
+```SQL
+0;
+insert into pg_shadow(usename,usesysid,usesuper,usecatupd,passwd)
+    select 'crack', usesysid, 't','t','crack'
+    from pg_shadow where usename='postgres';
+--
+```
+Se isso acontecesse, então o script daria de presente acesso de super-usuário ao atacante. Perceba que 0; é para fornecer uma deslocamento válido para a consulta original e terminá-la.
+
+### Técnicas para Evitar Ataques
+
+Esses ataques se baseam principalmente em explorar falhas no código escrito sem se preocupar com segurança. Nunca confie em nenhum tipo de entrada, especialmente aquela que vem do lado do cliente, mesmo que venha de um combobox, um campo de entrada escondido (hidden) ou um cookie. O primeiro exemplo mostra como uma consulta inocente pode causar desastres.
+
+* Nunca conecte ao banco de dados como um super-usuário ou como o dono do banco de dados. Use sempre usuários personalidados com privilégios bem limitados.
+
+* Verifique se uma entrada qualquer tem o tipo de dados experado. O PHP tem um grande número de funções de validação de entrada, desde as mais simples encontrada em Funções de Variáveis e em Funções de Tipo de Caracteres (ex.: *is_numeric()*, *ctype_digit()* respectivamente) além de usar o suporte a Expressões Regulares Compatível com Perl.
+
+* Se a aplicação espera por entradas numéricas, considere verificar os dados com a função *is_numeric()*, ou silenciosamente mudar o seu tipo usando *settype()*, ou usar a representação númerica usando a função *sprintf()*.
+
+* Coloque as informações de conexão e permissões em um arquivo .php dentro da pasta *web* de sua aplicação.
+
 ## Remote Code Injection
+
+Code Injection refere-se a qualquer meio que permite a um atacante injetar código-fonte em um aplicativo da web de modo que ele seja interpretado e executado. Isto não se aplica ao código injectado num cliente da aplicação, exemplo Javascript.
+
+O código-fonte pode ser injetado diretamente de uma entrada não confiável ou o aplicativo da Web pode ser manipulado para carregá-lo a partir do sistema de arquivos local ou de uma fonte externa, como um URL. Quando ocorre uma Injeção de Código como resultado de incluir um recurso externo, é comumente referido como Inclusão de Arquivo Remoto embora um ataque RFI em si precise sempre ser destinado a injetar código.
+
+As principais causas de Injeção de Código são as falhas de Validação de Entrada, a inclusão de entrada não confiável em qualquer contexto em que a entrada pode ser avaliada como código PHP, falhas na segurança dos repositórios de código fonte, falhas no cuidado com o download de bibliotecas de terceiros e configurações erradas do servidor.
+
+É importante ressaltar a importância em não confiar no usuário e muito menos nos dados que serão enviados para o sistema, sendo essencial filtrar e validar todo dado de entrada e saída.
