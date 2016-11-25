@@ -172,3 +172,7 @@ O código-fonte pode ser injetado diretamente de uma entrada não confiável ou 
 As principais causas de Injeção de Código são as falhas de Validação de Entrada, a inclusão de entrada não confiável em qualquer contexto em que a entrada pode ser avaliada como código PHP, falhas na segurança dos repositórios de código fonte, falhas no cuidado com o download de bibliotecas de terceiros e configurações erradas do servidor.
 
 É importante ressaltar a importância em não confiar no usuário e muito menos nos dados que serão enviados para o sistema, sendo essencial filtrar e validar todo dado de entrada e saída.
+
+___
+That's all folks!
+___
