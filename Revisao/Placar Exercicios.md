@@ -83,9 +83,9 @@
 
 |Nome    |Pontuação|
 |--------|---------|
-|Adinan  |        -|
-|Fernando|        -|
-|Ivan    |        -|
+|Adinan  |        8|
+|Fernando|        6|
+|Ivan    |        8|
 |Leandro |        -|
 
 ##Módulo 9-2
