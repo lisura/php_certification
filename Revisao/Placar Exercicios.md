@@ -92,10 +92,10 @@
 
 |Nome    |Pontuação|
 |--------|---------|
-|Adinan  |        -|
-|Fernando|        -|
+|Adinan  |        7|
+|Fernando|        7|
 |Ivan    |        -|
-|Leandro |        -|
+|Leandro |        7|
 
 ##Módulo 10
 
