@@ -125,7 +125,7 @@ E) header_status_code
 
 ----
 
-**10 - What is the output of the following code after we load the page 3 times?
+**10 - What is the output of the following code after we load the page 3 times?**
 ```php
 <?php
 session_start();
