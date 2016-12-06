@@ -97,7 +97,7 @@ D) the default page of the current directory
 
 ----
 
-**8 - Which class of HTTP status codes is used for error conditions?**
+**8 - Which class of HTTP status codes is used for error conditions in server?**
 
 A) 1XX
 
