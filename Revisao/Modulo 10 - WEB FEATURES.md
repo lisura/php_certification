@@ -9,7 +9,8 @@ O suporte à sessão permite armazenar dados entre as requisições no array sup
 $\_SESSION (e todas as variávels registradas) são serializadas internamente pelo PHP usando o manipulador de serialização especificado pela configuração INI session.serialize_handler depois que a requisição terminar. Variáveis registradas que estejam indefinidas são marcadas como não definidas. Nos acessos subsequentes, elas não são definidas pelo módulo da sessão, a menos que o usuário as definam posteriormente.
 
 > **Aviso**:
-Porque as variáveis de sessão são serializadas, variáveis resource não podem ser armazenadas em sessão. Manipuladores de serialização (**php e php_binary**) herdam as limitações de register_globals. Portanto, índices numéricos ou strings contendo caracteres especiais (| e !) não podem ser usados. Se usados, resultará em erros na finalização do script. php_serialize não possui tais limitações. **php_serialize** está disponível a partir do PHP 5.5.4.
+Porque as variáveis de sessão são serializadas, variáveis resource não podem ser armazenadas em sessão. 
+**php_serialize** está disponível a partir do PHP 5.5.4.
 
 ---
 
@@ -243,6 +244,15 @@ Uma das características mais fortes do PHP é o jeito como ele trata formulári
 
 As variáveis $\_POST[] e $\_GET[] são criadas automaticamente pelo PHP. Podemos utilizar a superglobal $\_REQUEST, se não se importar com qual a origem dos dados enviados. Ele conterá os dados mesclados de origens GET, POST e COOKIE.
 
+Estrutura de $\_FILE:
+$_FILES ['filename'][.......]
+
+* ['name'] CLIENT-SIDE FILE NAME
+* ['type'] MIME TYPE
+* ['size'] FILE SIZE
+* ['error'] ERROR CODE FOR UPLOAD
+* ['tmp_name'] TEMPORARY FILENAME OF FILE IN WHICH THE UPLOADED FILE WAS STORED ON THE SERVER
+
 Exemplo de upload em form:
 ```PHP
 <html>
@@ -347,3 +357,19 @@ header('Content-Type: application/json');
 ```
 
 Podemos também encadear diversos cabeçalhos a serem enviados chamando a função header diversas vezes. Além de utilizarmos Content-Type, podemos usar o HTTP/1.0 200 OK para indicar que a requisição foi aceita e a resposta foi recebida com sucesso e sem nenhum erro.
+
+## Funções de HTTP Header
+
+* headers_list() - Lista de headers enviados ou pendentes de envio, array indexado
+* headers_sent() - Booleano, Confirma headers que foram enviados ou não
+* header_remove() - Remove header setado anteriormente
+
+## Códigos HTTP Header
+
+* isError - Booleano; verifica se o código do status é de erro (Erro de client - 4XX / Erro de server - 5XX)
+* isSuccessful - Booleano; verifica se o código do status é de sucesso (2XX)
+
+## Outros códigos HTTP Header:
+
+* 1XX - INFORMATIONAL
+* 3XX - REDIRECTION
