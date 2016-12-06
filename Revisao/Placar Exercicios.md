@@ -102,6 +102,6 @@
 |Nome    |Pontuação|
 |--------|---------|
 |Adinan  |        -|
-|Fernando|        -|
-|Ivan    |        -|
-|Leandro |        -|
+|Fernando|        9|
+|Ivan    |        8|
+|Leandro |        8|
