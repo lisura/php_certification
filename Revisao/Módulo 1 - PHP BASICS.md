@@ -387,7 +387,7 @@ O PHP fornece um grande número de constantes predefinidas para qualquer script 
 | \__FUNCTION__   | O nome da função.                                                                                 |
 | \__CLASS__	  | O nome da classe. O nome da classe inclui o namespace em que foi declarado (por exemplo, Foo\Bar). Note que a partir do PHP 5.4, \__CLASS__ também funcionará em traits. Quando utilizada em um método trait, \__CLASS__ é o nome da classe que está utilizando a trait. |
 | \__TRAIT__	| O nome do trait. O nome do trait inclui o namespace em que foi declarado (por exemplo, Foo\Bar). |
-| \__METHOD__	| O nome do método da classe. |
+| \__METHOD__	| O nome do método da classe (Com o caminho de Namespace). |
 | \__NAMESPACE__	| O nome do namespace corrente. |
 
 

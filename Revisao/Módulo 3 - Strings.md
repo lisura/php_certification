@@ -12,6 +12,11 @@ Não existe o tipo "byte" no PHP – as strings assumem este papel.
 
 Funções que operam em textos podem ter que fazer certas suposições sobre como as strings foram codificadas.
 
+>Nota: Uma string quando convertida para INT sempre retorna 0 (zero).  
+Então quando fazemos *var_dump('myVar' == 0)* é retornado *bool(true)*
+
+
+
 ## Quoting, HEREDOC & NOWDOC
 
 Uma string literal pode ser especificada de quatro formas diferentes.
