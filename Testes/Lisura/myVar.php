@@ -1,15 +1,17 @@
 <?php
-$a = 'myVar';
+$a = 1;
+$b = 2;
 
-var_dump('myVar' == 0);
-
-switch ($a) {
-  case 0:
-    echo 'case 0';
-  case 'myVar':
-    echo 'case myVar';
-  case 'nothing':
-    echo 'case nothing';
+switch (true) {
+  case ($a > $b):
+    echo '$a > $b';
+    break;
+  case ($b > $a):
+    echo '$b > $a';
+    break;
+  case ($b == $a):
+      echo '$b == $a';
+      break;
 }
 
  ?>
