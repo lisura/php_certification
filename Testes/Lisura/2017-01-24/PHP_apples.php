@@ -6,8 +6,8 @@ $apples = 5;
 oranges($apples);
 echo $apples++;
 echo PHP_EOL;
-//echo $apples++;
-//echo PHP_EOL;
+echo $apples++;
+echo PHP_EOL;
  /*
 a ) 16
 b ) 51

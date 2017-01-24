@@ -19,4 +19,3 @@ $testObj = new Test();
 $testObj->test();
 $testObj->show();
 echo PHP_EOL;
- ?>
