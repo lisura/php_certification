@@ -1,0 +1,158 @@
+1 - What is displayed when the following script is executed?
+
+<?php 
+
+define(myvalue, "10");
+$myarray[10] = "Dog";
+$myarray[] = "Human";
+$myarray['myvalue'] = "Cat";
+$myarray["Dog"] = "Cat";
+print "The value is: "; print $myarray[myvalue]."\n";
+
+?> 
+
+A. The value is: Dog
+B. The value is: Cat
+C. The value is: Human
+D. The value is: 10
+E. Dog
+
+---
+2 - What is the output of the following script?
+<?php 
+
+$a = 10;
+$b = 20;
+$c = 4;
+$d = 8;
+$e = 1.0;
+
+$f = $a + $d * 2;
+$g = $f % 20;
+$h = $b - $a +$c +2;
+$i = $h << $c;
+$j = $i * $e;
+
+print $j;
+?> 
+
+A. 128
+B. 42
+C. 242.0
+D. 256
+E. 342
+
+---
+3 - What is the best way to iterate through the $myarray array, assuming you want to modify the value of each element as you do?
+
+<?php 
+
+ $myarray = array("My String", "Another String", "Hi, Mom!"); 
+
+?> 
+
+A. Using a for loop
+B. Using a foreach loop
+C. Using a while loop
+D. Using a do...while loop
+E. There is no way to accomplish this goal
+
+---
+4 - Consider the following segment of code:
+<?php 
+   define("STOP_AT", 1024); 
+   $result = array(); 
+   /* Missing code */ 
+   { 
+     $result[] = $idx; 
+   } 
+   print_r($result); 
+
+?> 
+What should go in the marked segment to produce the following array output ? 
+Array 
+{ 
+   [0] => 1 
+   [1] => 2 
+   [2] => 4 
+   [3] => 8 
+   [4] => 16 
+   [5] => 32 
+   [6] => 64 
+   [7] => 128 
+   [8] => 256 
+   [9] => 512 
+} 
+A. foreach($result as $key => $val)
+B. while($idx *= 2)
+C. for($idx = 1; $idx < STOP_AT; $idx *= 2)
+D. for($idx *= 2; STOP_AT >= $idx; $idx = 0)
+E. while($idx < STOP_AT) do $idx *= 2
+
+---
+5 - What is the output of the following code?
+<?php
+$a = 'a'; $b = 'b';
+echo isset($c) ? $a.$b.$c : ($c = 'c').'d';
+?>
+
+---
+6 - What is the output of the following code?
+<?php
+echo "1" + 2 * "0x0B";
+?>
+
+A. 11
+B. 3
+C. 15
+D. 23
+E. 37
+
+---
+7 - What is the output of the following code?
+<?php
+function glugluyeyeah($x,$y){
+	$a = $x ^ $y;
+	$b = $a ^ 3;
+	$c = $b ^ $a;
+	$d = $c << $a;
+}
+
+echo glugluyeyeah(1,2);
+?>
+
+---
+8 - What is the output of the following code?
+<?php
+function agoravai($x,$y){
+	$a = $x ^ $y;
+	$b = $a ^ 3;
+	$c = $b ^ $a;
+	$d = $c << $a;
+  
+  return $d;
+}
+
+echo agoravai(1,2);
+?>
+
+=====================
+
+Respostas: 
+1 - A
+2 - D
+3 - A
+4 - C (Normally, the foreach statement is the most appropriate construct for iterating through an array. However, because we are being asked to modify each element in the array, this option is not available, since foreach works on a copy of the array and would therefore result in added overhead. Although a while loop or a do...while loop might work, becuase the array is sequentially indexed a for statement is best suited for the task, making Answer A correct: 
+
+<?php 
+
+$myarray = array("My String", "Another String", "Hi, Mom!");
+for($i=0;$i {
+  $myarray[$i] .= " ($i)"; 
+}
+
+?>)
+5 - cd
+6 - D
+7 - (vai imprimir nada)
+8 - 24
