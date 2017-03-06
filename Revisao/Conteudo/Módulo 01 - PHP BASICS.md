@@ -2,7 +2,7 @@
 
 * PHP - PHP: Hypertext Preprocessor. Criado inicialment por Rasmus Lerdof em 1994
 * Linguagem de script open source de uso geral, muito utilizada, e especialmente adequada para o desenvolvimento web e que pode ser embutida dentro do HTML.
-* O PHP 5 foi lançado em Julho de 2004 após um longo desenvolvimento e vários pré-lançamentos. Principalmente impulsionado pelo seu core o Zend Engine 2.0
+* O PHP 7 foi lançado em Dezembro de 2015, seu desenvolvimento foi rapido principalmente por conta de sua maior mudança, a utulização de Zend Engine 3.
 
 ## Sintaxe
 * Tags padrão
@@ -15,17 +15,13 @@
 <?= 'Hello, world!'; ?>
 ```
 
-* ASP Tags
-```php
-<%= 'Hello, world!'; %>
-```
+> As tags ASP <%, %>, <%= e a script tag  
+< script language="php"> foram removidos do PHP.
 
-* Script Tags
-```php
-<script language="php"> echo 'Hello, world!'; </script>
-```
+> A tag de fechamento de um bloco PHP ao final de um arquivo é opcional, e em alguns casos omiti-la é útil quando utilizar: include, require, cabeçalhos etc.
 
 ## Operadores - Geral
+
 * Um operador é algo que recebe um ou mais valores (ou expressões) e que devolve outro valor. Os próprios construtores se tornam expressões.
 * Quando operadores tem precedência igual a associatividade decide como os operadores são agrupados. Ex: **1 - 2 - 3** equivale a **(1 - 2) - 3** (- associado à esquerda), já **$a = $b = $c** equivale a **$a = ($b = $c)** (= associado à direita).
 * Operadores de igual precedência sem associatividade não podem ser utilizados uns próximos aos outros. Ex: **1 < 2 > 1** é ilegal no PHP, já **1 <= 1 == 1** é válido pois os operadores tem níveis distintos de precedência.
@@ -56,7 +52,39 @@
 |esquerda              |xor                           |lógicos                   |
 |esquerda              |or                            |lógicos                   |
 
+### Novos operadores do PHP 7
+
+#### Null Coalesce - ??
+
+Este novo operador ira retornar o valor da esquerda se este valor não for Null; Caso contrario retorna o valor da direita.
+
+```
+<?php
+$foo = isset($bar) ? $bar : $taz;
+
+$foo = $bar ?? $taz;
+```
+
+#### Combined Comparison (spaceship) - <=>
+
+Este novo operador, ao invés de retornar simplesmente True ou False, ele pode retornar três valores diferentes.
+
+* -1 - Se o valor da esquerda é Menor que o direita.
+* 0 - Se os valores são iguais
+* +1 - Se o valor da esquerda é Maior que o direita.
+
+```
+<?php
+function order_function ($a, $b){
+  return ($a < $b) ? -1 : (($a > $b) ? 1 : 0);
+}
+function order_function ($a, $b){
+  return $a <=> $b;
+}
+```
+
 ## Operadores Aritméticos
+
 * O operador de divisão sempre retorna um valor com ponto flutuante, a não ser que os dois operandos sejam inteiros (ou strings que são convertidas para inteiros) e números inteiramente divisíveis, nesse caso um inteiro é retornado.
 * Operandos de módulo são convertidos para inteiros (removendo a parte decimal) antes do processamento.
 * O resultado do operador de módulo tem o mesmo sinal do dividendo (o resultado de $a % $b terá o mesmo sinal de $a).
@@ -70,11 +98,35 @@
 |$a / $b        |Divisão           |Quociente de $a e $b.   |
 |$a % $b        |Módulo            |Resto de $a dividido por $b.|
 
+> Ponto flutuante pode causar alguns erro em calculos e por este motido deve ser tomado um cuidado especial
+> ```
+> <?php
+> $foo = floor((0.1+0.7)\*10);
+> echo $foo; // 7
+> ```
+>  Normalmente retornará 7, em vez do resultado esperado 8, porque a representação interna final será algo como 7.9999999999999991118.
+
 ## Operadores de Atribuição
 * O operador de atribuição é representado pelo '=' (Igual).
 * Não devemos encara-lo como um igualador de valores e sim como um atribuidor do valor da esquerda com o valor da direira.
 
+### Atribuição por referência
+
+Atribuição por referência também é possível, utilizando-se a sintaxe "$var = &$outravar;".
+
+```
+<?php
+$a = 3;
+$b = &$a; // => $b é uma referência de $a (endereço de memória)
+print "$a"; // => imprime 3
+print "$b"; // => imprime 3
+$a = 4; // => modificamos $a
+print "$a"; // => imprime 4
+print "$b"; // => imprime 4 também, pois $b é uma referência de $a, que foi modificada
+```
+
 ## Operadores bit a bit (bitwise)
+
 * Operadores bit-a-bit permitem a avaliação e modificação de bits específicos em um tipo inteiro.
 
 |Exemplo        |Nome                    |Resultado                                                               |
@@ -85,6 +137,11 @@
 |~ $a           |NÃO (NOT)               |Os bits que estão ativos em $a não são ativados, e vice-versa.          |
 |$a << $b       |Deslocamento à esquerda |Desloca os bits de $a $b passos para a esquerda (cada passo significa   multiplica por dois")|
 |$a >> $b       |Deslocamento à direita  |Desloca os bits de $a $b passos para a direita (cada passo significa "divide por dois")|
+
+> O deslocamento de bits no PHP é aritmético. Bits deslocados no lado final são descartados.
+
+> Para eslocamentos a esquerda o sinal do operando não é preservado
+> Para eslocamentos a direita (tem cópias do bit de sinal à esquerda) o sinal do operando é preservado
 
 ## Operadores de Comparação
 
@@ -99,18 +156,30 @@
 |$a > $b         |Maior que          |Verdadeiro se $a é estritamente maior que $b.                          |
 |$a <= $b        |Menor ou igual     |Verdadeiro se $a é menor ou igual a $b.                                |
 |$a >= $b        |Maior ou igual     |Verdadeiro se $a é maior ou igual a $b.                                |
+|$a <=> $b	|Spaceship (nave espacial)|Um integer menor que, igual a ou maior que zero quando $a é, respectivamente, menor que, igual a ou maior que $b.|
+|$a ?? $b	|Null coalescing	 |O primeiro operando da esquerda para direita que exista e não for NULL. |
+
+> Se comparar um número com uma string ou com strings numéricas, cada string é convertido para um número e então a comparação é realizada numericamente.
+
+>Por conta da forma que floats são representados internamente não se deve testar dois floats com o comparador de igualdade. Para este caso é recomendado o uso da função " abs ( mixed $number ) "
 
 ## Operador Ternário
+
+Há um único operador ternário, ? :, que aceita três valores; normalmente conhecido simplesmente como "o operador ternário" (embora um nome melhor fosse operador condicional).
+
 ```php
 $valor = (empty($variavel)) ? 'default' : $variavel;
 ```
 
 ## Operadores de controle de erro
+
 * Quando o operador *arroba* (@) precede uma expressão, qualquer mensagem de erro que possa ser gerada por aquela expressão será ignorada.
 * Se track_errors estiver habilitado, qualquer mensagem de erro erá gravada em $php_errormsg. Esta variável será sobrescrita em cada erro.
 
+> O operador @ funciona somente em expressões. Uma regra simples para lembrar disso: se você pode pegar o valor de alguma coisa, você pode prefixar isso com o @
+
 ## Operadores de Execução
-* Acentos graves (``).
+* Acentos graves (\`\`). (não são aspas simples)
 * O PHP tentará executar o conteúdo dentro dos acentos graves como um comando do shell; a saída será retornada
 * Análogo a função shell_exec()
 
@@ -127,7 +196,10 @@ $output = `ls -al`;
 |--$a            |Pré-decremento   |Decrementa $a em um, e então retorna $a.                 |
 |$a--            |Pós-decremento   |Retorna $a, e então decrementa $a em um.                 |
 
+> Os operadores incremento/decremento afetam apenas números e strings. Arrays, objetos e recursos não são afetados. Decrementar NULL não gera efeitos, mas incrementar resulta em 1.
+
 ## Operadores Lógicos
+
 * A razão para as duas variantes dos operandos "and" e "or" é que eles operam com precedências diferentes.
 
 |Exemplo        |Nome    |Resultado                                                   |
@@ -140,6 +212,7 @@ $output = `ls -al`;
 |$a \|\| $b     |OU 	 |Verdadeiro se $a ou $b são verdadeiros.                     |
 
 ## Operadores de String
+
 * Concatenação ('.') e Atribuição de concatenação ('.=')
 
 ## Operadores de Arrays
@@ -153,6 +226,8 @@ $output = `ls -al`;
 |$a <> $b       |Desigualdade    |TRUE se $a não é igual a $b.                                                   |
 |$a !== $b      |Não identidade  |TRUE se $a não é identico a $b.                                                |
 
+> O operador + retorna o array à direta anexado ao array da esquerda. Para chaves que existam nos dois arrays os elementos do array à esquerda serão mantidos, os valores de mesma chave no array da direita são ignorados.
+
 ##  Operadores de Tipo
 * o operador **instanceof** é usado para determinar se uma variável é um objeto instânciado de uma certa classe
 * Pode também ser usado para determinar se uma variável é um objeto instânciado de uma classe comparando com a classe pai
@@ -161,13 +236,18 @@ $output = `ls -al`;
 var_dump($a instanceof MyClass);
 var_dump($a instanceof stdClass);
 var_dump($a instanceof MyInterface);
+// => Negando uma operação de instanceof ' ! '
+var_dump(! $a instanceof stdClass);
 ```
 
 ## Variáveis
 * Representadas por um cifrão ($) seguido pelo nome da variável. Os nomes de variável são case-sensitive
 * Um nome de variável válido inicia-se com uma letra ou sublinhado, seguido de qualquer número de letras, números ou sublinhados.
-* Atribuição por referência, simplesmente adicione um e-comercial (&) na frente do nome da variável
+* Atribuição por referência, simplesmente adicione um e-comercial (&) na frente do nome da variável. Somente variáveis nomeadas podem ser atribuídas por referência.
 * Variáveis não inicializadas tem um valor padrão de tipo dependendo do contexto no qual são usadas - padrão de booleanos é FALSE, de inteiros e ponto-flutuantes é zero, strings são definidas como vazia e arrays são vazios.
+
+> $this é uma variável especial que não pode ser atribuída.  
+> É uma ótima prática inicializar variáveis no PHP, mas não é necessário.
 
 ## Variáveis Predefinidas
 * Superglobais — Superglobais são variáveis nativas que estão sempre disponíveis em todos escopos
@@ -186,10 +266,14 @@ var_dump($a instanceof MyInterface);
 * $argc — O número de argumentos passados para o script
 * $argv — Array de argumentos passados para o script
 
+> Curiosidade: Variáveis Predefinidas não podem ser completamente documentadas pois dependem do servidor que está sendo executado
+
 ## Escopo de variáveis
 * Variáveis geralmente tem escopo local.
 * Ao usar o array especial $GLOBALS ou a palavra chave **global**, a variável passa a ter escopo global
 * Uma variável estática (palavra-chave **static**) existe somente no escopo local da função, mas não perde seu valor quando o nível de execução do programa deixa o escopo
+
+> Variáveis estáticas fornecem uma solução para lidar com funções recursivas
 
 ## Variáveis variáveis
 * Serve tanto para variáveis como para propriedades de objetos
@@ -199,8 +283,26 @@ $$a = 'world';
 echo "$a ${$a}" . PHP_EOL; // Saida :"hello world"
 ```
 
+|Expressão|Interpretação no PHP 5|Interpretação no PHP 7|
+| --- | --- | --- |
+|$$foo['bar']['baz']|${$foo['bar']['baz']}|($$foo)['bar']['baz']|
+|$foo->$bar['baz']|$foo->{$bar['baz']}|($foo->$bar)['baz']|
+|$foo->$bar\['baz']()|$foo->{$bar['baz']}()|($foo->$bar)\['baz']()|
+|Foo::$bar\['baz']()|Foo::{$bar['baz']}()|(Foo::$bar)\['baz']()|
+
 ## Variáveis de fontes externas
 * $\_POST, $\_GET, $\_REQUEST
+
+#### SUBMIT IMAGE
+
+Ao submeter um formulário, é possível de utilizar imagens em vez do botão de submit padrão com uma tag do tipo:
+
+```
+<input type="image" src="image.gif" name="sub" />
+```
+
+Quando o usuário clicar em algum lugar da imagem, o formulário será transmitido para o servidor com duas variáveis adicionais, sub_x and sub_y. Elas contém as coordenadas do clique do usuário na imagem.
+
 
 ## Estruturas de Controle
 * **IF**  
@@ -212,14 +314,25 @@ echo "$a ${$a}" . PHP_EOL; // Saida :"hello world"
 * **DO-WHILE**  (verifica a condição no final da iteração)
 * **FOR**  (for (expr1; expr2; expr3))
 * **FOREACH**  (funciona somente em arrays e objetos)
+* **return** (retorna o controle do programa para o módulo que o chamou)
+* **require** (require é idêntica a **include** exceto que em caso de falha também produzirá um erro fatal de nível E_COMPILE_ERROR.)
+* **include** (inclui e avalia o arquivo informado)
+* **require_once** (Igual **require** porem se o código do arquivo já foi incluído, não o fará novamente)
+* **include_once** (Igual **include** porem se o código do arquivo já foi incluído, não o fará novamente)
+* **goto** (pula para outra seção do programa)
+* oo  **declare** (usada para definir diretivas de execução para um bloco de código)
+
+> PHP 7 - Adicionada a diretiva strict_types d
 
 ## Interrupção de laços
 * **CONTINUE**: é utilizado em estruturas de laço para pular o resto da iteração atual, e continuar a execução na validação da condição e, então, iniciar a próxima iteração.
-* **BREAK**: finaliza a execução da estrutura for, foreach, while, do-while ou switch atual. Aceita um argumento numérico opcional que diz quantas estruturas aninhadas deverá interromper.
+* **BREAK**: finaliza a execução da estrutura for, foreach, while, do-while ou switch atual. Aceita um argumento numérico opcional que diz quantas estruturas aninhadas deverá interromper. (BREAK 2)
 
 ---
 
 ## Construtor de Linguagem
+
+> Construtor de Linguagem não podem ser usadas como callbacks de função. Isso é verdade, porque um Construtor não é uma função, são entidades separadas.
 
 ### Construtores de saída
 
@@ -246,7 +359,7 @@ exit(0376); //octal
 
 Utilizado para exibir uma ou mais strings.
 
-**echo** não é uma função e não se comporta como uma função, então não é obrigatório usar parênteses. echo não retorna nenhum valor, sendo recomendado o uso para aplicações web.
+**echo** não é uma função e não se comporta como uma função, então não é obrigatório usar parênteses. **echo** não retorna nenhum valor, sendo recomendado seu uso para aplicações web.
 
 #### return  
 
@@ -366,6 +479,7 @@ echo "$bebida é $cor e $substancia o faz especial.\n";
 ---
 
 ## Constantes
+
 Uma constante é um identificador para um valor único. Como o nome sugere, esse valor não pode mudar durante a execução do script (exceto as constantes mágicas, que não são constantes de verdade). As constantes são case-sensitive por padrão. Por convenção, identificadores de constantes são sempre em maiúsculas.
 
 Exemplos:
@@ -373,6 +487,17 @@ Exemplos:
 ```php
 <?php
 define("FOO",  "alguma coisa");
+```
+
+A paritr do PHP 7 tambem podemos declarar **array**
+
+```php
+<?php
+define("FOO",  [
+  'bar' => 'baz',
+  'bat' => 'qux'
+]);
+echo FOO['bar']; // baz
 ```
 
 ## Constantes Mágicas  
@@ -495,6 +620,7 @@ Definição dos modos PHP_INI_*
 Existem duas áreas principais que afetam a performance: uso de memória e delay de tempo de execução.  
 
 ### Garbage Collection  
+
 Todas as variáveis do PHP são armazenadas em um recipiente chamado zval. O zval possui um contador interno que marca o uso das referências as variáveis armazenadas. Um garbage cycle verifica se pode diminuir o contador e, quando chega a zero, o recurso é liberado.  
 Para melhorar a performance, os zval são colocados em um "root buffer", onde o algorítimo garante que eles sejam colocados apenas uma única vez. Apenas quando o buffer fica lotado, o ciclo é disparado.  
 
