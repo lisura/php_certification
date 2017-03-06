@@ -613,6 +613,17 @@ Definição dos modos PHP_INI_*
 
 [Lista de diretivas do php.ini](https://secure.php.net/manual/pt_BR/ini.list.php)  
 
+| Nome | Padrão | Modificável | Changelog |
+|---|---|---|---|
+|assert.exception|	"0"	|PHP_INI_ALL|	Disponível desde PHP 7.0.0.|
+|pcre.jit|	"1"|	PHP_INI_ALL|	Disponível desde o PHP 7.0.0.|
+|serialize_precision	|"-1"|	PHP_INI_ALL	| Disponível desde o PHP 4.3.2. Until PHP 5.3.5, the default value was 100. E até o PHP 7.1.0 o valor padrão era 17.|
+|session.entropy_file	|""|	PHP_INI_ALL|	Removido no PHP 7.1.0.|
+|session.entropy_length|	"0"|	PHP_INI_ALL|	Removido no PHP 7.1.0.|
+|session.sid_bits_per_character|	"32"|	PHP_INI_ALL|	Disponível desde o PHP 7.1.0.|
+|session.hash_bits_per_character|	"5"	|PHP_INI_ALL|	Removido no PHP 7.1.0.|
+|session.lazy_write|	"1"|	PHP_INI_ALL	Disponível |desde PHP 7.0.0.|
+
 ---
 
 ## Performance  
