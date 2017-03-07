@@ -2,7 +2,7 @@
 
 * PHP - PHP: Hypertext Preprocessor. Criado inicialment por Rasmus Lerdof em 1994
 * Linguagem de script open source de uso geral, muito utilizada, e especialmente adequada para o desenvolvimento web e que pode ser embutida dentro do HTML.
-* O PHP 7 foi lançado em Dezembro de 2015, seu desenvolvimento foi rapido principalmente por conta de sua maior mudança, a utulização de Zend Engine 3.
+* O PHP 7 foi lançado em Dezembro de 2015, seu desenvolvimento foi rapido principalmente por conta de sua maior mudança, a utilização de Zend Engine 3.
 
 ## Sintaxe
 * Tags padrão
