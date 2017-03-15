@@ -320,9 +320,9 @@ Quando o usuário clicar em algum lugar da imagem, o formulário será transmiti
 * **require_once** (Igual **require** porem se o código do arquivo já foi incluído, não o fará novamente)
 * **include_once** (Igual **include** porem se o código do arquivo já foi incluído, não o fará novamente)
 * **goto** (pula para outra seção do programa)
-* oo  **declare** (usada para definir diretivas de execução para um bloco de código)
+* **declare** (usada para definir diretivas de execução para um bloco de código)
 
-> PHP 7 - Adicionada a diretiva strict_types d
+> PHP 7 - Adicionada a diretiva strict_types
 
 ## Interrupção de laços
 * **CONTINUE**: é utilizado em estruturas de laço para pular o resto da iteração atual, e continuar a execução na validação da condição e, então, iniciar a próxima iteração.
