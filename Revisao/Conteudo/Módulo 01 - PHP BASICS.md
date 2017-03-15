@@ -101,7 +101,7 @@ function order_function ($a, $b){
 > Ponto flutuante pode causar alguns erro em calculos e por este motido deve ser tomado um cuidado especial
 > ```
 > <?php
-> $foo = floor((0.1+0.7)\*10);
+> $foo = floor((0.1+0.7) * 10);
 > echo $foo; // 7
 > ```
 >  Normalmente retornará 7, em vez do resultado esperado 8, porque a representação interna final será algo como 7.9999999999999991118.
