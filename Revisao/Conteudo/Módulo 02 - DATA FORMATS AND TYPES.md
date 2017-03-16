@@ -6,6 +6,8 @@ XML (eXtensible Markup Language) é um formato de dados para intercâmbio de doc
 
 A extensão para XML do PHP foi baseada no Expat. Essa extensão requer que a extensão **libxml** esteja habilitada, embora essa extensão e suas funções já venham habilitada por padrão.
 
+A extensão permite parse de XML, mas não validação. Suporta as seguintes codificações: US-ASCII, ISO-8859-1 and UTF-8. UTF-16 não é suportado.
+
 Exemplo de um XML:
 ```XML
 <?xml version="1.0" encoding="ISO-8859-1"?>
@@ -22,49 +24,51 @@ Exemplo de um XML:
 
 Há dois tipos de codificação de caracteres:
 - source encoding (ocorre quando um documento XML é analisado)
-- target encoding (orre quando o PHP passa dados para as funções manipuladoras de XML).   
+- target encoding (orre quando o PHP passa dados para as funções manipuladoras de XML).
 
-A representação interna do documento no PHP é sempre codificada em UTF-8.
+A representação interna do documento no PHP é sempre codificada em UTF-8. O  source encoding padrão utilizado pelo PHP é o ISO-8859-1.
 
 ### Manipuladores de eventos
 
 São executadas ao encontrar determinados elementos no arquivo   XML.
 
-Manipuladores:  
-xml_set_element_handler() - Abertura ou fechamento.  
-xml_set_character_data_handler() - Dados de caractere.  
-xml_set_processing_instruction_handler() - PI targets iniciados   com "XML".  
-xml_set_default_handler() - Caso aconteça algum evento fora da   lista.  
-xml_set_unparsed_entity_decl_handler() - Entidade externa não   analisada (NDATA).  
-xml_set_notation_decl_handler() - Este manipulador é chamado pela   declaração de uma notation.  
-xml_set_external_entity_ref_handler() - Referência para um   arquivo ou URL.  
+Manipuladores:
+xml_set_element_handler() - Abertura ou fechamento.
+xml_set_character_data_handler() - Dados de caractere.
+xml_set_processing_instruction_handler() - PI targets iniciados   com "XML".
+xml_set_default_handler() - Caso aconteça algum evento fora da   lista.
+xml_set_unparsed_entity_decl_handler() - Entidade externa não   analisada (NDATA).
+xml_set_notation_decl_handler() - Este manipulador é chamado pela   declaração de uma notation.
+xml_set_external_entity_ref_handler() - Referência para um   arquivo ou URL.
 
 ### Funções do XML Parser
 
 Somente para efeitos demosntrativos. Esta lista foi retirada da documentação do PHP.
 
-xml_error_string — Get XML parser error string  
-xml_get_current_byte_index — Get current byte index for an XML parser  
-xml_get_current_column_number — Get current column number for an XML parser  
-xml_get_current_line_number — Get current line number for an XML parser  
-xml_get_error_code — Get XML parser error code  
-xml_parse_into_struct — Parse XML data into an array structur  
-xml_parse — Start parsing an XML document  
-xml_parser_create_ns — Create an XML parser with namespace support  
-xml_parser_create — Create an XML parser  
-xml_parser_free — Free an XML parser  
-xml_parser_get_option — Get options from an XML parser  
-xml_parser_set_option — Set options in an XML parser  
-xml_set_character_data_handler — Set up character data handler  
-xml_set_default_handler — Set up default handler  
-xml_set_element_handler — Set up start and end element handlers  
-xml_set_end_namespace_decl_handler — Set up end namespace declaration handler  
-xml_set_external_entity_ref_handler — Set up external entity reference handler  
-xml_set_notation_decl_handler — Set up notation declaration handler  
-xml_set_object — Use XML Parser within an object  
-xml_set_processing_instruction_handler — Set up processing instruction (PI) handler  
-xml_set_start_namespace_decl_handler — Set up start namespace declaration handler  
-xml_set_unparsed_entity_decl_handler — Set up unparsed entity declaration handler  
+utf8_decode — Converts a string with ISO-8859-1 characters encoded with UTF-8 to single-byte ISO-8859-1
+utf8_encode — Encodes an ISO-8859-1 string to UTF-8
+xml_error_string — Get XML parser error string
+xml_get_current_byte_index — Get current byte index for an XML parser
+xml_get_current_column_number — Get current column number for an XML parser
+xml_get_current_line_number — Get current line number for an XML parser
+xml_get_error_code — Get XML parser error code
+xml_parse_into_struct — Parse XML data into an array structur
+xml_parse — Start parsing an XML document
+xml_parser_create_ns — Create an XML parser with namespace support
+xml_parser_create — Create an XML parser
+xml_parser_free — Free an XML parser
+xml_parser_get_option — Get options from an XML parser
+xml_parser_set_option — Set options in an XML parser
+xml_set_character_data_handler — Set up character data handler
+xml_set_default_handler — Set up default handler
+xml_set_element_handler — Set up start and end element handlers
+xml_set_end_namespace_decl_handler — Set up end namespace declaration handler
+xml_set_external_entity_ref_handler — Set up external entity reference handler
+xml_set_notation_decl_handler — Set up notation declaration handler
+xml_set_object — Use XML Parser within an object
+xml_set_processing_instruction_handler — Set up processing instruction (PI) handler
+xml_set_start_namespace_decl_handler — Set up start namespace declaration handler
+xml_set_unparsed_entity_decl_handler — Set up unparsed entity declaration handler
 
 ### DOM (Document Object Model)
 
@@ -96,8 +100,9 @@ echo $videogame->jogos->jogo[0];
 
 ### Funções do SimpleXML
 
-simplexml_load_string  
-simplexml_load_file
+simplexml_import_dom — Get a SimpleXMLElement object from a DOM node.
+simplexml_load_file — Interprets an XML file into an object
+simplexml_load_string — Interprets a string of XML into an object
 
 O retorno destas funções é o próprio elemento SimpleXML, ou FALSE em caso de erro.
 
@@ -105,20 +110,20 @@ Mais detalhes destas funções podem ser encontrados na documentação do PHP.
 
 ### Métodos e propriedades do Objeto SimpleXML
 
-SimpleXMLElement::addAttribute — Adds an attribute to the SimpleXML element  
-SimpleXMLElement::addChild — Adds a child element to the XML node  
-SimpleXMLElement::asXML — Return a well-formed XML string based on SimpleXML element  
-SimpleXMLElement::attributes — Identifies an element's attributes  
-SimpleXMLElement::children — Finds children of given node  
-SimpleXMLElement::\__construct — Creates a new SimpleXMLElement object  
-SimpleXMLElement::count — Counts the children of an element  
-SimpleXMLElement::getDocNamespaces — Returns namespaces declared in document  
-SimpleXMLElement::getName — Gets the name of the XML element  
-SimpleXMLElement::getNamespaces — Returns namespaces used in document  
-SimpleXMLElement::registerXPathNamespace — Creates a prefix/ns context for the next XPath query  
-SimpleXMLElement::saveXML — Alias of SimpleXMLElement::asXML  
-SimpleXMLElement::\__toString — Returns the string content  
-SimpleXMLElement::xpath — Runs XPath query on XML data  
+SimpleXMLElement::addAttribute — Adds an attribute to the SimpleXML element
+SimpleXMLElement::addChild — Adds a child element to the XML node
+SimpleXMLElement::asXML — Return a well-formed XML string based on SimpleXML element
+SimpleXMLElement::attributes — Identifies an element's attributes
+SimpleXMLElement::children — Finds children of given node
+SimpleXMLElement::\__construct — Creates a new SimpleXMLElement object
+SimpleXMLElement::count — Counts the children of an element
+SimpleXMLElement::getDocNamespaces — Returns namespaces declared in document
+SimpleXMLElement::getName — Gets the name of the XML element
+SimpleXMLElement::getNamespaces — Returns namespaces used in document
+SimpleXMLElement::registerXPathNamespace — Creates a prefix/ns context for the next XPath query
+SimpleXMLElement::saveXML — Alias of SimpleXMLElement::asXML
+SimpleXMLElement::\__toString — Returns the string content
+SimpleXMLElement::xpath — Runs XPath query on XML data
 
 ### DOM (Document Object Model)
 
@@ -159,11 +164,12 @@ public void normalize ( void )
 public DOMNode removeChild ( DOMNode $oldnode )  
 public DOMNode replaceChild ( DOMNode $newnode , DOMNode $oldnode )  
 
+
 ### SimpleXML e DOM
 
 No PHP podemos trabalhar com SimpleXML ou com DOM. Ainda podemos efetuar conversões entre estes dois métodos através das seguintes funções:
 
-SimpleXMLElement simplexml_import_dom  
+SimpleXMLElement simplexml_import_dom
 DOMElement dom_import_simplexml
 
 O retorno destas funções é o próprio elemento SimpleXML ou DOM, ou FALSE em caso de erro.
@@ -203,27 +209,27 @@ Onde $wsdl é a URI do arquivo WSDL, ou null caso o modo seja non-WSDL. O segund
 
 
 >**Para tratamento de erros, podemos usar as seguintes funções:**
-bool is_soap_fault ( mixed $object )  
-bool use_soap_error_handler ([ bool $handler = true ] )  
+bool is_soap_fault ( mixed $object )
+bool use_soap_error_handler ([ bool $handler = true ] )
 
 
 ### REST
 
-Representational State Transfer, outra forma de consumo de serviços WEB.  
+Representational State Transfer, outra forma de consumo de serviços WEB.
 Diferente do SOAP, o REST não usa um protocolo próprio, mas se vale de verbos HTTP para transmitir mensagens.
 
 #### Verbos HTTP do REST
 
-GET - Leitura de registros do serviço  
-POST - Criação de um novo recurso no serviço oferecido  
-PUT - Atualiza um registro existente.  
-PATCH - Atualiza apenas parte do recurso oferecido pelo serviço  
-DELETE - Remove registros do serviço fornecido  
+GET - Leitura de registros do serviço
+POST - Criação de um novo recurso no serviço oferecido
+PUT - Atualiza um registro existente.
+PATCH - Atualiza apenas parte do recurso oferecido pelo serviço
+DELETE - Remove registros do serviço fornecido
 
 #### Headers
 
-Requisição: Content-Type, o que está sendo enviado, o tipo MIME do conteúdo.  
-Resposta: Accept, o que é esperado na resposta.  
+Requisição: Content-Type, o que está sendo enviado, o tipo MIME do conteúdo.
+Resposta: Accept, o que é esperado na resposta.
 
 #### Context Switching
 
@@ -245,22 +251,29 @@ Para ver informações diferentes de GET e POST (PUT por exemplo) é um pouco ma
 print file_get_contents('php://input');
 ```
 
+### Código de Status no Retorno HTTP
+
+2xx - Sucesso
+3xx - Redirecionamento
+4xx - Erro no cliente
+5xx - Erro de servidor
+
 ## JSON e  AJAX
 
 ### JSON
 
-Javascript Object Notation, é uma estrutura de dados bastante popular por ser mais leve e não ter marcação verbosa como o XML. É uma extensão PECL que passou a ser compilada por padrão a partir da versão 5.2.0
+Javascript Object Notation, é uma estrutura de dados bastante popular por ser mais leve e não ter marcação verbosa como o XML. PHP 7 vem com um novo e melhorado parser escrito especificamente para o PHP, já incluso no core.
 
 #### Funções
 
 ```
-string json_encode ( mixed $value [, int $options = 0 [, int $depth = 512 ]] )  
-mixed json_decode ( string $json [, bool $assoc ] )  
+string json_encode ( mixed $value [, int $options = 0 [, int $depth = 512 ]] )
+mixed json_decode ( string $json [, bool $assoc ] )
 ```
 
->**funções para tratamento de erros:**  
-int json_last_error ( void )  
-string json_last_error_msg ( void )  
+>**funções para tratamento de erros:**
+int json_last_error ( void )
+string json_last_error_msg ( void )
 
 ## Date e Time
 
@@ -352,7 +365,7 @@ echo date_format($date, 'Y-m-d');
 Embora tenhamos um fuso horário definido no php.ini em _date.timezone_, o qual será usado caso não seja informado no construtor de DateTime, podemos definir um fuso horário para cada objeto DateTime.
 
 ```php
-?php
+<?php
 $saoPaulo = new DateTime('now',new DateTimeZone('America/Sao_Paulo'));
 echo $saoPaulo->format('d/m/Y H:m:s');
 echo $saoPaulo->getTimeZone()->getName();
