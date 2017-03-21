@@ -59,6 +59,31 @@ echo "<br>";
 echo $array{1}.$array{0}.$array{1}.$array{0}.$array{2}.$array{0};
 ```
 
+A partir do PHP 5.4 é possível referenciar um elemento de um array como resultado de uma função ou método chamado diretamente. Antes, era possível somente através de uma variável temporária.
+
+A partir do PHP 5.5 é possível referenciar elementos de um array literal.
+
+```php
+<?php
+function getArray() {
+    return array(1, 2, 3);
+}
+
+// on PHP 5.4
+$secondElement = getArray()[1];
+
+// previously
+$tmp = getArray();
+$secondElement = $tmp[1];
+
+// or
+list(, $secondElement) = getArray();
+?>
+```
+Obs: Tentativas de acesso a uma chave de array que não foi defina é o mesmo que acessar qualquer outra variável indefinida: uma mensagem de erro de nível E_NOTICE será emitida, e o resultado será NULL.
+
+*TODO: incluir informação de empty operator em string no php 7.1*
+
 ## Array Associativos (hashtable)
 
 ```PHP
@@ -140,7 +165,38 @@ $array = array('A', 'B', 'C');
 foreach($array as $key => $value){
 	echo $value . '|' . PHP_EOL;
 }
+
+//Antes do PHP 5.5, a array do foreach tinha que ser uma variável. 
+//O código a seguir não funciona em versões anteriores:
+foreach (array(1, 2, 3, 4) as &$value) {
+    $value = $value * 2;
+    echo $value . PHP_EOL;
+}
+
+//A partir do 5.5 podemos usar list para iterar um array multidimensional
+//list pode ter menos elementos do que os que têm no array aninhado
+//caso list tenha mais elementos, um E_NOTICE é disparado
+$array = [
+    [1, 2],
+    [3, 4],
+];
+
+foreach ($array as list($a, $b)) {
+    // $a contém o primeiro elemento do array aninhado,
+    // $b contém o segundo elemento.
+    echo "A: $a; B: $b\n";
+}
+
+//No PHP 7, o foreach não utiliza o ponteiro interno do array, ou seja, o ponteiro interno não é afetado pelo laço.
+$a = [1,2,3]; 
+foreach($a as $v) {
+    echo $v . " - " . current($a) . "\n";
+}
+//1 - 1
+//2 - 1
+//3 - 1
 ```
+
 
 ## Funções de Array
 | Função                | Descrição                                                    |
@@ -224,6 +280,12 @@ foreach($array as $key => $value){
 | uasort                | Ordena um array utilizando uma função de comparação definida pelo usuário e mantendo as associações entre chaves e valores |
 | uksort                | Ordena um array pelas chaves utilizando uma função de comparação definida pelo usuário. |
 | usort                 | Ordena um array pelos valores utilizando uma função de comparação definida pelo usuário |
+
+Mudanças no PHP 7 *TODO seguir a partir do array_diff*:
+|Função                 |Decrição                                                   |
+|-----------------------|-----------------------------------------------------------|
+| array_column          | Adicionada a habilidade que possibilita o parâmetro input ser um array de objetos. |
+
 
 array_filter flags:
 
