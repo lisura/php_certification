@@ -299,6 +299,7 @@ foreach($a as $v) {
 | usort                 | Ordena um array pelos valores utilizando uma função de comparação definida pelo usuário |
 
 Mudanças no PHP 7:
+
 |Função                 |Decrição                                                   |
 |-----------------------|-----------------------------------------------------------|
 | array_column          | Adicionada a habilidade que possibilita o parâmetro input ser um array de objetos. |
