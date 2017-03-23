@@ -269,8 +269,8 @@ char | descrição
 char | descrição
 --- | ---
 ? | Occurs 0 or 1 time
-* | Occurs 0 or more times
-+ | Occurs 1 or more times
+\* | Occurs 0 or more times
+\+ | Occurs 1 or more times
 {n} | Occurs exactly n times
 {,n} | Occurs at most n times
 {m,} | Occurs m or more times
