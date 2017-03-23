@@ -275,7 +275,7 @@ char | descrição
 {,n} | Occurs at most n times
 {m,} | Occurs m or more times
 {m,n} | Occurs between m and n times
-| Combination of ? with * or + makes the pattern non-greedy, i.e. *? or +?
+ n\a | Combination of ? with * or + makes the pattern non-greedy, i.e. *? or +?
 
 #### Unicode Character Properties (para UTF-8)
 
