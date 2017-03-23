@@ -50,6 +50,14 @@ $array[] = 'B';
 $array[] = 'C';
 ```
 
+A partir do PHP 7.1.0, o uso do operador de index vazio ("[]") em uma string resulta em Fatal Error, anteriormente, o PHP converteria a string silenciosamente em um array.
+
+```php
+$str = '';
+$str[] = 'wow';
+var_dump($str); //Isso convertia a string em array antes do PHP 7.1.0
+```
+
 Elementos do array podem ser acessados utilizando a sintaxe array[chave] ou array{chave}.
 
 ```PHP
@@ -82,8 +90,6 @@ list(, $secondElement) = getArray();
 ```
 Obs: Tentativas de acesso a uma chave de array que não foi defina é o mesmo que acessar qualquer outra variável indefinida: uma mensagem de erro de nível E_NOTICE será emitida, e o resultado será NULL.
 
-*TODO: incluir informação de empty operator em string no php 7.1*
-
 ## Array Associativos (hashtable)
 
 ```PHP
@@ -112,6 +118,17 @@ $matriz[0][0] = true;
 $matriz[0][1] = true;
 $matriz[1][0] = true;
 $matriz[1][1] = true;
+```
+
+## Array de Constantes (PHP 7)
+
+```PHP
+define('FOO', [
+'bar' => 'baz',
+'bat' => 'qux'
+]);
+
+echo FOO['bar'];
 ```
 
 ## Interações com Arrays
@@ -281,11 +298,12 @@ foreach($a as $v) {
 | uksort                | Ordena um array pelas chaves utilizando uma função de comparação definida pelo usuário. |
 | usort                 | Ordena um array pelos valores utilizando uma função de comparação definida pelo usuário |
 
-Mudanças no PHP 7 *TODO seguir a partir do array_diff*:
+Mudanças no PHP 7:
 |Função                 |Decrição                                                   |
 |-----------------------|-----------------------------------------------------------|
 | array_column          | Adicionada a habilidade que possibilita o parâmetro input ser um array de objetos. |
-
+| array_fill            | O segundo parâmetro pode ser zero à partir do PHP 5.6 |
+| array_filter          | Adicionado o parâmetro opcional flag e as contantes ARRAY_FILTER_USE_KEY e ARRAY_FILTER_USE_BOTH (5.6) |
 
 array_filter flags:
 
