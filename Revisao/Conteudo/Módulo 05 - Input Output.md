@@ -20,7 +20,9 @@ Funções de operações:
 Recurso (resource) é uma fonte de dados que pode ser manipulada. Um recurso de arquivo (file resource) é um arquivo no filesystem no qual o PHP pode manipular. O resource é único para a sessão do usuário.
 
 As funções que começam com a letra *f* (como fopen(), fclose()) lidam com recursos
-de arquivos, já as que se iniciam com *file* (exemplo: file_get_content()) lidam
+de arquivos.  
+
+As que se iniciam com *file* (exemplo: file_get_content()) lidam
 com nomes de arquivos.
 
 ---
@@ -198,12 +200,10 @@ fputcsv() formata uma linha (passada como um array de campos **fields**) como CS
 ````php
 <?php
 $lista = array('aaa', 'bbb', 'ccc', 'dddd');
-
 $fp = fopen('arquivo.csv', 'w');
-
 fputcsv($fp,$lista, ";");
-
 fclose($fp);
+// aaa,bbb,ccc,dddd
 ````
 
 ### fprintf()
@@ -215,13 +215,12 @@ Exemplo:
 ```php
 <?php
 $fp = fopen('currency.txt', 'w');
-
 $money1 = 68.75;
 $money2 = 54.35;
 $money = $money1 + $money2;
 // echo $money irá mostrar "123.1";
-
 $len = fprintf($fp, '%01.2f', $money);
+// will write "123.10" to currency.txt
 ```
 
 ---
@@ -268,21 +267,31 @@ fclose($file);
 * **chroot** — Muda o diretório raiz (root)
   >**Notas**: Esta função somente está disponível se seu sistema suportá-la e se você estiver utilizando o modo CLI, CGI ou SAPI Embutida. Também, esta função requer privilégio root.
   E não é implementada na plataforma Windows
-
 * **closedir** — Fecha o manipulador do diretório
 * **opendir** — Abre o manipulador do diretório
-* **dirname** — Retorna o caminho/path do diretório pai
 * **disk_total_space** — Retorna o tamanho total do diretório
 * **disk_free_space** sinônimo de **diskfreespace** — Retorna o espaço disponível no diretório
 * **is_dir** — Diz se o caminho é um diretório
 * **mkdir** — Cria um diretório
 * **rmdir** — Remove um diretório
+* **dirname** — Retorna o caminho/path do diretório pai
+> 7.0.0 - Adicionado o parâmetro opcional levels.
+> levels: O número de diretórios pai para subir.
+
+```php
+<?php
+ echo dirname("/etc/passwd") . PHP_EOL; // => /etc
+ echo dirname("/etc/") . PHP_EOL; // => / (ou \ no Windows)
+ echo dirname(".") . PHP_EOL; // =>  .
+ echo dirname("/usr/local/lib", 2); // =>  /usr
+
+```
 
 #### Arquivo de Informação
 
 **finfo** é um módulo que tenta descobrir o *content type* e o encode de um arquivo, verificando uma certa sequência de bytes específica no arquivo.
 
-* **finfo_open** — Cria um novo recurso de fileinfo
+* **finfo_open** - Cria um novo recurso de fileinfo
 * **finfo_file** -  Retorna informação sobre um arquivo.
 * **finfo_close** - Fecha um recurso de fileinfo
 
@@ -290,11 +299,8 @@ Exemplo:
 ````php
 <?php
 $file = fopen("../../Examples/INPUT-OUTPUT/exemplo.txt","r");
-
 $finfo = finfo_open();
-
 $fileinfo = finfo_file($finfo, $file, FILEINFO_MIME);
-
 finfo_close($finfo);
 fclose($file);
 
@@ -309,9 +315,9 @@ Constantes pré definidas:
 #### Arquivo de Sistema
 
 * **basename** — Retorna a parte nome do arquivo do caminho/path
-* **chgrp** — Modifica o grupo do arquivo
-* **chmod** — Modifica as permissões do arquivo
-* **chown** — Modifica o dono do arquivo
+* **chgrp** — Modifica o grupo do arquivo (Esta função não trabalha com arquivos remotos)
+* **chmod** — Modifica as permissões do arquivo (Esta função não trabalha com arquivos remotos)
+* **chown** — Modifica o dono do arquivo (Esta função não trabalha com arquivos remotos)
 
 * **clearstatcache** — Limpa as informações em cache sobre arquivos.  
 Esta função limpa todas as informações que o PHP mantém sobre um arquivo.O PHP não guarda informação de cache sobre arquivos que não existem. Entretanto, unlink() limpa o cache automaticamente.
@@ -319,7 +325,7 @@ Esta função limpa todas as informações que o PHP mantém sobre um arquivo.O 
 * **copy** — Copia arquivo
 * **feof** — Testa pelo fim-de-arquivo (eof) em um ponteiro de arquivo
 * **fgetc** — Lê um caracter do ponteiro de arquivo
-* **fgetcsv** — Lê uma linha do ponteiro de arquivos e a interpreta como campos CSV. Retorna um array contendo os campos lidos.
+* **fgetcsv** — Lê uma linha do ponteiro de arquivos e a interpreta como campos CSV. Retorna um array contendo os campos lidos. Uma linha em branco em um arquivo CSV será retornada como um array contendo um único campo nulo (null) e não será tratada como um erro.
 * **fgets** — Lê uma linha de um ponteiro de arquivo
 * **file_exists** — Checa se um arquivo ou diretório existe
 
@@ -330,6 +336,7 @@ Exemplo:
 echo file_get_contents("../../Examples/INPUT-OUTPUT/exemplo.txt");
 ````
 file_get_contents não possui limite de input, diferente de fread.
+> NOTA:  Para todas as versões anteriores ao PHP 6, o parâmetro **flags** é chamado use_include_path e é um bool. O parâmetro flags está disponível somente a partir do PHP 6. Se você estiver usando uma versão anterior e quiser buscar o arquivo filename no include_path, este parâmetro deve ser TRUE. A partir do PHP 6, você deve usar a flag FILE_USE_INCLUDE_PATH.
 
 * **file_put_contents** — Escreve uma string para um arquivo.  
 Esta função é idêntica à chamar fopen(), fwrite() e fclose() sucessivamente para escrever dados em um arquivo. É binary-safe.  
@@ -338,8 +345,12 @@ Exemplo:
 <?php
 echo file_put_contents("../../Examples/INPUT-OUTPUT/exemplo.txt", "Kit Kat\n");
 ````
+>NOTA: Adicionado suporte às flags (terceiro parametro) FILE_TEXT e FILE_BINARY
+> - FILE_TEXT	: Os dados de data são escritos em modo texto
+> - FILE_BINARY : Os dados de data serão escritos em modo binário.
 
 * **file** — Lê todo o arquivo para um array
+>>NOTA: Adicionado suporte às flags (segundo parametro) FILE_TEXT e FILE_BINARY
 * **fileatime** — Obtém o último horário de acesso do arquivo
 * **filemtime** — Obtém o tempo de modificação do arquivo
 * **filegroup** — Lê o grupo do arquivo
@@ -384,6 +395,9 @@ foreach (glob("*.txt") as $arquivo) {
 }
 ````
 >**Notas:** Esta função não trabalha com arquivos remotos. Esta função não está disponível em alguns sistemas não GNU.  
+
+=============PAREI AQUI ======
+
 
 * **is_executable** — Diz se um arquivo é executável
 * **is_file** — Informa se o arquivo é um arquivo comum (não é diretório)
