@@ -396,9 +396,6 @@ foreach (glob("*.txt") as $arquivo) {
 ````
 >**Notas:** Esta função não trabalha com arquivos remotos. Esta função não está disponível em alguns sistemas não GNU.  
 
-=============PAREI AQUI ======
-
-
 * **is_executable** — Diz se um arquivo é executável
 * **is_file** — Informa se o arquivo é um arquivo comum (não é diretório)
 * **is_link** — Diz se o arquivo é um link simbólico (symbolic link)
@@ -410,8 +407,8 @@ foreach (glob("*.txt") as $arquivo) {
 * **linkinfo** — Esta função é usada para verificar se um link (apontado por path) realmente existe.
 * **lstat** — Retorna um array com informações sobre um arquivo ou link simbólico. Difere de fstat que retorna apenas do ponteiro.
 * **move_uploaded_file** — Move um arquivo enviado para uma nova localização
-
 * **parse_ini_file** — Interpreta um arquivo de configuração. Carrega o arquivo INI especificado e retorna as configurações contidas nele em um array associativo. A estrutura do arquivo INI é a mesma do php.ini.
+>7.0.0 - Hash marks (#) are no longer recognized as comments.
 
 * **pathinfo** — Retorna informações sobre um caminho de arquivo.  
 Retorna um array associativo contendo inforamações sobre o caminho.  
