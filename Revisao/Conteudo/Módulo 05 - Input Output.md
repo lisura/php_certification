@@ -336,7 +336,7 @@ Exemplo:
 echo file_get_contents("../../Examples/INPUT-OUTPUT/exemplo.txt");
 ````
 file_get_contents não possui limite de input, diferente de fread.
-> NOTA:  Para todas as versões anteriores ao PHP 6, o parâmetro **flags** é chamado use_include_path e é um bool. O parâmetro flags está disponível somente a partir do PHP 6. Se você estiver usando uma versão anterior e quiser buscar o arquivo filename no include_path, este parâmetro deve ser TRUE. A partir do PHP 6, você deve usar a flag FILE_USE_INCLUDE_PATH.
+> NOTA:  7.1.0	Support for negative offsets has been added.
 
 * **file_put_contents** — Escreve uma string para um arquivo.  
 Esta função é idêntica à chamar fopen(), fwrite() e fclose() sucessivamente para escrever dados em um arquivo. É binary-safe.  
