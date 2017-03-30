@@ -409,6 +409,7 @@ foreach (glob("*.txt") as $arquivo) {
 * **move_uploaded_file** — Move um arquivo enviado para uma nova localização
 * **parse_ini_file** — Interpreta um arquivo de configuração. Carrega o arquivo INI especificado e retorna as configurações contidas nele em um array associativo. A estrutura do arquivo INI é a mesma do php.ini.
 >7.0.0 - Hash marks (#) are no longer recognized as comments.
+>5.6.1	Added new INI_SCANNER_TYPED mode.
 
 * **pathinfo** — Retorna informações sobre um caminho de arquivo.  
 Retorna um array associativo contendo inforamações sobre o caminho.  
