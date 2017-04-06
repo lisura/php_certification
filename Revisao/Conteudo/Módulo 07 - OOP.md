@@ -52,9 +52,9 @@ class Sharknado{
 $className = 'Sharknado';
 $instance = new $className();
  ```
+>Nota: O construtor estilo PHP4 (onde o método possui o nome da classe) estão deprecados no PHP 7. A idéia era remover totalmente, mas por questões de compatibilidade com sistemas anteriores foi mantido como deprecated, sendo provavelmente removido na versão 8. 
 
-
- Para criar uma cópia de um objeto instanciado, pode-se utilizar o método **__clone()**. Se apenas atribuir a uma variável um objeto instanciado, a variável apontará para o mesmo objeto.
+Para criar uma cópia de um objeto instanciado, pode-se utilizar o método **__clone()**. Se apenas atribuir a uma variável um objeto instanciado, a variável apontará para o mesmo objeto.
  ```php
  <?php
  $obj2 = clone $obj;
@@ -94,6 +94,27 @@ O método mágico *\__sleep()* é executado antes da serialização, se disponí
  echo $obj->movies, PHP_EOL;
  echo $obj->movies(), PHP_EOL;
  ```
+ 
+ >Nota: No PHP 7.0, foi introduzido o Context Sensitive Lexer, que permite o uso de palavras-chave como nomes de propriedades, métodos e constantes nas classes, interfaces e traits. Assim o PHP deixou de ter 64 palavras reservadas para ter apenas *\_\_class\_\_*, e somente no contexto da constante de classe. Seguem abaixo as palavras disponíveis:
+ 
+w|o|r|d
+------------|------------|--------------|----------
+callable    |and         |include       |function
+trait       |global      |include_once  |if
+extends     |goto        |throw         |endswitch
+implements  |instanceof  |array         |finally
+static      |insteadof   |print         |for
+abstract    |interface   |echo          |foreach
+final       |namespace   |require       |declare
+public      |new         |require_once  |case
+protected   |or          |return        |do
+private     |xor         |else          |while
+const       |try         |elseif        |as
+enddeclare  |use         |default       |catch
+endfor      |var         |break         |die
+endforeach  |exit        |continue      |self
+endif       |list        |switch        |parent
+endwhile    |clone       |yield         |class
 
 ### Visibilidade  
  
@@ -119,6 +140,37 @@ namespace SN {
 }
 ```
 
+## Importando classes, funções e constantes
+Através do namespace podemos importar funções à uma classe. No PHP 7 foi introduzido o conceito de Group Use. Com isso podemos evitar a repetição de prefixos no use.
+```php
+// Original
+use Framework\Component\ClassA;
+use Framework\Component\ClassB as ClassC;
+use Framework\OtherComponent\ClassD;
+
+// With group use statements
+use Framework\{
+  Component\ClassA,
+  Component\ClassB as ClassC,
+  OtherComponent\ClassD
+};
+
+// Alternative organization of use statements
+use Framework\Component\{
+  Component\ClassA,
+  Component\ClassB as ClassC
+};
+Use Framework\OtherComponent\ClassD;
+```
+No PHP 5.6 foi adicionada a possibilidade de importar funções e constantes pelo use. No PHP 7 usamos a seguinte forma para identificar funções e constantes.
+```php
+use Framework\Component\{
+  SubComponent\ClassA,
+  function OtherComponent\someFunction,
+  const OtherComponent\SOME_CONSTANT
+};
+```
+
 ### Abstracts
 Classes definidas como abstratas não podem ser instanciadas, e qualquer classe que contenha ao menos um método abstrato também deve ser abstrata. Métodos são definidos como abstratos declarando a intenção em sua assinatura - não podem definir a implementação.  
 Ao herdar uma classe abstrata, todos os métodos marcados como abstratos na declaração da classe pai devem ser implementados na classe filha, métodos devem ser definidos com a mesma (ou menos restrita) visibilidade e  a assinatura dos métodos devem coincidir.
@@ -136,6 +188,55 @@ abstract class Sharknado{
         print $this->movieName();
     }
 }
+```
+
+### Anônimas
+As classes anônimas foram introduzidas no PHP 7, permitindo usar capacidades relacionadas ao closure, mas para objetos.
+Para criar uma classe anônima, usamos a instrução *new class($constructor, $args)*, seguida de uma definição de classe padrão. Uma classe anônima é instanciada no momento de sua criação. No exemplo abaixo, o construtor da classe é chamado com o argumento "nado", e a propriedade shark recebe esse valor na instanciação de $object.
+```php
+$object = new class("nado") {
+  public $shark;
+  
+  public function __construct($arg)
+  {
+    $this->shark = $arg;
+  }
+};
+```
+
+Classes anônimas podem ter namespace e suportam herança, traits e interfaces com a mesma sintáxe de uma classe normal.
+```php
+namespace MyProject\Component;
+
+$object = new class ($args) extends Shark implements Nado {
+  use Bmovie;
+};
+```
+
+É importante notar que classes anônimas possuem nomes baseados na posição de memória onde a definição de classe foi armazenada (algo como *class@0x7fa77f271bd0*). Isso signigiva que em um loop a definição de classe é sempre a mesma e está sempre na mesma posição de memória, porém um objeto novo é instanciado a cada passo do laço. Além disso, uma definição de classe feita fora do laço terá outro endereço de memória, mesmo que a estrutura de classe seja a mesma
+```php
+$objects = [];
+//Perceba que $objects[0] e [1] são iguais entre si (mas não idênticos)
+//No entanto, $objects[2] é diferente dos demais pois $value é "bar" e não "foo"
+foreach (["foo", "foo", "bar"] as $value) {
+  $objects[] = new class($value) {
+    public $value;
+    public function __construct($value)
+    {
+      $this->value = $value;
+    }
+   };
+}
+
+//No caso abaixo, $objects[3] não é igual a nenhum dos objetos anteriores
+//Pois foi definido fora do laço, assim sua classe possui outro endereço de memória
+$objects[] = new class("foo") {
+  public $value;
+  public function __construct($value)
+  {
+    $this->value = $value;
+  }
+};
 ```
 
 ## Interfaces
@@ -568,6 +669,20 @@ A sobrecarga de propriedades funciona somente no contexto de objeto. Estes méto
 \_\_callStatic() é disparado quando ao invocar métodos inacessíveis em um contexto estático.
 
 O argumento $name é o nome do método sendo chamado. O argumento $arguments é um array enumerado contendo os parâmetros passados para o método $name.
+
+>Nota: A classe Closure possui um novo método call que pode ser usado para chamar métodos inacessíveis por funções anônimas
+```php
+class HelloWorld {
+    private $greeting = "Hello";
+}
+
+$closure = function($whom) {
+    echo $this->greeting . ' ' . $whom;
+};
+
+$obj = new HelloWorld();
+$closure->call($obj, 'World');
+```
 
 ### \_\_invoke()
 
