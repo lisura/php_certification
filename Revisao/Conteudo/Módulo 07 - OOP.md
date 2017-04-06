@@ -534,6 +534,10 @@ Para declarar o tipo o seu nome deve ser adicionado antes no nome do parâmetro.
 | self | O parâmetro precisa ser um instanceof da mesma classe do métrodo onde a função está definida. Somente pode ser utilizado em métodos de classe e instância. |	PHP 5.0.0 |
 | array |	O parametro precisa ser um array. |	PHP 5.1.0 |
 | callable |	O parâmetro precisa ser um callable válido.	| PHP 5.4.0|
+| bool |	O parâmetro precisa ser um booleano.	| PHP 7.0.0|
+| float |	O parâmetro precisa ser um número de ponto flutuante.	| PHP 7.0.0|
+| int |	O parâmetro precisa ser um número inteiro.	| PHP 7.0.0|
+| string |	O parâmetro precisa ser uma string.	| PHP 7.0.0|
 
 ### Declaração de Tipos em Classes
 
