@@ -13,5 +13,5 @@ Fernando  - Modulo 8 - 11/04
 
 Leandro   - Modulo 9 - 13/04  
 Ivan      - Modulo 10 - 18/04  
-Adinan    - Changelog PHP 7.1 - 20/04
+Adinan    - Changelog PHP 7.1 - 20/04  
 Fernando  - O que quiser. Divirta-se :-) - 25/04
