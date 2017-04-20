@@ -2,7 +2,7 @@
 
 PHP, é uma linguagem poderosa o bastante para executar arquivos e scripts em segundo plano, no servidor e fora da aplicação. Assim, um mal planejamento de questões de segurança pode deixar o sistema com portas abertas para invasões e ataques maliciosos.
 
-Tenha sempre em mente que
+PHP é desenhado especificamente para ser uma linguagem mais segura para escrever programas CGI que Perl ou C mas tenha sempre em mente que:
 * Não há como proteger totalmente o sistema, existem formas bastante criativas de se sofrer ataques, mas com as medidas explicadas aqui podemos nos proteger de ataques mais comuns e dificultar a vida do invasor.
 * Nunca confie no usuário, pois o mesmo pode ser o atacante. Tome sempre muito cuidado com os dados que o usuário envia para o sistema.
 
@@ -53,7 +53,9 @@ Cuidado com o que será exibido em caso de erros.
 
 >Nota 1 - O padrão no PHP 4 e 5 é **E_ALL & ~ E_NOTICE**, ou seja, erros de Notice não serão exibidos.
 
->Nota 2 - Em produção o recomendado é sempre manter *error_reporting*:   E_ALL & ~E_DEPRECTED & ~E_STRICT
+>Nota 2 - No PHP5.3 ou maior o padrão é E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED.
+
+>Nota 3 - Em produção o recomendado é sempre manter *error_reporting*: E_ALL & ~E_DEPRECTED & ~E_STRICT
 
 ## Segurança de Sessão
 
@@ -63,9 +65,23 @@ Embora o PHP trabalhe no servidor, cookies são gerados para a sessão em aberto
 
 Trata-se de alguém conseguir o ID da sessão de um cliente e usar o mesmo ID em outro navegador. Esse ID pode ser adquirido pelo cookie gerado pelo PHP ou pela URL através da variável PHPSESSID.
 
+>bool session_start ([ array $options = [] ] )
+
+Cria uma sessão ou retorna uma que esteja ativa  
+No PHP 7 o parametro $options foi adicionado.
+```PHP
+<?php
+// this is an associative array of options that will override the currently set session configuration directives.
+session_start([
+    'cookie_lifetime' => 86400,
+    'read_and_close'  => true,
+]);
+```
+
 >bool session_regenerate_id ([ bool $delete_old_session = false ] )
 
-Atualiza o id da sessão atual com um novo id gerado.
+Atualiza o id da sessão atual com um novo id gerado.  
+Desde a versão 7, o **session_regenerate_id()** salva a sessão anterior antes de fechar.
 
 >int session_cache_expire ([ string $new_cache_expire ] )
 
@@ -89,11 +105,22 @@ Através da variável $\_SERVER e suas chaves REMOTE\_ADDR e SERVER\_ADDR, podem
 
 A função session_set_cookie_params define parâmetros dos cookies configurados no arquivo php.ini. O efeito desta função é apenas pela duração do script. Então, você precisa chamar session_set_cookie_params() para cada requisição e antes que session_start() seja chamada.
 
-As configuraçãoes pondem por exemplo impedira que um usuario mal intencionado leia os cookies usando JS caso a tag httponly esteja marcada como true.
+As configuraçãoes podem por exemplo impedia que um usuario mal intencionado leia os cookies usando JS caso a tag httponly esteja marcada como true.
 
 > session.cookie_httponly boolean
 
 Marca o cookie para ser acessível apenas atráves do protocolo HTTP. Isto significa que o cookie não será acessível por linguagens de script, como o JavaScript. Esta configuração pode efetivamente reduzir o roubo de identidade atráves de ataques XSS (apesar de não ser suportado por todos os browsers).
+
+**Relembrando da aula 1**
+
+| Nome | Padrão | Modificável | Changelog |
+|---|---|---|---|
+|session.entropy_file	|""|	PHP_INI_ALL|	Removido no PHP 7.1.0.|
+|session.entropy_length|	"0"|	PHP_INI_ALL|	Removido no PHP 7.1.0.|
+|session.sid_bits_per_character|	"32"|	PHP_INI_ALL|	Disponível desde o PHP 7.1.0.|
+|session.hash_bits_per_character|	"5"	|PHP_INI_ALL|	Removido no PHP 7.1.0.|
+|session.lazy_write|	"1"|	PHP_INI_ALL	Disponível |desde PHP 7.0.0.|
+
 
 ## Cross-Site Scripting
 
@@ -111,6 +138,11 @@ $usuario = htmlentities(filter_input(INPUT_POST, 'cpf'));
 $senha = htmlentities(filter_input(INPUT_POST, 'senha'));
 $codigoAcesso = htmlentities(filter_input(INPUT_POST, 'cod_acesso'));
 ```
+
+>Nota sobre o metodo htmlentities:  
+>>string htmlentities ( string $string [, int $flags = ENT_COMPAT | ENT_HTML401 [, string $encoding = ini_get("default_charset") [, bool $double_encode = true ]]] )    
+>
+No PHP5.6.0	- The default value for the encoding parameter was changed to be the value of the default_charset configuration option.
 
 ## Cross-Site Request Forgeries
 
@@ -153,11 +185,15 @@ Se isso acontecesse, então o script daria de presente acesso de super-usuário 
 
 ### Técnicas para Evitar Ataques
 
-Esses ataques se baseam principalmente em explorar falhas no código escrito sem se preocupar com segurança. Nunca confie em nenhum tipo de entrada, especialmente aquela que vem do lado do cliente, mesmo que venha de um combobox, um campo de entrada escondido (hidden) ou um cookie. O primeiro exemplo mostra como uma consulta inocente pode causar desastres.
+Esses ataques se baseam principalmente em explorar falhas no código desenvolvido sem se preocupar com segurança. Nunca confie em nenhum tipo de entrada, especialmente aquela que vem do lado do cliente, mesmo que venha de um combobox, um campo de entrada escondido (hidden) ou um cookie. O primeiro exemplo mostra como uma consulta inocente pode causar desastres.
 
 * Nunca conecte ao banco de dados como um super-usuário ou como o dono do banco de dados. Use sempre usuários personalidados com privilégios bem limitados.
 
-* Verifique se uma entrada qualquer tem o tipo de dados experado. O PHP tem um grande número de funções de validação de entrada, desde as mais simples encontrada em Funções de Variáveis e em Funções de Tipo de Caracteres (ex.: *is_numeric()*, *ctype_digit()* respectivamente) além de usar o suporte a Expressões Regulares Compatível com Perl.
+* Verifique se uma entrada qualquer tem o tipo de dados esperados. O PHP tem um grande número de funções de validação de entrada, desde as mais simples encontrada em Funções de Variáveis e em Funções de Tipo de Caracteres (ex.: *is_numeric()*, *ctype_digit()* respectivamente) além de usar o suporte a Expressões Regulares Compatível com Perl.
+
+>NOTA: *is_numeric()*
+> > No PHP 7.0.0	 Strings in hexadecimal (e.g. 0xf4c3b00c) notation are no longer regarded as numeric strings, i.e. is_numeric() returns FALSE now.
+
 
 * Se a aplicação espera por entradas numéricas, considere verificar os dados com a função *is_numeric()*, ou silenciosamente mudar o seu tipo usando *settype()*, ou usar a representação númerica usando a função *sprintf()*.
 
@@ -165,11 +201,15 @@ Esses ataques se baseam principalmente em explorar falhas no código escrito sem
 
 ## Remote Code Injection
 
-Code Injection refere-se a qualquer meio que permite a um atacante injetar código-fonte em um aplicativo da web de modo que ele seja interpretado e executado. Isto não se aplica ao código injectado num cliente da aplicação, exemplo Javascript.
+Code Injection refere-se a qualquer meio que permite a um atacante injetar código-fonte em um aplicativo da web de modo que ele seja interpretado e executado. Isto não se aplica ao código injetado num cliente da aplicação, exemplo Javascript.
 
-O código-fonte pode ser injetado diretamente de uma entrada não confiável ou o aplicativo da Web pode ser manipulado para carregá-lo a partir do sistema de arquivos local ou de uma fonte externa, como um URL. Quando ocorre uma Injeção de Código como resultado de incluir um recurso externo, é comumente referido como Inclusão de Arquivo Remoto embora um ataque RFI em si precise sempre ser destinado a injetar código.
+O código-fonte pode ser injetado diretamente de uma entrada não confiável ou, o aplicativo Web pode ser manipulado para carregá-lo a partir do sistema de arquivos local ou de uma fonte externa, por exemplo uma URL. Quando ocorre uma Injeção de Código como resultado de incluir um recurso externo (include), é comumente referido como Inclusão de Arquivo Remoto embora um ataque RFI em si precise sempre ser destinado a injetar código.
 
-As principais causas de Injeção de Código são as falhas de Validação de Entrada, a inclusão de entrada não confiável em qualquer contexto em que a entrada pode ser avaliada como código PHP, falhas na segurança dos repositórios de código fonte, falhas no cuidado com o download de bibliotecas de terceiros e configurações erradas do servidor.
+As principais causas de Injeção de Código são as falhas de Validação de Entrada:
+- inclusão de entrada não confiável em qualquer contexto em que a entrada pode ser avaliada como código PHP;
+- falhas na segurança dos repositórios de código fonte;
+- falhas no cuidado com o download de bibliotecas de terceiros;
+- configurações erradas do servidor.
 
 É importante ressaltar a importância em não confiar no usuário e muito menos nos dados que serão enviados para o sistema, sendo essencial filtrar e validar todo dado de entrada e saída.
 
@@ -200,7 +240,8 @@ O atacante pode adicionar outros campos ao cabeçalho como CC e BCC:
 Neste exemplo o e-mail é enviado para todos os e-mail listados. O valor hexadecimal “0x0A” (\n) é usado para separar cada campo.
 
 ### Open mail relay
-Um open mail relay é um servidor SMTP que permite que qualquer um envie emails sem cadastro ou identificação. Esse tipo de servidor é muito utilizado por spammers e worms.
+
+Um open mail relay é um servidor SMTP que permite que qualquer um envie e-mails sem cadastro ou identificação. Esse tipo de servidor é muito utilizado por spammers e worms.
 
 ## Input Filtering
 
@@ -243,6 +284,9 @@ Extensão esta disponível oficialmente desde o PHP 5.5.0
 ### Função crypt
 
 **crypt()** providencia encriptação unidirecional de string (hashing). Retorna uma string criptografada usando o algoritmo de encriptação Unix Standard DES-based ou algoritmos alternativos disponíveis no sistema.
+
+>Nota: When the failure string "\*0" is given as the salt, "\*1" will now be returned for consistency with other crypt implementations.
+>Nota: 5.6.0	 Raise E_NOTICE security warning if salt is omitted.
 
 Em sistemas onde a função crypt() suporta variados tipos de codificação, as seguintes funções são definidas para 0 ou 1 a depender se um dado tipo está disponível:  
 * CRYPT_STD_DES - Codificação Standard DES-based com um salt de 2 caracteres
