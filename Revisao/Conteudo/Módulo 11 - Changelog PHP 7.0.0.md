@@ -4,7 +4,6 @@
 
 ### Core:
 * Added zend_internal_function.reserved[] fields.
-* Fixed "finally" issues.
 * Improved zend_string API.
 * Improved __call() and __callStatic() magic method handling. Now they are called in a stackless way using ZEND_CALL_TRAMPOLINE opcode, without additional stack frame.
 * Optimized strings concatenation.
